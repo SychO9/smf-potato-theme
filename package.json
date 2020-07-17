@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"scripts": {
+		"watch": "node_modules\\.bin\\sass --watch sass/index.scss css/index.css"
+	},
+	"dependencies": {
+		"sass": "^1.26.8"
+	}
+}
