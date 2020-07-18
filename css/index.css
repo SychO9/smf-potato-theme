@@ -6119,7 +6119,7 @@ readers do not read off random characters that represent icons */
 .infobox .infobox-icon {
   width: 3.5rem;
   font-size: 18px;
-  padding: 1.3rem 0 0;
+  padding: 1.4rem 0 0;
   text-align: center;
   border-radius: 4px 0 0 4px;
   background: rgba(0, 0, 0, 0.12);
@@ -6129,7 +6129,7 @@ readers do not read off random characters that represent icons */
   flex-grow: 1;
 }
 .infobox .infobox-title {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-weight: 600;
   font-size: 15px;
 }
@@ -6182,6 +6182,7 @@ body {
   font-size: 14px;
   display: flex;
   flex-direction: column;
+  line-height: 18px;
 }
 
 .footerfix {
@@ -6195,6 +6196,32 @@ body {
 
 .upper-section {
   margin-bottom: 6px;
+}
+
+.footer {
+  background: linear-gradient(to right, #99314e, #c34468);
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+.footer .inner_wrap > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+.footer .footer-links {
+  text-align: end;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer, .footer a {
+  color: #fff;
+}
+.footer a:hover {
+  color: #d9d9d9;
 }
 
 * {
@@ -6351,9 +6378,18 @@ select {
   padding-inline-end: 0;
 }
 
+.main-content-section > * {
+  margin: 6px 0;
+}
+.main-content-section > *:first-child {
+  margin-block-start: 0;
+}
+.main-content-section > *:last-child {
+  margin-block-end: 0;
+}
+
 .news {
   position: relative;
-  margin-bottom: 6px;
 }
 .news-fader-items {
   list-style: none;
@@ -6454,6 +6490,35 @@ select {
 }
 .up_contain .lastpost {
   width: 32%;
+}
+
+.info-center {
+  margin-top: 24px;
+}
+
+.upshrink-stats > * {
+  margin: 6px 0;
+}
+.upshrink-stats > *:first-child {
+  margin-block-start: 0;
+}
+.upshrink-stats > *:last-child {
+  margin-block-end: 0;
+}
+
+.forum-stats {
+  display: flex;
+  align-items: center;
+}
+.forum-stats > div {
+  margin: 0 6px;
+  flex-grow: 1;
+}
+.forum-stats > div:first-child {
+  margin-inline-start: 0;
+}
+.forum-stats > div:last-child {
+  margin-inline-end: 0;
 }
 
 /*# sourceMappingURL=index.css.map */

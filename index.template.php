@@ -338,7 +338,7 @@ function template_body_above()
 	// The main content should go here.
 	echo '
 			<div id="content_section">
-				<div id="main_content_section">';
+				<div id="main_content_section" class="main-content-section">';
 }
 
 /**
@@ -357,7 +357,7 @@ function template_body_below()
 
 	// Show the footer with copyright, terms and help links.
 	echo '
-	<div id="footer">
+	<div id="footer" class="footer">
 		<div class="inner_wrap">';
 
 	// There is now a global "Go to top" link at the right.

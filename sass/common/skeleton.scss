@@ -11,6 +11,7 @@ body {
   font-size: $font-size;
   display: flex;
   flex-direction: column;
+  line-height: $line-height;
 }
 
 .footerfix {
@@ -24,6 +25,32 @@ body {
 
 .upper-section {
   margin-bottom: $space-between-elements;
+}
+
+.footer {
+  background: $top-section-background;
+  padding: 1rem 0;
+  margin-top: 2rem;
+
+  .inner_wrap {
+    > ul {
+      @include organized-content;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+    }
+  }
+  .footer-links {
+    text-align: end;
+  }
+  ul {
+    @include listless;
+  }
+  &, a {
+    color: #fff;
+  }
+  a:hover {
+    color: darken(#fff, 15);
+  }
 }
 
 * {

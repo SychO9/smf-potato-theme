@@ -308,8 +308,8 @@ function template_info_center()
 
 	// Here's where the "Info Center" starts...
 	echo '
-	<div class="roundframe" id="info_center">
-		<div id="upshrink_stats"', empty($options['collapse_header_ic']) ? '' : ' style="display: none;"', '>';
+	<div class="roundframe info-center" id="info_center">
+		<div id="upshrink_stats" class="upshrink-stats"', empty($options['collapse_header_ic']) ? '' : ' style="display: none;"', '>';
 
 	foreach ($context['info_center'] as $block)
 	{
@@ -475,18 +475,52 @@ function template_ic_block_stats()
 {
 	global $scripturl, $txt, $context, $settings;
 
+	$stats = array(
+		array(
+			'label' => $txt['posts'],
+			'value' => $context['common_stats']['total_posts'],
+			'icon' => 'fas fa-comments',
+		),
+		array(
+			'label' => $txt['topics'],
+			'value' => $context['common_stats']['total_topics'],
+			'icon' => 'fas fa-file-alt',
+		),
+		array(
+			'label' => $txt['members'],
+			'value' => $context['common_stats']['total_members'],
+			'icon' => 'fas fa-users',
+		),
+		array(
+			'label' => $txt['latest_member'],
+			'value' => $context['common_stats']['latest_member']['link'],
+			'icon' => 'fas fa-user',
+		),
+		array(
+			'label' => $txt['latest_post'],
+			'value' => "{$context['latest_post']['link']} ({$context['latest_post']['time']})",
+			'icon' => 'fas fa-reply',
+		),
+	);
+
 	// Show statistical style information...
 	echo '
-			<div class="sub_bar">
-				<h4 class="subbg">
-					<a href="', $scripturl, '?action=stats" title="', $txt['more_stats'], '"><span class="main_icons stats"></span> ', $txt['forum_stats'], '</a>
-				</h4>
-			</div>
-			<p class="inline">
-				', $context['common_stats']['boardindex_total_posts'], '', !empty($settings['show_latest_member']) ? ' - ' . $txt['latest_member'] . ': <strong> ' . $context['common_stats']['latest_member']['link'] . '</strong>' : '', '<br>
-				', (!empty($context['latest_post']) ? $txt['latest_post'] . ': <strong>&quot;' . $context['latest_post']['link'] . '&quot;</strong>  (' . $context['latest_post']['time'] . ')<br>' : ''), '
-				<a href="', $scripturl, '?action=recent">', $txt['recent_view'], '</a>
-			</p>';
+			<div class="forum-stats">';
+
+	foreach ($stats as $stat)
+	{
+		echo '
+				<div class="infobox infobox--neutral">
+					<div class="infobox-icon">', icon($stat['icon']), '</div>
+					<div class="infobox-content">
+						<div class="infobox-title">', $stat['value'], '</div>
+						<div class="infobox-text">', $stat['label'], '</div>
+					</div>
+				</div>';
+	}
+
+	echo '
+			</div>';
 }
 
 /**
@@ -495,15 +529,20 @@ function template_ic_block_stats()
 function template_ic_block_online()
 {
 	global $context, $scripturl, $txt, $modSettings, $settings;
+
+	echo '
+		<div class="users-online">
+			<div class="infobox infobox--neutral">
+				<div class="infobox-icon">', icon('fas fa-users'), '</div>
+				<div class="infobox-content">
+					<div class="infobox-title">
+						', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span> ', $txt['online_users'], '', $context['show_who'] ? '</a>' : '', '
+					</div>
+					<div class="infobox-text">';
+
 	// "Users online" - in order of activity.
 	echo '
-			<div class="sub_bar">
-				<h4 class="subbg">
-					', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span> ', $txt['online_users'], '', $context['show_who'] ? '</a>' : '', '
-				</h4>
-			</div>
-			<p class="inline">
-				', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<strong>', $txt['online'], ': </strong>', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'];
+				', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'];
 
 	// Handle hidden users and buddies.
 	$bracketList = array();
@@ -538,7 +577,10 @@ function template_ic_block_online()
 	}
 
 	echo '
-			</p>';
+					</div>
+				</div>
+			</div>
+		</div>';
 }
 
 ?>

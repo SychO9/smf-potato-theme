@@ -1,6 +1,11 @@
+.main-content-section {
+  > * {
+    @include vertical-spacing;
+  }
+}
+
 .news {
   position: relative;
-  margin-bottom: $space-between-elements;
 
   &-fader-items {
     @include listless;
@@ -78,5 +83,24 @@
   }
   .lastpost {
     width: 32%;
+  }
+}
+
+.info-center {
+  margin-top: 4*$space-between-elements;
+}
+
+.upshrink-stats {
+  > * {
+    @include vertical-spacing;
+  }
+}
+
+.forum-stats {
+  @include organized-content;
+
+  > div {
+    @include horizontal-spacing;
+    flex-grow: 1;
   }
 }
