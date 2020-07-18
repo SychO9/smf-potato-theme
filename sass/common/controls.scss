@@ -1,0 +1,11 @@
+.button {
+  @include button;
+}
+
+input, select, textarea {
+  @include input;
+}
+
+select {
+  cursor: pointer;
+}

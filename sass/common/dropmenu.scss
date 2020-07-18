@@ -1,0 +1,12 @@
+.dropmenu {
+  @include organized-content;
+  @include listless;
+
+  > li > a {
+    @include button-skeleton;
+  }
+}
+
+.popup_heading {
+  display: none;
+}

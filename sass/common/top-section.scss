@@ -1,0 +1,78 @@
+.top-section {
+  padding: 1rem 0;
+  margin-bottom: 4rem;
+
+  @include link($top-section-color);
+}
+
+.top-section-user-bar {
+  @include organized-content;
+}
+
+.unread-links {
+  @include listless;
+  @include organized-content;
+
+  > li > a {
+    @include button-skeleton;
+  }
+}
+
+.waves {
+  position: absolute;
+  top: -80px;
+  fill: $bg-color;
+  background: $top-section-background;
+  z-index: -1;
+}
+
+.upper-header {
+  @include organized-content;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.forumtitle {
+  margin: 0;
+}
+
+.user-menu {
+  @include listless;
+  @include organized-content;
+
+  > li {
+    @include horizontal-spacing(1px);
+
+    > a {
+      @include button-skeleton;
+
+      > .icon {
+        @include icon;
+      }
+      > .fa-chevron-down {
+        font-size: 13px;
+        margin-left: 3px;
+      }
+      > img {
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
+
+        &.avatar {
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+}
+
+.main-nav {
+  .dropmenu > li {
+    &:first-child > a {
+      padding-inline-start: 0;
+    }
+    &:last-child > a {
+      padding-inline-end: 0;
+    }
+  }
+}

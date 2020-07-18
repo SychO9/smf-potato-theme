@@ -1,0 +1,53 @@
+@mixin title-block($name) {
+  .#{$name}_bar {
+    padding: 10px 0;
+    margin-top: $space-between-elements;
+
+    .#{$name}bg {
+      margin: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+@include title-block('cat');
+@include title-block('title');
+
+.block {
+  @include block-skeleton;
+  @include block;
+}
+
+.infobox {
+  @include block-skeleton;
+  display: flex;
+
+  .infobox-icon {
+    width: 3.5rem;
+    font-size: 18px;
+    padding: 1.3rem 0 0;
+    text-align: center;
+    border-radius: $border-radius 0 0 $border-radius;
+    background: rgba(0, 0, 0, 0.12);
+  }
+  .infobox-content {
+    padding: $block-padding;
+    flex-grow: 1;
+  }
+  .infobox-title {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: $font-size + 1;
+  }
+  .infobox-text {
+    margin: 0;
+  }
+
+  &--neutral {
+    background: $neutral-bg;
+    color: $neutral-color;
+  }
+}

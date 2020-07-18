@@ -1,9 +1,12 @@
 {
 	"private": true,
 	"scripts": {
-		"watch": "node_modules\\.bin\\sass --watch sass/index.scss css/index.css"
+		"watch": "node_modules\\.bin\\sass --load-path=node_modules --watch sass/index.scss css/index.css"
 	},
 	"dependencies": {
-		"sass": "^1.26.8"
+		"@fortawesome/fontawesome-free": "^5.14.0"
+	},
+	"devDependencies": {
+		"sass": "^1.26.10"
 	}
 }

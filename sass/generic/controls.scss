@@ -1,0 +1,27 @@
+@mixin button-skeleton {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 10px;
+  border-width: 0;
+  border-radius: $border-radius;
+  font-family: $font-family;
+  font-size: $font-size;
+  display: inline-flex;
+  align-items: center;
+}
+
+@mixin button {
+  @include button-skeleton;
+  background: $contrast-bg;
+  color: $contrast-fg;
+  cursor: pointer;
+
+  &:hover {
+    background: darken($contrast-bg, 5);
+  }
+}
+
+@mixin input {
+  @include button-skeleton;
+  background: $contrast-bg;
+}

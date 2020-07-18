@@ -1,0 +1,65 @@
+@mixin listless {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin organized-content {
+  display: flex;
+  align-items: center;
+}
+
+@mixin horizontal-spacing($amount: $space-between-elements) {
+  margin: 0 $amount;
+
+  &:first-child {
+    margin-inline-start: 0;
+  }
+  &:last-child {
+    margin-inline-end: 0;
+  }
+}
+
+@mixin vertical-spacing($amount: $space-between-elements) {
+  margin: $amount 0;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+@mixin link($color) {
+  a {
+    color: $color;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($color, 18);
+    }
+  }
+}
+
+@mixin block-skeleton {
+  border-radius: $border-radius;
+  box-shadow: 0 2px 2px rgb(0, 0, 0, 0.13);
+}
+
+@mixin block {
+  padding: $block-padding;
+  background: $block-bg;
+  color: $block-color;
+}
+
+@mixin amt-skeleton {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  display: inline-block;
+}
+
+@import "controls";
+@import "icons";

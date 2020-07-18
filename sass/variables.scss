@@ -1,0 +1,47 @@
+/* Generic Colors */
+$primary-color: #b83b5e;
+$secondary-color: #6a2c70;
+
+/* Element Colors */
+$bg-color: #eeecda;
+$fg-color: #1f1f1f;
+
+/* Contrast Colors */
+$contrast-bg: #eaced6;
+$contrast-fg: #8d4a5d;
+
+// ---------------------------
+
+/* Misc */
+$font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+$font-size: 14px;
+
+$border-radius: 4px;
+
+/* FontAwesome Required Variable */
+$fa-font-path: "../webfonts";
+
+/* Max Page Width */
+$max-page-width: 1200px;
+
+// --------------------------- Specific Elements
+
+$top-section-background: linear-gradient(to right, darken($primary-color, 8), lighten($primary-color, 4));
+$top-section-color: #fff;
+
+// --------------------------- Generic Elements
+
+$block-bg: #fffce6;
+$block-color: $fg-color;
+$block-padding: 10px 12px;
+
+$neutral-bg: $block-bg;
+$neutral-color: $block-color;
+
+$info-bg: #bbccec;
+$info-color: $fg-color;
+
+$amt-bg: $secondary-color;
+$amt-color: #fff;
+
+$space-between-elements: 6px;
