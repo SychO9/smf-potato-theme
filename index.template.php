@@ -239,14 +239,14 @@ function template_body_above()
 			echo '
 				<li>
 					<a href="', $scripturl, '?action=pm"', !empty($context['self_pm']) ? ' class="active"' : '', ' id="pm_menu_top">', icon('far fa-envelope'), ' ', !empty($context['user']['unread_messages']) ? ' <span class="amt">' . $context['user']['unread_messages'] . '</span>' : '', '</a>
-					<div id="pm_menu" class="top_menu scrollable"></div>
+					<div id="pm_menu" class="top_menu"></div>
 				</li>';
 
 		// Thirdly, alerts
 		echo '
 				<li>
 					<a href="', $scripturl, '?action=profile;area=showalerts;u=', $context['user']['id'], '"', !empty($context['self_alerts']) ? ' class="active"' : '', ' id="alerts_menu_top">', icon('far fa-bell'), ' ', !empty($context['user']['alerts']) ? ' <span class="amt">' . $context['user']['alerts'] . '</span>' : '', '</a>
-					<div id="alerts_menu" class="top_menu scrollable"></div>
+					<div id="alerts_menu" class="top_menu"></div>
 				</li>';
 
 		// A logout button for people without JavaScript.
@@ -466,7 +466,7 @@ function template_menu()
 		echo '
 						<li class="button_', $act, '', !empty($button['sub_buttons']) ? ' subsections"' : '"', '>
 							<a', $button['active_button'] ? ' class="active"' : '', ' href="', $button['href'], '"', isset($button['target']) ? ' target="' . $button['target'] . '"' : '', '>
-								', $button['icon'], '<span class="textmenu">', $button['title'], !empty($button['amt']) ? ' <span class="amt">' . $button['amt'] . '</span>' : '', '</span>
+								', $button['icon'], '<span class="textmenu">', $button['title'], !empty($button['amt']) ? ' <span class="amt">' . $button['amt'] . '</span>' : '', '</span>', !empty($button['sub_buttons']) ? ' '.icon('fas fa-chevron-down') : '', '
 							</a>';
 
 		// 2nd level menus

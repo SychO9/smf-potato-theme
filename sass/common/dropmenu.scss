@@ -1,12 +1,141 @@
+.dropdown {
+  @include block-skeleton;
+  @include listless;
+  background: $block-bg;
+  position: absolute;
+  z-index: 1;
+  min-width: $dropdown-min-width;
+
+  ul, ol {
+    @include listless;
+  }
+  li > a, .unread_notify {
+    display: flex;
+    padding: 6px 9px;
+
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -17px;
+    left: 27px;
+    border: 10px solid $block-bg;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    z-index: -1;
+  }
+  .loading {
+    padding: $block-padding;
+  }
+
+  @include link($fg-color);
+}
+
+.dropdown- {
+  &bar {
+    padding: $block-padding;
+    border-bottom: 1px solid darken(#fff, 20);
+    border-radius: $border-radius $border-radius 0 0;
+
+    .block {
+      @include organized-content;
+      justify-content: space-between;
+    }
+  }
+  &resources {
+    padding: $dropdown-list-padding;
+    max-height: 200px;
+    overflow: auto;
+
+    &--empty {
+      padding: $block-padding;
+    }
+  }
+}
+
 .dropmenu {
   @include organized-content;
   @include listless;
 
-  > li > a {
-    @include button-skeleton;
+  > li {
+    position: relative;
+
+    > a {
+      @include button-skeleton;
+    }
+
+    > ul {
+      @extend .dropdown;
+      padding: $dropdown-list-padding;
+    }
+  }
+}
+
+.top_menu {
+  @extend .dropdown;
+  display: none;
+  right: 0;
+  min-width: $dropdown-min-width + 3rem;
+
+  &.visible {
+    display: block;
+  }
+
+  &::before {
+    right: 8px;
+    left: unset;
+  }
+}
+
+.profile_user {
+  &_info {
+    display: flex;
+  }
+  &_avatar {
+    margin-inline-end: 8px;
+
+    img {
+      border-radius: $avatar-border-radius;
+    }
+  }
+  &_content {
+    > span {
+      display: block;
+    }
+  }
+  &_links {
+    padding: $dropdown-list-padding;
+  }
+}
+
+.unread_notify {
+  @include organized-content;
+
+  &_image {
+    margin-right: $space-between-elements;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: $avatar-border-radius;
+      vertical-align: middle;
+    }
+  }
+  &.alert_read {
+    opacity: 0.4;
   }
 }
 
 .popup_heading {
   display: none;
+}
+
+li > a > .icon.fa-chevron-down {
+  font-size: 11px;
+  margin-left: 3px;
 }

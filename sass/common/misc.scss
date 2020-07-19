@@ -1,4 +1,5 @@
 .amt {
+  @include amt-skeleton;
   background: $amt-bg;
   color: $amt-color;
 }

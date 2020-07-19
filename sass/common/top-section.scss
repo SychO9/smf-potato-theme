@@ -42,6 +42,7 @@
 
   > li {
     @include horizontal-spacing(1px);
+    position: relative;
 
     > a {
       @include button-skeleton;
@@ -49,18 +50,19 @@
       > .icon {
         @include icon;
       }
-      > .fa-chevron-down {
-        font-size: 13px;
-        margin-left: 3px;
-      }
       > img {
         width: 30px;
         height: 30px;
         margin-right: 4px;
 
         &.avatar {
-          border-radius: 100%;
+          border-radius: $avatar-border-radius;
         }
+      }
+      > .amt {
+        position: absolute;
+        right: 0;
+        top: 0;
       }
     }
   }

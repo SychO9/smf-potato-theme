@@ -16,11 +16,6 @@
 @include title-block('cat');
 @include title-block('title');
 
-.block {
-  @include block-skeleton;
-  @include block;
-}
-
 .infobox {
   @include block-skeleton;
   display: flex;
