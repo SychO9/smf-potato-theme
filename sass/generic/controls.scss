@@ -30,6 +30,5 @@
 }
 
 @mixin input {
-  @include button-skeleton;
-  background: $contrast-bg;
+  @include button;
 }

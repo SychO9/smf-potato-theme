@@ -4,6 +4,13 @@
   color: $amt-color;
 }
 
+.badge {
+  @include amt-skeleton(24px, $font-size);
+  background: $secondary-color;
+  color: #fff;
+  vertical-align: middle;
+}
+
 .pagesection {
   @include organized-content;
   justify-content: space-between;

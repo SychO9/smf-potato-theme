@@ -46,3 +46,10 @@
     color: $neutral-color;
   }
 }
+
+.roundframe {
+  @include block-skeleton;
+  background: darken(grayscale($block-bg), 0);
+  color: $block-color;
+  padding: $block-padding;
+}

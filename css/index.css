@@ -6570,6 +6570,14 @@ readers do not read off random characters that represent icons */
   color: #1f1f1f;
 }
 
+.roundframe {
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
+  background: #f3f3f3;
+  color: #1f1f1f;
+  padding: 10px 12px;
+}
+
 .amt {
   width: 16px;
   height: 16px;
@@ -6580,6 +6588,19 @@ readers do not read off random characters that represent icons */
   display: inline-block;
   background: #6a2c70;
   color: #fff;
+}
+
+.badge {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 100%;
+  display: inline-block;
+  background: #6a2c70;
+  color: #fff;
+  vertical-align: middle;
 }
 
 .pagesection {
@@ -6630,15 +6651,19 @@ body {
   color: #1f1f1f;
   line-height: 25px;
 }
-.navigate_section .page-title, .navigate_section .page-details p {
-  margin: 0;
-}
 .navigate_section ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   align-items: center;
+}
+
+.page-title, .page-details p {
+  margin: 0;
+}
+.page-actions {
+  float: right;
 }
 
 .footer {
@@ -7071,6 +7096,18 @@ input, select, textarea {
   display: inline-flex;
   align-items: center;
   background: #eaced6;
+  color: #8d4a5d;
+  cursor: pointer;
+}
+input:hover, select:hover, textarea:hover {
+  background: #e2bcc7;
+}
+input--composite, select--composite, textarea--composite {
+  border-radius: 4px 0 0 4px;
+}
+input--composite + .button, select--composite + .button, textarea--composite + .button {
+  border-radius: 0 4px 4px 0;
+  filter: brightness(0.96);
 }
 
 select {

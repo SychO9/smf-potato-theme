@@ -17,7 +17,7 @@ function template_page_title()
 {
 	global $context;
 
-	echo $context['subject'], '</span>', ($context['is_locked']) ? ' <span class="main_icons lock"></span>' : '', ($context['is_sticky']) ? ' <span class="main_icons sticky"></span>' : '';
+	echo $context['subject'], '</span>', ($context['is_locked']) ? ' <span class="main_icons lock badge"></span>' : '', ($context['is_sticky']) ? ' <span class="main_icons sticky badge"></span>' : '';
 }
 
 /**
@@ -26,6 +26,7 @@ function template_page_title()
 function template_page_details()
 {
 	global $context, $txt;
+
 	// Show new topic info here?
 	echo '
 		<p>', $txt['started_by'], ' ', $context['topic_poster_name'], ', ', $context['topic_started_time'], '</p>';
@@ -50,6 +51,16 @@ function template_page_details()
 		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
 		</p>';
 	}
+}
+
+/**
+ * Page actions, jump to
+ */
+function template_page_actions()
+{
+	// Show the jumpto box, or actually...let Javascript do it.
+	echo '
+		<div id="display_jump_to" class="jump-to"></div>';
 }
 
 /**
@@ -290,10 +301,6 @@ function template_main()
 			', template_button_strip($context['normal_buttons'], 'right'), '
 		</div>';
 
-	// Show the jumpto box, or actually...let Javascript do it.
-	echo '
-		<div id="display_jump_to"></div>';
-
 	// Show quickreply
 	if ($context['can_reply'])
 		template_quickreply();
@@ -413,15 +420,15 @@ function template_main()
 
 				aJumpTo[aJumpTo.length] = new JumpTo({
 					sContainerId: "display_jump_to",
-					sJumpToTemplate: "<label class=\"smalltext jump_to\" for=\"%select_id%\">', $context['jump_to']['label'], '<" + "/label> %dropdown_list%",
-					iCurBoardId: ', $context['current_board'], ',
-					iCurBoardChildLevel: ', $context['jump_to']['child_level'], ',
-					sCurBoardName: "', $context['jump_to']['board_name'], '",
+					sJumpToTemplate: "%dropdown_list%",
+					iCurBoardId: -1,
+					iCurBoardChildLevel: 0,
+					sCurBoardName: "', $context['jump_to']['label'], '",
 					sBoardChildLevelIndicator: "==",
-					sBoardPrefix: "=> ",
+					sBoardPrefix: "",
 					sCatSeparator: "-----------------------------",
 					sCatPrefix: "",
-					sGoButtonLabel: "', $txt['go'], '"
+					sGoButtonLabel: null,
 				});
 
 				aIconLists[aIconLists.length] = new IconList({

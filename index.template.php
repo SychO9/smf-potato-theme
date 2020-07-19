@@ -83,6 +83,9 @@ function template_html_above()
 {
 	global $context, $scripturl, $txt, $modSettings;
 
+	if (isset($context['page_index']) && substr_count($context['page_index'], 'button') <= 1)
+		$context['page_index'] = '';
+
 	// Show right to left, the language code, and the character set for ease of translating.
 	echo '<!DOCTYPE html>
 <html', $context['right_to_left'] ? ' dir="rtl"' : '', !empty($txt['lang_locale']) ? ' lang="' . str_replace("_", "-", substr($txt['lang_locale'], 0, strcspn($txt['lang_locale'], "."))) . '"' : '', '>
@@ -405,6 +408,7 @@ function theme_linktree($force_show = false)
 
 	echo '
 				<div class="navigate_section">
+					<div class="page-actions">', function_exists('template_page_actions') ? template_page_actions() : $context['page_title'], '</div>
 					<h2 class="page-title">', function_exists('template_page_title') ? template_page_title() : $context['page_title'], '</h2>';
 
 	// If linktree is empty, just return - also allow an override.

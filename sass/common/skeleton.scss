@@ -32,12 +32,18 @@ body {
   @include block;
   line-height: 25px;
 
-  .page-title, .page-details p {
-    margin: 0;
-  }
   ul {
     @include listless;
     @include organized-content;
+  }
+}
+
+.page {
+  &-title, &-details p {
+    margin: 0;
+  }
+  &-actions {
+    float: right;
   }
 }
 
