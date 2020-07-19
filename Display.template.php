@@ -462,6 +462,18 @@ function template_single_post($message)
 
 	$ignoring = false;
 
+	$message['quickbuttons'] = array_reverse($message['quickbuttons']);
+	$message['quickbuttons']['like'] = [
+		'label' => $txt['like'],
+		'href' => $scripturl.'?action=likes;ltype=msg;sa=like;like='.$message['id'].';'.$context['session_var'].'='.$context['session_id'],
+		'anchor_class' => 'msg_like',
+		'icon' => $message['likes']['you'] ? 'unlike' : 'like',
+		'id' => 'msg_'.$message['id'].'_likes',
+		'class' => 'smflikebutton',
+		'show' => $context['can_like'] && !$ignoring && !empty($modSettings['enable_likes'])
+	];
+	$message['quickbuttons'] = array_reverse($message['quickbuttons']);
+
 	if ($message['can_remove'])
 		$context['removableMessageIDs'][] = $message['id'];
 
@@ -474,7 +486,7 @@ function template_single_post($message)
 
 	// Show the message anchor and a "new" anchor if this message is new.
 	echo '
-				<div class="', $message['css_class'], '">
+				<div class="postblock ', $message['css_class'], '">
 					', $message['id'] != $context['first_message'] ? '
 					<a id="msg' . $message['id'] . '"></a>' . ($message['first_new'] ? '<a id="new"></a>' : '') : '', '
 					<div class="post_wrapper">';
@@ -675,36 +687,59 @@ function template_single_post($message)
 							</ul>
 						</div><!-- .poster -->
 						<div class="postarea">
-							<div class="keyinfo">';
+							<div class="keyinfo">
+								<h5 class="inline_details">';
 
-	// Some people don't want subject... The div is still required or quick edit breaks.
-	echo '
-								<div id="subject_', $message['id'], '" class="subject_title', (empty($modSettings['subject_toggle']) ? ' subject_hidden' : ''), '">
-									', $message['link'], '
-								</div>';
-
-	echo '
-								<h5>
-									<span class="messageicon" ', ($message['icon_url'] === $settings['images_url'] . '/post/xx.png' && !$message['can_modify']) ? ' style="position: absolute; z-index: -1;"' : '', '>
-										<img src="', $message['icon_url'] . '" alt=""', $message['can_modify'] ? ' id="msg_icon_' . $message['id'] . '"' : '', '>
-									</span>
-									<a href="', $message['href'], '" rel="nofollow" title="', !empty($message['counter']) ? sprintf($txt['reply_number'], $message['counter'], ' - ') : '', $message['subject'], '" class="smalltext">', $message['time'], '</a>
-									<span class="page_number floatright">
-										', !empty($message['counter']) ? ' #' . $message['counter'] : '', ' ', '
+	if (!empty($message['counter']))
+		echo '
+									<span class="page_number">
+										#', $message['counter'], '
 									</span>';
 
-	// Show "<< Last Edit: Time by Person >>" if this post was edited. But we need the div even if it wasn't modified!
-	// Because we insert into it through AJAX and we don't want to stop themers moving it around if they so wish so they can put it where they want it.
 	echo '
-									<span class="smalltext modified floatright', !empty($modSettings['show_modify']) && !empty($message['modified']['name']) ? ' mvisible' : '', '" id="modified_', $message['id'], '">';
+									<span>
+										', icon('fas fa-clock'), '
+										<a href="', $message['href'], '" rel="nofollow" title="', !empty($message['counter']) ? sprintf($txt['reply_number'], $message['counter'], ' - ') : '', $message['subject'], '" class="smalltext">', $message['time'], '</a>
+									</span>';
 
 	if (!empty($modSettings['show_modify']) && !empty($message['modified']['name']))
-		echo
-										$message['modified']['last_edit_text'];
+		echo '
+									<span>
+										', icon('fas fa-pencil-alt'), '
+										<span class="smalltext modified', !empty($modSettings['show_modify']) && !empty($message['modified']['name']) ? ' mvisible' : '', '" id="modified_', $message['id'], '">
+											', $message['modified']['last_edit_text'], '
+										</span>
+									</span>';
+
+	// What about likes?
+	if (!empty($modSettings['enable_likes']) && !empty($message['likes']['count']))
+	{
+		$context['some_likes'] = true;
+		$count = $message['likes']['count'];
+		$base = 'likes_';
+
+		if ($message['likes']['you'])
+		{
+			$base = 'you_' . $base;
+			$count--;
+		}
+
+		$base .= (isset($txt[$base . $count])) ? $count : 'n';
+
+		echo '
+										<span class="like_count smalltext">
+											', icon('fas fa-thumbs-up'), '
+											', sprintf($txt[$base], $scripturl . '?action=likes;sa=view;ltype=msg;like=' . $message['id'] . ';' . $context['session_var'] . '=' . $context['session_id'], comma_format($count)), '
+										</span>';
+	}
 
 	echo '
-									</span>
-								</h5>
+								</h5>';
+
+	// Show the quickbuttons, for various operations on posts.
+	template_quickbuttons($message['quickbuttons'], 'post');
+
+	echo '
 								<div id="msg_', $message['id'], '_quick_mod"', $ignoring ? ' style="display:none;"' : '', '></div>
 							</div><!-- .keyinfo -->';
 
@@ -820,96 +855,60 @@ function template_single_post($message)
 							</div><!-- #msg_[id]_footer -->';
 	}
 
-	echo '
-							<div class="under_message">';
+	$cf_above = !empty($message['custom_fields']['above_signature']);
+	$signature = !empty($message['member']['signature']) && empty($options['show_no_signatures']) && $context['signature_enabled'];
+	$cf_below = !empty($message['custom_fields']['below_signature']);
 
-	// What about likes?
-	if (!empty($modSettings['enable_likes']))
+	if ($cf_above || $signature || $cf_below)
 	{
 		echo '
-								<ul class="floatleft">';
+							<div class="moderatorbar">';
 
-		if (!empty($message['likes']['can_like']))
+		// Are there any custom profile fields for above the signature?
+		if ($cf_above)
 		{
 			echo '
-									<li class="smflikebutton" id="msg_', $message['id'], '_likes"', $ignoring ? ' style="display:none;"' : '', '>
-										<a href="', $scripturl, '?action=likes;ltype=msg;sa=like;like=', $message['id'], ';', $context['session_var'], '=', $context['session_id'], '" class="msg_like"><span class="main_icons ', $message['likes']['you'] ? 'unlike' : 'like', '"></span> ', $message['likes']['you'] ? $txt['unlike'] : $txt['like'], '</a>
-									</li>';
+								<div class="custom_fields_above_signature">
+									<ul class="nolist">';
+
+			foreach ($message['custom_fields']['above_signature'] as $custom)
+				echo '
+										<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
+
+			echo '
+									</ul>
+								</div>';
 		}
 
-		if (!empty($message['likes']['count']))
+		// Show the member's signature?
+		if ($signature)
+			echo '
+								<div class="signature" id="msg_', $message['id'], '_signature"', $ignoring ? ' style="display:none;"' : '', '>
+									', $message['member']['signature'], '
+								</div>';
+
+		// Are there any custom profile fields for below the signature?
+		if ($cf_below)
 		{
-			$context['some_likes'] = true;
-			$count = $message['likes']['count'];
-			$base = 'likes_';
+			echo '
+								<div class="custom_fields_below_signature">
+									<ul class="nolist">';
 
-			if ($message['likes']['you'])
-			{
-				$base = 'you_' . $base;
-				$count--;
-			}
-
-			$base .= (isset($txt[$base . $count])) ? $count : 'n';
+			foreach ($message['custom_fields']['below_signature'] as $custom)
+				echo '
+										<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
 
 			echo '
-									<li class="like_count smalltext">
-										', sprintf($txt[$base], $scripturl . '?action=likes;sa=view;ltype=msg;like=' . $message['id'] . ';' . $context['session_var'] . '=' . $context['session_id'], comma_format($count)), '
-									</li>';
+									</ul>
+								</div>';
 		}
 
 		echo '
-								</ul>';
+							</div><!-- .moderatorbar -->';
 	}
 
-	// Show the quickbuttons, for various operations on posts.
-	template_quickbuttons($message['quickbuttons'], 'post');
-
 	echo '
-							</div><!-- .under_message -->
 						</div><!-- .postarea -->
-						<div class="moderatorbar">';
-
-	// Are there any custom profile fields for above the signature?
-	if (!empty($message['custom_fields']['above_signature']))
-	{
-		echo '
-							<div class="custom_fields_above_signature">
-								<ul class="nolist">';
-
-		foreach ($message['custom_fields']['above_signature'] as $custom)
-			echo '
-									<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
-
-		echo '
-								</ul>
-							</div>';
-	}
-
-	// Show the member's signature?
-	if (!empty($message['member']['signature']) && empty($options['show_no_signatures']) && $context['signature_enabled'])
-		echo '
-							<div class="signature" id="msg_', $message['id'], '_signature"', $ignoring ? ' style="display:none;"' : '', '>
-								', $message['member']['signature'], '
-							</div>';
-
-	// Are there any custom profile fields for below the signature?
-	if (!empty($message['custom_fields']['below_signature']))
-	{
-		echo '
-							<div class="custom_fields_below_signature">
-								<ul class="nolist">';
-
-		foreach ($message['custom_fields']['below_signature'] as $custom)
-			echo '
-									<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
-
-		echo '
-								</ul>
-							</div>';
-	}
-
-	echo '
-						</div><!-- .moderatorbar -->
 					</div><!-- .post_wrapper -->
 				</div><!-- $message[css_class] -->
 				<hr class="post_separator">';
