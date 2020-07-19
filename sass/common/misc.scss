@@ -3,3 +3,13 @@
   background: $amt-bg;
   color: $amt-color;
 }
+
+.pagesection {
+  @include organized-content;
+}
+
+@media (min-width: 425px) {
+  .mobile_buttons {
+    display: none;
+  }
+}

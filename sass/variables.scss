@@ -10,6 +10,9 @@ $fg-color: #1f1f1f;
 $contrast-bg: #eaced6;
 $contrast-fg: #8d4a5d;
 
+/* Link Colors */
+$link-color: $primary-color;
+
 // ---------------------------
 
 /* Misc */
@@ -51,3 +54,5 @@ $dropdown-min-width: 15rem;
 $dropdown-list-padding: 6px 0;
 
 $avatar-border-radius: 100%;
+
+$poster-area-width: 15rem;

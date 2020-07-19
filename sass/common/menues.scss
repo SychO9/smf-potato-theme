@@ -58,6 +58,14 @@
       padding: $block-padding;
     }
   }
+  &right {
+    right: 0;
+
+    &::before {
+      right: 8px;
+      left: unset;
+    }
+  }
 }
 
 .dropmenu {
@@ -94,17 +102,12 @@
 
 .top_menu {
   @extend .dropdown;
+  @extend .dropdown-right;
   display: none;
-  right: 0;
   min-width: $dropdown-min-width + 3rem;
 
   &.visible {
     display: block;
-  }
-
-  &::before {
-    right: 8px;
-    left: unset;
   }
 
   ol {
@@ -175,4 +178,44 @@
 li > a > .icon.fa-chevron-down {
   font-size: 11px;
   margin-left: 3px;
+}
+
+.quickbuttons {
+  @include listless;
+  @include organized-content;
+  position: relative;
+
+  > li {
+    position: relative;
+
+    > a {
+      @include button-skeleton;
+      border-radius: 100%;
+      width: 34px;
+      justify-content: center;
+
+      .item-label {
+        display: none;
+      }
+      .icon, .main_icons {
+        margin: 0;
+      }
+    }
+    > ul {
+      @extend .dropdown;
+      @extend .dropdown-right;
+      padding: $dropdown-list-padding;
+      top: calc(100% + 10px);
+
+      &::before {
+        right: 6px;
+      }
+    }
+    &:hover {
+      > a {
+        background: $link-color;
+        color: #fff;
+      }
+    }
+  }
 }

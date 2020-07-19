@@ -630,8 +630,8 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 			$html .= $li['content'];
 		else
 			$html .= '
-				<a' . (!empty($li['href']) ? ' href="' . $li['href'] . '"' : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . '>
-					' . (!empty($li['icon']) ? '<span class="main_icons ' . $li['icon'] . '"></span>' : '') . (!empty($li['label']) ? $li['label'] : '') . '
+				<a' . (!empty($li['href']) ? " href='{$li['href']}'" : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . '>
+					' . (!empty($li['icon']) ? "<span class='main_icons {$li['icon']}'></span>" : '') . (!empty($li['label']) ? "<span class='item-label'>{$li['label']}</span>" : '') . '
 				</a>';
 
 		$html .= '
@@ -646,7 +646,11 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 		if ($key == 'more')
 		{
 			$output .= '
-			<li class="post_options">' . $txt['post_options'] . '
+			<li class="post_options">
+				<a>
+					' . icon('fas fa-ellipsis-v') . '
+					<span class="item-label">' . $txt['post_options'] . '</span>
+				</a>
 				<ul>';
 
 			foreach ($li as $subli)

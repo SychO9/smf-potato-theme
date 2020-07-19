@@ -27,6 +27,16 @@ body {
   margin-bottom: $space-between-elements;
 }
 
+.navigate_section {
+  @include block-skeleton;
+  @include block;
+
+  ul {
+    @include listless;
+    @include organized-content;
+  }
+}
+
 .footer {
   background: $top-section-background;
   padding: 1rem 0;
@@ -57,4 +67,4 @@ body {
   box-sizing: border-box;
 }
 
-@include link($primary-color);
+@include link($link-color);

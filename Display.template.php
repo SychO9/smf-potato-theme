@@ -467,7 +467,7 @@ function template_single_post($message)
 		'label' => $txt['like'],
 		'href' => $scripturl.'?action=likes;ltype=msg;sa=like;like='.$message['id'].';'.$context['session_var'].'='.$context['session_id'],
 		'anchor_class' => 'msg_like',
-		'icon' => $message['likes']['you'] ? 'unlike' : 'like',
+		'icon' => !empty($message['likes']['you']) ? 'unlike' : 'like',
 		'id' => 'msg_'.$message['id'].'_likes',
 		'class' => 'smflikebutton',
 		'show' => $context['can_like'] && !$ignoring && !empty($modSettings['enable_likes'])
@@ -740,8 +740,8 @@ function template_single_post($message)
 	template_quickbuttons($message['quickbuttons'], 'post');
 
 	echo '
-								<div id="msg_', $message['id'], '_quick_mod"', $ignoring ? ' style="display:none;"' : '', '></div>
-							</div><!-- .keyinfo -->';
+							</div><!-- .keyinfo -->
+							<div id="msg_', $message['id'], '_quick_mod"', $ignoring ? ' style="display:none;"' : '', '></div>';
 
 	// Ignoring this user? Hide the post.
 	if ($ignoring)

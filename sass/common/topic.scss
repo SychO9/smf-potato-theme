@@ -1,0 +1,25 @@
+.post_wrapper {
+  display: flex;
+
+  .quickbuttons {
+    opacity: 0;
+  }
+  &:hover {
+    .quickbuttons {
+      opacity: 1;
+    }
+  }
+}
+
+.poster {
+  width: $poster-area-width;
+}
+
+.postarea {
+  width: calc(100% - #{$poster-area-width});
+}
+
+.keyinfo {
+  @include organized-content;
+  justify-content: space-between;
+}
