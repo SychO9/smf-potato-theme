@@ -19,6 +19,14 @@
   &:hover {
     background: darken($contrast-bg, 5);
   }
+  &--composite {
+    border-radius: $border-radius 0 0 $border-radius;
+
+    & + .button {
+      border-radius: 0 $border-radius $border-radius 0;
+      filter: brightness(0.96);
+    }
+  }
 }
 
 @mixin input {

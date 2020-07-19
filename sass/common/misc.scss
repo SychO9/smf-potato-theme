@@ -6,10 +6,11 @@
 
 .pagesection {
   @include organized-content;
+  justify-content: space-between;
 }
 
 @media (min-width: 425px) {
   .mobile_buttons {
-    display: none;
+      display: none;
   }
 }

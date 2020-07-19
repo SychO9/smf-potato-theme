@@ -11,11 +11,55 @@
  */
 
 /**
+ * Topic title
+ */
+function template_page_title()
+{
+	global $context;
+
+	echo $context['subject'], '</span>', ($context['is_locked']) ? ' <span class="main_icons lock"></span>' : '', ($context['is_sticky']) ? ' <span class="main_icons sticky"></span>' : '';
+}
+
+/**
+ * Topic details
+ */
+function template_page_details()
+{
+	global $context, $txt;
+	// Show new topic info here?
+	echo '
+		<p>', $txt['started_by'], ' ', $context['topic_poster_name'], ', ', $context['topic_started_time'], '</p>';
+
+	// Next - Prev
+	echo '
+		<span class="nextlinks floatright">', $context['previous_next'], '</span>';
+
+	if (!empty($settings['display_who_viewing']))
+	{
+		echo '
+		<p>';
+
+		// Show just numbers...?
+		if ($settings['display_who_viewing'] == 1)
+			echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+		// Or show the actual people viewing the topic?
+		else
+			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
+		</p>';
+	}
+}
+
+/**
  * This template handles displaying a topic
  */
 function template_main()
 {
 	global $context, $settings, $options, $txt, $scripturl, $modSettings;
+
+	transform_normal_buttons($context['normal_buttons']);
 
 	// Let them know, if their report was a success!
 	if ($context['report_sent'])
@@ -31,38 +75,7 @@ function template_main()
 			', $txt['post_becomes_unapproved'], '
 		</div>';
 
-	// Show new topic info here?
 	echo '
-		<div id="display_head" class="information">
-			<h2 class="display_title">
-				<span id="top_subject">', $context['subject'], '</span>', ($context['is_locked']) ? ' <span class="main_icons lock"></span>' : '', ($context['is_sticky']) ? ' <span class="main_icons sticky"></span>' : '', '
-			</h2>
-			<p>', $txt['started_by'], ' ', $context['topic_poster_name'], ', ', $context['topic_started_time'], '</p>';
-
-	// Next - Prev
-	echo '
-			<span class="nextlinks floatright">', $context['previous_next'], '</span>';
-
-	if (!empty($settings['display_who_viewing']))
-	{
-		echo '
-			<p>';
-
-		// Show just numbers...?
-		if ($settings['display_who_viewing'] == 1)
-			echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
-		// Or show the actual people viewing the topic?
-		else
-			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-
-		// Now show how many guests are here too.
-		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
-			</p>';
-	}
-
-	// Show the anchor for the top and for the first message. If the first message is new, say so.
-	echo '
-		</div><!-- #display_head -->
 		<a id="msg', $context['first_message'], '"></a>', $context['first_new_message'] ? '<a id="new"></a>' : '';
 
 	// Is this topic also a poll?
@@ -226,12 +239,12 @@ function template_main()
 	// Show the page index... "Pages: [1]".
 	echo '
 		<div class="pagesection top">
-			', template_button_strip($context['normal_buttons'], 'right'), '
-			', $context['menu_separator'], '
 			<div class="pagelinks floatleft">
 				<a href="#bot" class="button">', $txt['go_down'], '</a>
 				', $context['page_index'], '
 			</div>
+			', $context['menu_separator'], '
+			', template_button_strip($context['normal_buttons'], 'right'), '
 		</div>';
 
 	// Mobile action - moderation buttons (top)
@@ -269,21 +282,12 @@ function template_main()
 	// Show the page index... "Pages: [1]".
 	echo '
 		<div class="pagesection">
-			', template_button_strip($context['normal_buttons'], 'right'), '
-			', $context['menu_separator'], '
 			<div class="pagelinks floatleft">
 				<a href="#main_content_section" class="button" id="bot">', $txt['go_up'], '</a>
 				', $context['page_index'], '
 			</div>
-		</div>';
-
-	// Show the lower breadcrumbs.
-	theme_linktree();
-
-	// Moderation buttons
-	echo '
-		<div id="moderationbuttons">
-			', template_button_strip($context['mod_buttons'], 'bottom', array('id' => 'moderationbuttons_strip')), '
+			', $context['menu_separator'], '
+			', template_button_strip($context['normal_buttons'], 'right'), '
 		</div>';
 
 	// Show the jumpto box, or actually...let Javascript do it.
@@ -511,33 +515,8 @@ function template_single_post($message)
 							</div>';
 	}
 
-	echo '
-							<h4>';
-
-	// Show online and offline buttons?
-	if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
-		echo '
-								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<span class="' . ($message['member']['online']['is_online'] == 1 ? 'on' : 'off') . '" title="' . $message['member']['online']['text'] . '"></span>', $context['can_send_pm'] ? '</a>' : '';
-
-	// Custom fields BEFORE the username?
-	if (!empty($message['custom_fields']['before_member']))
-		foreach ($message['custom_fields']['before_member'] as $custom)
-			echo '
-								<span class="custom ', $custom['col_name'], '">', $custom['value'], '</span>';
-
-	// Show a link to the member's profile.
-	echo '
-								', $message['member']['link'];
-
-	// Custom fields AFTER the username?
-	if (!empty($message['custom_fields']['after_member']))
-		foreach ($message['custom_fields']['after_member'] as $custom)
-			echo '
-								<span class="custom ', $custom['col_name'], '">', $custom['value'], '</span>';
-
 	// Begin display of user info
 	echo '
-							</h4>
 							<ul class="user_info">';
 
 	// Show the user's avatar.
@@ -546,6 +525,38 @@ function template_single_post($message)
 								<li class="avatar">
 									<a href="', $message['member']['href'], '">', $message['member']['avatar']['image'], '</a>
 								</li>';
+
+	// User's Name
+	{
+		echo '
+							<li class="poster-name">
+								<h4>';
+
+		// Show online and offline buttons?
+		if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
+			echo '
+								', $context['can_send_pm'] ? '<a href="' . $message['member']['online']['href'] . '" title="' . $message['member']['online']['label'] . '">' : '', '<span class="' . ($message['member']['online']['is_online'] == 1 ? 'on' : 'off') . '" title="' . $message['member']['online']['text'] . '"></span>', $context['can_send_pm'] ? '</a>' : '';
+
+		// Custom fields BEFORE the username?
+		if (!empty($message['custom_fields']['before_member']))
+			foreach ($message['custom_fields']['before_member'] as $custom)
+				echo '
+								<span class="custom ', $custom['col_name'], '">', $custom['value'], '</span>';
+
+		// Show a link to the member's profile.
+		echo '
+								', $message['member']['link'];
+
+		// Custom fields AFTER the username?
+		if (!empty($message['custom_fields']['after_member']))
+			foreach ($message['custom_fields']['after_member'] as $custom)
+				echo '
+								<span class="custom ', $custom['col_name'], '">', $custom['value'], '</span>';
+
+		echo '
+								</h4>
+							</li>';
+	}
 
 	// Are there any custom fields below the avatar?
 	if (!empty($message['custom_fields']['below_avatar']))

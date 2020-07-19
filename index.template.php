@@ -58,12 +58,12 @@ function template_init()
 
 	// This defines the formatting for the page indexes used throughout the forum.
 	$settings['page_index'] = array(
-		'extra_before' => '<span class="pages">' . $txt['pages'] . '</span>',
-		'previous_page' => '<span class="main_icons previous_page"></span>',
-		'current_page' => '<span class="current_page">%1$d</span> ',
-		'page' => '<a class="nav_page" href="{URL}">%2$s</a> ',
-		'expand_pages' => '<span class="expand_pages" onclick="expandPages(this, {LINK}, {FIRST_PAGE}, {LAST_PAGE}, {PER_PAGE});"> ... </span>',
-		'next_page' => '<span class="main_icons next_page"></span>',
+		'extra_before' => '',
+		'previous_page' => '<span class="button main_icons previous_page"></span>',
+		'current_page' => '<span class="button current_page">%1$d</span> ',
+		'page' => '<a class="button nav_page" href="{URL}">%2$s</a> ',
+		'expand_pages' => '<span class="button expand_pages" onclick="expandPages(this, {LINK}, {FIRST_PAGE}, {LAST_PAGE}, {PER_PAGE});"> ... </span>',
+		'next_page' => '<span class="button main_icons next_page"></span>',
 		'extra_after' => '',
 	);
 
@@ -403,48 +403,55 @@ function theme_linktree($force_show = false)
 	if (count($context['linktree']) <= 1)
 		return;
 
-	// If linktree is empty, just return - also allow an override.
-	if (empty($context['linktree']) || (!empty($context['dont_default_linktree']) && !$force_show))
-		return;
 	echo '
 				<div class="navigate_section">
-					<ul>';
+					<h2 class="page-title">', function_exists('template_page_title') ? template_page_title() : $context['page_title'], '</h2>';
 
-	// Each tree item has a URL and name. Some may have extra_before and extra_after.
-	foreach ($context['linktree'] as $link_num => $tree)
+	// If linktree is empty, just return - also allow an override.
+	if (!empty($context['linktree']) && (empty($context['dont_default_linktree']) || $force_show))
 	{
 		echo '
+					<ul class="crumbs">';
+
+		// Each tree item has a URL and name. Some may have extra_before and extra_after.
+		foreach ($context['linktree'] as $link_num => $tree)
+		{
+			echo '
 						<li', ($link_num == count($context['linktree']) - 1) ? ' class="last"' : '', '>';
 
-		// Don't show a separator for the first one.
-		// Better here. Always points to the next level when the linktree breaks to a second line.
-		// Picked a better looking HTML entity, and added support for RTL plus a span for styling.
-		if ($link_num != 0)
-			echo '
+			// Don't show a separator for the first one.
+			// Better here. Always points to the next level when the linktree breaks to a second line.
+			// Picked a better looking HTML entity, and added support for RTL plus a span for styling.
+			if ($link_num != 0)
+				echo '
 							<span class="dividers">', $context['right_to_left'] ? ' &#9668; ' : ' &#9658; ', '</span>';
 
-		// Show something before the link?
-		if (isset($tree['extra_before']))
-			echo $tree['extra_before'], ' ';
+			// Show something before the link?
+			if (isset($tree['extra_before']))
+				echo $tree['extra_before'], ' ';
 
-		// Show the link, including a URL if it should have one.
-		if (isset($tree['url']))
-			echo '
+			// Show the link, including a URL if it should have one.
+			if (isset($tree['url']))
+				echo '
 							<a href="' . $tree['url'] . '"><span>' . $tree['name'] . '</span></a>';
-		else
-			echo '
+			else
+				echo '
 							<span>' . $tree['name'] . '</span>';
 
-		// Show something after the link...?
-		if (isset($tree['extra_after']))
-			echo ' ', $tree['extra_after'];
+			// Show something after the link...?
+			if (isset($tree['extra_after']))
+				echo ' ', $tree['extra_after'];
+
+			echo '
+						</li>';
+		}
 
 		echo '
-						</li>';
+					</ul>';
 	}
 
 	echo '
-					</ul>
+					<div class="page-details">', function_exists('template_page_details') ? template_page_details() : '', '</div>
 				</div><!-- .navigate_section -->';
 
 	$shown_linktree = true;
@@ -528,41 +535,64 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 	if (!is_array($strip_options))
 		$strip_options = array();
 
+	$button_strip = transform_buttonlist($button_strip);
+
 	// Create the buttons...
 	$buttons = array();
 	foreach ($button_strip as $key => $value)
 	{
+
 		// As of 2.1, the 'test' for each button happens while the array is being generated. The extra 'test' check here is deprecated but kept for backward compatibility (update your mods, folks!)
 		if (!isset($value['test']) || !empty($context[$value['test']]))
 		{
+
 			if (!isset($value['id']))
 				$value['id'] = $key;
 
 			$button = '
-				<a class="button button_strip_' . $key . (!empty($value['active']) ? ' active' : '') . (isset($value['class']) ? ' ' . $value['class'] : '') . '" ' . (!empty($value['url']) ? 'href="' . $value['url'] . '"' : '') . ' ' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>'.(!empty($value['icon']) ? '<span class="main_icons '.$value['icon'].'"></span>' : '').'' . $txt[$value['text']] . '</a>';
+				<li>
+					<a class="button'.(!empty($value['sub_buttons']) ? ' button--composite' : '').' button_strip_' . $key . (!empty($value['active']) ? ' active' : '') . (isset($value['class']) ? ' ' . $value['class'] : '') . '" ' . (!empty($value['url']) ? 'href="' . $value['url'] . '"' : '') . ' ' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>
+						'.(!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '').'' . $txt[$value['text']] . '
+					</a>';
 
 			if (!empty($value['sub_buttons']))
 			{
-				$button .= '
-					<div class="top_menu dropmenu ' . $key . '_dropdown">
-						<div class="viewport">
-							<div class="overview">';
+				$button .= '<a class="button">'.icon('fas fa-chevron-down').'</a>
+					<ul class="top_menu ' . $key . '_dropdown">';
+
 				foreach ($value['sub_buttons'] as $element)
 				{
+					if ($element === 'separator')
+					{
+						$button .= '<li class="separator"></li>';
+						continue;
+					}
+
 					if (isset($element['test']) && empty($context[$element['test']]))
 						continue;
 
 					$button .= '
-								<a href="' . $element['url'] . '"><strong>' . $txt[$element['text']] . '</strong>';
+						<li>
+							<a href="' . $element['url'] . '">
+								'.(!empty($element['icon']) ? icon($element['icon']) : '').'
+								<span class="item-label">
+									<strong>' . $txt[$element['text']] . '</strong>';
+
 					if (isset($txt[$element['text'] . '_desc']))
-						$button .= '<br><span>' . $txt[$element['text'] . '_desc'] . '</span>';
-					$button .= '</a>';
+						$button .= '<span class="item-desc">' . $txt[$element['text'] . '_desc'] . '</span>';
+
+					$button .= '
+								</span>
+							</a>
+						</li>';
 				}
+
 				$button .= '
-							</div><!-- .overview -->
-						</div><!-- .viewport -->
-					</div><!-- .top_menu -->';
+					</ul><!-- .top_menu -->';
 			}
+
+			$button .= '
+				</li>';
 
 			$buttons[] = $button;
 		}
@@ -573,9 +603,9 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 		return;
 
 	echo '
-		<div class="buttonlist', !empty($direction) ? ' float' . $direction : '', '"', (empty($buttons) ? ' style="display: none;"' : ''), (!empty($strip_options['id']) ? ' id="' . $strip_options['id'] . '"' : ''), '>
+		<ul class="buttonlist', !empty($direction) ? ' float' . $direction : '', '"', (empty($buttons) ? ' style="display: none;"' : ''), (!empty($strip_options['id']) ? ' id="' . $strip_options['id'] . '"' : ''), '>
 			', implode('', $buttons), '
-		</div>';
+		</ul>';
 }
 
 /**

@@ -3,9 +3,14 @@
   @include listless;
   background: $block-bg;
   position: absolute;
-  z-index: 1;
-  min-width: $dropdown-min-width;
+  z-index: 10;
+  width: $dropdown-min-width;
 
+  .separator {
+    height: 1px;
+    background: darken(#fff, 20);
+    margin: $dropdown-list-padding;
+  }
   li > a, .unread_notify {
     display: flex;
     padding: 6px 9px;
@@ -16,8 +21,10 @@
     }
   }
   li > a {
-    .main_icons {
+    .icon, .main_icons {
       @extend .fa-fw;
+      align-items: flex-start;
+      margin-top: 2px;
     }
   }
   &::before {
@@ -68,9 +75,24 @@
   }
 }
 
-.dropmenu {
+.menu {
   @include organized-content;
   @include listless;
+
+  > li {
+    > a {
+      vertical-align: middle;
+
+      > .fa-chevron-down {
+        font-size: 11px !important;
+        margin-inline-start: 3px;
+      }
+    }
+  }
+}
+
+.dropmenu {
+  @extend .menu;
 
   li {
     position: relative;
@@ -104,7 +126,7 @@
   @extend .dropdown;
   @extend .dropdown-right;
   display: none;
-  min-width: $dropdown-min-width + 3rem;
+  width: $dropdown-min-width + 3rem;
 
   &.visible {
     display: block;
@@ -112,6 +134,38 @@
 
   ol {
     @include listless;
+  }
+}
+
+.user-menu {
+  @extend .menu;
+
+  > li {
+    @include horizontal-spacing(1px);
+    position: relative;
+
+    > a {
+      @include button-skeleton;
+
+      > .icon {
+        font-size: 18px;
+        margin-inline-end: 0;
+      }
+      > img {
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
+
+        &.avatar {
+          border-radius: $avatar-border-radius;
+        }
+      }
+      > .amt {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
   }
 }
 
@@ -175,14 +229,8 @@
   display: none;
 }
 
-li > a > .icon.fa-chevron-down {
-  font-size: 11px;
-  margin-left: 3px;
-}
-
 .quickbuttons {
-  @include listless;
-  @include organized-content;
+  @extend .menu;
   position: relative;
 
   > li {
@@ -218,4 +266,30 @@ li > a > .icon.fa-chevron-down {
       }
     }
   }
+}
+
+.buttonlist {
+  @extend .menu;
+
+  > li {
+    @include horizontal-spacing(2px);
+    position: relative;
+
+    > .top_menu {
+      padding: $dropdown-list-padding;
+    }
+  }
+}
+
+/* Unspecific Styles */
+
+.item-desc {
+  display: block;
+  font-size: $font-size - 1;
+}
+
+/* Mobile Popup */
+
+.popup_container {
+  display: none;
 }

@@ -13,13 +13,45 @@
 
 .poster {
   width: $poster-area-width;
+  text-align: center;
+
+  .avatar {
+    border-radius: $avatar-border-radius;
+  }
+  ul, ol {
+    @include listless;
+
+    ul, ol {
+      @include organized-content;
+    }
+  }
+  &-name h4 {
+    margin: 0;
+  }
 }
 
 .postarea {
   width: calc(100% - #{$poster-area-width});
+
+  .inline_details {
+    margin: 0;
+  }
 }
 
 .keyinfo {
   @include organized-content;
   justify-content: space-between;
+}
+
+.post_separator {
+  margin: 1rem 0;
+}
+
+.page-details {
+  @include organized-content;
+
+  .nextlinks {
+    flex-grow: 1;
+    text-align: end;
+  }
 }

@@ -30,7 +30,11 @@ body {
 .navigate_section {
   @include block-skeleton;
   @include block;
+  line-height: 25px;
 
+  .page-title, .page-details p {
+    margin: 0;
+  }
   ul {
     @include listless;
     @include organized-content;

@@ -6,6 +6,21 @@ $(function() {
 
 	// find all nested linked images and turn off the border
 	$('a.bbc_link img.bbc_img').parent().css('border', '0');
+
+	$(function() {
+		$('.buttonlist > li > .top_menu').each(function(index, item) {
+			$(item).prev().click(function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+
+				$(item).toggleClass('visible');
+			});
+
+			$(document).click(function() {
+				$(item).removeClass('visible');
+			});
+		});
+	});
 });
 
 // The purpose of this code is to fix the height of overflow: auto blocks, because some browsers can't figure it out for themselves.
