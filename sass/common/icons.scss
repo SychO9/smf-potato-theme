@@ -1,0 +1,333 @@
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
+
+/* Overrides the default icons */
+
+.main_icons {
+  @extend %fa-icon;
+  @extend .fas;
+  margin-inline-end: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Top row */
+.main_icons.help::before {
+  content: fa-content($fa-var-question-circle);
+}
+.main_icons.search::before, .main_icons.engines::before {
+  content: fa-content($fa-var-search);
+}
+.main_icons.quick_edit_button::before, .main_icons.modify_button::before {
+  content: fa-content($fa-var-edit);
+}
+.main_icons.check::before {
+  content: fa-content($fa-var-question-circle);
+}
+.main_icons.invalid::before {
+  content: fa-content($fa-var-exclamation-triangle);
+}
+.main_icons.gender_2::before {
+  content: fa-content($fa-var-venus);
+}
+.main_icons.select_above::before {
+  content: fa-content($fa-var-caret-up);
+}
+.main_icons.select_here::before {
+  content: fa-content($fa-var-caret-left);
+}
+.main_icons.select_below::before {
+  content: fa-content($fa-var-caret-down);
+}
+.main_icons.watch::before {
+  content: fa-content($fa-var-star);
+}
+/* 2nd row */
+.main_icons.move::before, .main_icons.next_page::before {
+  content: fa-content($fa-var-arrow-alt-circle-right);
+}
+.main_icons.general::before, .main_icons.boards::before, .main_icons.topics_views::before {
+  content: fa-content($fa-var-chart-pie);
+}
+.main_icons.gender_1::before {
+  content: fa-content($fa-var-mars);
+}
+.main_icons.features::before {
+  content: fa-content($fa-var-sliders-h);
+}
+.main_icons.posters::before {
+  content: fa-content($fa-var-trophy);
+}
+.main_icons.replies::before, .main_icons.topics_replies::before {
+  content: fa-content($fa-var-clipboard-list);
+}
+.main_icons.history::before, .main_icons.time_online::before, .main_icons.scheduled::before {
+  content: fa-content($fa-var-clock);
+}
+.main_icons.views::before {
+  content: fa-content($fa-var-chart-pie);
+}
+.main_icons.last_post::before {
+  content: fa-content($fa-var-share-square);
+}
+.main_icons.starters::before, .main_icons.people::before, .main_icons.membergroups::before, .main_icons.mlist::before {
+  content: fa-content($fa-var-user-friends);
+}
+/* 3rd Street Saints */
+.main_icons.poll::before {
+  content: fa-content($fa-var-poll);
+}
+.main_icons.previous_page::before {
+  content: fa-content($fa-var-arrow-alt-circle-left);
+}
+.main_icons.inbox::before {
+  content: fa-content($fa-var-inbox);
+}
+.main_icons.www::before {
+  content: fa-content($fa-var-globe);
+}
+.main_icons.exit::before, .main_icons.logout::before {
+  content: fa-content($fa-var-sign-out-alt);
+}
+.main_icons.switch::before {
+  content: fa-content($fa-var-retweet);
+}
+.main_icons.replied::before, .main_icons.send::before {
+  content: fa-content($fa-var-envelope-open-text);
+}
+.main_icons.im_on::before {
+  content: fa-content($fa-var-envelope);
+}
+.main_icons.im_off::before {
+  content: fa-content($fa-var-envelope);
+}
+.main_icons.split_desel::before {
+  content: fa-content($fa-var-arrow-circle-left);
+}
+/* 4th Row */
+.main_icons.split_sel::before {
+  content: fa-content($fa-var-arrow-circle-right);
+}
+.main_icons.mail::before {
+  content: fa-content($fa-var-envelope);
+}
+.main_icons.warning_mute::before {
+  content: fa-content($fa-var-comment-slash);
+}
+.main_icons.alerts::before, .main_icons.warn_button::before,
+.main_icons.warning_moderate::before {
+  content: fa-content($fa-var-exclamation-triangle);
+}
+.main_icons.mail_new::before {
+  content: fa-content($fa-var-envelope);
+}
+.main_icons.drafts::before,
+.main_icons.reply_button::before,
+.main_icons.reply_all_button::before {
+  content: fa-content($fa-var-file-signature);
+}
+.main_icons.warning_watch::before {
+  content: fa-content($fa-var-exclamation-circle);
+}
+.main_icons.calendar_export::before {
+  content: fa-content($fa-var-calendar-plus);
+}
+.main_icons.calendar::before {
+  content: fa-content($fa-var-calendar);
+}
+.main_icons.calendar_modify::before {
+  content: fa-content($fa-var-pen);
+}
+/* 5th Row */
+.main_icons.plus::before {
+  content: fa-content($fa-var-plus-circle);
+}
+.main_icons.warning::before, .main_icons.moderate::before {
+  content: fa-content($fa-var-traffic-light);
+}
+.main_icons.themes::before {
+  content: fa-content($fa-var-brush);
+}
+.main_icons.support::before {
+  content: fa-content($fa-var-headset);
+}
+.main_icons.liked_users::before, .main_icons.liked_messages::before, .main_icons.like::before {
+  content: fa-content($fa-var-heart);
+}
+.main_icons.unlike::before {
+  content: fa-content($fa-var-heart-broken);
+}
+.main_icons.current_theme::before {
+  content: fa-content($fa-var-pallet);
+}
+.main_icons.stats::before {
+  content: fa-content($fa-var-chart-bar);
+}
+.main_icons.right_arrow::before {
+  content: fa-content($fa-var-caret-right);
+}
+.main_icons.left_arrow::before {
+  content: fa-content($fa-var-caret-left);
+}
+/* 6th Row */
+.main_icons.smiley::before {
+  content: fa-content($fa-var-grin);
+}
+.main_icons.server::before {
+  content: fa-content($fa-var-server);
+}
+.main_icons.ban::before, .main_icons.ignore::before {
+  content: fa-content($fa-var-ban);
+}
+
+.main_icons.boards::before {
+  content: fa-content($fa-var-folder);
+}
+.main_icons.regcenter::before {
+  content: fa-content($fa-var-plus-circle);
+}
+.main_icons.posts::before {
+  content: fa-content($fa-var-file);
+}
+.main_icons.sort_down::before {
+  content: fa-content($fa-var-sort-amount-down-alt);
+}
+.main_icons.change_menu2::before, .main_icons.sent::before {
+  content: fa-content($fa-var-arrow-right);
+}
+.main_icons.post_moderation_moderate::before {
+  content: fa-content($fa-var-exclamation-triangle);
+}
+.main_icons.sort_up::before {
+  content: fa-content($fa-var-sort-amount-up-alt);
+}
+/* 7th Row */
+.main_icons.post_moderation_deny::before {
+  content: fa-content($fa-var-lock);
+}
+.main_icons.post_moderation_attach::before {
+  content: fa-content($fa-var-paperclip);
+}
+.main_icons.post_moderation_allow::before {
+  content: fa-content($fa-var-unlock-alt);
+}
+.main_icons.personal_message::before {
+  content: fa-content($fa-var-envelope);
+}
+.main_icons.permissions::before, .main_icons.signup::before {
+  content: fa-content($fa-var-key);
+}
+.main_icons.paid::before {
+  content: fa-content($fa-var-money-bill-wave);
+}
+.main_icons.packages::before {
+  content: fa-content($fa-var-box);
+}
+.main_icons.filter::before {
+  content: fa-content($fa-var-filter);
+}
+.main_icons.change_menu::before {
+  content: fa-content($fa-var-arrow-left);
+}
+.main_icons.package_ops::before {
+  content: fa-content($fa-var-cogs);
+}
+/* 8th Row */
+.main_icons.reports::before {
+  content: fa-content($fa-var-copy);
+}
+.main_icons.news::before {
+  content: fa-content($fa-var-newspaper);
+}
+.main_icons.delete::before, .main_icons.hide_popup::before, .main_icons.prune::before, .main_icons.remove_button::before {
+  content: fa-content($fa-var-times);
+}
+.main_icons.modifications::before {
+  content: fa-content($fa-var-puzzle-piece);
+}
+.main_icons.maintain::before, .main_icons.admin::before {
+  content: fa-content($fa-var-tools);
+}
+.main_icons.administration::before, .main_icons.home::before {
+  content: fa-content($fa-var-home);
+}
+.main_icons.frenemy::before {
+  content: fa-content($fa-var-user-slash);
+}
+.main_icons.attachment::before {
+  content: fa-content($fa-var-paperclip);
+}
+.main_icons.lock::before, .main_icons.security::before {
+  content: fa-content($fa-var-lock);
+}
+.main_icons.error::before, .main_icons.disable::before {
+  content: fa-content($fa-var-exclamation-circle);
+}
+/* 9th Row */
+.main_icons.languages::before {
+  content: fa-content($fa-var-language);
+}
+.main_icons.members_request::before {
+  content: fa-content($fa-var-user-plus);
+}
+.main_icons.members_delete::before {
+  content: fa-content($fa-var-user-minus);
+}
+.main_icons.members::before {
+  content: fa-content($fa-var-users);
+}
+.main_icons.members_watched::before {
+  content: fa-content($fa-var-user-tag);
+}
+.main_icons.sticky::before {
+  content: fa-content($fa-var-thumbtack);
+}
+.main_icons.corefeatures::before, .main_icons.settings::before, .main_icons.manrules::before, .main_icons.manlabels::before {
+  content: fa-content($fa-var-cogs);
+}
+.main_icons.calendar::before {
+  content: fa-content($fa-var-calendar-alt);
+}
+.main_icons.logs::before {
+  content: fa-content($fa-var-list-alt);
+}
+.main_icons.valid::before {
+  content: fa-content($fa-var-check);
+}
+/* 10th Row */
+.main_icons.approve::before, .main_icons.enable::before,
+.main_icons.approve_button::before,
+.main_icons.read_button::before {
+  content: fa-content($fa-var-check);
+}
+.main_icons.close::before {
+  content: fa-content($fa-var-ban);
+}
+.main_icons.details::before {
+  content: fa-content($fa-var-file-alt);
+}
+.main_icons.merge::before {
+  content: fa-content($fa-var-link);
+}
+.main_icons.folder::before {
+  content: fa-content($fa-var-folder);
+}
+.main_icons.restore_button::before {
+  content: fa-content($fa-var-sync-alt);
+}
+.main_icons.split_button::before {
+  content: fa-content($fa-var-unlink);
+}
+.main_icons.unapprove_button::before,
+.main_icons.unread_button::before {
+  content: fa-content($fa-var-times);
+}
+.main_icons.quote::before, .main_icons.quote_selected::before {
+  content: fa-content($fa-var-quote-right);
+}
+.main_icons.notify_button::before {
+  content: fa-content($fa-var-bell);
+}

@@ -6,9 +6,6 @@
   z-index: 1;
   min-width: $dropdown-min-width;
 
-  ul, ol {
-    @include listless;
-  }
   li > a, .unread_notify {
     display: flex;
     padding: 6px 9px;
@@ -16,6 +13,11 @@
     &:hover {
       background: $primary-color;
       color: #fff;
+    }
+  }
+  li > a {
+    .main_icons {
+      @extend .fa-fw;
     }
   }
   &::before {
@@ -62,16 +64,30 @@
   @include organized-content;
   @include listless;
 
-  > li {
+  li {
     position: relative;
+  }
 
+  > li {
     > a {
       @include button-skeleton;
     }
 
-    > ul {
+    ul {
       @extend .dropdown;
       padding: $dropdown-list-padding;
+
+      ul {
+        left: 100%;
+        top: 0;
+
+        &::before {
+          left: -18px;
+          top: 6px;
+          border-color: transparent;
+          border-right-color: $block-bg;
+        }
+      }
     }
   }
 }
@@ -89,6 +105,10 @@
   &::before {
     right: 8px;
     left: unset;
+  }
+
+  ol {
+    @include listless;
   }
 }
 
@@ -118,6 +138,7 @@
 
   &_image {
     margin-right: $space-between-elements;
+    position: relative;
 
     .avatar {
       width: 40px;
@@ -125,9 +146,25 @@
       border-radius: $avatar-border-radius;
       vertical-align: middle;
     }
+    .alert_icon {
+      @include amt-skeleton(18px);
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      margin: 0;
+      background: $primary-color;
+      color: #fff;
+    }
   }
   &.alert_read {
     opacity: 0.4;
+  }
+
+  &:hover {
+    .alert_icon {
+      background: #fff;
+      color: $primary-color;
+    }
   }
 }
 

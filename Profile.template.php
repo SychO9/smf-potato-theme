@@ -72,7 +72,10 @@ function template_profile_popup()
 		$item_url = (isset($item['url']) ? $item['url'] : (isset($area['url']) ? $area['url'] : $menu_context['base_url'] . ';area=' . $item['area'])) . $menu_context['extra_parameters'];
 		echo '
 				<li>
-					', $area['icon'], '<a href="', $item_url, '">', !empty($item['title']) ? $item['title'] : $area['label'], '</a>
+					<a href="', $item_url, '">
+						', $area['icon'], '
+						', !empty($item['title']) ? $item['title'] : $area['label'], '
+					</a>
 				</li>';
 	}
 

@@ -11,6 +11,7 @@
  */
 .fa,
 .fas,
+.main_icons,
 .far,
 .fal,
 .fad,
@@ -21,6 +22,16 @@
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
+  line-height: 1;
+}
+
+.main_icons {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
   line-height: 1;
 }
 
@@ -78,7 +89,7 @@
   font-size: 10em;
 }
 
-.fa-fw {
+.fa-fw, .dropdown li > a .main_icons, .top_menu li > a .main_icons, .dropmenu > li ul li > a .main_icons {
   text-align: center;
   width: 1.25em;
 }
@@ -88,7 +99,6 @@
   margin-left: 2.5em;
   padding-left: 0;
 }
-
 .fa-ul > li {
   position: relative;
 }
@@ -117,14 +127,15 @@
 
 .fa.fa-pull-left,
 .fas.fa-pull-left,
+.fa-pull-left.main_icons,
 .far.fa-pull-left,
 .fal.fa-pull-left,
 .fab.fa-pull-left {
   margin-right: 0.3em;
 }
-
 .fa.fa-pull-right,
 .fas.fa-pull-right,
+.fa-pull-right.main_icons,
 .far.fa-pull-right,
 .fal.fa-pull-right,
 .fab.fa-pull-right {
@@ -6042,7 +6053,8 @@ readers do not read off random characters that represent icons */
   src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
-.fas {
+.fas,
+.main_icons {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
@@ -6079,6 +6091,430 @@ readers do not read off random characters that represent icons */
 .far {
   font-family: "Font Awesome 5 Free";
   font-weight: 400;
+}
+
+/* Overrides the default icons */
+.main_icons {
+  margin-inline-end: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Top row */
+.main_icons.help::before {
+  content: "";
+}
+
+.main_icons.search::before, .main_icons.engines::before {
+  content: "";
+}
+
+.main_icons.quick_edit_button::before, .main_icons.modify_button::before {
+  content: "";
+}
+
+.main_icons.check::before {
+  content: "";
+}
+
+.main_icons.invalid::before {
+  content: "";
+}
+
+.main_icons.gender_2::before {
+  content: "";
+}
+
+.main_icons.select_above::before {
+  content: "";
+}
+
+.main_icons.select_here::before {
+  content: "";
+}
+
+.main_icons.select_below::before {
+  content: "";
+}
+
+.main_icons.watch::before {
+  content: "";
+}
+
+/* 2nd row */
+.main_icons.move::before, .main_icons.next_page::before {
+  content: "";
+}
+
+.main_icons.general::before, .main_icons.boards::before, .main_icons.topics_views::before {
+  content: "";
+}
+
+.main_icons.gender_1::before {
+  content: "";
+}
+
+.main_icons.features::before {
+  content: "";
+}
+
+.main_icons.posters::before {
+  content: "";
+}
+
+.main_icons.replies::before, .main_icons.topics_replies::before {
+  content: "";
+}
+
+.main_icons.history::before, .main_icons.time_online::before, .main_icons.scheduled::before {
+  content: "";
+}
+
+.main_icons.views::before {
+  content: "";
+}
+
+.main_icons.last_post::before {
+  content: "";
+}
+
+.main_icons.starters::before, .main_icons.people::before, .main_icons.membergroups::before, .main_icons.mlist::before {
+  content: "";
+}
+
+/* 3rd Street Saints */
+.main_icons.poll::before {
+  content: "";
+}
+
+.main_icons.previous_page::before {
+  content: "";
+}
+
+.main_icons.inbox::before {
+  content: "";
+}
+
+.main_icons.www::before {
+  content: "";
+}
+
+.main_icons.exit::before, .main_icons.logout::before {
+  content: "";
+}
+
+.main_icons.switch::before {
+  content: "";
+}
+
+.main_icons.replied::before, .main_icons.send::before {
+  content: "";
+}
+
+.main_icons.im_on::before {
+  content: "";
+}
+
+.main_icons.im_off::before {
+  content: "";
+}
+
+.main_icons.split_desel::before {
+  content: "";
+}
+
+/* 4th Row */
+.main_icons.split_sel::before {
+  content: "";
+}
+
+.main_icons.mail::before {
+  content: "";
+}
+
+.main_icons.warning_mute::before {
+  content: "";
+}
+
+.main_icons.alerts::before, .main_icons.warn_button::before,
+.main_icons.warning_moderate::before {
+  content: "";
+}
+
+.main_icons.mail_new::before {
+  content: "";
+}
+
+.main_icons.drafts::before,
+.main_icons.reply_button::before,
+.main_icons.reply_all_button::before {
+  content: "";
+}
+
+.main_icons.warning_watch::before {
+  content: "";
+}
+
+.main_icons.calendar_export::before {
+  content: "";
+}
+
+.main_icons.calendar::before {
+  content: "";
+}
+
+.main_icons.calendar_modify::before {
+  content: "";
+}
+
+/* 5th Row */
+.main_icons.plus::before {
+  content: "";
+}
+
+.main_icons.warning::before, .main_icons.moderate::before {
+  content: "";
+}
+
+.main_icons.themes::before {
+  content: "";
+}
+
+.main_icons.support::before {
+  content: "";
+}
+
+.main_icons.liked_users::before, .main_icons.liked_messages::before, .main_icons.like::before {
+  content: "";
+}
+
+.main_icons.unlike::before {
+  content: "";
+}
+
+.main_icons.current_theme::before {
+  content: "";
+}
+
+.main_icons.stats::before {
+  content: "";
+}
+
+.main_icons.right_arrow::before {
+  content: "";
+}
+
+.main_icons.left_arrow::before {
+  content: "";
+}
+
+/* 6th Row */
+.main_icons.smiley::before {
+  content: "";
+}
+
+.main_icons.server::before {
+  content: "";
+}
+
+.main_icons.ban::before, .main_icons.ignore::before {
+  content: "";
+}
+
+.main_icons.boards::before {
+  content: "";
+}
+
+.main_icons.regcenter::before {
+  content: "";
+}
+
+.main_icons.posts::before {
+  content: "";
+}
+
+.main_icons.sort_down::before {
+  content: "";
+}
+
+.main_icons.change_menu2::before, .main_icons.sent::before {
+  content: "";
+}
+
+.main_icons.post_moderation_moderate::before {
+  content: "";
+}
+
+.main_icons.sort_up::before {
+  content: "";
+}
+
+/* 7th Row */
+.main_icons.post_moderation_deny::before {
+  content: "";
+}
+
+.main_icons.post_moderation_attach::before {
+  content: "";
+}
+
+.main_icons.post_moderation_allow::before {
+  content: "";
+}
+
+.main_icons.personal_message::before {
+  content: "";
+}
+
+.main_icons.permissions::before, .main_icons.signup::before {
+  content: "";
+}
+
+.main_icons.paid::before {
+  content: "";
+}
+
+.main_icons.packages::before {
+  content: "";
+}
+
+.main_icons.filter::before {
+  content: "";
+}
+
+.main_icons.change_menu::before {
+  content: "";
+}
+
+.main_icons.package_ops::before {
+  content: "";
+}
+
+/* 8th Row */
+.main_icons.reports::before {
+  content: "";
+}
+
+.main_icons.news::before {
+  content: "";
+}
+
+.main_icons.delete::before, .main_icons.hide_popup::before, .main_icons.prune::before, .main_icons.remove_button::before {
+  content: "";
+}
+
+.main_icons.modifications::before {
+  content: "";
+}
+
+.main_icons.maintain::before, .main_icons.admin::before {
+  content: "";
+}
+
+.main_icons.administration::before, .main_icons.home::before {
+  content: "";
+}
+
+.main_icons.frenemy::before {
+  content: "";
+}
+
+.main_icons.attachment::before {
+  content: "";
+}
+
+.main_icons.lock::before, .main_icons.security::before {
+  content: "";
+}
+
+.main_icons.error::before, .main_icons.disable::before {
+  content: "";
+}
+
+/* 9th Row */
+.main_icons.languages::before {
+  content: "";
+}
+
+.main_icons.members_request::before {
+  content: "";
+}
+
+.main_icons.members_delete::before {
+  content: "";
+}
+
+.main_icons.members::before {
+  content: "";
+}
+
+.main_icons.members_watched::before {
+  content: "";
+}
+
+.main_icons.sticky::before {
+  content: "";
+}
+
+.main_icons.corefeatures::before, .main_icons.settings::before, .main_icons.manrules::before, .main_icons.manlabels::before {
+  content: "";
+}
+
+.main_icons.calendar::before {
+  content: "";
+}
+
+.main_icons.logs::before {
+  content: "";
+}
+
+.main_icons.valid::before {
+  content: "";
+}
+
+/* 10th Row */
+.main_icons.approve::before, .main_icons.enable::before,
+.main_icons.approve_button::before,
+.main_icons.read_button::before {
+  content: "";
+}
+
+.main_icons.close::before {
+  content: "";
+}
+
+.main_icons.details::before {
+  content: "";
+}
+
+.main_icons.merge::before {
+  content: "";
+}
+
+.main_icons.folder::before {
+  content: "";
+}
+
+.main_icons.restore_button::before {
+  content: "";
+}
+
+.main_icons.split_button::before {
+  content: "";
+}
+
+.main_icons.unapprove_button::before,
+.main_icons.unread_button::before {
+  content: "";
+}
+
+.main_icons.quote::before, .main_icons.quote_selected::before {
+  content: "";
+}
+
+.main_icons.notify_button::before {
+  content: "";
 }
 
 .cat_bar {
@@ -6321,7 +6757,7 @@ a:hover {
   padding-inline-end: 0;
 }
 
-.dropdown, .top_menu, .dropmenu > li > ul {
+.dropdown, .top_menu, .dropmenu > li ul {
   border-radius: 4px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
   list-style: none;
@@ -6332,20 +6768,15 @@ a:hover {
   z-index: 1;
   min-width: 15rem;
 }
-.dropdown ul, .top_menu ul, .dropmenu > li > ul ul, .dropdown ol, .top_menu ol, .dropmenu > li > ul ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.dropdown li > a, .top_menu li > a, .dropmenu > li > ul li > a, .dropdown .unread_notify, .top_menu .unread_notify, .dropmenu > li > ul .unread_notify {
+.dropdown li > a, .top_menu li > a, .dropmenu > li ul li > a, .dropdown .unread_notify, .top_menu .unread_notify, .dropmenu > li ul .unread_notify {
   display: flex;
   padding: 6px 9px;
 }
-.dropdown li > a:hover, .top_menu li > a:hover, .dropmenu > li > ul li > a:hover, .dropdown .unread_notify:hover, .top_menu .unread_notify:hover, .dropmenu > li > ul .unread_notify:hover {
+.dropdown li > a:hover, .top_menu li > a:hover, .dropmenu > li ul li > a:hover, .dropdown .unread_notify:hover, .top_menu .unread_notify:hover, .dropmenu > li ul .unread_notify:hover {
   background: #b83b5e;
   color: #fff;
 }
-.dropdown::before, .top_menu::before, .dropmenu > li > ul::before {
+.dropdown::before, .top_menu::before, .dropmenu > li ul::before {
   content: "";
   position: absolute;
   top: -17px;
@@ -6356,15 +6787,15 @@ a:hover {
   border-top-color: transparent;
   z-index: -1;
 }
-.dropdown .loading, .top_menu .loading, .dropmenu > li > ul .loading {
+.dropdown .loading, .top_menu .loading, .dropmenu > li ul .loading {
   padding: 10px 12px;
 }
-.dropdown a, .top_menu a, .dropmenu > li > ul a {
+.dropdown a, .top_menu a, .dropmenu > li ul a {
   color: #1f1f1f;
   text-decoration: none;
   cursor: pointer;
 }
-.dropdown a:hover, .top_menu a:hover, .dropmenu > li > ul a:hover {
+.dropdown a:hover, .top_menu a:hover, .dropmenu > li ul a:hover {
   color: black;
 }
 
@@ -6394,7 +6825,7 @@ a:hover {
   padding: 0;
   margin: 0;
 }
-.dropmenu > li {
+.dropmenu li {
   position: relative;
 }
 .dropmenu > li > a {
@@ -6408,8 +6839,18 @@ a:hover {
   display: inline-flex;
   align-items: center;
 }
-.dropmenu > li > ul {
+.dropmenu > li ul {
   padding: 6px 0;
+}
+.dropmenu > li ul ul {
+  left: 100%;
+  top: 0;
+}
+.dropmenu > li ul ul::before {
+  left: -18px;
+  top: 6px;
+  border-color: transparent;
+  border-right-color: #fffce6;
 }
 
 .top_menu {
@@ -6423,6 +6864,11 @@ a:hover {
 .top_menu::before {
   right: 8px;
   left: unset;
+}
+.top_menu ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .profile_user_info {
@@ -6447,6 +6893,7 @@ a:hover {
 }
 .unread_notify_image {
   margin-right: 6px;
+  position: relative;
 }
 .unread_notify_image .avatar {
   width: 40px;
@@ -6454,8 +6901,27 @@ a:hover {
   border-radius: 100%;
   vertical-align: middle;
 }
+.unread_notify_image .alert_icon {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 11px;
+  border-radius: 100%;
+  display: inline-block;
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  margin: 0;
+  background: #b83b5e;
+  color: #fff;
+}
 .unread_notify.alert_read {
   opacity: 0.4;
+}
+.unread_notify:hover .alert_icon {
+  background: #fff;
+  color: #b83b5e;
 }
 
 .popup_heading {
