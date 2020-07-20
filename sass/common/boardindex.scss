@@ -69,20 +69,35 @@
     margin: 0;
   }
 
-  .board_icon {
-    width: 6%;
-    text-align: center;
-    font-size: 26px;
-  }
-  .info {
-    width: 52%;
-  }
-  .board_stats {
-    width: 10%;
-    text-align: center;
-  }
-  .lastpost {
-    width: 32%;
+}
+.board_icon {
+  width: 6%;
+  text-align: center;
+  font-size: 26px;
+}
+.board_stats {
+  width: 10%;
+  text-align: center;
+}
+.info {
+  width: 52%;
+}
+.lastpost {
+  width: 32%;
+}
+.topic {
+  &-item, &-header {
+    @include organized-content;
+
+    .sort {
+      &_down, &_up {
+        margin: 0 0 0 4px;
+      }
+    }
+    input[type="checkbox"] {
+      line-height: normal;
+      height: auto;
+    }
   }
 }
 
@@ -97,10 +112,51 @@
 }
 
 .forum-stats {
-  @include organized-content;
+  &-container {
+    @include organized-content;
 
-  > div {
-    @include horizontal-spacing;
-    flex-grow: 1;
+    > div {
+      @include horizontal-spacing;
+      flex-grow: 1;
+    }
   }
+}
+
+.recent-post {
+  @include organized-content;
+  padding: $block-padding;
+  border-bottom: 1px solid darken(grayscale($block-bg), 10);
+
+  &:hover {
+    background: darken(grayscale($block-bg), 1);
+  }
+
+  &s-container {
+    @include block-skeleton;
+    background: $block-bg;
+  }
+  &-poster-avatar {
+    margin-inline-end: 6px;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: $avatar-border-radius;
+    }
+  }
+  &-details {
+    @include organized-content;
+    font-size: $font-size - 1;
+
+    .icon {
+      margin-inline-end: 0;
+    }
+    > * {
+      @include horizontal-spacing(3px);
+    }
+  }
+}
+
+.new_posts {
+  @include tag;
 }

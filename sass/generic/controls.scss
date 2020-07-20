@@ -18,6 +18,16 @@
 
   &:hover {
     background: darken($contrast-bg, 5);
+    color: darken($contrast-fg, 5);
+  }
+  &.active {
+    background: $primary-color;
+    color: #fff;
+
+    &:hover {
+      background: darken($primary-color, 5);
+      color: darken(#fff, 5);
+    }
   }
   &--composite {
     border-radius: $border-radius 0 0 $border-radius;

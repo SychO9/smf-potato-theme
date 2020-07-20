@@ -1,0 +1,350 @@
+.floatright {
+	float: right;
+}
+.floatleft {
+	float: left;
+}
+.floatnone {
+	float: none;
+}
+.clear {
+	clear: both;
+}
+.centertext, .centercol {
+	margin: 0 auto;
+	text-align: center;
+}
+.righttext {
+	margin-left: auto;
+	margin-right: 0;
+	text-align: right;
+}
+.lefttext {
+	margin-left: 0;
+	margin-right: auto;
+	text-align: left;
+}
+
+/* AJAX notification bar
+------------------------------------------------------- */
+#ajax_in_progress {
+	background: #fff;
+	border-bottom: 4px solid #f96f00;
+	color: #f96f00;
+	text-align: center;
+	font-size: 1.6em;
+	padding: 8px;
+	width: 100%;
+	line-height: 25px;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#ajax_in_progress a {
+	color: orange;
+	text-decoration: underline;
+	font-size: 0.9em;
+	float: right;
+	margin-right: 20px;
+}
+
+/* Styles used by the auto suggest control.
+------------------------------------------------------- */
+.auto_suggest_div {
+	position: absolute;
+	visibility: hidden;
+	border-radius: 3px;
+	outline: none !important;
+	border: 1px solid #bbb;
+	z-index: 100;
+}
+.auto_suggest_item {
+	background: #ddd;
+	padding: 1px 4px;
+}
+.auto_suggest_item_hover {
+	background: #888;
+	cursor: pointer;
+	color: #eee;
+	padding: 1px 4px;
+}
+
+/* Styles for stats bars and progress bars.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.generic_bar, .progress_bar {
+	border: 1px solid #cecaca;
+	background: #fff;
+	min-height: 16px;
+	line-height: 1.4em;
+	border-radius: 2px;
+	position: relative;
+	overflow: hidden;
+	color: rgba(0, 0, 0, 0.6);
+}
+.generic_bar span, .progress_bar span {
+	position: relative;
+	z-index: 2;
+	text-shadow: 1px 1px rgba(255, 255, 255, .4);
+	display: inline-block;
+	padding: 0 5px;
+}
+.generic_bar .bar, .progress_bar .bar {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background: orange;
+	transition: width .3s;
+	border-radius: 1px;
+	box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.1) inset,
+	4px 4px 8px rgba(255,255,255,0.3) inset;
+	display: block;
+}
+.generic_bar.vertical {
+	width: 15px;
+}
+.generic_bar.vertical .bar {
+	right: 0;
+	top: auto;
+	box-shadow: 4px -4px 4px rgba(0, 0, 0, 0.1) inset,
+	4px 4px 4px rgba(255,255,255,0.3) inset;
+}
+
+.progress_bar {
+	border-radius: 4px;
+	text-align: center;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.8);
+}
+.progress_bar .bar {
+	box-shadow: -1px 1px 0 rgba(255, 255, 255, 0.25) inset,
+	1px -1px 0 rgba(0,0,0,0.1) inset;
+	background-color: #75da41;
+	background-size: 30px 30px;
+	background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+}
+.progress_yellow .bar {
+	background-color: #f6c51c;
+}
+
+.progress_green .bar {
+	background-color: #75da41;
+}
+
+.progress_red .bar {
+	background-color: #f45d4c;
+}
+
+.progress_blue .bar {
+	background-color: #34c2e3;
+}
+
+/* Warning level bar */
+.warning_level {
+	text-align: center;
+	font-weight: bold;
+	max-width: 250px;
+}
+.warning_level.none .bar {
+	background-color: #75da41;
+}
+.warning_level.watched .bar {
+	background-color: #ffd800;
+}
+.warning_level.moderated .bar {
+	background-color: orange;
+}
+.warning_level.muted .bar {
+	background-color: #f45d4c;
+}
+
+/* Styles for the tooltips
+------------------------------------------------------- */
+.tooltip {
+	position: absolute;
+	z-index: 999;
+	left: -9999px;
+	word-wrap: break-word; /* IE fallback */
+	overflow-wrap: break-word;
+	max-width: 350px;
+	padding: 6px 9px;
+	color: #333;
+	background: #fff;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.05) inset;
+}
+
+/* To break or not to break that is the question indeed */
+.word_break {
+	word-break: break-all;
+}
+
+
+/* Make the reCAPTCHA dialog centered to match the positioning of the built-in verification */
+.g-recaptcha {
+	display: inline-block;
+}
+
+/* If its collapsed you know what to do */
+.collapsed {
+	opacity: 0.5;
+	transition: 1s;
+}
+.collapsed:hover {
+	opacity: 1;
+}
+
+/* Lets not allow our textarea in news section overflow too much to left */
+tr[id^='list_news_lists_'] textarea {
+	width: 100%;
+	resize: vertical;
+	min-height: 100px;
+}
+
+/* Responsive Youtube embed */
+.videocontainer {
+	max-width: 560px;
+}
+.videocontainer div {
+	position: relative;
+	padding-bottom: 56.25%;
+}
+.videocontainer iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.backtrace:not(:last-child) {
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 0.5em;
+}
+
+/* Mentions */
+.atwho-view {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	margin-top: 18px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	min-width: 120px;
+	z-index: 11110 !important;
+}
+.atwho-view .cur {
+	background: #3366ff;
+	color: #fff;
+}
+.atwho-view .cur small {
+	color: #fff;
+}
+.atwho-view strong {
+	color: #3366ff;
+}
+.atwho-view .cur strong {
+	color: #fff;
+	font-weight: bold;
+}
+.atwho-view ul {
+	list-style: none;
+	padding: 0;
+	margin: auto;
+}
+.atwho-view ul li {
+	display: block;
+	padding: 5px 10px;
+	border-bottom: 1px solid #ddd;
+	cursor: pointer;
+}
+.atwho-view small {
+	font-size: smaller;
+	color: #777;
+	font-weight: normal;
+}
+
+/* On/Off Icons (User) */
+.on, .off {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 1px solid transparent;
+	vertical-align: middle;
+}
+.on {
+	background: #89e75a;
+	border-color: #74d246;
+}
+.off {
+	background: #a7a2a2;
+	border-color: #969292;
+}
+#userstatus .smalltext {
+	margin: 0 0 0 5px !important;
+}
+
+/* Some colors for generic usage */
+/* Sometimes there will be an error when you post */
+/* Messages that somehow need to attract the attention. */
+.red, .meaction,
+.error, .alert, .warn_mute {
+	color: red;
+}
+.blue {
+	color: blue;
+}
+.green {
+	color: green;
+}
+
+/* Adding some classes for generic usage and JS rules */
+.hidden {
+	display: none;
+}
+.inline_block {
+	display: inline-block;
+}
+.block {
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+/* Alternating colors */
+.stripes:nth-of-type(even) {
+	background-color: #f2f2f2;
+}
+.stripes:nth-of-type(odd) {
+	background-color: #f0f4f7;
+}
+.alternative {
+	background-color: #f2f2f2;
+}
+.alternative2 {
+	background-color: #e8edf0;
+}
+
+/**/
+
+#attachment_upload {
+	min-height: 50px;
+}
+#drop_zone_ui {
+	display: none;
+}
+#total_progress {
+	width: 50%;
+	display: none;
+}
+#max_files_progress, #max_files_progress_text {
+	display: none;
+}

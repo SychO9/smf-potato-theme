@@ -5,6 +5,20 @@
 
     .#{$name}bg {
       margin: 0;
+
+      .toggle {
+        &_down, &_up {
+          @extend %fa-icon;
+          @extend .fas;
+        }
+
+        &_down::before {
+          content: fa-content($fa-var-chevron-down);
+        }
+        &_up::before {
+          content: fa-content($fa-var-chevron-up);
+        }
+      }
     }
 
     &:first-child {
@@ -15,22 +29,28 @@
 
 @include title-block('cat');
 @include title-block('title');
+@include title-block('sub');
 
 .infobox {
   @include block-skeleton;
   display: flex;
 
   .infobox-icon {
+    display: flex;
     width: 3.5rem;
     font-size: 18px;
-    padding: 1.4rem 0 0;
-    text-align: center;
+    justify-content: center;
     border-radius: $border-radius 0 0 $border-radius;
     background: rgba(0, 0, 0, 0.12);
+
+    .icon {
+      margin: 0;
+    }
   }
   .infobox-content {
     padding: $block-padding;
     flex-grow: 1;
+    width: calc(100% - 3.5rem);
   }
   .infobox-title {
     margin-bottom: 4px;
@@ -45,11 +65,55 @@
     background: $neutral-bg;
     color: $neutral-color;
   }
+  &--statistic {
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+
+    .infobox-icon {
+      height: 3.5rem;
+      border-radius: 100%;
+    }
+    &:hover {
+      .infobox-icon {
+        background: $primary-color;
+        color: #fff;
+      }
+    }
+  }
 }
 
-.roundframe {
+@mixin noticebox($bg-color, $fg-color, $icon) {
   @include block-skeleton;
-  background: darken(grayscale($block-bg), 0);
+  padding: $block-padding;
+  background: $notice-bg;
+  color: $notice-color;
+
+  &::before {
+    @extend %fa-icon;
+    @extend .fas;
+    content: fa-content($icon);
+    margin-inline-end: 8px;
+    font-size: 18px;
+    vertical-align: middle;
+  }
+}
+
+.noticebox {
+  @include noticebox($notice-bg, $notice-color, $fa-var-exclamation-circle);
+}
+
+.successbox {
+  @include noticebox($success-bg, $success-color, $fa-var-check);
+}
+
+.errorbox {
+  @include noticebox($error-bg, $error-color, $fa-var-times);
+}
+
+.windowbg, .roundframe, .information {
+  @include block-skeleton;
+  background: $block-bg;
   color: $block-color;
   padding: $block-padding;
 }

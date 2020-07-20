@@ -255,7 +255,7 @@ function template_main()
 				', $context['page_index'], '
 			</div>
 			', $context['menu_separator'], '
-			', template_button_strip($context['normal_buttons'], 'right'), '
+			', template_button_strip($context['normal_buttons'], 'right', array('merge' => true)), '
 		</div>';
 
 	// Mobile action - moderation buttons (top)
@@ -298,7 +298,7 @@ function template_main()
 				', $context['page_index'], '
 			</div>
 			', $context['menu_separator'], '
-			', template_button_strip($context['normal_buttons'], 'right'), '
+			', template_button_strip($context['normal_buttons'], 'right', array('merge' => true)), '
 		</div>';
 
 	// Show quickreply

@@ -51,7 +51,7 @@ function template_init()
 	$settings['require_theme_strings'] = false;
 
 	// Set the following variable to true if this theme wants to display the avatar of the user that posted the last and the first post on the message index and recent pages.
-	$settings['avatars_on_indexes'] = false;
+	$settings['avatars_on_indexes'] = true;
 
 	// Set the following variable to true if this theme wants to display the avatar of the user that posted the last post on the board index.
 	$settings['avatars_on_boardIndex'] = true;
@@ -408,7 +408,7 @@ function theme_linktree($force_show = false)
 
 	echo '
 				<div class="navigate_section">
-					<div class="page-actions">', function_exists('template_page_actions') ? template_page_actions() : $context['page_title'], '</div>
+					<div class="page-actions">', function_exists('template_page_actions') ? template_page_actions() : '', '</div>
 					<h2 class="page-title">', function_exists('template_page_title') ? template_page_title() : $context['page_title'], '</h2>';
 
 	// If linktree is empty, just return - also allow an override.
@@ -539,24 +539,25 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 	if (!is_array($strip_options))
 		$strip_options = array();
 
-	$button_strip = transform_buttonlist($button_strip);
+	$button_strip = transform_buttonlist($button_strip, $strip_options);
 
 	// Create the buttons...
 	$buttons = array();
 	foreach ($button_strip as $key => $value)
 	{
+		if (array_key_exists('show', $value) && empty($value['show']))
+			continue;
 
 		// As of 2.1, the 'test' for each button happens while the array is being generated. The extra 'test' check here is deprecated but kept for backward compatibility (update your mods, folks!)
 		if (!isset($value['test']) || !empty($context[$value['test']]))
 		{
-
 			if (!isset($value['id']))
 				$value['id'] = $key;
 
 			$button = '
 				<li>
 					<a class="button'.(!empty($value['sub_buttons']) ? ' button--composite' : '').' button_strip_' . $key . (!empty($value['active']) ? ' active' : '') . (isset($value['class']) ? ' ' . $value['class'] : '') . '" ' . (!empty($value['url']) ? 'href="' . $value['url'] . '"' : '') . ' ' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>
-						'.(!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '').'' . $txt[$value['text']] . '
+						'.(!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '').''.(!empty($txt[$value['text']]) ? $txt[$value['text']] : $value['text']).'
 					</a>';
 
 			if (!empty($value['sub_buttons']))
@@ -577,7 +578,7 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 
 					$button .= '
 						<li>
-							<a href="' . $element['url'] . '">
+							<a href="' . $element['url'] . '"'.(!empty($element['active']) ? ' class="active"' : '').'>
 								'.(!empty($element['icon']) ? icon($element['icon']) : '').'
 								<span class="item-label">
 									<strong>' . $txt[$element['text']] . '</strong>';

@@ -15,7 +15,10 @@
     display: flex;
     padding: 6px 9px;
 
-    &:hover {
+    &.active {
+      background: darken(grayscale($block-bg), 2);
+    }
+    &:hover, &.active:hover {
       background: $primary-color;
       color: #fff;
     }
@@ -40,6 +43,10 @@
   }
   .loading {
     padding: $block-padding;
+  }
+  .amt {
+    align-self: center;
+    margin-inline-start: auto;
   }
 
   @include link($fg-color);
@@ -124,9 +131,12 @@
 
 .top_menu {
   @extend .dropdown;
-  @extend .dropdown-right;
   display: none;
   width: $dropdown-min-width + 3rem;
+
+  .top-section &, .buttonlist.floatright & {
+    @extend .dropdown-right;
+  }
 
   &.visible {
     display: block;

@@ -7,8 +7,8 @@ $bg-color: #eeecda;
 $fg-color: #1f1f1f;
 
 /* Contrast Colors */
-$contrast-bg: #eaced6;
-$contrast-fg: #8d4a5d;
+$contrast-bg: darken(#fff, 20);
+$contrast-fg: $fg-color;
 
 /* Link Colors */
 $link-color: $primary-color;
@@ -44,6 +44,12 @@ $neutral-color: $block-color;
 
 $info-bg: #bbccec;
 $info-color: $fg-color;
+$notice-bg: #e3e07a;
+$notice-color: $fg-color;
+$success-bg: #8fe37a;
+$success-color: $fg-color;
+$error-bg: #e37a7a;
+$error-color: $fg-color;
 
 $amt-bg: $secondary-color;
 $amt-color: #fff;

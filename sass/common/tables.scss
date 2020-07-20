@@ -1,0 +1,32 @@
+table {
+  border-spacing: 0;
+  width: 100%;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+thead {
+  background: $primary-color;
+  color: #fff;
+
+  @include link(#fff);
+}
+
+tr {
+  &.windowbg {
+    box-shadow: none;
+
+    td {
+      border-bottom: 1px solid darken(grayscale($block-bg), 5);
+    }
+    &:last-child {
+      td {
+        border-bottom-width: 0;
+      }
+    }
+  }
+}
+
+td, th {
+  padding: 5px 8px;
+}

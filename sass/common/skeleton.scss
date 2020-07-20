@@ -2,6 +2,7 @@
 body, html {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 body {
@@ -39,11 +40,24 @@ body {
 }
 
 .page {
-  &-title, &-details p {
+  &-title {
     margin: 0;
   }
   &-actions {
     float: right;
+  }
+  &links {
+    @include organized-content;
+
+    > * {
+      @include horizontal-spacing;
+    }
+  }
+}
+
+#admin_content, #messageindex, #topic_container {
+  > * {
+    @include vertical-spacing;
   }
 }
 

@@ -308,7 +308,7 @@ function template_info_center()
 
 	// Here's where the "Info Center" starts...
 	echo '
-	<div class="roundframe info-center" id="info_center">
+	<div class="info-center" id="info_center">
 		<div id="upshrink_stats" class="upshrink-stats"', empty($options['collapse_header_ic']) ? '' : ' style="display: none;"', '>';
 
 	foreach ($context['info_center'] as $block)
@@ -365,52 +365,56 @@ function template_ic_block_recent()
 {
 	global $context, $scripturl, $settings, $txt;
 
+	if (empty($context['latest_posts']) || count($context['latest_posts']) <= 1)
+		return;
+
 	// This is the "Recent Posts" bar.
 	echo '
+		<div class="recent-posts">
 			<div class="sub_bar">
 				<h4 class="subbg">
-					<a href="', $scripturl, '?action=recent"><span class="xx"></span>', $txt['recent_posts'], '</a>
+					<a href="', $scripturl, '?action=recent">', icon('fas fa-comments'), ' ', $txt['recent_posts'], '</a>
 				</h4>
 			</div>
-			<div id="recent_posts_content">';
+			<div id="recent_posts_content" class="recent-posts-container">';
 
-	// Only show one post.
-	if ($settings['number_recent_posts'] == 1)
-	{
-		// latest_post has link, href, time, subject, short_subject (shortened with...), and topic. (its id.)
-		echo '
-				<p id="infocenter_onepost" class="inline">
-					<a href="', $scripturl, '?action=recent">', $txt['recent_view'], '</a> ', sprintf($txt['is_recent_updated'], '&quot;' . $context['latest_post']['link'] . '&quot;'), ' (', $context['latest_post']['time'], ')<br>
-				</p>';
-	}
 	// Show lots of posts.
-	elseif (!empty($context['latest_posts']))
+	if (!empty($context['latest_posts']))
 	{
-		echo '
-				<table id="ic_recentposts">
-					<tr class="windowbg">
-						<th class="recentpost">', $txt['message'], '</th>
-						<th class="recentposter">', $txt['author'], '</th>
-						<th class="recentboard">', $txt['board'], '</th>
-						<th class="recenttime">', $txt['date'], '</th>
-					</tr>';
+		loadMemberData(array_map(function($post) {
+			return $post['poster']['id'];
+		}, $context['latest_posts']));
 
 		/* Each post in latest_posts has:
 			board (with an id, name, and link.), topic (the topic's id.), poster (with id, name, and link.),
 			subject, short_subject (shortened with...), time, link, and href. */
 		foreach ($context['latest_posts'] as $post)
+		{
+			loadMemberContext($post['poster']['id']);
+
+			if (!empty($post['poster']['id']))
+				$avatar = $GLOBALS['memberContext'][$post['poster']['id']]['avatar'];
+			else
+				$avatar = array('image' => '<img class="avatar" src="'.$GLOBALS['modSettings']['avatar_url'] . '/default.png'.'" alt="avatar">');
+
 			echo '
-					<tr class="windowbg">
-						<td class="recentpost"><strong>', $post['link'], '</strong></td>
-						<td class="recentposter">', $post['poster']['link'], '</td>
-						<td class="recentboard">', $post['board']['link'], '</td>
-						<td class="recenttime">', $post['time'], '</td>
-					</tr>';
-		echo '
-				</table>';
+						<div class="recent-post">
+							<div class="recent-post-poster-avatar">', $avatar['image'], '</div>
+							<div class="recent-post-content">
+								<div class="recent-post-name">', $post['link'], '</div>
+								<div class="recent-post-details">
+									<div class="recent-post-poster">', icon('fas fa-user'), ' ', $post['poster']['link'], '</div>
+									<div class="recent-post-board">', icon('fas fa-folder'), ' ', $post['board']['link'], '</div>
+									<div class="recent-post-time">', icon('far fa-clock'), ' ', $post['time'], '</div>
+								</div>
+							</div>
+						</div>';
+		}
 	}
+
 	echo '
-			</div><!-- #recent_posts_content -->';
+			</div><!-- #recent_posts_content -->
+		</div>';
 }
 
 /**
@@ -422,50 +426,61 @@ function template_ic_block_calendar()
 
 	// Show information about events, birthdays, and holidays on the calendar.
 	echo '
+		<div class="boardindex-events">
 			<div class="sub_bar">
 				<h4 class="subbg">
 					<a href="', $scripturl, '?action=calendar' . '"><span class="main_icons calendar"></span> ', $context['calendar_only_today'] ? $txt['calendar_today'] : $txt['calendar_upcoming'], '</a>
 				</h4>
-			</div>';
+			</div>
+			<div class="windowbg">
+				<div class="infobox infobox--neutral infobox--statistic">
+					<div class="infobox-icon">', icon('fas fa-calendar'), '</div>
+					<div class="infobox-content">';
 
 	// Holidays like "Christmas", "Chanukah", and "We Love [Unknown] Day" :P
 	if (!empty($context['calendar_holidays']))
 		echo '
-			<p class="inline holiday">
-				<span>', $txt['calendar_prompt'], '</span> ', implode(', ', $context['calendar_holidays']), '
-			</p>';
+						<p class="inline holiday">
+							<span>', $txt['calendar_prompt'], '</span> ', implode(', ', $context['calendar_holidays']), '
+						</p>';
 
 	// People's birthdays. Like mine. And yours, I guess. Kidding.
 	if (!empty($context['calendar_birthdays']))
 	{
 		echo '
-			<p class="inline">
-				<span class="birthday">', $context['calendar_only_today'] ? $txt['birthdays'] : $txt['birthdays_upcoming'], '</span>';
+						<p class="inline">
+							<span class="birthday">', $context['calendar_only_today'] ? $txt['birthdays'] : $txt['birthdays_upcoming'], '</span>';
 
 		// Each member in calendar_birthdays has: id, name (person), age (if they have one set?), is_last. (last in list?), and is_today (birthday is today?)
 		foreach ($context['calendar_birthdays'] as $member)
 			echo '
-				<a href="', $scripturl, '?action=profile;u=', $member['id'], '">', $member['is_today'] ? '<strong class="fix_rtl_names">' : '', $member['name'], $member['is_today'] ? '</strong>' : '', isset($member['age']) ? ' (' . $member['age'] . ')' : '', '</a>', $member['is_last'] ? '' : ', ';
+							<a href="', $scripturl, '?action=profile;u=', $member['id'], '">', $member['is_today'] ? '<strong class="fix_rtl_names">' : '', $member['name'], $member['is_today'] ? '</strong>' : '', isset($member['age']) ? ' (' . $member['age'] . ')' : '', '</a>', $member['is_last'] ? '' : ', ';
 
 		echo '
-			</p>';
+						</p>';
 	}
 
 	// Events like community get-togethers.
 	if (!empty($context['calendar_events']))
 	{
 		echo '
-			<p class="inline">
-				<span class="event">', $context['calendar_only_today'] ? $txt['events'] : $txt['events_upcoming'], '</span> ';
+						<p class="inline">
+							<span class="event">', $context['calendar_only_today'] ? $txt['events'] : $txt['events_upcoming'], '</span> ';
 
 		// Each event in calendar_events should have:
 		//		title, href, is_last, can_edit (are they allowed?), modify_href, and is_today.
 		foreach ($context['calendar_events'] as $event)
 			echo '
-				', $event['can_edit'] ? '<a href="' . $event['modify_href'] . '" title="' . $txt['calendar_edit'] . '"><span class="main_icons calendar_modify"></span></a> ' : '', $event['href'] == '' ? '' : '<a href="' . $event['href'] . '">', $event['is_today'] ? '<strong>' . $event['title'] . '</strong>' : $event['title'], $event['href'] == '' ? '' : '</a>', $event['is_last'] ? '<br>' : ', ';
+							', $event['can_edit'] ? '<a href="' . $event['modify_href'] . '" title="' . $txt['calendar_edit'] . '"><span class="main_icons calendar_modify"></span></a> ' : '', $event['href'] == '' ? '' : '<a href="' . $event['href'] . '">', $event['is_today'] ? '<strong>' . $event['title'] . '</strong>' : $event['title'], $event['href'] == '' ? '' : '</a>', $event['is_last'] ? '<br>' : ', ';
 		echo '
-			</p>';
+						</p>';
 	}
+
+	echo '
+					</div>
+				</div>
+			</div>
+		</div>';
 }
 
 /**
@@ -505,21 +520,28 @@ function template_ic_block_stats()
 
 	// Show statistical style information...
 	echo '
-			<div class="forum-stats">';
+			<div class="forum-stats">
+				<div class="sub_bar">
+					<h4 class="subbg">
+						<a href="', $scripturl, '?action=stats" title="', $txt['more_stats'], '"><span class="main_icons stats"></span> ', $txt['forum_stats'], '</a>
+					</h4>
+				</div>
+				<div class="forum-stats-container windowbg">';
 
 	foreach ($stats as $stat)
 	{
 		echo '
-				<div class="infobox infobox--neutral">
-					<div class="infobox-icon">', icon($stat['icon']), '</div>
-					<div class="infobox-content">
-						<div class="infobox-title">', $stat['value'], '</div>
-						<div class="infobox-text">', $stat['label'], '</div>
-					</div>
-				</div>';
+					<div class="infobox infobox--neutral infobox--statistic">
+						<div class="infobox-icon">', icon($stat['icon']), '</div>
+						<div class="infobox-content">
+							<div class="infobox-title">', $stat['value'], '</div>
+							<div class="infobox-text">', $stat['label'], '</div>
+						</div>
+					</div>';
 	}
 
 	echo '
+				</div>
 			</div>';
 }
 
@@ -532,17 +554,19 @@ function template_ic_block_online()
 
 	echo '
 		<div class="users-online">
-			<div class="infobox infobox--neutral">
-				<div class="infobox-icon">', icon('fas fa-users'), '</div>
-				<div class="infobox-content">
-					<div class="infobox-title">
-						', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span> ', $txt['online_users'], '', $context['show_who'] ? '</a>' : '', '
-					</div>
-					<div class="infobox-text">';
-
-	// "Users online" - in order of activity.
-	echo '
-				', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'];
+			<div class="sub_bar">
+				<h4 class="subbg">
+					', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span> ', $txt['online_users'], '', $context['show_who'] ? '</a>' : '', '
+				</h4>
+			</div>
+			<div class="windowbg">
+				<div class="infobox infobox--neutral infobox--statistic">
+					<div class="infobox-icon">', icon('fas fa-users'), '</div>
+					<div class="infobox-content">
+						<div class="infobox-title">
+							', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'], '
+						</div>
+						<div class="infobox-text">';
 
 	// Handle hidden users and buddies.
 	$bracketList = array();
@@ -561,7 +585,7 @@ function template_ic_block_online()
 
 	echo $context['show_who'] ? '</a>' : '', '
 
-				&nbsp;-&nbsp;', $txt['most_online_today'], ': <strong>', comma_format($modSettings['mostOnlineToday']), '</strong>&nbsp;-&nbsp;
+				', $txt['most_online_today'], ': <strong>', comma_format($modSettings['mostOnlineToday']), '</strong>&nbsp;-&nbsp;
 				', $txt['most_online_ever'], ': ', comma_format($modSettings['mostOnline']), ' (', timeformat($modSettings['mostDate']), ')<br>';
 
 	// Assuming there ARE users online... each user in users_online has an id, username, name, group, href, and link.
@@ -577,6 +601,7 @@ function template_ic_block_online()
 	}
 
 	echo '
+						</div>
 					</div>
 				</div>
 			</div>

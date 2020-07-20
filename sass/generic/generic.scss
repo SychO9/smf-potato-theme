@@ -64,4 +64,22 @@
   display: inline-block;
 }
 
+@mixin tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius;
+  background: $secondary-color;
+  color: #fff;
+  height: 15px;
+  line-height: 15px;
+  font-size: 11px;
+  padding: 0 3px;
+  vertical-align: middle;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
 @import "controls";

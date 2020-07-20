@@ -11,6 +11,31 @@
  */
 
 /**
+ * Board Description
+ */
+function template_page_details()
+{
+	global $context, $txt;
+
+	if (empty($context['description']) && empty($context['moderators']))
+		return;
+
+	echo '
+	<div>';
+
+	if (!empty($context['description']))
+		echo '
+			', $context['description'];
+
+	if (!empty($context['moderators']))
+		echo '
+			', count($context['moderators']) === 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $context['link_moderators']), '.';
+
+	echo '
+	</div>';
+}
+
+/**
  * The main messageindex.
  */
 function template_main()
@@ -81,33 +106,13 @@ function template_main()
 
 		echo '
 	<div class="pagesection">
-		', $context['menu_separator'], '
 		<div class="pagelinks floatleft">
 			<a href="#bot" class="button">', $txt['go_down'], '</a>
 			', $context['page_index'], '
 		</div>
-		', template_button_strip($context['normal_buttons'], 'right'), '
+		', $context['menu_separator'], '
+		', template_button_strip($context['normal_buttons'], 'right', array('merge' => true)), '
 	</div>';
-
-		if ($context['description'] != '' || !empty($context['moderators']))
-		{
-			echo '
-	<div id="description_board" class="generic_list_wrapper">
-		<h3>', $context['name'], '</h3>
-		<div>';
-
-			if ($context['description'] != '')
-				echo '
-			', $context['description'];
-
-			if (!empty($context['moderators']))
-				echo '
-			', count($context['moderators']) === 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $context['link_moderators']), '.';
-
-			echo '
-		</div>
-	</div>';
-		}
 
 		// If Quick Moderation is enabled start the form.
 		if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] > 0 && !empty($context['topics']))
@@ -134,7 +139,8 @@ function template_main()
 		}
 
 		echo '
-			<div class="title_bar" id="topic_header">';
+			<div class="topic-list-area">
+				<div class="title_bar topic-header" id="topic_header">';
 
 		// Are there actually any topics to show?
 		if (!empty($context['topics']))
@@ -161,7 +167,12 @@ function template_main()
 		// No topics... just say, "sorry bub".
 		else
 			echo '
-				<h3 class="titlebg">', $txt['topic_alert_none'], '</h3>';
+				<div class="infobox infobox--neutral">
+					<div class="infobox-icon">', icon('fas fa-exclamation-circle'), '</div>
+					<div class="infobox-content">
+						<div class="infobox-text">', $txt['topic_alert_none'], '</div>
+					</div>
+				</div>';
 
 		echo '
 			</div><!-- #topic_header -->';
@@ -180,7 +191,7 @@ function template_main()
 		foreach ($context['topics'] as $topic)
 		{
 			echo '
-				<div class="', $topic['css_class'], '">
+				<div class="', $topic['css_class'], ' topic-item">
 					<div class="board_icon">
 						<img src="', $topic['first_post']['icon_url'], '" alt="">
 						', $topic['is_posted_in'] ? '<img class="posted" src="' . $settings['images_url'] . '/icons/profile_sm.png" alt="">' : '', '
@@ -194,23 +205,23 @@ function template_main()
 
 			if ($topic['is_watched'])
 				echo '
-								<span class="main_icons watch" title="', $txt['watching_this_topic'], '"></span>';
+								<span class="main_icons watch badge" title="', $txt['watching_this_topic'], '"></span>';
 
 			if ($topic['is_locked'])
 				echo '
-								<span class="main_icons lock"></span>';
+								<span class="main_icons lock badge"></span>';
 
 			if ($topic['is_sticky'])
 				echo '
-								<span class="main_icons sticky"></span>';
+								<span class="main_icons sticky badge"></span>';
 
 			if ($topic['is_redirect'])
 				echo '
-								<span class="main_icons move"></span>';
+								<span class="main_icons move badge"></span>';
 
 			if ($topic['is_poll'])
 				echo '
-								<span class="main_icons poll"></span>';
+								<span class="main_icons poll badge"></span>';
 
 			echo '
 							</div>';
@@ -269,8 +280,10 @@ function template_main()
 			echo '
 				</div><!-- $topic[css_class] -->';
 		}
+
 		echo '
-			</div><!-- #topic_container -->';
+				</div><!-- #topic_container -->
+			</div>';
 
 		if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] == 1 && !empty($context['topics']))
 		{
@@ -297,6 +310,7 @@ function template_main()
 			</div><!-- #quick_actions -->';
 		}
 
+
 		echo '
 		</div><!-- #messageindex -->';
 
@@ -315,17 +329,14 @@ function template_main()
 
 		echo '
 	<div class="pagesection">
-		', template_button_strip($context['normal_buttons'], 'right'), '
-		', $context['menu_separator'], '
 		<div class="pagelinks floatleft">
 			<a href="#main_content_section" class="button" id="bot">', $txt['go_up'], '</a>
 			', $context['page_index'], '
 		</div>
+		', $context['menu_separator'], '
+		', template_button_strip($context['normal_buttons'], 'right', array('merge' => true)), '
 	</div>';
 	}
-
-	// Show breadcrumbs at the bottom too.
-	theme_linktree();
 
 	if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] == 1 && !empty($context['topics']) && $context['can_move'])
 		echo '
