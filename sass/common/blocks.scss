@@ -81,6 +81,9 @@
       }
     }
   }
+  &--full {
+    width: 100%;
+  }
 }
 
 @mixin noticebox($bg-color, $fg-color, $icon) {

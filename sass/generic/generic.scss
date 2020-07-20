@@ -82,4 +82,14 @@
   }
 }
 
+@mixin background-color-transition($bg, $fg) {
+  background: $bg;
+  color: $fg;
+
+  &:hover {
+    background: darken($bg, 5);
+    color: darken($fg, 5);
+  }
+}
+
 @import "controls";

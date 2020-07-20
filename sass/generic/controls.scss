@@ -21,13 +21,7 @@
     color: darken($contrast-fg, 5);
   }
   &.active {
-    background: $primary-color;
-    color: #fff;
-
-    &:hover {
-      background: darken($primary-color, 5);
-      color: darken(#fff, 5);
-    }
+    @include background-color-transition($primary-color, #fff);
   }
   &--composite {
     border-radius: $border-radius 0 0 $border-radius;
@@ -35,6 +29,9 @@
     & + .button {
       border-radius: 0 $border-radius $border-radius 0;
       filter: brightness(0.96);
+    }
+    &.active + .button {
+      @include background-color-transition($primary-color, #fff);
     }
   }
 }

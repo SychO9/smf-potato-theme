@@ -177,7 +177,9 @@ function template_bi_redirect_icon($board)
 	global $context, $scripturl;
 
 	echo '
-		<a href="', $board['href'], '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '></a>';
+		<a href="', $board['href'], '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '>
+			', icon('fas fa-external-link-alt'), '
+		</a>';
 }
 
 /**
@@ -205,7 +207,7 @@ function template_bi_board_info($board)
 	// Show the "Moderators: ". Each has name, href, link, and id. (but we're gonna use link_moderators.)
 	if (!empty($board['link_moderators']))
 		echo '
-		<p class="moderators">', count($board['link_moderators']) == 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $board['link_moderators']), '</p>';
+		<p class="moderators">', count($board['link_moderators']) == 1 ? icon('fas fa-user').' '.$txt['moderator'] : icon('fas fa-user-friends').' '.$txt['moderators'], ': ', implode(', ', $board['link_moderators']), '</p>';
 }
 
 /**
@@ -215,12 +217,9 @@ function template_bi_board_info($board)
  */
 function template_bi_board_stats($board)
 {
-	global $txt;
-
 	echo '
-		<p>
-			', $txt['posts'], ': ', comma_format($board['posts']), '<br>', $txt['board_topics'], ': ', comma_format($board['topics']), '
-		</p>';
+		<div>', icon('fas fa-reply-all'), ' ', comma_format($board['posts']), '</div>
+		<div>', icon('fas fa-file-alt'), ' ', comma_format($board['topics']), '</div>';
 }
 
 /**
@@ -233,9 +232,7 @@ function template_bi_redirect_stats($board)
 	global $txt;
 
 	echo '
-		<p>
-			', $txt['redirects'], ': ', comma_format($board['posts']), '
-		</p>';
+		<div>', icon('fas fa-external-link-alt'), ' ', comma_format($board['posts']), '</div>';
 }
 
 /**
@@ -246,9 +243,20 @@ function template_bi_redirect_stats($board)
  */
 function template_bi_board_lastpost($board)
 {
-	if (!empty($board['last_post']['id']))
-		echo '
-			<p>', $board['last_post']['last_post_message'], '</p>';
+	if (empty($board['last_post']['id']))
+		return;
+
+	echo '
+		<div class="topic-item">
+			<div class="topic-item-poster-avatar">', $board['last_post']['member']['avatar']['image'], '</div>
+			<div class="topic-item-content">
+				<div class="topic-item-title">', $board['last_post']['link'], '</div>
+				<div class="topic-item-details">
+					<div class="topic-item-poster">', $board['last_post']['member']['link'], '</div>
+					<div class="topic-item-time">', icon('far fa-clock'), ' ', timeformat($board['last_post']['timestamp']), '</div>
+				</div>
+			</div>
+		</div>';
 }
 
 /**
@@ -283,7 +291,7 @@ function template_bi_board_children($board)
 
 		echo '
 			<div id="board_', $board['id'], '_children" class="children">
-				<p><strong id="child_list_', $board['id'], '">', $txt['sub_boards'], '</strong>', implode($children), '</p>
+				<p><strong id="child_list_', $board['id'], '">', icon('fas fa-folder-open'), ' ', $txt['sub_boards'], '</strong>', implode($children), '</p>
 			</div>';
 	}
 }
@@ -376,7 +384,7 @@ function template_ic_block_recent()
 					<a href="', $scripturl, '?action=recent">', icon('fas fa-comments'), ' ', $txt['recent_posts'], '</a>
 				</h4>
 			</div>
-			<div id="recent_posts_content" class="recent-posts-container">';
+			<div id="recent_posts_content" class="topic-item-container">';
 
 	// Show lots of posts.
 	if (!empty($context['latest_posts']))
@@ -398,14 +406,14 @@ function template_ic_block_recent()
 				$avatar = array('image' => '<img class="avatar" src="'.$GLOBALS['modSettings']['avatar_url'] . '/default.png'.'" alt="avatar">');
 
 			echo '
-						<div class="recent-post">
-							<div class="recent-post-poster-avatar">', $avatar['image'], '</div>
-							<div class="recent-post-content">
-								<div class="recent-post-name">', $post['link'], '</div>
-								<div class="recent-post-details">
-									<div class="recent-post-poster">', icon('fas fa-user'), ' ', $post['poster']['link'], '</div>
-									<div class="recent-post-board">', icon('fas fa-folder'), ' ', $post['board']['link'], '</div>
-									<div class="recent-post-time">', icon('far fa-clock'), ' ', $post['time'], '</div>
+						<div class="topic-item">
+							<div class="topic-item-poster-avatar">', $avatar['image'], '</div>
+							<div class="topic-item-content">
+								<div class="topic-item-name">', $post['link'], '</div>
+								<div class="topic-item-details">
+									<div class="topic-item-poster">', icon('fas fa-user'), ' ', $post['poster']['link'], '</div>
+									<div class="topic-item-board">', icon('fas fa-folder'), ' ', $post['board']['link'], '</div>
+									<div class="topic-item-time">', icon('far fa-clock'), ' ', $post['time'], '</div>
 								</div>
 							</div>
 						</div>';

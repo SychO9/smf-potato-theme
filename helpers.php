@@ -78,6 +78,7 @@ function inject_buttonlist_icons(&$button_strip)
 		'post_poll' => 'fas fa-poll',
 		'new_topic' => 'fas fa-plus',
 		'markread' => 'fas fa-check',
+		'calendar' => 'fas fa-calendar-alt',
 	);
 
 	foreach ($icons as $button_key => $icon)

@@ -348,7 +348,6 @@ tr[id^=list_news_lists_] textarea {
 
 .block {
   display: block;
-  margin: 0 0 5px 0;
 }
 
 /* Alternating colors */
@@ -7038,6 +7037,9 @@ readers do not read off random characters that represent icons */
   background: #b83b5e;
   color: #fff;
 }
+.infobox--full {
+  width: 100%;
+}
 
 .noticebox {
   border-radius: 4px;
@@ -7233,13 +7235,13 @@ body {
   margin-inline-end: 0;
 }
 
-#admin_content > *, #messageindex > *, #topic_container > * {
+#admin_content > *, #messageindex > * {
   margin: 6px 0;
 }
-#admin_content > *:first-child, #messageindex > *:first-child, #topic_container > *:first-child {
+#admin_content > *:first-child, #messageindex > *:first-child {
   margin-block-start: 0;
 }
-#admin_content > *:last-child, #messageindex > *:last-child, #topic_container > *:last-child {
+#admin_content > *:last-child, #messageindex > *:last-child {
   margin-block-end: 0;
 }
 
@@ -7354,7 +7356,8 @@ a:hover {
   background: #fffce6;
   position: absolute;
   z-index: 10;
-  width: 15rem;
+  min-width: 15rem;
+  max-width: 18rem;
 }
 .dropdown .separator, .quickbuttons > li > ul .separator, .top_menu .separator, .dropmenu > li ul .separator {
   height: 1px;
@@ -7474,7 +7477,6 @@ a:hover {
 
 .top_menu {
   display: none;
-  width: 18rem;
 }
 .top_menu.visible {
   display: block;
@@ -7577,6 +7579,10 @@ a:hover {
   color: #b83b5e;
 }
 
+#alerts_menu, #pm_menu, .notify_dropdown {
+  width: 18rem;
+}
+
 .popup_heading {
   display: none;
 }
@@ -7677,6 +7683,14 @@ a:hover {
   border-radius: 0 4px 4px 0;
   filter: brightness(0.96);
 }
+.button--composite.active + .button {
+  background: #b83b5e;
+  color: #fff;
+}
+.button--composite.active + .button:hover {
+  background: #a53554;
+  color: #f2f2f2;
+}
 
 input, select, textarea {
   height: 34px;
@@ -7710,6 +7724,14 @@ input--composite, select--composite, textarea--composite {
 input--composite + .button, select--composite + .button, textarea--composite + .button {
   border-radius: 0 4px 4px 0;
   filter: brightness(0.96);
+}
+input--composite.active + .button, select--composite.active + .button, textarea--composite.active + .button {
+  background: #b83b5e;
+  color: #fff;
+}
+input--composite.active + .button:hover, select--composite.active + .button:hover, textarea--composite.active + .button:hover {
+  background: #a53554;
+  color: #f2f2f2;
 }
 
 select {
@@ -7804,6 +7826,7 @@ select {
   margin: 6px 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .up_contain:first-child {
   margin-block-start: 0;
@@ -7817,16 +7840,34 @@ select {
 .up_contain .moderators {
   margin: 0;
 }
+.up_contain .children {
+  padding: 10px 12px;
+  margin-top: 6px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  width: 100%;
+}
+.up_contain .children > p > strong::after {
+  content: ": ";
+}
+.up_contain .children > p > span::after {
+  content: ", ";
+}
+.up_contain .children > p > span:last-child::after {
+  content: "";
+}
 
 .board_icon {
   width: 6%;
   text-align: center;
   font-size: 26px;
 }
-
 .board_stats {
   width: 10%;
   text-align: center;
+}
+.board_description {
+  font-size: 13px;
 }
 
 .info {
@@ -7835,6 +7876,12 @@ select {
 
 .lastpost {
   width: 32%;
+}
+.lastpost .topic-item {
+  padding: 0;
+}
+.lastpost .topic-item:hover {
+  background: transparent;
 }
 
 .topic-item, .topic-header {
@@ -7847,6 +7894,48 @@ select {
 .topic-item input[type=checkbox], .topic-header input[type=checkbox] {
   line-height: normal;
   height: auto;
+}
+.topic-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.topic-item:hover {
+  background: #f0f0f0;
+}
+.topic-item-container {
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
+  background: #fffce6;
+}
+.topic-item-poster-avatar {
+  margin-inline-end: 6px;
+}
+.topic-item-poster-avatar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.topic-item-details {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+.topic-item-details .icon {
+  margin-inline-end: 0;
+}
+.topic-item-details > * {
+  margin: 0 3px;
+}
+.topic-item-details > *:first-child {
+  margin-inline-start: 0;
+}
+.topic-item-details > *:last-child {
+  margin-inline-end: 0;
+}
+.topic-item:last-child {
+  border-bottom: none;
 }
 
 .info-center {
@@ -7875,46 +7964,6 @@ select {
   margin-inline-start: 0;
 }
 .forum-stats-container > div:last-child {
-  margin-inline-end: 0;
-}
-
-.recent-post {
-  display: flex;
-  align-items: center;
-  padding: 10px 12px;
-  border-bottom: 1px solid #d9d9d9;
-}
-.recent-post:hover {
-  background: #f0f0f0;
-}
-.recent-posts-container {
-  border-radius: 4px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
-  background: #fffce6;
-}
-.recent-post-poster-avatar {
-  margin-inline-end: 6px;
-}
-.recent-post-poster-avatar .avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-}
-.recent-post-details {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-}
-.recent-post-details .icon {
-  margin-inline-end: 0;
-}
-.recent-post-details > * {
-  margin: 0 3px;
-}
-.recent-post-details > *:first-child {
-  margin-inline-start: 0;
-}
-.recent-post-details > *:last-child {
   margin-inline-end: 0;
 }
 

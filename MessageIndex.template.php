@@ -55,7 +55,8 @@ function template_main()
 	<div id="board_', $context['current_board'], '_childboards" class="boardindex_table">
 		<div class="cat_bar">
 			<h3 class="catbg">', $txt['sub_boards'], '</h3>
-		</div>';
+		</div>
+		<div class="board-container">';
 
 		foreach ($context['boards'] as $board)
 		{
@@ -92,6 +93,7 @@ function template_main()
 		}
 
 		echo '
+		</div>
 	</div><!-- #board_[current_board]_childboards -->';
 	}
 
@@ -167,7 +169,7 @@ function template_main()
 		// No topics... just say, "sorry bub".
 		else
 			echo '
-				<div class="infobox infobox--neutral">
+				<div class="infobox infobox--neutral infobox--full">
 					<div class="infobox-icon">', icon('fas fa-exclamation-circle'), '</div>
 					<div class="infobox-content">
 						<div class="infobox-text">', $txt['topic_alert_none'], '</div>
@@ -186,10 +188,12 @@ function template_main()
 
 		// Contain the topic list
 		echo '
-			<div id="topic_container">';
+			<div id="topic_container" class="topic-item-container">';
 
 		foreach ($context['topics'] as $topic)
 		{
+			$topic['css_class'] = trim(str_replace('windowbg', '', $topic['css_class']));
+
 			echo '
 				<div class="', $topic['css_class'], ' topic-item">
 					<div class="board_icon">
@@ -244,7 +248,7 @@ function template_main()
 						<p>', $txt['replies'], ': ', $topic['replies'], '<br>', $txt['views'], ': ', $topic['views'], '</p>
 					</div>
 					<div class="lastpost">
-						<p>', sprintf($txt['last_post_topic'], '<a href="' . $topic['last_post']['href'] . '">' . $topic['last_post']['time'] . '</a>', $topic['last_post']['member']['link']), '</p>
+						', template_bi_board_lastpost($topic), '
 					</div>';
 
 			// Show the quick moderation options?
@@ -392,7 +396,9 @@ function template_bi_board_icon($board)
 	global $context, $scripturl;
 
 	echo '
-		<a href="', ($context['user']['is_guest'] ? $board['href'] : $scripturl . '?action=unread;board=' . $board['id'] . '.0;children'), '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '></a>';
+		<a href="', ($context['user']['is_guest'] ? $board['href'] : $scripturl . '?action=unread;board=' . $board['id'] . '.0;children'), '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '>
+			', icon('far fa-comments'), '
+		</a>';
 }
 
 /**
@@ -405,7 +411,9 @@ function template_bi_redirect_icon($board)
 	global $context, $scripturl;
 
 	echo '
-		<a href="', $board['href'], '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '></a>';
+		<a href="', $board['href'], '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '>
+			', icon('fas fa-external-link-alt'), '
+		</a>';
 }
 
 /**
@@ -433,7 +441,7 @@ function template_bi_board_info($board)
 	// Show the "Moderators: ". Each has name, href, link, and id. (but we're gonna use link_moderators.)
 	if (!empty($board['moderators']) || !empty($board['moderator_groups']))
 		echo '
-		<p class="moderators">', count($board['link_moderators']) === 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $board['link_moderators']), '</p>';
+		<p class="moderators">', count($board['link_moderators']) === 1 ? icon('fas fa-user').' '.$txt['moderator'] : icon('fas fa-user-friends').' '.$txt['moderators'], ': ', implode(', ', $board['link_moderators']), '</p>';
 }
 
 /**
@@ -446,9 +454,8 @@ function template_bi_board_stats($board)
 	global $txt;
 
 	echo '
-		<p>
-			', $txt['posts'], ': ', comma_format($board['posts']), '<br>', $txt['board_topics'], ': ', comma_format($board['topics']), '
-		</p>';
+		<div>', icon('fas fa-reply-all'), ' ', comma_format($board['posts']), '</div>
+		<div>', icon('fas fa-file-alt'), ' ', comma_format($board['topics']), '</div>';
 }
 
 /**
@@ -461,11 +468,8 @@ function template_bi_redirect_stats($board)
 	global $txt;
 
 	echo '
-		<p>
-			', $txt['redirects'], ': ', comma_format($board['posts']), '
-		</p>';
+		<div>', icon('fas fa-external-link-alt'), ' ', comma_format($board['posts']), '</div>';
 }
-
 /**
  * Outputs the board lastposts for a standard board or a redirect.
  * When on a mobile device, this may be hidden if no last post exists.
@@ -474,9 +478,20 @@ function template_bi_redirect_stats($board)
  */
 function template_bi_board_lastpost($board)
 {
-	if (!empty($board['last_post']['id']))
-		echo '
-			<p>', $board['last_post']['last_post_message'], '</p>';
+	if (empty($board['last_post']['id']))
+		return;
+
+	echo '
+		<div class="topic-item">
+			<div class="topic-item-poster-avatar">', $board['last_post']['member']['avatar']['image'], '</div>
+			<div class="topic-item-content">
+				<div class="topic-item-title">', $board['last_post']['link'], '</div>
+				<div class="topic-item-details">
+					<div class="topic-item-poster">', $board['last_post']['member']['link'], '</div>
+					<div class="topic-item-time">', icon('far fa-clock'), ' ', timeformat($board['last_post']['timestamp']), '</div>
+				</div>
+			</div>
+		</div>';
 }
 
 /**
@@ -511,7 +526,7 @@ function template_bi_board_children($board)
 
 		echo '
 			<div id="board_', $board['id'], '_children" class="children">
-				<p><strong id="child_list_', $board['id'], '">', $txt['sub_boards'], '</strong>', implode($children), '</p>
+				<p><strong id="child_list_', $board['id'], '">', icon('fas fa-folder-open'), ' ', $txt['sub_boards'], '</strong>', implode($children), '</p>
 			</div>';
 	}
 }

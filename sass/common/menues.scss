@@ -4,7 +4,8 @@
   background: $block-bg;
   position: absolute;
   z-index: 10;
-  width: $dropdown-min-width;
+  min-width: $dropdown-min-width;
+  max-width: $dropdown-max-width;
 
   .separator {
     height: 1px;
@@ -132,7 +133,6 @@
 .top_menu {
   @extend .dropdown;
   display: none;
-  width: $dropdown-min-width + 3rem;
 
   .top-section &, .buttonlist.floatright & {
     @extend .dropdown-right;
@@ -233,6 +233,10 @@
       color: $primary-color;
     }
   }
+}
+
+#alerts_menu, #pm_menu, .notify_dropdown {
+  width: $dropdown-max-width;
 }
 
 .popup_heading {

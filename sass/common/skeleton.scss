@@ -55,7 +55,7 @@ body {
   }
 }
 
-#admin_content, #messageindex, #topic_container {
+#admin_content, #messageindex {
   > * {
     @include vertical-spacing;
   }

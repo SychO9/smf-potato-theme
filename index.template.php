@@ -545,6 +545,9 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 	$buttons = array();
 	foreach ($button_strip as $key => $value)
 	{
+		if (!is_array($value))
+			continue;
+
 		if (array_key_exists('show', $value) && empty($value['show']))
 			continue;
 
