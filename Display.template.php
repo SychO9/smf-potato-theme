@@ -268,7 +268,7 @@ function template_main()
 
 	// Show the topic information - icon, subject, etc.
 	echo '
-		<div id="forumposts">
+		<div id="forumposts" class="post-container">
 			<form action="', $scripturl, '?action=quickmod2;topic=', $context['current_topic'], '.', $context['start'], '" method="post" accept-charset="', $context['character_set'], '" name="quickModForm" id="quickModForm" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave(\'' . $context['session_id'] . '\', \'' . $context['session_var'] . '\') : false">';
 
 	$context['ignoredMsgs'] = array();
@@ -473,18 +473,6 @@ function template_single_post($message)
 
 	$ignoring = false;
 
-	$message['quickbuttons'] = array_reverse($message['quickbuttons']);
-	$message['quickbuttons']['like'] = [
-		'label' => $txt['like'],
-		'href' => $scripturl.'?action=likes;ltype=msg;sa=like;like='.$message['id'].';'.$context['session_var'].'='.$context['session_id'],
-		'anchor_class' => 'msg_like',
-		'icon' => !empty($message['likes']['you']) ? 'unlike' : 'like',
-		'id' => 'msg_'.$message['id'].'_likes',
-		'class' => 'smflikebutton',
-		'show' => $context['can_like'] && !$ignoring && !empty($modSettings['enable_likes'])
-	];
-	$message['quickbuttons'] = array_reverse($message['quickbuttons']);
-
 	if ($message['can_remove'])
 		$context['removableMessageIDs'][] = $message['id'];
 
@@ -497,7 +485,7 @@ function template_single_post($message)
 
 	// Show the message anchor and a "new" anchor if this message is new.
 	echo '
-				<div class="postblock ', $message['css_class'], '">
+				<div class="postblock ', trim(str_replace('windowbg', '', $message['css_class'])), '">
 					', $message['id'] != $context['first_message'] ? '
 					<a id="msg' . $message['id'] . '"></a>' . ($message['first_new'] ? '<a id="new"></a>' : '') : '', '
 					<div class="post_wrapper">';
@@ -746,7 +734,7 @@ function template_single_post($message)
 
 		echo '
 										<span class="like_count smalltext">
-											', icon('fas fa-thumbs-up'), '
+											', icon('fas fa-heart'), '
 											', sprintf($txt[$base], $scripturl . '?action=likes;sa=view;ltype=msg;like=' . $message['id'] . ';' . $context['session_var'] . '=' . $context['session_id'], comma_format($count)), '
 										</span>';
 	}
@@ -928,8 +916,7 @@ function template_single_post($message)
 	echo '
 						</div><!-- .postarea -->
 					</div><!-- .post_wrapper -->
-				</div><!-- $message[css_class] -->
-				<hr class="post_separator">';
+				</div><!-- $message[css_class] -->';
 }
 
 /**

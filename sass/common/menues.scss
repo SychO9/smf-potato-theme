@@ -188,6 +188,8 @@
 
     img {
       border-radius: $avatar-border-radius;
+      width: 65px;
+      height: 65px;
     }
   }
   &_content {

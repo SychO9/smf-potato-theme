@@ -1,3 +1,16 @@
+.post-container {
+  @include block-skeleton;
+  background: $block-bg;
+}
+.postblock {
+  border-bottom: 1px solid darken(grayscale($bg-color), 8);
+  padding: 16px 12px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
 .post_wrapper {
   display: flex;
 
@@ -23,24 +36,42 @@
 
     ul, ol {
       @include organized-content;
+      justify-content: center;
+
+      .icon, .main_icons {
+        font-size: 18px;
+      }
     }
   }
   &-name h4 {
-    margin: 0;
+    margin: 6px 0 4px;
+    font-size: $font-size + 2;
   }
 }
 
 .postarea {
   width: calc(100% - #{$poster-area-width});
+  padding: 0 8px 0 8px;
 
   .inline_details {
     margin: 0;
+
+    .icon {
+      margin-inline-end: 0;
+    }
+    > * {
+      @include horizontal-spacing(2px);
+    }
   }
 }
 
 .keyinfo {
   @include organized-content;
   justify-content: space-between;
+}
+
+.post {
+  margin-top: 6px;
 }
 
 .post_separator {

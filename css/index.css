@@ -6932,8 +6932,12 @@ readers do not read off random characters that represent icons */
   content: "";
 }
 
-.main_icons.quote::before, .main_icons.quote_selected::before {
+.main_icons.quote::before {
   content: "";
+}
+
+.main_icons.quote_selected::before {
+  content: "";
 }
 
 .main_icons.notify_button::before {
@@ -7123,7 +7127,7 @@ readers do not read off random characters that represent icons */
 }
 
 @media (min-width: 425px) {
-  .mobile_buttons {
+  .mobile_buttons, .moderationbuttons_mobile_check {
     display: none;
   }
 }
@@ -7534,6 +7538,8 @@ a:hover {
 }
 .profile_user_avatar img {
   border-radius: 100%;
+  width: 65px;
+  height: 65px;
 }
 .profile_user_content > span {
   display: block;
@@ -7984,6 +7990,20 @@ select {
   color: #fff;
 }
 
+.post-container {
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
+  background: #fffce6;
+}
+
+.postblock {
+  border-bottom: 1px solid #d0d0d0;
+  padding: 16px 12px;
+}
+.postblock:last-child {
+  border-bottom: none;
+}
+
 .post_wrapper {
   display: flex;
 }
@@ -7995,7 +8015,7 @@ select {
 }
 
 .poster {
-  width: 15rem;
+  width: 13rem;
   text-align: center;
 }
 .poster .avatar {
@@ -8009,22 +8029,44 @@ select {
 .poster ul ul, .poster ul ol, .poster ol ul, .poster ol ol {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.poster ul ul .icon, .poster ul ul .main_icons, .poster ul ol .icon, .poster ul ol .main_icons, .poster ol ul .icon, .poster ol ul .main_icons, .poster ol ol .icon, .poster ol ol .main_icons {
+  font-size: 18px;
 }
 .poster-name h4 {
-  margin: 0;
+  margin: 6px 0 4px;
+  font-size: 16px;
 }
 
 .postarea {
-  width: calc(100% - 15rem);
+  width: calc(100% - 13rem);
+  padding: 0 8px 0 8px;
 }
 .postarea .inline_details {
   margin: 0;
+}
+.postarea .inline_details .icon {
+  margin-inline-end: 0;
+}
+.postarea .inline_details > * {
+  margin: 0 2px;
+}
+.postarea .inline_details > *:first-child {
+  margin-inline-start: 0;
+}
+.postarea .inline_details > *:last-child {
+  margin-inline-end: 0;
 }
 
 .keyinfo {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.post {
+  margin-top: 6px;
 }
 
 .post_separator {

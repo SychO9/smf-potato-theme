@@ -328,8 +328,11 @@
 .main_icons.unread_button::before {
   content: fa-content($fa-var-times);
 }
-.main_icons.quote::before, .main_icons.quote_selected::before {
+.main_icons.quote::before {
   content: fa-content($fa-var-quote-right);
+}
+.main_icons.quote_selected::before {
+  content: fa-content($fa-var-i-cursor);
 }
 .main_icons.notify_button::before {
   content: fa-content($fa-var-bell);

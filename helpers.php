@@ -3,6 +3,7 @@
 add_integration_function('integrate_buffer', 'buffer_transformations', false);
 add_integration_function('integrate_messageindex_buttons', 'set_active_notify_item', false);
 add_integration_function('integrate_display_buttons', 'set_active_notify_item', false);
+add_integration_function('integrate_prepare_display_context', 'add_like_post_to_quickbuttons', false);
 
 /**
  * @param string $name
@@ -132,4 +133,27 @@ function set_active_notify_item(&$buttons)
 		if ($notify_option['text'] === "notify_{$current_location}_{$notification_mode}")
 			$buttons['notify']['sub_buttons'][$key]['active'] = true;
 	}
+}
+
+/**
+ *
+ */
+function add_like_post_to_quickbuttons(&$output, &$message, $counter)
+{
+	global $context, $txt, $scripturl, $modSettings;
+
+	if ($output['member']['id'] === $context['user']['id'])
+		return;
+
+	$output['quickbuttons'] = array_reverse($output['quickbuttons']);
+	$output['quickbuttons']['like'] = [
+		'label' => $txt['like'],
+		'href' => $scripturl.'?action=likes;ltype=msg;sa=like;like='.$output['id'].';'.$context['session_var'].'='.$context['session_id'],
+		'anchor_class' => 'msg_like',
+		'icon' => !empty($output['likes']['you']) ? 'unlike' : 'like',
+		'id' => 'msg_'.$output['id'].'_likes',
+		'class' => 'smflikebutton',
+		'show' => $context['can_like'] && !$output['is_ignored'] && !empty($modSettings['enable_likes'])
+	];
+	$output['quickbuttons'] = array_reverse($output['quickbuttons']);
 }
