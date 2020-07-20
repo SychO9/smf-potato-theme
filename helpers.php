@@ -145,6 +145,7 @@ function add_like_post_to_quickbuttons(&$output, &$message, $counter)
 	if ($output['member']['id'] === $context['user']['id'])
 		return;
 
+	// Add the like button to the quickbuttons
 	$output['quickbuttons'] = array_reverse($output['quickbuttons']);
 	$output['quickbuttons']['like'] = [
 		'label' => $txt['like'],
@@ -156,4 +157,7 @@ function add_like_post_to_quickbuttons(&$output, &$message, $counter)
 		'show' => $context['can_like'] && !$output['is_ignored'] && !empty($modSettings['enable_likes'])
 	];
 	$output['quickbuttons'] = array_reverse($output['quickbuttons']);
+
+	// Remove the error class from the report to moderator button
+	$output['quickbuttons']['more']['report']['class'] = '';
 }

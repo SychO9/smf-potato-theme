@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.main_icons.error {
+  color: unset;
+}
+
 /* Top row */
 .main_icons.help::before {
   content: fa-content($fa-var-question-circle);
