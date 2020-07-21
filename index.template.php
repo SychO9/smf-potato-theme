@@ -214,10 +214,10 @@ function template_body_above()
 		echo '
 					<ul class="unread-links">
 						<li>
-							<a href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">', $txt['view_unread_category'], '</a>
+							<a', $context['current_action'] === 'unread' ? ' class="active"' : '', ' href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">', $txt['view_unread_category'], '</a>
 						</li>
 						<li>
-							<a href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">', $txt['unread_replies'], '</a>
+							<a', $context['current_action'] === 'unreadreplies' ? ' class="active"' : '', ' href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">', $txt['unread_replies'], '</a>
 						</li>
 					</ul>';
 
