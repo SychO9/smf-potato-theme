@@ -7614,10 +7614,6 @@ a:hover {
   width: 18rem;
 }
 
-.popup_heading {
-  display: none;
-}
-
 .quickbuttons {
   position: relative;
 }
@@ -7680,11 +7676,6 @@ a:hover {
 .item-desc {
   display: block;
   font-size: 13px;
-}
-
-/* Mobile Popup */
-.popup_container {
-  display: none;
 }
 
 select, input[type=submit], input[type=checkbox], .button, label[for] {
@@ -8463,6 +8454,72 @@ input[name=attachBBC] {
 }
 .progress_blue .bar {
   background-color: #34c2e3;
+}
+
+.popup_container {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.36);
+}
+.popup_window {
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
+  padding: 10px 12px;
+  background: #fffce6;
+  color: #1f1f1f;
+  position: absolute;
+  width: 40%;
+  left: 50%;
+  top: 4rem;
+  transform: translateX(-50%);
+}
+.popup_window::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.popup_heading {
+  position: relative;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.popup_heading .icon {
+  vertical-align: middle;
+}
+.popup_heading .hide_popup {
+  position: absolute;
+  right: 0;
+}
+.popup_content {
+  max-height: calc(100vh - 9rem);
+  overflow: auto;
+}
+
+@media (min-width: 481px) {
+  .popup_mobile {
+    position: relative;
+    background: unset;
+    width: unset;
+    height: unset;
+  }
+  .popup_mobile .popup_heading {
+    display: none;
+  }
+  .popup_mobile .popup_window {
+    position: relative;
+    padding: unset;
+    margin: unset;
+    box-shadow: unset;
+    background: unset;
+    color: unset;
+    width: unset;
+    transform: unset;
+    top: unset;
+    left: unset;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

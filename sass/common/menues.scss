@@ -241,10 +241,6 @@
   width: $dropdown-max-width;
 }
 
-.popup_heading {
-  display: none;
-}
-
 .quickbuttons {
   @extend .menu;
   position: relative;
@@ -308,10 +304,4 @@
 .item-desc {
   display: block;
   font-size: $font-size - 1;
-}
-
-/* Mobile Popup */
-
-.popup_container {
-  display: none;
 }

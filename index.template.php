@@ -309,7 +309,7 @@ function template_body_above()
 	echo '
 				<a class="menu_icon mobile_user_menu"></a>
 				<div id="main_menu">
-					<div id="mobile_user_menu" class="popup_container">
+					<div id="mobile_user_menu" class="popup_container popup_mobile">
 						<div class="popup_window description">
 							<div class="popup_heading">', $txt['mobile_user_menu'], '
 								<a href="javascript:void(0);" class="main_icons hide_popup"></a>
