@@ -7468,6 +7468,10 @@ a:hover {
   padding: 0;
   margin: 0;
 }
+.menu .item-icon .icon, .buttonlist .item-icon .icon, .quickbuttons .item-icon .icon, .user-menu .item-icon .icon, .dropmenu .item-icon .icon {
+  font-size: 18px;
+  margin-inline-end: 0;
+}
 .menu > li > a, .buttonlist > li > a, .quickbuttons > li > a, .user-menu > li > a, .dropmenu > li > a {
   vertical-align: middle;
 }
@@ -7536,10 +7540,6 @@ a:hover {
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-}
-.user-menu > li > a > .icon {
-  font-size: 18px;
-  margin-inline-end: 0;
 }
 .user-menu > li > a > img {
   width: 30px;
@@ -7837,6 +7837,7 @@ input[type=checkbox]:checked::after {
 dl {
   display: flex;
   flex-wrap: wrap;
+  margin: unset;
 }
 dl dt {
   padding-top: 8px;
@@ -7924,6 +7925,31 @@ ul.post_options {
   padding: 0;
   margin: 0;
   column-count: 2;
+}
+
+.login > * {
+  margin: 1px 0;
+}
+.login > *:first-child {
+  margin-block-start: 0;
+}
+.login > *:last-child {
+  margin-block-end: 0;
+}
+
+form > * {
+  margin: 6px 0;
+}
+form > *:first-child {
+  margin-block-start: 0;
+}
+form > *:last-child {
+  margin-block-end: 0;
+}
+
+.additional_row {
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 /* Attachments in post form */
@@ -8496,6 +8522,21 @@ input[name=attachBBC] {
 .popup_content {
   max-height: calc(100vh - 9rem);
   overflow: auto;
+}
+.popup_controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.popup_controls > * {
+  margin: 0 1px;
+}
+.popup_controls > *:first-child {
+  margin-inline-start: 0;
+}
+.popup_controls > *:last-child {
+  margin-inline-end: 0;
 }
 
 @media (min-width: 481px) {

@@ -33,6 +33,15 @@
     max-height: calc(100vh - 9rem);
     overflow: auto;
   }
+  &_controls {
+    @include organized-content;
+    justify-content: center;
+    margin-top: 1rem;
+
+    > * {
+      @include horizontal-spacing(1px)
+    }
+  }
 }
 
 @media (min-width: 481px) {

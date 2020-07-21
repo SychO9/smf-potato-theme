@@ -87,6 +87,10 @@
   @include organized-content;
   @include listless;
 
+  .item-icon .icon {
+    font-size: 18px;
+    margin-inline-end: 0;
+  }
   > li {
     > a {
       vertical-align: middle;
@@ -157,10 +161,6 @@
     > a {
       @include button-skeleton;
 
-      > .icon {
-        font-size: 18px;
-        margin-inline-end: 0;
-      }
       > img {
         width: 30px;
         height: 30px;

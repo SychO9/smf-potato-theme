@@ -70,7 +70,7 @@ function template_init()
 	// Allow css/js files to be disabled for this specific theme.
 	// Add the identifier as an array key. IE array('smf_script'); Some external files might not add identifiers, on those cases SMF uses its filename as reference.
 	if (!isset($settings['disable_files']))
-		$settings['disable_files'] = array('smf_jquery_slider', 'smf_admin');
+		$settings['disable_files'] = array('smf_jquery_slider', 'smf_admin', 'admin');
 
 	// Load our helper functions
 	require_once __DIR__.'/helpers.php';
@@ -240,14 +240,14 @@ function template_body_above()
 		// Secondly, PMs if we're doing them
 		if ($context['allow_pm'])
 			echo '
-				<li>
+				<li class="item-icon">
 					<a href="', $scripturl, '?action=pm"', !empty($context['self_pm']) ? ' class="active"' : '', ' id="pm_menu_top">', icon('far fa-envelope'), ' ', !empty($context['user']['unread_messages']) ? ' <span class="amt">' . $context['user']['unread_messages'] . '</span>' : '', '</a>
 					<div id="pm_menu" class="top_menu"></div>
 				</li>';
 
 		// Thirdly, alerts
 		echo '
-				<li>
+				<li class="item-icon">
 					<a href="', $scripturl, '?action=profile;area=showalerts;u=', $context['user']['id'], '"', !empty($context['self_alerts']) ? ' class="active"' : '', ' id="alerts_menu_top">', icon('far fa-bell'), ' ', !empty($context['user']['alerts']) ? ' <span class="amt">' . $context['user']['alerts'] . '</span>' : '', '</a>
 					<div id="alerts_menu" class="top_menu"></div>
 				</li>';
@@ -265,16 +265,28 @@ function template_body_above()
 	}
 	// Otherwise they're a guest. Ask them to either register or login.
 	elseif (empty($maintenance))
+	{
 		echo '
-			<ul class="welcome">
-				<li>', sprintf($txt[$context['can_register'] ? 'welcome_guest_register' : 'welcome_guest'], $txt['guest_title'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');', $scripturl . '?action=signup'), '</li>
+			<ul class="user-menu" id="top_info">
+				<li>
+					<a href="', $scripturl, '?action=login" onclick="return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');">', icon('fas fa-sign-in-alt'), ' ', $txt['login'], '</a>
+				</li>';
+
+		if ($context['can_register'])
+			echo '
+				<li>
+					<a href="', $scripturl, '?action=signup">', icon('fas fa-user-plus'), ' ', $txt['register'], '</a>
+				</li>';
+
+		echo '
 			</ul>';
+	}
 	else
 		// In maintenance mode, only login is allowed and don't show OverlayDiv
 		echo '
-			<ul class="welcome">
-				<li>', sprintf($txt['welcome_guest'], $txt['guest_title'], '', $scripturl . '?action=login', 'return true;'), '</li>
-			</ul>';
+			<div class="welcome">
+				', sprintf($txt['welcome_guest'], $txt['guest_title'], '', $scripturl . '?action=login', 'return true;'), '
+			</div>';
 
 	/*if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
 	{

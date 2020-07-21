@@ -44,6 +44,7 @@ input[type="checkbox"] {
 dl {
   display: flex;
   flex-wrap: wrap;
+  margin: unset;
 
   dt {
     padding-top: 8px;
@@ -101,6 +102,20 @@ ul.post_options {
   column-count: 2;
 }
 
+.login {
+  > * {
+    @include vertical-spacing(1px);
+  }
+}
+
+form > * {
+  @include vertical-spacing;
+}
+
+.additional_row {
+  display: inline-flex;
+  vertical-align: middle;
+}
 
 /* Attachments in post form */
 
