@@ -1908,8 +1908,8 @@ function template_alert_configuration()
 		echo '
 				<tr class="title_bar">
 					<th>', $txt['alert_group_' . $alert_group], '</th>
-					<th>', $txt['receive_alert'], '</th>
-					<th>', $txt['receive_mail'], '</th>
+					<th>', icon('fas fa-bell'), ' ', $txt['receive_alert'], '</th>
+					<th>', icon('fas fa-envelope'), ' ', $txt['receive_mail'], '</th>
 				</tr>
 				<tr class="windowbg">';
 

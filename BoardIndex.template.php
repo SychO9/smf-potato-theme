@@ -30,11 +30,11 @@ function template_newsfader()
 		return;
 
 	echo '
-	<div class="infobox infobox--neutral news">
-		<div class="infobox-icon">', icon('fas fa-newspaper'), '</div>
-		<div class="infobox-content">
-			<div class="infobox-title">', $txt['news'], '</div>
-			<div class="infobox-text">
+	<div class="databox databox--neutral news">
+		<div class="databox-icon">', icon('fas fa-newspaper'), '</div>
+		<div class="databox-content">
+			<div class="databox-title">', $txt['news'], '</div>
+			<div class="databox-text">
 				<ul id="smf_slider" class="news-fader-items">';
 
 	foreach ($context['news_lines'] as $news)
@@ -441,9 +441,9 @@ function template_ic_block_calendar()
 				</h4>
 			</div>
 			<div class="windowbg">
-				<div class="infobox infobox--neutral infobox--statistic">
-					<div class="infobox-icon">', icon('fas fa-calendar'), '</div>
-					<div class="infobox-content">';
+				<div class="databox databox--neutral databox--statistic">
+					<div class="databox-icon">', icon('fas fa-calendar'), '</div>
+					<div class="databox-content">';
 
 	// Holidays like "Christmas", "Chanukah", and "We Love [Unknown] Day" :P
 	if (!empty($context['calendar_holidays']))
@@ -539,11 +539,11 @@ function template_ic_block_stats()
 	foreach ($stats as $stat)
 	{
 		echo '
-					<div class="infobox infobox--neutral infobox--statistic">
-						<div class="infobox-icon">', icon($stat['icon']), '</div>
-						<div class="infobox-content">
-							<div class="infobox-title">', $stat['value'], '</div>
-							<div class="infobox-text">', $stat['label'], '</div>
+					<div class="databox databox--neutral databox--statistic">
+						<div class="databox-icon">', icon($stat['icon']), '</div>
+						<div class="databox-content">
+							<div class="databox-title">', $stat['value'], '</div>
+							<div class="databox-text">', $stat['label'], '</div>
 						</div>
 					</div>';
 	}
@@ -568,13 +568,13 @@ function template_ic_block_online()
 				</h4>
 			</div>
 			<div class="windowbg">
-				<div class="infobox infobox--neutral infobox--statistic">
-					<div class="infobox-icon">', icon('fas fa-users'), '</div>
-					<div class="infobox-content">
-						<div class="infobox-title">
+				<div class="databox databox--neutral databox--statistic">
+					<div class="databox-icon">', icon('fas fa-users'), '</div>
+					<div class="databox-content">
+						<div class="databox-title">
 							', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'], '
 						</div>
-						<div class="infobox-text">';
+						<div class="databox-text">';
 
 	// Handle hidden users and buddies.
 	$bracketList = array();

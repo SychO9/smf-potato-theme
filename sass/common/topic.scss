@@ -14,11 +14,11 @@
 .post_wrapper {
   display: flex;
 
-  .quickbuttons {
+  .quickbuttons > li > a {
     opacity: 0;
   }
   &:hover {
-    .quickbuttons {
+    .quickbuttons > li > a {
       opacity: 1;
     }
   }
@@ -84,5 +84,26 @@
   .nextlinks {
     flex-grow: 1;
     text-align: end;
+  }
+}
+
+#moderationbuttons_strip {
+  > a {
+    @include horizontal-spacing(2px);
+  }
+  .amt {
+    margin-inline-start: 3px;
+  }
+
+  #oInTopicModeration_remove_button_text::before {
+    content: fa-content($fa-var-trash);
+  }
+  #oInTopicModeration_split_button_text::before {
+    content: fa-content($fa-var-unlink);
+  }
+  #oInTopicModeration_remove_button_text::before, #oInTopicModeration_split_button_text::before {
+    @extend %fa-icon;
+    @extend .fas;
+    margin-inline-end: 3px;
   }
 }

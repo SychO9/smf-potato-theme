@@ -298,7 +298,7 @@ function template_main()
 				', $context['page_index'], '
 			</div>
 			', $context['menu_separator'], '
-			', template_button_strip($context['normal_buttons'], 'right', array('merge' => true)), '
+			', template_button_strip($context['normal_buttons'], 'right', array('merge' => true, 'identifier' => 'bottom_topic_normal_buttons')), '
 		</div>';
 
 	// Show quickreply

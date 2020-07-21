@@ -70,7 +70,7 @@ function template_init()
 	// Allow css/js files to be disabled for this specific theme.
 	// Add the identifier as an array key. IE array('smf_script'); Some external files might not add identifiers, on those cases SMF uses its filename as reference.
 	if (!isset($settings['disable_files']))
-		$settings['disable_files'] = array('smf_jquery_slider');
+		$settings['disable_files'] = array('smf_jquery_slider', 'smf_admin');
 
 	// Load our helper functions
 	require_once __DIR__.'/helpers.php';
@@ -558,45 +558,48 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 				$value['id'] = $key;
 
 			$button = '
-				<li>
-					<a class="button'.(!empty($value['sub_buttons']) ? ' button--composite' : '').' button_strip_' . $key . (!empty($value['active']) ? ' active' : '') . (isset($value['class']) ? ' ' . $value['class'] : '') . '" ' . (!empty($value['url']) ? 'href="' . $value['url'] . '"' : '') . ' ' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>
-						'.(!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '').''.(!empty($txt[$value['text']]) ? $txt[$value['text']] : $value['text']).'
+				<li'.(!empty($value['li_custom']) ? ' '.$value['li_custom'] : '').'>';
+
+			if (isset($value['content']))
+				$button .= $value['content'];
+			else {
+				$button .= '
+					<a class="button' . (!empty($value['sub_buttons']) ? ' button--composite' : '') . ' button_strip_' . $key . (!empty($value['active']) ? ' active' : '') . (isset($value['class']) ? ' ' . $value['class'] : '') . '" ' . (!empty($value['url']) ? 'href="' . $value['url'] . '"' : '') . ' ' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>
+						' . (!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '') . '' . (!empty($txt[$value['text']]) ? $txt[$value['text']] : $value['text']) . '
 					</a>';
 
-			if (!empty($value['sub_buttons']))
-			{
-				$button .= '<a class="button">'.icon('fas fa-chevron-down').'</a>
-					<ul class="top_menu ' . $key . '_dropdown">';
+				if (!empty($value['sub_buttons'])) {
+					$button .= '<a class="button">' . icon('fas fa-chevron-down') . '</a>
+						<ul class="top_menu ' . $key . '_dropdown">';
 
-				foreach ($value['sub_buttons'] as $element)
-				{
-					if ($element === 'separator')
-					{
-						$button .= '<li class="separator"></li>';
-						continue;
+					foreach ($value['sub_buttons'] as $element) {
+						if ($element === 'separator') {
+							$button .= '<li class="separator"></li>';
+							continue;
+						}
+
+						if (isset($element['test']) && empty($context[$element['test']]))
+							continue;
+
+						$button .= '
+							<li>
+								<a href="' . $element['url'] . '"' . (!empty($element['active']) ? ' class="active"' : '') . '>
+									' . (!empty($element['icon']) ? icon($element['icon']) : '') . '
+									<span class="item-label">
+										<strong>' . $txt[$element['text']] . '</strong>';
+
+						if (isset($txt[$element['text'] . '_desc']))
+							$button .= '<span class="item-desc">' . $txt[$element['text'] . '_desc'] . '</span>';
+
+						$button .= '
+									</span>
+								</a>
+							</li>';
 					}
 
-					if (isset($element['test']) && empty($context[$element['test']]))
-						continue;
-
 					$button .= '
-						<li>
-							<a href="' . $element['url'] . '"'.(!empty($element['active']) ? ' class="active"' : '').'>
-								'.(!empty($element['icon']) ? icon($element['icon']) : '').'
-								<span class="item-label">
-									<strong>' . $txt[$element['text']] . '</strong>';
-
-					if (isset($txt[$element['text'] . '_desc']))
-						$button .= '<span class="item-desc">' . $txt[$element['text'] . '_desc'] . '</span>';
-
-					$button .= '
-								</span>
-							</a>
-						</li>';
+						</ul><!-- .top_menu -->';
 				}
-
-				$button .= '
-					</ul><!-- .top_menu -->';
 			}
 
 			$button .= '

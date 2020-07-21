@@ -21,6 +21,14 @@
   color: unset;
 }
 
+.centericon {
+  vertical-align: middle;
+}
+
+.help > .main_icons {
+  font-size: 18px;
+}
+
 /* Top row */
 .main_icons.help::before {
   content: fa-content($fa-var-question-circle);

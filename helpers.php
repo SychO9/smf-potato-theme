@@ -56,6 +56,16 @@ function transform_buttonlist($button_strip, $strip_options = array())
 		unset($button_strip[$key]);
 	}
 
+	if (isset($strip_options['identifier']) && $strip_options['identifier'] === 'bottom_topic_normal_buttons')
+	{
+		$button_strip = array_reverse($button_strip);
+		$button_strip[] = array(
+			'li_custom' => 'id="moderationbuttons_strip"',
+			'content' => '',
+		);
+		$button_strip = array_reverse($button_strip);
+	}
+
 	return $button_strip;
 }
 

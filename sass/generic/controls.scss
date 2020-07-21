@@ -1,27 +1,33 @@
 @mixin button-skeleton {
   height: 34px;
-  line-height: 34px;
   padding: 0 10px;
-  border-width: 0;
+  border: 2px solid transparent;
   border-radius: $border-radius;
   font-family: $font-family;
   font-size: $font-size;
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
 }
 
 @mixin button {
   @include button-skeleton;
-  background: $contrast-bg;
-  color: $contrast-fg;
-  cursor: pointer;
+  @include background-color-transition($contrast-bg, $contrast-fg);
 
-  &:hover {
-    background: darken($contrast-bg, 5);
-    color: darken($contrast-fg, 5);
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
   }
   &.active {
     @include background-color-transition($primary-color, #fff);
+
+    &:focus {
+      border-color: #000;
+    }
+  }
+  &[disabled] {
+    opacity: 0.4;
+    cursor: unset;
   }
   &--composite {
     border-radius: $border-radius 0 0 $border-radius;

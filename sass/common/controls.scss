@@ -1,3 +1,7 @@
+select, input[type="submit"], input[type="checkbox"], .button, label[for] {
+  cursor: pointer;
+}
+
 .button {
   @include button;
 }
@@ -6,6 +10,159 @@ input, select, textarea {
   @include input;
 }
 
-select {
-  cursor: pointer;
+input[type="submit"] {
+  @extend .button, .active;
+}
+
+input[type="checkbox"] {
+  @extend %fa-icon;
+  @extend .fas;
+  font-size: 20px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $contrast-bg;
+  vertical-align: middle;
+  margin: 0 7px;
+
+  &:hover {
+    color: darken($contrast-bg, 5);
+  }
+  &::after {
+    content: fa-content($fa-var-circle);
+    background: #fff;
+    border-radius: 100%;
+    margin-top: -2px;
+  }
+  &:checked::after {
+    content: fa-content($fa-var-check-circle);
+    color: $primary-color;
+  }
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+
+  dt {
+    padding-top: 8px;
+  }
+  dd, dt {
+    @include vertical-spacing(1px);
+    width: 50%;
+  }
+  ol, ul {
+    @include listless;
+  }
+}
+
+fieldset {
+  @include vertical-spacing;
+  padding: $block-padding;
+  border: 2px solid darken(grayscale($block-bg), 8);
+
+  > legend {
+    padding: 0 8px;
+  }
+  > * {
+    @include vertical-spacing;
+  }
+}
+
+.boardslist {
+  ul {
+    @include listless;
+  }
+  label {
+    @include organized-content;
+  }
+  > ul > li {
+    @include vertical-spacing;
+
+    > a {
+      padding: 0 0 7px;
+      display: block;
+    }
+  }
+  > ul > li > ul {
+    border-radius: $border-radius;
+    padding: $block-padding;
+    background: $bg-color;
+  }
+}
+
+#post_additional_options > * {
+  @include vertical-spacing;
+}
+
+ul.post_options {
+  @include listless;
+  column-count: 2;
+}
+
+
+/* Attachments in post form */
+
+.dz-image-preview {
+  @include organized-content;
+
+  .attach-preview {
+    img {
+      max-width: 120px;
+    }
+  }
+  .attachment_info {
+    margin-left: 14px;
+    flex-grow: 1;
+
+    > * {
+      @include vertical-spacing;
+    }
+    .progress_bar, .attached_BBC {
+      display: none;
+    }
+  }
+}
+
+.attached_BBC {
+  > * {
+    @include vertical-spacing(2px);
+  }
+  &_width_height {
+    @include organized-content;
+
+    > * {
+      @include horizontal-spacing(2px);
+    }
+  }
+}
+
+.attach-ui {
+  display: flex;
+  justify-content: flex-end;
+
+  > * {
+    @include horizontal-spacing(1px);
+  }
+}
+
+#attach_upload_all, #attach_cancel_all {
+  display: inline-flex !important;
+}
+
+#postAttachment2 {
+  display: block;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.files > * {
+  @include vertical-spacing;
+}
+
+input[name="attachBBC"] {
+  width: 100%;
 }

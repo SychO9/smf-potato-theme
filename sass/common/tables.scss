@@ -1,15 +1,19 @@
 table {
+  @include block-skeleton;
   border-spacing: 0;
   width: 100%;
-  border-radius: $border-radius;
   overflow: hidden;
 }
 
-thead {
+thead, tr.title_bar {
   background: $primary-color;
   color: #fff;
 
   @include link(#fff);
+
+  th, td {
+    padding: 8px;
+  }
 }
 
 tr {
@@ -23,6 +27,9 @@ tr {
       td {
         border-bottom-width: 0;
       }
+    }
+    &:hover {
+      background: darken(grayscale($block-bg), 1);
     }
   }
 }

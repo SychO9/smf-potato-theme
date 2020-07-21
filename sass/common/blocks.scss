@@ -1,5 +1,6 @@
 @mixin title-block($name) {
   .#{$name}_bar {
+    @include clear;
     padding: 10px 0;
     margin-top: $space-between-elements;
 
@@ -31,7 +32,7 @@
 @include title-block('title');
 @include title-block('sub');
 
-.infobox {
+.databox {
   @include block-skeleton;
   display: flex;
 
@@ -89,8 +90,8 @@
 @mixin noticebox($bg-color, $fg-color, $icon) {
   @include block-skeleton;
   padding: $block-padding;
-  background: $notice-bg;
-  color: $notice-color;
+  background: $bg-color;
+  color: $fg-color;
 
   &::before {
     @extend %fa-icon;
@@ -106,17 +107,24 @@
   @include noticebox($notice-bg, $notice-color, $fa-var-exclamation-circle);
 }
 
-.successbox {
-  @include noticebox($success-bg, $success-color, $fa-var-check);
+.infobox {
+  @include noticebox($success-bg, $success-color, $fa-var-check-circle);
 }
 
 .errorbox {
-  @include noticebox($error-bg, $error-color, $fa-var-times);
+  @include noticebox($error-bg, $error-color, $fa-var-times-circle);
 }
 
 .windowbg, .roundframe, .information {
   @include block-skeleton;
   background: $block-bg;
+  color: $block-color;
+  padding: $block-padding;
+}
+
+.descbox {
+  border-radius: $border-radius;
+  background: $bg-color;
   color: $block-color;
   padding: $block-padding;
 }

@@ -43,7 +43,16 @@
   }
 }
 
+@mixin clear {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 @mixin block-skeleton {
+  @include clear;
   border-radius: $border-radius;
   box-shadow: 0 2px 2px rgb(0, 0, 0, 0.13);
 }
@@ -89,6 +98,10 @@
   &:hover {
     background: darken($bg, 5);
     color: darken($fg, 5);
+  }
+  &:focus {
+    background: lighten($bg, 5);
+    color: lighten($fg, 5);
   }
 }
 

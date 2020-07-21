@@ -169,10 +169,10 @@ function template_main()
 		// No topics... just say, "sorry bub".
 		else
 			echo '
-				<div class="infobox infobox--neutral infobox--full">
-					<div class="infobox-icon">', icon('fas fa-exclamation-circle'), '</div>
-					<div class="infobox-content">
-						<div class="infobox-text">', $txt['topic_alert_none'], '</div>
+				<div class="databox databox--neutral databox--full">
+					<div class="databox-icon">', icon('fas fa-exclamation-circle'), '</div>
+					<div class="databox-content">
+						<div class="databox-text">', $txt['topic_alert_none'], '</div>
 					</div>
 				</div>';
 
