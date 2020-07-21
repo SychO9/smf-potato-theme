@@ -2,6 +2,7 @@
   @include block-skeleton;
   background: $block-bg;
 }
+
 .postblock {
   border-bottom: 1px solid darken(grayscale($bg-color), 8);
 

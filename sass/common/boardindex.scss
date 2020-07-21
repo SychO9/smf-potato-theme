@@ -157,6 +157,9 @@
         border-radius: $avatar-border-radius;
       }
     }
+    &-content {
+      flex-grow: 1;
+    }
     &-details {
       @include organized-content;
       font-size: $font-size - 1;
@@ -166,6 +169,20 @@
       }
       > * {
         @include horizontal-spacing(3px);
+      }
+    }
+    &-body {
+      margin-top: 6px;
+    }
+    &--extended {
+      align-items: flex-start;
+    }
+    .quickbuttons > li > a {
+      opacity: 0;
+    }
+    &:hover {
+      .quickbuttons > li > a {
+        opacity: 1;
       }
     }
     &:last-child {

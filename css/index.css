@@ -8228,6 +8228,9 @@ input[name=attachBBC] {
   height: 40px;
   border-radius: 100%;
 }
+.topic-item-content {
+  flex-grow: 1;
+}
 .topic-item-details {
   display: flex;
   align-items: center;
@@ -8244,6 +8247,18 @@ input[name=attachBBC] {
 }
 .topic-item-details > *:last-child {
   margin-inline-end: 0;
+}
+.topic-item-body {
+  margin-top: 6px;
+}
+.topic-item--extended {
+  align-items: flex-start;
+}
+.topic-item .quickbuttons > li > a {
+  opacity: 0;
+}
+.topic-item:hover .quickbuttons > li > a {
+  opacity: 1;
 }
 .topic-item:last-child {
   border-bottom: none;

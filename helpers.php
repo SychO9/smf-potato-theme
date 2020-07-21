@@ -4,6 +4,7 @@ add_integration_function('integrate_buffer', 'buffer_transformations', false);
 add_integration_function('integrate_messageindex_buttons', 'set_active_notify_item', false);
 add_integration_function('integrate_display_buttons', 'set_active_notify_item', false);
 add_integration_function('integrate_prepare_display_context', 'add_like_post_to_quickbuttons', false);
+add_integration_function('integrate_recent_RecentPosts', 'load_recent_posts_avatars', false);
 
 /**
  * @param string $name
@@ -170,4 +171,27 @@ function add_like_post_to_quickbuttons(&$output, &$message, $counter)
 
 	// Remove the error class from the report to moderator button
 	$output['quickbuttons']['more']['report']['class'] = '';
+}
+
+/**
+ *
+ */
+function load_recent_posts_avatars()
+{
+	global $context, $memberContext, $modSettings;
+
+	$member_ids = array_map(function ($post) {
+		return $post['poster']['id'];
+	}, $context['posts']);
+
+	loadMemberData($member_ids);
+
+	foreach ($context['posts'] as $key => $post)
+	{
+		loadMemberContext($post['poster']['id']);
+
+		$avatar = !empty($memberContext[$post['poster']['id']]) ? $memberContext[$post['poster']['id']]['avatar'] : array('image' => '<img class="avatar" src="'.$modSettings['avatar_url'] . '/default.png'.'" alt="avatar">');
+
+		$context['posts'][$key]['poster']['avatar'] = $avatar;
+	}
 }
