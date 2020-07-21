@@ -66,6 +66,15 @@
     background: $neutral-bg;
     color: $neutral-color;
   }
+  &--error {
+    background: $error-bg;
+    color: $error-color;
+  }
+  &--notice {
+    background: $notice-bg;
+    color: $notice-color;
+  }
+
   &--statistic {
     align-items: center;
     background: transparent;
@@ -89,7 +98,8 @@
 
 @mixin noticebox($bg-color, $fg-color, $icon) {
   @include block-skeleton;
-  padding: $block-padding;
+  @include organized-content;
+  padding: 14px 16px;
   background: $bg-color;
   color: $fg-color;
 

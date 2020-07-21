@@ -237,11 +237,10 @@ function template_main()
 									<span id="msg_', $topic['first_post']['id'], '">', $topic['first_post']['link'], (!$topic['approved'] ? '&nbsp;<em>(' . $txt['awaiting_approval'] . ')</em>' : ''), '</span>
 								</span>
 							</div>
-							<p class="floatleft">
+							<p>
 								', $txt['started_by'], ' ', $topic['first_post']['member']['link'], '
 							</p>
 							', !empty($topic['pages']) ? '<span id="pages' . $topic['first_post']['id'] . '" class="topic_pages">' . $topic['pages'] . '</span>' : '', '
-							<br class="clear">
 						</div><!-- #topic_[first_post][id] -->
 					</div><!-- .info -->
 					<div class="board_stats centertext">

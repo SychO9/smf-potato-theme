@@ -203,7 +203,7 @@
 }
 
 .unread_notify {
-  @include organized-content;
+  @include organized-content('nowrap');
 
   &_image {
     margin-right: $space-between-elements;

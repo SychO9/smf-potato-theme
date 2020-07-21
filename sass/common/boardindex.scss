@@ -189,6 +189,27 @@
       border-bottom: none;
     }
   }
+
+  &-list-area {
+    .lastpost {
+      width: 30%;
+    }
+    .moderation {
+      width: 2%;
+    }
+  }
+
+  &_pages {
+    @include organized-content;
+
+    > .button {
+      @include horizontal-spacing(1px);
+      margin: 0 1px;
+      height: 20px;
+      padding: 0 5px;
+      font-size: $font-size - 1;
+    }
+  }
 }
 
 .info-center {

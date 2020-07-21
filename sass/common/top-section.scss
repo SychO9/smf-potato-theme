@@ -3,6 +3,10 @@
   margin-bottom: 4rem;
 
   @include link($top-section-color);
+
+  a.active {
+    text-shadow: 0 0 3px;
+  }
 }
 
 .top-section-user-bar {

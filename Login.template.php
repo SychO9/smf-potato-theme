@@ -293,13 +293,15 @@ function template_maintenance()
 	echo '
 	<form action="', $context['login_url'], '" method="post" accept-charset="', $context['character_set'], '">
 		<div class="login" id="maintenance_mode">
-			<div class="cat_bar">
-				<h3 class="catbg">', $context['title'], '</h3>
+
+			<div class="databox databox--notice">
+				<div class="databox-icon">', icon('fas fa-exclamation-triangle'), '</div>
+				<div class="databox-content">
+					<div class="databox-title">', $context['title'], '</div>
+					<div class="databox-text">', $context['description'], '</div>
+				</div>
 			</div>
-			<div class="information">
-				<img class="floatleft" src="', $settings['images_url'], '/construction.png" width="40" height="40" alt="', $txt['in_maintain_mode'], '">
-				', $context['description'], '<br class="clear">
-			</div>
+
 			<div class="title_bar">
 				<h4 class="titlebg">', $txt['admin_login'], '</h4>
 			</div>

@@ -50,7 +50,7 @@ body {
     @include organized-content;
 
     > * {
-      @include horizontal-spacing;
+      @include horizontal-spacing(2px);
     }
   }
 }

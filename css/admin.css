@@ -1,49 +1,9 @@
-/* Start with most common */
-.action_admin .generic_list {
-	overflow: auto;
-}
-#admin_content .windowbg {
-	margin: 0 0 10px 0;
-	box-shadow: none;
-}
 #admin_content .button:not(.floatnone) {
 	float: right;
-}
-.action_admin .table_grid td {
-	border: 1px solid #ddd;
-	border-top: 0;
-}
-.action_admin .generic_list .flow_auto {
-	padding: 4px 2px;
-}
-.windowbg.nopadding {
-	margin: 0 !important;
-	padding: 0;
 }
 .windowbg ol {
 	margin-top: 0;
 	margin-bottom: 0;
-}
-a.help span {
-	margin-right: 2px;
-}
-.table_caption, tr.table_caption td {
-	color: #000;
-	font-size: 10px;
-	font-weight: bold;
-}
-.additional_row div.floatleft {
-	padding: 0 10px;
-}
-fieldset {
-	padding: 6px;
-}
-fieldset dl {
-	margin: 0;
-}
-legend {
-	font-weight: bold;
-	color: #000;
 }
 
 /* Styles for the admin home screen.

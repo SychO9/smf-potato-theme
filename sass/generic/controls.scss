@@ -40,6 +40,13 @@
       @include background-color-transition($primary-color, #fff);
     }
   }
+  .icon, .main_icons {
+    margin-inline-end: 0;
+
+    + .item-label {
+      margin-inline-start: 5px;
+    }
+  }
 }
 
 @mixin input {

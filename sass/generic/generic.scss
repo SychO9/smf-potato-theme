@@ -4,8 +4,9 @@
   margin: $margin;
 }
 
-@mixin organized-content {
+@mixin organized-content($wrap: 'wrap') {
   display: flex;
+  flex-wrap: $wrap;
   align-items: center;
 }
 

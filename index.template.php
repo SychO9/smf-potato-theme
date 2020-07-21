@@ -59,18 +59,18 @@ function template_init()
 	// This defines the formatting for the page indexes used throughout the forum.
 	$settings['page_index'] = array(
 		'extra_before' => '',
-		'previous_page' => '<span class="button main_icons previous_page"></span>',
-		'current_page' => '<span class="button current_page">%1$d</span> ',
+		'previous_page' => '<span class="main_icons previous_page"></span>',
+		'current_page' => '<span class="button active current_page">%1$d</span> ',
 		'page' => '<a class="button nav_page" href="{URL}">%2$s</a> ',
-		'expand_pages' => '<span class="button expand_pages" onclick="expandPages(this, {LINK}, {FIRST_PAGE}, {LAST_PAGE}, {PER_PAGE});"> ... </span>',
-		'next_page' => '<span class="button main_icons next_page"></span>',
+		'expand_pages' => '<a class="button expand_pages" onclick="expandPages(this, {LINK}, {FIRST_PAGE}, {LAST_PAGE}, {PER_PAGE});"> ... </a>',
+		'next_page' => '<span class="main_icons next_page"></span>',
 		'extra_after' => '',
 	);
 
 	// Allow css/js files to be disabled for this specific theme.
 	// Add the identifier as an array key. IE array('smf_script'); Some external files might not add identifiers, on those cases SMF uses its filename as reference.
 	if (!isset($settings['disable_files']))
-		$settings['disable_files'] = array('smf_jquery_slider', 'smf_admin', 'admin');
+		$settings['disable_files'] = array('smf_jquery_slider');
 
 	// Load our helper functions
 	require_once __DIR__.'/helpers.php';
@@ -264,15 +264,15 @@ function template_body_above()
 			</ul>';
 	}
 	// Otherwise they're a guest. Ask them to either register or login.
-	elseif (empty($maintenance))
+	else
 	{
 		echo '
 			<ul class="user-menu" id="top_info">
 				<li>
-					<a href="', $scripturl, '?action=login" onclick="return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');">', icon('fas fa-sign-in-alt'), ' ', $txt['login'], '</a>
+					<a href="', $scripturl, '?action=login" onclick="return ', empty($maintenance) ? 'reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ')' : 'true', ';">', icon('fas fa-sign-in-alt'), ' ', $txt['login'], '</a>
 				</li>';
 
-		if ($context['can_register'])
+		if ($context['can_register'] && empty($maintenance))
 			echo '
 				<li>
 					<a href="', $scripturl, '?action=signup">', icon('fas fa-user-plus'), ' ', $txt['register'], '</a>
@@ -281,12 +281,6 @@ function template_body_above()
 		echo '
 			</ul>';
 	}
-	else
-		// In maintenance mode, only login is allowed and don't show OverlayDiv
-		echo '
-			<div class="welcome">
-				', sprintf($txt['welcome_guest'], $txt['guest_title'], '', $scripturl . '?action=login', 'return true;'), '
-			</div>';
 
 	/*if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
 	{
@@ -577,7 +571,7 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 			else {
 				$button .= '
 					<a class="button' . (!empty($value['sub_buttons']) ? ' button--composite' : '') . ' button_strip_' . $key . (!empty($value['active']) ? ' active' : '') . (isset($value['class']) ? ' ' . $value['class'] : '') . '" ' . (!empty($value['url']) ? 'href="' . $value['url'] . '"' : '') . ' ' . (isset($value['custom']) ? ' ' . $value['custom'] : '') . '>
-						' . (!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '') . '' . (!empty($txt[$value['text']]) ? $txt[$value['text']] : $value['text']) . '
+						' . (!empty($value['icon']) ? "<span class='main_icons {$value['icon']}'></span>" : '') . '<span class="item-label">' . (!empty($txt[$value['text']]) ? $txt[$value['text']] : $value['text']) . '</span>
 					</a>';
 
 				if (!empty($value['sub_buttons'])) {
@@ -736,15 +730,12 @@ function template_maint_warning_above()
 	global $txt, $context, $scripturl;
 
 	echo '
-	<div class="errorbox" id="errors">
-		<dl>
-			<dt>
-				<strong id="error_serious">', $txt['forum_in_maintenance'], '</strong>
-			</dt>
-			<dd class="error" id="error_list">
-				', sprintf($txt['maintenance_page'], $scripturl . '?action=admin;area=serversettings;' . $context['session_var'] . '=' . $context['session_id']), '
-			</dd>
-		</dl>
+	<div class="databox databox--error" id="errors">
+		<div class="databox-icon">', icon('fas fa-exclamation-triangle'), '</div>
+		<div class="databox-content">
+			<div class="databox-title" id="error_serious">', $txt['forum_in_maintenance'], '</div>
+			<div class="databox-text">', sprintf($txt['maintenance_page'], $scripturl . '?action=admin;area=serversettings;' . $context['session_var'] . '=' . $context['session_id']), '</div>
+		</div>
 	</div>';
 }
 

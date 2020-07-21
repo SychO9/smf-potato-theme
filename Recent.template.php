@@ -196,10 +196,11 @@ function template_unread()
 	}
 	else
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg centertext">
-					', $context['showing_all_topics'] ? $txt['topic_alert_none'] : sprintf($txt['unread_topics_visit_none'], $scripturl), '
-				</h3>
+			<div class="databox databox--neutral databox--full">
+				<div class="databox-icon">', icon('fas fa-exclamation-circle'), '</div>
+				<div class="databox-content">
+					<div class="databox-text">', $context['showing_all_topics'] ? $txt['topic_alert_none'] : sprintf($txt['unread_topics_visit_none'], $scripturl), '</div>
+				</div>
 			</div>';
 
 	if ($context['showCheckboxes'])
@@ -341,10 +342,11 @@ function template_replies()
 	}
 	else
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg centertext">
-					', $context['showing_all_topics'] ? $txt['topic_alert_none'] : sprintf($txt['updated_topics_visit_none'], $scripturl), '
-				</h3>
+			<div class="databox databox--neutral databox--full">
+				<div class="databox-icon">', icon('fas fa-exclamation-circle'), '</div>
+				<div class="databox-content">
+					<div class="databox-text">', $context['showing_all_topics'] ? $txt['topic_alert_none'] : sprintf($txt['updated_topics_visit_none'], $scripturl), '</div>
+				</div>
 			</div>';
 
 	if ($context['showCheckboxes'])
