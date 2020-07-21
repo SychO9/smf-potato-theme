@@ -6586,11 +6586,11 @@ input[type=checkbox],
 }
 
 .main_icons.im_on::before {
-  content: "";
+  content: "";
 }
 
 .main_icons.im_off::before {
-  content: "";
+  content: "";
 }
 
 .main_icons.split_desel::before {
@@ -6970,7 +6970,7 @@ input[type=checkbox],
   display: block;
   clear: both;
 }
-.databox .infobox-icon {
+.databox-icon {
   display: flex;
   width: 3.5rem;
   font-size: 18px;
@@ -6978,20 +6978,20 @@ input[type=checkbox],
   border-radius: 4px 0 0 4px;
   background: rgba(0, 0, 0, 0.12);
 }
-.databox .infobox-icon .icon {
+.databox-icon .icon {
   margin: 0;
 }
-.databox .infobox-content {
+.databox-content {
   padding: 10px 12px;
   flex-grow: 1;
   width: calc(100% - 3.5rem);
 }
-.databox .infobox-title {
+.databox-title {
   margin-bottom: 4px;
   font-weight: 600;
   font-size: 15px;
 }
-.databox .infobox-text {
+.databox-text {
   margin: 0;
 }
 .databox--neutral {
@@ -7003,11 +7003,11 @@ input[type=checkbox],
   background: transparent;
   box-shadow: none;
 }
-.databox--statistic .infobox-icon {
+.databox--statistic .databox-icon {
   height: 3.5rem;
   border-radius: 100%;
 }
-.databox--statistic:hover .infobox-icon {
+.databox--statistic:hover .databox-icon {
   background: #b83b5e;
   color: #fff;
 }
@@ -8291,10 +8291,15 @@ input[name=attachBBC] {
 
 .postblock {
   border-bottom: 1px solid #d0d0d0;
-  padding: 16px 12px;
+}
+.postblock:first-child .poster {
+  border-top-left-radius: 4px;
 }
 .postblock:last-child {
   border-bottom: none;
+}
+.postblock:last-child .poster {
+  border-bottom-left-radius: 4px;
 }
 
 .post_wrapper {
@@ -8310,6 +8315,8 @@ input[name=attachBBC] {
 .poster {
   width: 13rem;
   text-align: center;
+  padding: 12px 16px;
+  background: #f0f0f0;
 }
 .poster .avatar {
   border-radius: 100%;
@@ -8334,7 +8341,7 @@ input[name=attachBBC] {
 
 .postarea {
   width: calc(100% - 13rem);
-  padding: 0 8px 0 8px;
+  padding: 12px 16px;
 }
 .postarea .inline_details {
   margin: 0;

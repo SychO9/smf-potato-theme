@@ -36,7 +36,7 @@
   @include block-skeleton;
   display: flex;
 
-  .infobox-icon {
+  &-icon {
     display: flex;
     width: 3.5rem;
     font-size: 18px;
@@ -48,17 +48,17 @@
       margin: 0;
     }
   }
-  .infobox-content {
+  &-content {
     padding: $block-padding;
     flex-grow: 1;
     width: calc(100% - 3.5rem);
   }
-  .infobox-title {
+  &-title {
     margin-bottom: 4px;
     font-weight: 600;
     font-size: $font-size + 1;
   }
-  .infobox-text {
+  &-text {
     margin: 0;
   }
 
@@ -71,12 +71,12 @@
     background: transparent;
     box-shadow: none;
 
-    .infobox-icon {
+    .databox-icon {
       height: 3.5rem;
       border-radius: 100%;
     }
     &:hover {
-      .infobox-icon {
+      .databox-icon {
         background: $primary-color;
         color: #fff;
       }

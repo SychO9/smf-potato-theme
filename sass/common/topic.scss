@@ -4,10 +4,18 @@
 }
 .postblock {
   border-bottom: 1px solid darken(grayscale($bg-color), 8);
-  padding: 16px 12px;
 
+  &:first-child {
+    .poster {
+      border-top-left-radius: $border-radius;
+    }
+  }
   &:last-child {
     border-bottom: none;
+
+    .poster {
+      border-bottom-left-radius: $border-radius;
+    }
   }
 }
 
@@ -27,6 +35,8 @@
 .poster {
   width: $poster-area-width;
   text-align: center;
+  padding: $post-padding;
+  background: darken(grayscale($block-bg), 1);
 
   .avatar {
     border-radius: $avatar-border-radius;
@@ -51,7 +61,7 @@
 
 .postarea {
   width: calc(100% - #{$poster-area-width});
-  padding: 0 8px 0 8px;
+  padding: $post-padding;
 
   .inline_details {
     margin: 0;

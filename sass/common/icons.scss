@@ -114,10 +114,10 @@
   content: fa-content($fa-var-envelope-open-text);
 }
 .main_icons.im_on::before {
-  content: fa-content($fa-var-envelope);
+  content: fa-content($fa-var-comment);
 }
 .main_icons.im_off::before {
-  content: fa-content($fa-var-envelope);
+  content: fa-content($fa-var-comment);
 }
 .main_icons.split_desel::before {
   content: fa-content($fa-var-arrow-circle-left);
