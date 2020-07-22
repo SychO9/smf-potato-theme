@@ -13,15 +13,6 @@
   @include organized-content;
 }
 
-.unread-links {
-  @include listless;
-  @include organized-content;
-
-  > li > a {
-    @include button-skeleton;
-  }
-}
-
 .upper-header {
   @include organized-content;
   justify-content: space-between;

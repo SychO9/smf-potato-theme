@@ -208,24 +208,18 @@ function template_body_above()
 				</h1>
 				<div class="top-section-user-bar">';
 
-	// Unread links
-	if ($context['user']['is_logged'])
-		echo '
-					<ul class="unread-links">
-						<li>
-							<a', $context['current_action'] === 'unread' ? ' class="active"' : '', ' href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">', $txt['view_unread_category'], '</a>
-						</li>
-						<li>
-							<a', $context['current_action'] === 'unreadreplies' ? ' class="active"' : '', ' href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">', $txt['unread_replies'], '</a>
-						</li>
-					</ul>';
-
 	// If the user is logged in, display some things that might be useful.
 	if ($context['user']['is_logged'])
 	{
 		// Firstly, the user's menu
 		echo '
-			<ul class="user-menu" id="top_info">
+			<ul class="user-menu menu menu--flat" id="top_info">
+				<li class="unread-link">
+					<a', $context['current_action'] === 'unread' ? ' class="active"' : '', ' href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">', $txt['view_unread_category'], '</a>
+				</li>
+				<li class="unread-link">
+					<a', $context['current_action'] === 'unreadreplies' ? ' class="active"' : '', ' href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">', $txt['unread_replies'], '</a>
+				</li>
 				<li>
 					<a href="', $scripturl, '?action=profile"', !empty($context['self_profile']) ? ' class="active"' : '', ' id="profile_menu_top" onclick="return false;">';
 
@@ -484,7 +478,7 @@ function template_menu()
 	global $context;
 
 	echo '
-					<ul class="dropmenu dropmenu--flat menu_nav">';
+					<ul class="dropmenu menu--flat menu_nav">';
 
 	// Note: Menu markup has been cleaned up to remove unnecessary spans and classes.
 	foreach ($context['menu_buttons'] as $act => $button)

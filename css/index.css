@@ -7344,26 +7344,6 @@ a:hover {
   align-items: center;
 }
 
-.unread-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.unread-links > li > a {
-  height: 34px;
-  padding: 0 10px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
-}
-
 .upper-header {
   display: flex;
   flex-wrap: wrap;
@@ -7470,7 +7450,7 @@ a:hover {
   left: unset;
 }
 
-.menu, .buttonlist, .quickbuttons, .user-menu, .dropmenu {
+.menu, .quickbuttons, .dropmenu {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -7478,22 +7458,14 @@ a:hover {
   padding: 0;
   margin: 0;
 }
-.menu .item-icon .icon, .buttonlist .item-icon .icon, .quickbuttons .item-icon .icon, .user-menu .item-icon .icon, .dropmenu .item-icon .icon {
+.menu .item-icon .icon, .quickbuttons .item-icon .icon, .dropmenu .item-icon .icon {
   font-size: 18px;
   margin-inline-end: 0;
 }
-.menu > li > a, .buttonlist > li > a, .quickbuttons > li > a, .user-menu > li > a, .dropmenu > li > a {
-  vertical-align: middle;
-}
-.menu > li > a > .fa-chevron-down, .buttonlist > li > a > .fa-chevron-down, .quickbuttons > li > a > .fa-chevron-down, .user-menu > li > a > .fa-chevron-down, .dropmenu > li > a > .fa-chevron-down {
-  font-size: 11px !important;
-  margin-inline-start: 3px;
-}
-
-.dropmenu li {
+.menu > li, .quickbuttons > li, .dropmenu > li {
   position: relative;
 }
-.dropmenu > li > a {
+.menu > li > a, .quickbuttons > li > a, .dropmenu > li > a {
   height: 34px;
   padding: 0 10px;
   border: 2px solid transparent;
@@ -7503,6 +7475,39 @@ a:hover {
   display: inline-flex;
   align-items: center;
   max-width: 100%;
+  padding: 0 6px;
+  vertical-align: middle;
+}
+.menu > li > a > img, .quickbuttons > li > a > img, .dropmenu > li > a > img {
+  width: 30px;
+  height: 30px;
+  margin-right: 4px;
+}
+.menu > li > a > img.avatar, .quickbuttons > li > a > img.avatar, .dropmenu > li > a > img.avatar {
+  border-radius: 100%;
+}
+.menu > li > a > .fa-chevron-down, .quickbuttons > li > a > .fa-chevron-down, .dropmenu > li > a > .fa-chevron-down {
+  font-size: 11px !important;
+  margin-inline-start: 3px;
+}
+.menu:not(.menu--flat) > li, .quickbuttons:not(.menu--flat) > li, .dropmenu:not(.menu--flat) > li {
+  margin: 0 2px;
+}
+.menu:not(.menu--flat) > li:first-child, .quickbuttons:not(.menu--flat) > li:first-child, .dropmenu:not(.menu--flat) > li:first-child {
+  margin-inline-start: 0;
+}
+.menu:not(.menu--flat) > li:last-child, .quickbuttons:not(.menu--flat) > li:last-child, .dropmenu:not(.menu--flat) > li:last-child {
+  margin-inline-end: 0;
+}
+.menu--flat > li:first-child > a {
+  padding-inline-start: 0;
+}
+.menu--flat > li:last-child > a {
+  padding-inline-end: 0;
+}
+
+.dropmenu li {
+  position: relative;
 }
 .dropmenu > li ul {
   padding: 6px 0;
@@ -7517,21 +7522,6 @@ a:hover {
   border-color: transparent;
   border-right-color: #fffce6;
 }
-.dropmenu:not(.dropmenu--flat) > li {
-  margin: 0 2px;
-}
-.dropmenu:not(.dropmenu--flat) > li:first-child {
-  margin-inline-start: 0;
-}
-.dropmenu:not(.dropmenu--flat) > li:last-child {
-  margin-inline-end: 0;
-}
-.dropmenu--flat > li:first-child > a {
-  padding-inline-start: 0;
-}
-.dropmenu--flat > li:last-child > a {
-  padding-inline-end: 0;
-}
 
 .top_menu {
   display: none;
@@ -7545,35 +7535,6 @@ a:hover {
   margin: 0;
 }
 
-.user-menu > li {
-  margin: 0 1px;
-  position: relative;
-}
-.user-menu > li:first-child {
-  margin-inline-start: 0;
-}
-.user-menu > li:last-child {
-  margin-inline-end: 0;
-}
-.user-menu > li > a {
-  height: 34px;
-  padding: 0 10px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
-}
-.user-menu > li > a > img {
-  width: 30px;
-  height: 30px;
-  margin-right: 4px;
-}
-.user-menu > li > a > img.avatar {
-  border-radius: 100%;
-}
 .user-menu > li > a > .amt {
   position: absolute;
   right: 0;
@@ -7654,19 +7615,7 @@ a:hover {
 .quickbuttons {
   position: relative;
 }
-.quickbuttons > li {
-  position: relative;
-}
 .quickbuttons > li > a {
-  height: 34px;
-  padding: 0 10px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
   border-radius: 100%;
   width: 34px;
   justify-content: center;
@@ -7694,6 +7643,14 @@ a:hover {
   margin: 0 calc(34px / 2);
 }
 
+.buttonlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .buttonlist > li {
   margin: 0 2px;
   position: relative;
@@ -8686,6 +8643,9 @@ input[name=attachBBC] {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+}
+.keyinfo h5 {
+  font-size: 12px;
 }
 
 .post {

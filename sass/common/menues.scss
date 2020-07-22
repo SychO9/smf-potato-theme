@@ -101,12 +101,40 @@
     margin-inline-end: 0;
   }
   > li {
+    position: relative;
+
     > a {
+      @include button-skeleton;
+      padding: 0 6px;
       vertical-align: middle;
 
+      > img {
+        width: 30px;
+        height: 30px;
+        margin-right: 4px;
+
+        &.avatar {
+          border-radius: $avatar-border-radius;
+        }
+      }
       > .fa-chevron-down {
         font-size: 11px !important;
         margin-inline-start: 3px;
+      }
+    }
+  }
+  &:not(&--flat) {
+    > li {
+      @include horizontal-spacing(2px);
+    }
+  }
+  &--flat {
+    > li {
+      &:first-child > a {
+        padding-inline-start: 0;
+      }
+      &:last-child > a {
+        padding-inline-end: 0;
       }
     }
   }
@@ -119,9 +147,6 @@
     position: relative;
   }
   > li {
-    > a {
-      @include button-skeleton;
-    }
     ul {
       @extend .dropdown;
       padding: $dropdown-list-padding;
@@ -136,22 +161,6 @@
           border-color: transparent;
           border-right-color: $block-bg;
         }
-      }
-    }
-  }
-
-  &:not(&--flat) {
-    > li {
-      @include horizontal-spacing(2px);
-    }
-  }
-  &--flat {
-    > li {
-      &:first-child > a {
-        padding-inline-start: 0;
-      }
-      &:last-child > a {
-        padding-inline-end: 0;
       }
     }
   }
@@ -175,24 +184,8 @@
 }
 
 .user-menu {
-  @extend .menu;
-
   > li {
-    @include horizontal-spacing(1px);
-    position: relative;
-
     > a {
-      @include button-skeleton;
-
-      > img {
-        width: 30px;
-        height: 30px;
-        margin-right: 4px;
-
-        &.avatar {
-          border-radius: $avatar-border-radius;
-        }
-      }
       > .amt {
         position: absolute;
         right: 0;
@@ -278,10 +271,7 @@
   position: relative;
 
   > li {
-    position: relative;
-
     > a {
-      @include button-skeleton;
       border-radius: 100%;
       width: 34px;
       justify-content: center;
@@ -318,7 +308,8 @@
 }
 
 .buttonlist {
-  @extend .menu;
+  @include listless;
+  @include organized-content;
 
   > li {
     @include horizontal-spacing(2px);
