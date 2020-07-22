@@ -8731,6 +8731,53 @@ input[name=attachBBC] {
   margin-inline-end: 3px;
 }
 
+.like-item {
+  margin: 6px 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.like-item:first-child {
+  margin-block-start: 0;
+}
+.like-item:last-child {
+  margin-block-end: 0;
+}
+.like-item-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.like-item-avatar {
+  margin-inline-end: 6px;
+}
+.like-item-avatar .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.like-item-content {
+  flex-grow: 1;
+}
+.like-item-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 12px;
+}
+.like-item-details > * {
+  margin: 0 4px;
+}
+.like-item-details > *:first-child {
+  margin-inline-start: 0;
+}
+.like-item-details > *:last-child {
+  margin-inline-end: 0;
+}
+.like-item-details .icon {
+  margin-inline-end: 1px;
+}
+
 /* Post Content & BBCode */
 .bbc_standard_quote {
   margin: 0;

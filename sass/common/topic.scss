@@ -132,6 +132,39 @@
   }
 }
 
+.like-item {
+  @include vertical-spacing;
+  @include organized-content(nowrap);
+
+  &-container {
+    @include listless;
+  }
+
+  &-avatar {
+    margin-inline-end: 6px;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: $avatar-border-radius;
+    }
+  }
+  &-content {
+    flex-grow: 1;
+  }
+  &-details {
+    @include organized-content;
+    font-size: $font-size - 2;
+
+    > * {
+      @include horizontal-spacing(4px);
+    }
+    .icon {
+      margin-inline-end: 1px;
+    }
+  }
+}
+
 /* Post Content & BBCode */
 
 .bbc_standard_quote {
