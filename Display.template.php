@@ -490,7 +490,7 @@ function template_single_post($message)
 					<a id="msg' . $message['id'] . '"></a>' . ($message['first_new'] ? '<a id="new"></a>' : '') : '', '
 					<div class="post_wrapper">';
 
-	if (!$message['approved'] && $message['member']['id'] != 0 && $message['member']['id'] == $context['user']['id'])
+	if (!$message['approved'] && $message['member']['id'] != 0)
 		echo '
 								<div class="noticebox">
 									', $txt['post_awaiting_approval'], '
@@ -940,17 +940,17 @@ function template_quickreply()
 	// Is the topic locked?
 	if ($context['is_locked'])
 		echo '
-					<p class="alert smalltext">', $txt['quick_reply_warning'], '</p>';
+					<div class="noticebox">', $txt['quick_reply_warning'], '</div>';
 
 	// Show a warning if the topic is old
 	if (!empty($context['oldTopicError']))
 		echo '
-					<p class="alert smalltext">', sprintf($txt['error_old_topic'], $modSettings['oldTopicDays']), '</p>';
+					<div class="noticebox">', sprintf($txt['error_old_topic'], $modSettings['oldTopicDays']), '</div>';
 
 	// Does the post need approval?
 	if (!$context['can_reply_approved'])
 		echo '
-					<p><em>', $txt['wait_for_approval'], '</em></p>';
+					<div class="noticebox"><em>', $txt['wait_for_approval'], '</em></div>';
 
 	echo '
 					<form action="', $scripturl, '?board=', $context['current_board'], ';action=post2" method="post" accept-charset="', $context['character_set'], '" name="postmodify" id="postmodify" onsubmit="submitonce(this);">

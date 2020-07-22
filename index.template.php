@@ -474,7 +474,7 @@ function template_menu()
 	global $context;
 
 	echo '
-					<ul class="dropmenu menu_nav">';
+					<ul class="dropmenu dropmenu--flat menu_nav">';
 
 	// Note: Menu markup has been cleaned up to remove unnecessary spans and classes.
 	foreach ($context['menu_buttons'] as $act => $button)

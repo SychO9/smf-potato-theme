@@ -39,14 +39,3 @@
 .forumtitle {
   margin: 0;
 }
-
-.main-nav {
-  .dropmenu > li {
-    &:first-child > a {
-      padding-inline-start: 0;
-    }
-    &:last-child > a {
-      padding-inline-end: 0;
-    }
-  }
-}

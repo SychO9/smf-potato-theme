@@ -1,0 +1,18 @@
+#admin_content > .cat_bar {
+  .catbg {
+    display: flex;
+    align-items: flex-end;
+
+    > .floatright {
+      margin-inline-start: auto;
+    }
+  }
+}
+
+.admin_search {
+  @include organized-content;
+
+  > * {
+    @include horizontal-spacing(2px);
+  }
+}

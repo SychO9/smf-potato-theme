@@ -10,34 +10,49 @@ input, select, textarea {
   @include input;
 }
 
-input[type="submit"] {
-  @extend .button, .active;
-}
-
-input[type="checkbox"] {
-  @extend %fa-icon;
-  @extend .fas;
-  font-size: 20px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: $contrast-bg;
-  vertical-align: middle;
-  margin: 0 7px;
-
-  &:hover {
-    color: darken($contrast-bg, 5);
+input {
+  &[type="submit"] {
+    @extend .button, .active;
   }
-  &::after {
-    content: fa-content($fa-var-circle);
-    background: #fff;
-    border-radius: 100%;
-    margin-top: -2px;
+  &[type="checkbox"], &[type="radio"] {
+    @extend %fa-icon;
+    @extend .fas;
+    font-size: 20px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $contrast-bg;
+    vertical-align: middle;
+    margin: 0 7px;
+
+    &:hover {
+      color: darken($contrast-bg, 5);
+    }
+    &::after {
+      background: #fff;
+      border-radius: 100%;
+      margin-top: -2px;
+    }
+    &:checked::after {
+      color: $primary-color;
+    }
   }
-  &:checked::after {
-    content: fa-content($fa-var-check-circle);
-    color: $primary-color;
+  &[type="checkbox"] {
+    &::after {
+      content: fa-content($fa-var-circle);
+    }
+    &:checked::after {
+      content: fa-content($fa-var-check-circle);
+    }
+  }
+  &[type="radio"] {
+    &::after {
+      content: fa-content($fa-var-circle);
+    }
+    &:checked::after {
+      content: fa-content($fa-var-dot-circle);
+    }
   }
 }
 
@@ -52,6 +67,10 @@ dl {
   dd, dt {
     @include vertical-spacing(1px);
     width: 50%;
+
+    > * {
+      @include vertical-spacing(1px);
+    }
   }
   ol, ul {
     @include listless;
@@ -69,6 +88,10 @@ fieldset {
   > * {
     @include vertical-spacing;
   }
+}
+
+.qa_fieldset {
+  width: 100%;
 }
 
 .boardslist {
@@ -93,6 +116,15 @@ fieldset {
   }
 }
 
+#quickreply_options > .roundframe > *, #postmodify > * {
+    @include vertical-spacing;
+}
+
+#post_confirm_buttons {
+  display: block;
+  text-align: end;
+}
+
 #post_additional_options > * {
   @include vertical-spacing;
 }
@@ -111,6 +143,10 @@ ul.post_options {
 .additional_row {
   display: inline-flex;
   vertical-align: middle;
+
+  > * {
+    @include horizontal-spacing(2px);
+  }
 }
 
 /* Attachments in post form */

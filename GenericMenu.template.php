@@ -80,7 +80,7 @@ function template_generic_menu(&$menu_context)
 	foreach ($menu_context['sections'] as $section)
 	{
 		echo '
-						<li ', !empty($section['areas']) ? 'class="subsections"' : '', '><a class="', !empty($section['selected']) ? 'active ' : '', '" href="', $section['url'], $menu_context['extra_parameters'], '">', $section['title'], !empty($section['amt']) ? ' <span class="amt">' . $section['amt'] . '</span>' : '', '</a>
+						<li ', !empty($section['areas']) ? 'class="subsections"' : '', '><a class="button ', !empty($section['selected']) ? 'active ' : '', '" href="', $section['url'], $menu_context['extra_parameters'], '">', $section['title'], !empty($section['amt']) ? ' <span class="amt">' . $section['amt'] . '</span>' : '', '</a>
 							<ul>';
 
 		// For every area of this section show a link to that area (bold if it's currently selected.)
@@ -154,10 +154,6 @@ function template_generic_menu_tabs(&$menu_context)
 						<form action="' . $scripturl . '?action=admin;area=search" method="post" accept-charset="' . $context['character_set'] . '">' : ''), '
 							<h3 class="catbg">';
 
-		// The function is in Admin.template.php, but since this template is used elsewhere too better check if the function is available
-		if (function_exists('template_admin_quick_search'))
-			template_admin_quick_search();
-
 		// Exactly how many tabs do we have?
 		if (!empty($context['tabs']))
 		{
@@ -228,6 +224,10 @@ function template_generic_menu_tabs(&$menu_context)
 			echo '
 								', $tab_context['title'];
 
+		// The function is in Admin.template.php, but since this template is used elsewhere too better check if the function is available
+		if (function_exists('template_admin_quick_search'))
+			template_admin_quick_search();
+
 		echo '
 							</h3>', (function_exists('template_admin_quick_search') ? '
 						</form>' : ''), '
@@ -257,12 +257,12 @@ function template_generic_menu_tabs(&$menu_context)
 			if (!empty($tab['is_selected']))
 				echo '
 							<li>
-								<a class="active" href="', isset($tab['url']) ? $tab['url'] : $menu_context['base_url'] . ';area=' . $menu_context['current_area'] . ';sa=' . $sa, $menu_context['extra_parameters'], isset($tab['add_params']) ? $tab['add_params'] : '', '">', $tab['label'], '</a>
+								<a class="button active" href="', isset($tab['url']) ? $tab['url'] : $menu_context['base_url'] . ';area=' . $menu_context['current_area'] . ';sa=' . $sa, $menu_context['extra_parameters'], isset($tab['add_params']) ? $tab['add_params'] : '', '">', $tab['label'], '</a>
 							</li>';
 			else
 				echo '
 							<li>
-								<a href="', isset($tab['url']) ? $tab['url'] : $menu_context['base_url'] . ';area=' . $menu_context['current_area'] . ';sa=' . $sa, $menu_context['extra_parameters'], isset($tab['add_params']) ? $tab['add_params'] : '', '">', $tab['label'], '</a>
+								<a class="button" href="', isset($tab['url']) ? $tab['url'] : $menu_context['base_url'] . ';area=' . $menu_context['current_area'] . ';sa=' . $sa, $menu_context['extra_parameters'], isset($tab['add_params']) ? $tab['add_params'] : '', '">', $tab['label'], '</a>
 							</li>';
 		}
 

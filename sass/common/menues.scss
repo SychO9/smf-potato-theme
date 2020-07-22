@@ -109,12 +109,10 @@
   li {
     position: relative;
   }
-
   > li {
     > a {
       @include button-skeleton;
     }
-
     ul {
       @extend .dropdown;
       padding: $dropdown-list-padding;
@@ -129,6 +127,22 @@
           border-color: transparent;
           border-right-color: $block-bg;
         }
+      }
+    }
+  }
+
+  &:not(&--flat) {
+    > li {
+      @include horizontal-spacing(2px);
+    }
+  }
+  &--flat {
+    > li {
+      &:first-child > a {
+        padding-inline-start: 0;
+      }
+      &:last-child > a {
+        padding-inline-end: 0;
       }
     }
   }

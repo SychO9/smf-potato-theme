@@ -1,36 +1,35 @@
-@mixin title-block($name) {
-  .#{$name}_bar {
+@mixin title-block {
+  &_bar {
     @include clear;
     padding: 10px 0;
     margin-top: $space-between-elements;
-
-    .#{$name}bg {
-      margin: 0;
-
-      .toggle {
-        &_down, &_up {
-          @extend %fa-icon;
-          @extend .fas;
-        }
-
-        &_down::before {
-          content: fa-content($fa-var-chevron-down);
-        }
-        &_up::before {
-          content: fa-content($fa-var-chevron-up);
-        }
-      }
-    }
 
     &:first-child {
       margin-top: 0;
     }
   }
+  &bg {
+    margin: 0;
+
+    .toggle {
+      &_down, &_up {
+        @extend %fa-icon;
+        @extend .fas;
+      }
+
+      &_down::before {
+        content: fa-content($fa-var-chevron-down);
+      }
+      &_up::before {
+        content: fa-content($fa-var-chevron-up);
+      }
+    }
+  }
 }
 
-@include title-block('cat');
-@include title-block('title');
-@include title-block('sub');
+.cat, .title, .sub {
+  @include title-block;
+}
 
 .databox {
   @include block-skeleton;
