@@ -1,15 +1,17 @@
 .dropdown {
-  @include block-skeleton;
   @include listless;
-  background: $block-bg;
+  border-radius: $border-radius;
+  background: $dropdown-bg;
+  box-shadow: $dropdown-box-shadow;
   position: absolute;
   z-index: 10;
   min-width: $dropdown-min-width;
   max-width: $dropdown-max-width;
+  top: calc(100% + 10px);
 
   .separator {
     height: 1px;
-    background: darken(#fff, 20);
+    background: darken(grayscale($dropdown-bg), 20);
     margin: $dropdown-list-padding;
   }
   li > a, .unread_notify {
@@ -17,7 +19,7 @@
     padding: 6px 9px;
 
     &.active {
-      background: darken(grayscale($block-bg), 2);
+      background: darken(grayscale($dropdown-bg), 2);
     }
     &:hover, &.active:hover {
       background: $primary-color;
@@ -31,16 +33,23 @@
       margin-top: 2px;
     }
   }
-  &::before {
+  &::before, &::after {
     content: "";
     position: absolute;
     top: -17px;
+  }
+  &::before {
     left: 27px;
-    border: 10px solid $block-bg;
+    border: 10px solid $dropdown-bg;
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;
     z-index: -1;
+  }
+  &::after {
+    height: 20px;
+    width: 100%;
+    left: 0;
   }
   .loading {
     padding: $block-padding;
@@ -288,7 +297,6 @@
       @extend .dropdown;
       @extend .dropdown-right;
       padding: $dropdown-list-padding;
-      top: calc(100% + 10px);
 
       &::before {
         right: 6px;

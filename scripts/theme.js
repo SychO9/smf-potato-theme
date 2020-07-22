@@ -13,10 +13,12 @@ $(function() {
 				e.stopPropagation();
 				e.preventDefault();
 
+				$('.top_menu.visible').removeClass('visible');
+
 				$(item).toggleClass('visible');
 			});
 
-			$(document).click(function() {
+			$(window).click(function() {
 				$(item).removeClass('visible');
 			});
 		});

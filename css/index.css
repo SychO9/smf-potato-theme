@@ -7377,25 +7377,21 @@ a:hover {
 }
 
 .dropdown, .quickbuttons > li > ul, .top_menu, .dropmenu > li ul {
-  border-radius: 4px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
   list-style: none;
   padding: 0;
   margin: 0;
+  border-radius: 4px;
   background: #fffce6;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.31);
   position: absolute;
   z-index: 10;
   min-width: 15rem;
   max-width: 18rem;
-}
-.dropdown::after, .quickbuttons > li > ul::after, .top_menu::after, .dropmenu > li ul::after {
-  content: "";
-  display: block;
-  clear: both;
+  top: calc(100% + 10px);
 }
 .dropdown .separator, .quickbuttons > li > ul .separator, .top_menu .separator, .dropmenu > li ul .separator {
   height: 1px;
-  background: #cccccc;
+  background: silver;
   margin: 6px 0;
 }
 .dropdown li > a, .quickbuttons > li > ul li > a, .top_menu li > a, .dropmenu > li ul li > a, .dropdown .unread_notify, .quickbuttons > li > ul .unread_notify, .top_menu .unread_notify, .dropmenu > li ul .unread_notify {
@@ -7413,16 +7409,23 @@ a:hover {
   align-items: flex-start;
   margin-top: 2px;
 }
-.dropdown::before, .quickbuttons > li > ul::before, .top_menu::before, .dropmenu > li ul::before {
+.dropdown::before, .quickbuttons > li > ul::before, .top_menu::before, .dropmenu > li ul::before, .dropdown::after, .quickbuttons > li > ul::after, .top_menu::after, .dropmenu > li ul::after {
   content: "";
   position: absolute;
   top: -17px;
+}
+.dropdown::before, .quickbuttons > li > ul::before, .top_menu::before, .dropmenu > li ul::before {
   left: 27px;
   border: 10px solid #fffce6;
   border-left-color: transparent;
   border-right-color: transparent;
   border-top-color: transparent;
   z-index: -1;
+}
+.dropdown::after, .quickbuttons > li > ul::after, .top_menu::after, .dropmenu > li ul::after {
+  height: 20px;
+  width: 100%;
+  left: 0;
 }
 .dropdown .loading, .quickbuttons > li > ul .loading, .top_menu .loading, .dropmenu > li ul .loading {
   padding: 10px 12px;
@@ -7676,7 +7679,6 @@ a:hover {
 }
 .quickbuttons > li > ul {
   padding: 6px 0;
-  top: calc(100% + 10px);
 }
 .quickbuttons > li > ul::before {
   right: 6px;
