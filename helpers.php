@@ -121,6 +121,12 @@ function dd($var)
  */
 function buffer_transformations($buffer)
 {
+	global $txt;
+
+	$attribution = str_replace('%icon%', icon('fas fa-heart'), $txt['potato_attribution']);
+
+	$buffer = preg_replace('/<li class="copyright">((?:(?!li).)+)<\/li>/ms', '<li class="copyright">$1<div>'.$attribution.'</div></li>', $buffer);
+
 	return $buffer;
 }
 

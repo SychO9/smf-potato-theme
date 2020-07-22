@@ -48,7 +48,7 @@ function template_init()
 	$settings['theme_version'] = '2.1';
 
 	// Set the following variable to true if this theme requires the optional theme strings file to be loaded.
-	$settings['require_theme_strings'] = false;
+	$settings['require_theme_strings'] = true;
 
 	// Set the following variable to true if this theme wants to display the avatar of the user that posted the last and the first post on the message index and recent pages.
 	$settings['avatars_on_indexes'] = true;
