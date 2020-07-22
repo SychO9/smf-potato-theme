@@ -55,7 +55,7 @@
 @mixin block-skeleton {
   @include clear;
   border-radius: $border-radius;
-  box-shadow: 0 2px 2px rgb(0, 0, 0, 0.13);
+  box-shadow: $block-box-shadow;
 }
 
 @mixin block {
