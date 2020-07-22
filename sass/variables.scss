@@ -33,6 +33,10 @@ $max-page-width: 1200px;
 $top-section-background: linear-gradient(to right, darken($primary-color, 8), lighten($primary-color, 4));
 $top-section-color: #fff;
 
+$lower-wrapper-bg: darken(grayscale($bg-color), 2);
+
+$footer-bg: $top-section-background;
+
 // --------------------------- Generic Elements
 
 $block-bg: #fffce6;

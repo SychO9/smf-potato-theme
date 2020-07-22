@@ -187,7 +187,7 @@ function template_html_above()
 	echo '
 </head>
 <body id="', $context['browser_body_id'], '" class="action_', !empty($context['current_action']) ? $context['current_action'] : (!empty($context['current_board']) ?
-		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '">
+		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '', function_exists('template_body_wrapper_end') ? ' body--waves' : '', '">
 <div id="footerfix" class="footerfix">';
 }
 
@@ -330,7 +330,7 @@ function template_body_above()
 		<!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves">
 			<path d="M0,64L60,96C120,128,240,192,360,181.3C480,171,600,85,720,64C840,43,960,85,1080,96C1200,107,1320,85,1380,74.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
 		</svg>-->
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves"><path d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,240C840,224,960,160,1080,165.3C1200,171,1320,245,1380,282.7L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--upper"><path d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,240C840,224,960,160,1080,165.3C1200,171,1320,245,1380,282.7L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
 	</header><!-- #top_section -->';
 
 	echo '
@@ -359,13 +359,23 @@ function template_body_below()
 	echo '
 				</div><!-- #main_content_section -->
 			</div><!-- #content_section -->
-		</div><!-- .inner_wrap -->
+		</div><!-- .inner_wrap -->';
+
+	if (function_exists('template_body_wrapper_end'))
+		echo '
+		<div class="lower_wrapper">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--intermediate"><path d="M0,96L60,128C120,160,240,224,360,250.7C480,277,600,267,720,272C840,277,960,299,1080,304C1200,309,1320,299,1380,293.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+			<div class="inner_wrap">', template_body_wrapper_end(), '</div>
+		</div><!-- .lower_wrapper -->';
+
+	echo '
 	</div><!-- #wrapper -->
 </div><!-- #footerfix -->';
 
 	// Show the footer with copyright, terms and help links.
 	echo '
 	<div id="footer" class="footer">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--lower"><path d="M0,224L60,229.3C120,235,240,245,360,250.7C480,256,600,256,720,245.3C840,235,960,213,1080,197.3C1200,181,1320,171,1380,165.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
 		<div class="inner_wrap">';
 
 	// There is now a global "Go to top" link at the right.

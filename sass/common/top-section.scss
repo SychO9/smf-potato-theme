@@ -22,14 +22,6 @@
   }
 }
 
-.waves {
-  position: absolute;
-  top: -80px;
-  fill: $bg-color;
-  background: $top-section-background;
-  z-index: -1;
-}
-
 .upper-header {
   @include organized-content;
   justify-content: space-between;

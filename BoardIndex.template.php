@@ -301,6 +301,14 @@ function template_bi_board_children($board)
  */
 function template_boardindex_outer_below()
 {
+	// ...
+}
+
+/**
+ * The end of the #wrapper element of the body
+ */
+function template_body_wrapper_end()
+{
 	template_info_center();
 }
 
