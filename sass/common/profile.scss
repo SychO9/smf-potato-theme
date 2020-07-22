@@ -1,0 +1,74 @@
+.profile {
+  &-container {
+    > * {
+      @include vertical-spacing;
+    }
+  }
+
+  &-hero {
+    display: flex;
+    position: relative;
+    z-index: 1;
+
+    &-container {
+      @include block-skeleton;
+      @include block;
+      background-size: 100%;
+      background-position-y: center;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(135deg, #fffce6 42%, transparent 78%);
+      }
+    }
+
+    &-avatar {
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: $avatar-border-radius;
+      }
+    }
+    &-content {
+      flex-grow: 1;
+      padding-left: 1rem;
+      padding-top: 6px;
+
+      > * {
+        @include vertical-spacing(2px);
+      }
+    }
+    &-username {
+      h4 {
+        margin: 0;
+        font-size: $font-size + 4;
+      }
+      .position {
+
+      }
+    }
+    &-links {
+      ul, ol {
+        @include listless;
+
+        > li > a {
+          @include button;
+        }
+      }
+    }
+    &-navigation {
+      @include organized-content;
+
+      > a {
+        @include horizontal-spacing(1px);
+        @include button;
+      }
+    }
+  }
+}

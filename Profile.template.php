@@ -162,8 +162,12 @@ function template_summary()
 
 	// Display the basic information about the user
 	echo '
-	<div id="profileview" class="roundframe flow_auto">
-		<div id="basicinfo">';
+	<div id="profileview" class="flow_auto profile-container">
+		<div id="basicinfo" class="profile-hero-container"', !empty($GLOBALS['options']['potato_profile_cover']) ? " style='background-image: url({$GLOBALS['options']['potato_profile_cover']})'" : '', '>
+			<div class="profile-hero">
+				<div class="profile-hero-avatar">', $context['member']['avatar']['image'], '</div>
+				<div class="profile-hero-content">
+					<div class="profile-hero-username">';
 
 	// Are there any custom profile fields for above the name?
 	if (!empty($context['print_custom_fields']['above_member']))
@@ -183,14 +187,17 @@ function template_summary()
 	}
 
 	echo '
-			<div class="username clear">
-				<h4>';
+					<div class="username clear">
+						<h4>
+							<span id="userstatus">
+								', $context['can_send_pm'] ? '<a href="' . $context['member']['online']['href'] . '" title="' . $context['member']['online']['text'] . '" rel="nofollow">' : '', '<span class="' . ($context['member']['online']['is_online'] == 1 ? 'on' : 'off') . '" title="' . $context['member']['online']['text'] . '"></span>', $context['can_send_pm'] ? '</a>' : '', '
+							</span>';
 
 	if (!empty($context['print_custom_fields']['before_member']))
 		foreach ($context['print_custom_fields']['before_member'] as $field)
 			if (!empty($field['output_html']))
 				echo '
-					<span>', $field['output_html'], '</span>';
+							<span>', $field['output_html'], '</span>';
 
 	echo '
 					', $context['member']['name'];
@@ -199,13 +206,16 @@ function template_summary()
 		foreach ($context['print_custom_fields']['after_member'] as $field)
 			if (!empty($field['output_html']))
 				echo '
-					<span>', $field['output_html'], '</span>';
+							<span>', $field['output_html'], '</span>';
 
 	echo '
+						</h4>
+					</div>
+				</div>
+				<div class="profile-hero-group">
 					<span class="position">', (!empty($context['member']['group']) ? $context['member']['group'] : $context['member']['post_group']), '</span>
-				</h4>
-			</div>
-			', $context['member']['avatar']['image'];
+				</div>
+				<div class="profile-hero-links">';
 
 	// Are there any custom profile fields for below the avatar?
 	if (!empty($context['print_custom_fields']['below_avatar']))
@@ -248,17 +258,13 @@ function template_summary()
 
 	echo '
 			</ul>
-			<span id="userstatus">
-				', $context['can_send_pm'] ? '<a href="' . $context['member']['online']['href'] . '" title="' . $context['member']['online']['text'] . '" rel="nofollow">' : '', $settings['use_image_buttons'] ? '<span class="' . ($context['member']['online']['is_online'] == 1 ? 'on' : 'off') . '" title="' . $context['member']['online']['text'] . '"></span>' : $context['member']['online']['label'], $context['can_send_pm'] ? '</a>' : '', $settings['use_image_buttons'] ? '<span class="smalltext"> ' . $context['member']['online']['label'] . '</span>' : '';
+				</div>
+				<div class="profile-hero-navigation">';
 
 	// Can they add this member as a buddy?
 	if (!empty($context['can_have_buddy']) && !$context['user']['is_owner'])
 		echo '
-				<br>
-				<a href="', $scripturl, '?action=buddy;u=', $context['id_member'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['buddy_' . ($context['member']['is_buddy'] ? 'remove' : 'add')], '</a>';
-
-	echo '
-			</span>';
+			<a href="', $scripturl, '?action=buddy;u=', $context['id_member'], ';', $context['session_var'], '=', $context['session_id'], '">', $txt['buddy_' . ($context['member']['is_buddy'] ? 'remove' : 'add')], '</a>';
 
 	if (!$context['user']['is_owner'] && $context['can_send_pm'])
 		echo '
@@ -292,9 +298,12 @@ function template_summary()
 	}
 
 	echo '
+					</div><!-- .profile-hero-navigation -->
+				</div><!-- .profile-hero-content -->
+			</div><!-- .profile-hero -->
 		</div><!-- #basicinfo -->
 
-		<div id="detailedinfo">
+		<div id="detailedinfo" class="profile-details windowbg">
 			<dl class="settings">';
 
 	if ($context['user']['is_owner'] || $context['user']['is_admin'])
@@ -1474,6 +1483,7 @@ function template_edit_options()
 
 	// Start the big old loop 'of love.
 	$lastItem = 'hr';
+
 	foreach ($context['profile_fields'] as $key => $field)
 	{
 		// We add a little hack to be sure we never get more than one hr in a row!

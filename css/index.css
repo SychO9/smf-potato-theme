@@ -8843,4 +8843,227 @@ input[name=attachBBC] {
   margin-inline-end: 0;
 }
 
+.profile-container > * {
+  margin: 6px 0;
+}
+.profile-container > *:first-child {
+  margin-block-start: 0;
+}
+.profile-container > *:last-child {
+  margin-block-end: 0;
+}
+.profile-hero {
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+.profile-hero-container {
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.13);
+  padding: 10px 12px;
+  background: #fffce6;
+  color: #1f1f1f;
+  background-size: 100%;
+  background-position-y: center;
+  position: relative;
+}
+.profile-hero-container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.profile-hero-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, #fffce6 42%, transparent 78%);
+}
+.profile-hero-avatar .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+}
+.profile-hero-content {
+  flex-grow: 1;
+  padding-left: 1rem;
+  padding-top: 6px;
+}
+.profile-hero-content > * {
+  margin: 2px 0;
+}
+.profile-hero-content > *:first-child {
+  margin-block-start: 0;
+}
+.profile-hero-content > *:last-child {
+  margin-block-end: 0;
+}
+.profile-hero-username h4 {
+  margin: 0;
+  font-size: 18px;
+}
+.profile-hero-links ul, .profile-hero-links ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.profile-hero-links ul > li > a, .profile-hero-links ol > li > a {
+  height: 34px;
+  padding: 0 10px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  background: #cccccc;
+  color: #1f1f1f;
+}
+.profile-hero-links ul > li > a:hover, .profile-hero-links ol > li > a:hover {
+  background: #bfbfbf;
+  color: #121212;
+}
+.profile-hero-links ul > li > a:focus, .profile-hero-links ol > li > a:focus {
+  background: #d9d9d9;
+  color: #2c2c2c;
+}
+.profile-hero-links ul > li > a:focus, .profile-hero-links ol > li > a:focus {
+  border-color: #b83b5e;
+  outline: none;
+}
+.profile-hero-links ul > li > a.active, .profile-hero-links ol > li > a.active {
+  background: #b83b5e;
+  color: #fff;
+}
+.profile-hero-links ul > li > a.active:hover, .profile-hero-links ol > li > a.active:hover {
+  background: #a53554;
+  color: #f2f2f2;
+}
+.profile-hero-links ul > li > a.active:focus, .profile-hero-links ol > li > a.active:focus {
+  background: #c4486b;
+  color: white;
+}
+.profile-hero-links ul > li > a.active:focus, .profile-hero-links ol > li > a.active:focus {
+  border-color: #000;
+}
+.profile-hero-links ul > li > a[disabled], .profile-hero-links ol > li > a[disabled] {
+  opacity: 0.4;
+  cursor: unset;
+}
+.profile-hero-links ul > li > a--composite, .profile-hero-links ol > li > a--composite {
+  border-radius: 4px 0 0 4px;
+}
+.profile-hero-links ul > li > a--composite + .button, .profile-hero-links ul > li > a--composite + input[type=submit], .profile-hero-links ol > li > a--composite + .button, .profile-hero-links ol > li > a--composite + input[type=submit] {
+  border-radius: 0 4px 4px 0;
+  filter: brightness(0.96);
+}
+.profile-hero-links ul > li > a--composite + .button .fa-chevron-down, .profile-hero-links ul > li > a--composite + input[type=submit] .fa-chevron-down, .profile-hero-links ol > li > a--composite + .button .fa-chevron-down, .profile-hero-links ol > li > a--composite + input[type=submit] .fa-chevron-down {
+  margin: 0;
+}
+.profile-hero-links ul > li > a--composite.active + .button, .profile-hero-links ul > li > a--composite.active + input[type=submit], .profile-hero-links ol > li > a--composite.active + .button, .profile-hero-links ol > li > a--composite.active + input[type=submit] {
+  background: #b83b5e;
+  color: #fff;
+}
+.profile-hero-links ul > li > a--composite.active + .button:hover, .profile-hero-links ul > li > a--composite.active + input[type=submit]:hover, .profile-hero-links ol > li > a--composite.active + .button:hover, .profile-hero-links ol > li > a--composite.active + input[type=submit]:hover {
+  background: #a53554;
+  color: #f2f2f2;
+}
+.profile-hero-links ul > li > a--composite.active + .button:focus, .profile-hero-links ul > li > a--composite.active + input[type=submit]:focus, .profile-hero-links ol > li > a--composite.active + .button:focus, .profile-hero-links ol > li > a--composite.active + input[type=submit]:focus {
+  background: #c4486b;
+  color: white;
+}
+.profile-hero-links ul > li > a .icon, .profile-hero-links ul > li > a .main_icons, .profile-hero-links ol > li > a .icon, .profile-hero-links ol > li > a .main_icons {
+  margin-inline-end: 0;
+}
+.profile-hero-links ul > li > a .icon + .item-label, .profile-hero-links ul > li > a .main_icons + .item-label, .profile-hero-links ol > li > a .icon + .item-label, .profile-hero-links ol > li > a .main_icons + .item-label {
+  margin-inline-start: 5px;
+}
+.profile-hero-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.profile-hero-navigation > a {
+  margin: 0 1px;
+  height: 34px;
+  padding: 0 10px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  background: #cccccc;
+  color: #1f1f1f;
+}
+.profile-hero-navigation > a:first-child {
+  margin-inline-start: 0;
+}
+.profile-hero-navigation > a:last-child {
+  margin-inline-end: 0;
+}
+.profile-hero-navigation > a:hover {
+  background: #bfbfbf;
+  color: #121212;
+}
+.profile-hero-navigation > a:focus {
+  background: #d9d9d9;
+  color: #2c2c2c;
+}
+.profile-hero-navigation > a:focus {
+  border-color: #b83b5e;
+  outline: none;
+}
+.profile-hero-navigation > a.active {
+  background: #b83b5e;
+  color: #fff;
+}
+.profile-hero-navigation > a.active:hover {
+  background: #a53554;
+  color: #f2f2f2;
+}
+.profile-hero-navigation > a.active:focus {
+  background: #c4486b;
+  color: white;
+}
+.profile-hero-navigation > a.active:focus {
+  border-color: #000;
+}
+.profile-hero-navigation > a[disabled] {
+  opacity: 0.4;
+  cursor: unset;
+}
+.profile-hero-navigation > a--composite {
+  border-radius: 4px 0 0 4px;
+}
+.profile-hero-navigation > a--composite + .button, .profile-hero-navigation > a--composite + input[type=submit] {
+  border-radius: 0 4px 4px 0;
+  filter: brightness(0.96);
+}
+.profile-hero-navigation > a--composite + .button .fa-chevron-down, .profile-hero-navigation > a--composite + input[type=submit] .fa-chevron-down {
+  margin: 0;
+}
+.profile-hero-navigation > a--composite.active + .button, .profile-hero-navigation > a--composite.active + input[type=submit] {
+  background: #b83b5e;
+  color: #fff;
+}
+.profile-hero-navigation > a--composite.active + .button:hover, .profile-hero-navigation > a--composite.active + input[type=submit]:hover {
+  background: #a53554;
+  color: #f2f2f2;
+}
+.profile-hero-navigation > a--composite.active + .button:focus, .profile-hero-navigation > a--composite.active + input[type=submit]:focus {
+  background: #c4486b;
+  color: white;
+}
+.profile-hero-navigation > a .icon, .profile-hero-navigation > a .main_icons {
+  margin-inline-end: 0;
+}
+.profile-hero-navigation > a .icon + .item-label, .profile-hero-navigation > a .main_icons + .item-label {
+  margin-inline-start: 5px;
+}
+
 /*# sourceMappingURL=index.css.map */

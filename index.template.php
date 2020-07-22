@@ -73,7 +73,7 @@ function template_init()
 		$settings['disable_files'] = array('smf_jquery_slider');
 
 	// Load our helper functions
-	require_once __DIR__.'/helpers.php';
+	require_once __DIR__ . '/src/helpers.php';
 }
 
 /**
