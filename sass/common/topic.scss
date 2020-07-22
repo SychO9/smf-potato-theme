@@ -10,6 +10,9 @@
     .poster {
       border-top-left-radius: $border-radius;
     }
+    .post_wrapper > .noticebox {
+      border-radius: $border-radius $border-radius 0 0;
+    }
   }
   &:last-child {
     border-bottom: none;
@@ -22,7 +25,13 @@
 
 .post_wrapper {
   display: flex;
+  flex-wrap: wrap;
 
+  > .noticebox {
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
   .quickbuttons > li > a {
     opacity: 0;
   }
@@ -83,6 +92,10 @@
 
 .post {
   margin-top: 6px;
+
+  > .inner {
+    overflow: auto;
+  }
 }
 
 .post_separator {
@@ -116,5 +129,77 @@
     @extend %fa-icon;
     @extend .fas;
     margin-inline-end: 3px;
+  }
+}
+
+/* Post Content & BBCode */
+
+.bbc_standard_quote {
+  margin: 0;
+  padding: $block-padding;
+  border-radius: $border-radius;
+  background: $contrast-bg;
+
+  cite {
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+
+.codeheader {
+  @include organized-content;
+
+  > * {
+    @include horizontal-spacing(2px);
+  }
+}
+.codeoperation {
+  &::after {
+    content: "]";
+  }
+  &::before {
+    content: "[";
+  }
+}
+.bbc_code {
+  padding: $block-padding;
+  border-radius: $border-radius;
+  background: $contrast-bg;
+  display: block;
+  background: #eaeaea;
+  filter: invert(1);
+  font-size: 12px;
+  max-height: 300px;
+  overflow: scroll;
+
+  &.expand_code {
+    max-height: unset;
+  }
+}
+
+.bbc_link {
+  border-bottom: 1px dotted;
+}
+
+.bbc_size {
+  line-height: normal;
+}
+
+.bbc_img {
+  &.resized {
+    max-width: 100%;
+    cursor: pointer;
+  }
+  &.original_size {
+    max-width: unset;
+  }
+}
+
+.bbc_table {
+  box-shadow: none;
+  border-spacing: 2px;
+
+  td {
+    background: darken(grayscale($block-bg), 5);
   }
 }

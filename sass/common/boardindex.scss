@@ -137,7 +137,7 @@
   }
 
   &-item {
-    @include organized-content;
+    @include organized-content(nowrap);
     padding: $block-padding;
     border-bottom: 1px solid darken(grayscale($block-bg), 10);
 
@@ -179,6 +179,19 @@
     }
     .quickbuttons > li > a {
       opacity: 0;
+    }
+    &.locked {
+      background: $topic-locked-bg;
+      font-style: italic;
+    }
+    &.sticky {
+      background: $topic-sticky-bg;
+    }
+    &.sticky.locked {
+      background: $topic-sticky-locked-bg;
+    }
+    &.approvetopic {
+      background: $unapproved-bg;
     }
     &:hover {
       .quickbuttons > li > a {

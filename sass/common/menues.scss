@@ -66,7 +66,7 @@
   }
   &resources {
     padding: $dropdown-list-padding;
-    max-height: 200px;
+    max-height: 250px;
     overflow: auto;
 
     &--empty {
@@ -203,11 +203,15 @@
 }
 
 .unread_notify {
-  @include organized-content('nowrap');
+  @include organized-content(nowrap);
+  font-size: $font-size - 1;
 
   &_image {
-    margin-right: $space-between-elements;
+    @include organized-content;
+    justify-content: center;
+    margin-right: 8px;
     position: relative;
+    width: 42px;
 
     .avatar {
       width: 40px;
@@ -217,16 +221,21 @@
     }
     .alert_icon {
       @include amt-skeleton(18px);
+      background: $primary-color;
+      color: #fff;
+      margin: 0;
+    }
+    .avatar + .alert_icon {
       position: absolute;
       bottom: -5px;
       right: -5px;
-      margin: 0;
-      background: $primary-color;
-      color: #fff;
     }
   }
   &.alert_read {
     opacity: 0.4;
+  }
+  .details {
+    width: calc(100% - 42px);
   }
 
   &:hover {

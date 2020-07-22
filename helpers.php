@@ -195,3 +195,23 @@ function load_recent_posts_avatars()
 		$context['posts'][$key]['poster']['avatar'] = $avatar;
 	}
 }
+
+/**
+ *
+ */
+function organize_page_index()
+{
+	global $context;
+
+	if (!isset($context['page_index']))
+		return;
+
+	if (substr_count($context['page_index'], 'button') <= 1)
+	{
+		$context['page_index'] = '';
+		return;
+	}
+
+	if (strpos($context['page_index'], 'pagelinks') === false)
+		$context['page_index'] = "<div class='pagelinks'>{$context['page_index']}</div>";
+}

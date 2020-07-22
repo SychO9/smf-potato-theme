@@ -116,7 +116,8 @@ function template_alerts_popup()
 					', $details['icon'], '
 				</div>
 				<div class="details">
-					<span class="alert_text">', $details['text'], '</span> - <span class="alert_time">', $details['time'], '</span>
+					<div class="alert_text">', $details['text'], '</div>
+					<div class="alert_time">', $details['time'], '</div>
 				</div>
 			</', !$details['show_links'] ? 'a' : 'div', '>';
 		}

@@ -490,6 +490,12 @@ function template_single_post($message)
 					<a id="msg' . $message['id'] . '"></a>' . ($message['first_new'] ? '<a id="new"></a>' : '') : '', '
 					<div class="post_wrapper">';
 
+	if (!$message['approved'] && $message['member']['id'] != 0 && $message['member']['id'] == $context['user']['id'])
+		echo '
+								<div class="noticebox">
+									', $txt['post_awaiting_approval'], '
+								</div><!-- .noticebox -->';
+
 	// Show information about the poster of this message.
 	echo '
 						<div class="poster">';
@@ -760,12 +766,6 @@ function template_single_post($message)
 	// Show the post itself, finally!
 	echo '
 							<div class="post">';
-
-	if (!$message['approved'] && $message['member']['id'] != 0 && $message['member']['id'] == $context['user']['id'])
-		echo '
-								<div class="noticebox">
-									', $txt['post_awaiting_approval'], '
-								</div>';
 	echo '
 								<div class="inner" data-msgid="', $message['id'], '" id="msg_', $message['id'], '"', $ignoring ? ' style="display:none;"' : '', '>
 									', $message['body'], '

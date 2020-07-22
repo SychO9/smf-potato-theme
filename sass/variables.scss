@@ -64,3 +64,8 @@ $avatar-border-radius: 100%;
 
 $poster-area-width: 13rem;
 $post-padding: 12px 16px;
+
+$topic-sticky-bg: darken($block-bg, 5);
+$topic-locked-bg: darken(grayscale($block-bg), 1);
+$topic-sticky-locked-bg: $topic-sticky-bg;
+$unapproved-bg: #fadde2;

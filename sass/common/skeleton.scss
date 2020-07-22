@@ -55,7 +55,7 @@ body {
   }
 }
 
-#admin_content, #messageindex, #post_area > .roundframe {
+#admin_content, #messageindex, #post_area > .roundframe, .main_section {
   > * {
     @include vertical-spacing;
   }

@@ -35,6 +35,10 @@
     & + .button {
       border-radius: 0 $border-radius $border-radius 0;
       filter: brightness(0.96);
+
+      .fa-chevron-down {
+        margin: 0;
+      }
     }
     &.active + .button {
       @include background-color-transition($primary-color, #fff);

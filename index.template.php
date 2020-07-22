@@ -83,8 +83,7 @@ function template_html_above()
 {
 	global $context, $scripturl, $txt, $modSettings;
 
-	if (isset($context['page_index']) && substr_count($context['page_index'], 'button') <= 1)
-		$context['page_index'] = '';
+	organize_page_index();
 
 	// Show right to left, the language code, and the character set for ease of translating.
 	echo '<!DOCTYPE html>

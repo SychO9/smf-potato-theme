@@ -140,6 +140,16 @@ function template_main()
 			</div>';
 		}
 
+		// If this person can approve items and we have some awaiting approval tell them.
+		if (!empty($context['unapproved_posts_message']))
+			echo '
+			<div class="databox databox--notice">
+				<div class="databox-icon">', icon('fas fa-exclamation-circle'), '</div>
+				<div class="databox-content">
+					<div class="databox-text">', $context['unapproved_posts_message'], '</div>
+				</div>
+			</div>';
+
 		echo '
 			<div class="topic-list-area">
 				<div class="title_bar topic-header" id="topic_header">';
@@ -178,13 +188,6 @@ function template_main()
 
 		echo '
 			</div><!-- #topic_header -->';
-
-		// If this person can approve items and we have some awaiting approval tell them.
-		if (!empty($context['unapproved_posts_message']))
-			echo '
-			<div class="information">
-				<span class="alert">!</span> ', $context['unapproved_posts_message'], '
-			</div>';
 
 		// Contain the topic list
 		echo '
