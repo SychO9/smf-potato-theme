@@ -397,9 +397,11 @@ function template_bi_board_icon($board)
 {
 	global $context, $scripturl;
 
+	$icon_type = $board['new'] ? 'fas' : 'far';
+
 	echo '
 		<a href="', ($context['user']['is_guest'] ? $board['href'] : $scripturl . '?action=unread;board=' . $board['id'] . '.0;children'), '" class="board_', $board['board_class'], '"', !empty($board['board_tooltip']) ? ' title="' . $board['board_tooltip'] . '"' : '', '>
-			', icon('far fa-comments'), '
+			', icon("$icon_type fa-comments"), '
 		</a>';
 }
 
