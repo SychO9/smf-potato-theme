@@ -376,8 +376,8 @@ tr[id^=list_news_lists_] textarea {
   --dropdown-bg-s:var(--block-bg-s);
   --dropdown-bg-l:var(--block-bg-l);
   --dropdown-bg:hsl(var(--dropdown-bg-h), var(--dropdown-bg-s), var(--dropdown-bg-l));
-  --dropdown-bg-dark: hsl(var(--dropdown-bg-h), var(--dropdown-bg-s), calc(var(--dropdown-bg-l) * 0.9));
-  --dropdown-bg-darker: hsl(var(--dropdown-bg-h), var(--dropdown-bg-s), calc(var(--dropdown-bg-l) * 0.6));
+  --dropdown-bg-dark: hsl(var(--dropdown-bg-h), 0%, calc(var(--dropdown-bg-l) * 0.9));
+  --dropdown-bg-darker: hsl(var(--dropdown-bg-h), 0%, calc(var(--dropdown-bg-l) * 0.6));
   --neutral-bg-h:var(--block-bg-h);
   --neutral-bg-s:var(--block-bg-s);
   --neutral-bg-l:var(--block-bg-l);
@@ -7502,7 +7502,7 @@ a:hover {
 }
 .dropdown .separator, .quickbuttons > li > ul .separator, .top_menu .separator, .dropmenu > li ul .separator {
   height: 1px;
-  background: var(--dropdown-bg-darker);
+  background: var(--dropdown-bg-dark);
   margin: var(--dropdown-list-padding);
 }
 .dropdown li > a, .quickbuttons > li > ul li > a, .top_menu li > a, .dropmenu > li ul li > a, .dropdown .unread_notify, .quickbuttons > li > ul .unread_notify, .top_menu .unread_notify, .dropmenu > li ul .unread_notify {
@@ -7556,7 +7556,7 @@ a:hover {
 
 .dropdown-bar {
   padding: var(--block-padding);
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid var(--dropdown-bg-dark);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 .dropdown-bar .block {

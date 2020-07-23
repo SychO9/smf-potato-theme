@@ -11,7 +11,7 @@
 
   .separator {
     height: 1px;
-    background: var(--dropdown-bg-darker);
+    background: var(--dropdown-bg-dark);
     margin: var(--dropdown-list-padding);
   }
   li > a, .unread_notify {
@@ -65,7 +65,7 @@
 .dropdown- {
   &bar {
     padding: var(--block-padding);
-    border-bottom: 1px solid $color-contrast;
+    border-bottom: 1px solid var(--dropdown-bg-dark);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 
     .block {

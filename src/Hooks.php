@@ -9,13 +9,14 @@ class Potato
 	 */
 	public static function setUp()
 	{
+		add_integration_function('integrate_pre_javascript_output', self::class.'::addJavascriptVars', false);
 		add_integration_function('integrate_buffer', self::class.'::bufferTransformations', false);
 		add_integration_function('integrate_messageindex_buttons', self::class.'::setActiveNotifyItem', false);
 		add_integration_function('integrate_display_buttons', self::class.'::setActiveNotifyItem', false);
 		add_integration_function('integrate_prepare_display_context', self::class.'::addLikePostToQuickbuttons', false);
 		add_integration_function('integrate_recent_RecentPosts', self::class.'::loadRecentPostsAvatars', false);
-		add_integration_function('integrate_load_profile_fields', self::class.'::addProfileCoverField', false);
-		add_integration_function('integrate_setup_profile_context', self::class.'::loadCoverField', false);
+		add_integration_function('integrate_load_profile_fields', self::class.'::addProfileCustomFields', false);
+		add_integration_function('integrate_setup_profile_context', self::class.'::loadCustomFields', false);
 	}
 
 	/**
@@ -58,7 +59,9 @@ class Potato
 	}
 
 	/**
-	 *
+	 * @param $output
+	 * @param $message
+	 * @param $counter
 	 */
 	public static function addLikePostToQuickbuttons(&$output, &$message, $counter)
 	{
@@ -108,9 +111,9 @@ class Potato
 	}
 
 	/**
-	 *
+	 * @param $profile_fields
 	 */
-	public static function addProfileCoverField(&$profile_fields)
+	public static function addProfileCustomFields(&$profile_fields)
 	{
 		global $txt, $options;
 
@@ -128,17 +131,83 @@ class Potato
 				return true;
 			},
 		);
+
+		$profile_fields['default_options[potato_dark_mode]'] = array(
+			'type' => 'check',
+			'label' => $txt['potato_dark_mode'],
+			'value' => !empty($options['potato_dark_mode']),
+		);
+	}
+
+	/**
+	 * @param $fields
+	 */
+	public static function loadCustomFields(&$fields)
+	{
+		if (empty($_REQUEST['area']))
+			return;
+
+		if ($_REQUEST['area'] === 'forumprofile')
+		{
+			$fields[] = 'hr';
+			$fields[] = 'default_options[potato_profile_cover]';
+		}
+
+		if ($_REQUEST['area'] === 'theme')
+		{
+			$fields[] = 'hr';
+			$fields[] = 'default_options[potato_dark_mode]';
+		}
+	}
+
+	/**
+	 * @param $profile_items
+	 */
+	public static function addDarkModeToggler(&$profile_items)
+	{
+		global $context, $txt, $options;
+
+		if (!$context['user']['is_logged'])
+			return;
+
+		loadLanguage('ThemeStrings');
+
+		$mode = array(
+			'icon' => !empty($options['potato_dark_mode']) ? 'fas fa-sun' : 'fas fa-moon',
+			'label' => !empty($options['potato_dark_mode']) ? $txt['potato_light_mode'] : $txt['potato_dark_mode'],
+		);
+
+		$profile_items = array_reverse($profile_items);
+		$profile_items[] = 'separator';
+		$profile_items[] = array(
+			'icon' => icon($mode['icon']),
+			'menu' => 'edit_profile',
+			'area' => 'theme',
+			'title' => $mode['label'],
+			'custom' => 'onclick="return toggleDarkMode(this);"',
+		);
+		$profile_items = array_reverse($profile_items);
 	}
 
 	/**
 	 *
 	 */
-	public static function loadCoverField(&$fields)
+	public static function addJavascriptVars()
 	{
-		if (empty($_REQUEST['area']) || $_REQUEST['area'] !== 'forumprofile')
+		global $context, $txt;
+
+		if (!$context['user']['is_logged'])
 			return;
 
-		$fields[] = 'hr';
-		$fields[] = 'default_options[potato_profile_cover]';
+		$token_name = "profile-th{$context['user']['id']}";
+
+		if (empty($context["{$token_name}_token_var"]))
+			createToken($token_name, 'post');
+
+		addJavaScriptVar('potato_dark_mode_toggle_var', '"'.$context["{$token_name}_token_var"].'"');
+		addJavaScriptVar('potato_dark_mode_toggle', '"'.$context["{$token_name}_token"].'"');
+
+		addJavaScriptVar('potato_dark_mode_txt', '"'.$txt['potato_dark_mode'].'"');
+		addJavaScriptVar('potato_light_mode_txt', '"'.$txt['potato_light_mode'].'"');
 	}
 }

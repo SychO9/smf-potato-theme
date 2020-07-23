@@ -187,7 +187,7 @@ function template_html_above()
 	echo '
 </head>
 <body id="', $context['browser_body_id'], '" class="action_', !empty($context['current_action']) ? $context['current_action'] : (!empty($context['current_board']) ?
-		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '', function_exists('template_body_wrapper_end') ? ' body--waves' : '', '">
+		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '', function_exists('template_body_wrapper_end') ? ' body--waves' : '', !empty($GLOBALS['options']['potato_dark_mode']) ? ' dark-mode' : '', '">
 <div id="footerfix" class="footerfix">';
 }
 

@@ -50,6 +50,9 @@ function template_profile_popup()
 {
 	global $context, $scripturl;
 
+	require_once __DIR__.'/src/helpers.php';
+	\SychO\Potato::addDarkModeToggler($context['profile_items']);
+
 	// Unlike almost every other template, this is designed to be included into the HTML directly via $().load()
 
 	echo '
@@ -68,13 +71,18 @@ function template_profile_popup()
 	$menu_context = &$context[$context['profile_menu_name']];
 	foreach ($context['profile_items'] as $item)
 	{
+		if ($item === 'separator') {
+			echo '<li class="separator"></li>';
+			continue;
+		}
+
 		$area = &$menu_context['sections'][$item['menu']]['areas'][$item['area']];
 		$item_url = (isset($item['url']) ? $item['url'] : (isset($area['url']) ? $area['url'] : $menu_context['base_url'] . ';area=' . $item['area'])) . $menu_context['extra_parameters'];
 		echo '
 				<li>
-					<a href="', $item_url, '">
-						', $area['icon'], '
-						', !empty($item['title']) ? $item['title'] : $area['label'], '
+					<a href="', $item_url, '"', !empty($item['custom']) ? $item['custom'] : '', '>
+						', !empty($item['icon']) ? $item['icon'] : $area['icon'], '
+						<span class="item-label">', !empty($item['title']) ? $item['title'] : $area['label'], '</span>
 					</a>
 				</li>';
 	}

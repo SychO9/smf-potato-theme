@@ -69,8 +69,8 @@ $amt-color: #fff;
 $space-between-elements: 6px;
 
 $dropdown-bg: var(--block-bg);
-$dropdown-bg-dark: colorLightness(--dropdown-bg, 0.9);
-$dropdown-bg-darker: colorLightness(--dropdown-bg, 0.6);
+$dropdown-bg-dark: colorLightness(--dropdown-bg, 0.9, true);
+$dropdown-bg-darker: colorLightness(--dropdown-bg, 0.6, true);
 $dropdown-box-shadow: 0 2px 7px rgb(0 0 0 / 31%);
 $dropdown-min-width: 15rem;
 $dropdown-max-width: $dropdown-min-width + 3rem;
