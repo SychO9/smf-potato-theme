@@ -2,7 +2,7 @@
   &_bar {
     @include clear;
     padding: 10px 0;
-    margin-top: $space-between-elements;
+    margin-top: var(--space-between-elements);
 
     &:first-child {
       margin-top: 0;
@@ -40,7 +40,7 @@
     width: 3.5rem;
     font-size: 18px;
     justify-content: center;
-    border-radius: $border-radius 0 0 $border-radius;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
     background: rgba(0, 0, 0, 0.12);
 
     .icon {
@@ -48,30 +48,30 @@
     }
   }
   &-content {
-    padding: $block-padding;
+    padding: var(--block-padding);
     flex-grow: 1;
     width: calc(100% - 3.5rem);
   }
   &-title {
     margin-bottom: 4px;
     font-weight: 600;
-    font-size: $font-size + 1;
+    font-size: calc(var(--font-size) + 1px);
   }
   &-text {
     margin: 0;
   }
 
   &--neutral {
-    background: $neutral-bg;
-    color: $neutral-color;
+    background: var(--neutral-bg);
+    color: var(--neutral-color);
   }
   &--error {
-    background: $error-bg;
-    color: $error-color;
+    background: var(--error-bg);
+    color: var(--error-color);
   }
   &--notice {
-    background: $notice-bg;
-    color: $notice-color;
+    background: var(--notice-bg);
+    color: var(--notice-color);
   }
 
   &--statistic {
@@ -85,7 +85,7 @@
     }
     &:hover {
       .databox-icon {
-        background: $primary-color;
+        background: var(--color-primary);
         color: #fff;
       }
     }
@@ -95,12 +95,12 @@
   }
 }
 
-@mixin noticebox($bg-color, $fg-color, $icon) {
+@mixin noticebox($bg, $fg, $icon) {
   @include block-skeleton;
   @include organized-content;
   padding: 14px 16px;
-  background: $bg-color;
-  color: $fg-color;
+  background: $bg;
+  color: $fg;
 
   &::before {
     @extend %fa-icon;
@@ -113,27 +113,27 @@
 }
 
 .noticebox {
-  @include noticebox($notice-bg, $notice-color, $fa-var-exclamation-circle);
+  @include noticebox(var(--notice-bg), var(--notice-color), $fa-var-exclamation-circle);
 }
 
 .infobox {
-  @include noticebox($success-bg, $success-color, $fa-var-check-circle);
+  @include noticebox(var(--success-bg), var(--success-color), $fa-var-check-circle);
 }
 
 .errorbox {
-  @include noticebox($error-bg, $error-color, $fa-var-times-circle);
+  @include noticebox(var(--error-bg), var(--error-color), $fa-var-times-circle);
 }
 
 .windowbg, .roundframe, .information {
   @include block-skeleton;
-  background: $block-bg;
+  background: var(--block-bg);
   color: $block-color;
-  padding: $block-padding;
+  padding: var(--block-padding);
 }
 
 .descbox {
-  border-radius: $border-radius;
-  background: $bg-color;
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
   color: $block-color;
-  padding: $block-padding;
+  padding: var(--block-padding);
 }

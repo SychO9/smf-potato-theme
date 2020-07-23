@@ -6,13 +6,13 @@ body, html {
 }
 
 body {
-  background-color: $bg-color;
-  color: $fg-color;
-  font-family: $font-family;
-  font-size: $font-size;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
   display: flex;
   flex-direction: column;
-  line-height: $line-height;
+  line-height: var(--line-height);
 }
 
 .footerfix {
@@ -22,12 +22,12 @@ body {
 }
 
 .inner_wrap {
-  max-width: $max-page-width;
+  max-width: var(--max-page-width);
   margin: 0 auto;
 }
 
 .upper-section {
-  margin-bottom: $space-between-elements;
+  margin-bottom: var(--space-between-elements);
 }
 
 .navigate_section {
@@ -67,12 +67,12 @@ body {
   position: relative;
   padding: 0 0 2rem;
   margin-top: 6rem;
-  background: $lower-wrapper-bg;
+  background: var(--lower-wrapper-bg);
 }
 
 .footer {
   @include clear;
-  background: $footer-bg;
+  background: var(--footer-bg);
   padding: 7rem 0 1rem;
   position: relative;
   z-index: 0;
@@ -97,7 +97,7 @@ body {
     color: #fff;
   }
   a:hover {
-    color: darken(#fff, 15);
+    color: $color-contrast;
   }
 }
 
@@ -106,22 +106,22 @@ body {
   z-index: -1;
 
   &--upper {
-    fill: $bg-color;
-    background: $top-section-background;
+    fill: var(--color-bg);
+    background: var(--top-section-background);
     top: -80px;
   }
   &--intermediate {
-    fill: $bg-color;
-    background: $lower-wrapper-bg;
+    fill: var(--color-bg);
+    background: var(--lower-wrapper-bg);
     top: -18rem;
   }
   &--lower {
     bottom: 0;
-    fill: $bg-color;
-    background: $footer-bg;
+    fill: var(--color-bg);
+    background: var(--footer-bg);
 
     .body--waves & {
-      fill: $lower-wrapper-bg;
+      fill: var(--lower-wrapper-bg);
     }
   }
 }
@@ -130,4 +130,4 @@ body {
   box-sizing: border-box;
 }
 
-@include link($link-color);
+@include link(--link-color);

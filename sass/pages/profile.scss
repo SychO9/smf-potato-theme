@@ -32,7 +32,7 @@
       .avatar {
         width: 120px;
         height: 120px;
-        border-radius: $avatar-border-radius;
+        border-radius: var(--avatar-border-radius);
       }
     }
     &-content {
@@ -47,7 +47,7 @@
     &-username {
       h4 {
         margin: 0;
-        font-size: $font-size + 4;
+        font-size: calc(var(--font-size) + 4px);
       }
       .position {
 

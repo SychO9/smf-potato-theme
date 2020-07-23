@@ -1,0 +1,43 @@
+@use "sass:color";
+
+@mixin defineColorHSL($name, $color) {
+  #{$name}-h: #{color.hue($color)};
+  #{$name}-s: #{color.saturation($color)};
+  #{$name}-l: #{color.lightness($color)};
+  #{$name}: hsl(var(#{$name}-h), var(#{$name}-s), var(#{$name}-l));
+}
+
+@mixin defineChildColorHSL($name, $color) {
+  #{$name}-h: str-replace($color, ')', '-h)');
+  #{$name}-s: str-replace($color, ')', '-s)');
+  #{$name}-l: str-replace($color, ')', '-l)');
+  #{$name}: hsl(var(#{$name}-h), var(#{$name}-s), var(#{$name}-l));
+}
+
+@function colorToHSL($color) {
+  @return hslValue(color.hue($color), color.saturation($color), color.lightness($color));
+}
+
+@function hslValue($hue, $saturation, $lightness) {
+  @return hsl(#{$hue}, #{$saturation}, #{$lightness});
+}
+
+@function colorLightness($color, $multiplier, $grayscale: false) {
+  $saturation: var(#{$color}-s);
+
+  @if($grayscale) {
+    $saturation: 0%;
+  }
+
+  @return hsl(var(#{$color}-h), $saturation, calc(var(#{$color}-l) * #{$multiplier}))
+}
+
+// replace substring with another string
+// credits: https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}

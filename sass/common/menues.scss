@@ -1,28 +1,28 @@
 .dropdown {
   @include listless;
-  border-radius: $border-radius;
-  background: $dropdown-bg;
-  box-shadow: $dropdown-box-shadow;
+  border-radius: var(--border-radius);
+  background: var(--dropdown-bg);
+  box-shadow: var(--dropdown-box-shadow);
   position: absolute;
   z-index: 10;
-  min-width: $dropdown-min-width;
-  max-width: $dropdown-max-width;
+  min-width: var(--dropdown-min-width);
+  max-width: var(--dropdown-max-width);
   top: calc(100% + 10px);
 
   .separator {
     height: 1px;
-    background: darken(grayscale($dropdown-bg), 20);
-    margin: $dropdown-list-padding;
+    background: var(--dropdown-bg-darker);
+    margin: var(--dropdown-list-padding);
   }
   li > a, .unread_notify {
     display: flex;
     padding: 6px 9px;
 
     &.active {
-      background: darken(grayscale($dropdown-bg), 2);
+      background: var(--dropdown-bg-dark);
     }
     &:hover, &.active:hover {
-      background: $primary-color;
+      background: var(--color-primary);
       color: #fff;
     }
   }
@@ -40,7 +40,7 @@
   }
   &::before {
     left: 27px;
-    border: 10px solid $dropdown-bg;
+    border: 10px solid var(--dropdown-bg);
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;
@@ -52,21 +52,21 @@
     left: 0;
   }
   .loading {
-    padding: $block-padding;
+    padding: var(--block-padding);
   }
   .amt {
     align-self: center;
     margin-inline-start: auto;
   }
 
-  @include link($fg-color);
+  @include link(--color-fg);
 }
 
 .dropdown- {
   &bar {
-    padding: $block-padding;
-    border-bottom: 1px solid darken(#fff, 20);
-    border-radius: $border-radius $border-radius 0 0;
+    padding: var(--block-padding);
+    border-bottom: 1px solid $color-contrast;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 
     .block {
       @include organized-content;
@@ -74,12 +74,12 @@
     }
   }
   &resources {
-    padding: $dropdown-list-padding;
+    padding: var(--dropdown-list-padding);
     max-height: 250px;
     overflow: auto;
 
     &--empty {
-      padding: $block-padding;
+      padding: var(--block-padding);
     }
   }
   &right {
@@ -114,7 +114,7 @@
         margin-right: 4px;
 
         &.avatar {
-          border-radius: $avatar-border-radius;
+          border-radius: var(--avatar-border-radius);
         }
       }
       > .fa-chevron-down {
@@ -149,7 +149,7 @@
   > li {
     ul {
       @extend .dropdown;
-      padding: $dropdown-list-padding;
+      padding: var(--dropdown-list-padding);
 
       ul {
         left: 100%;
@@ -159,7 +159,7 @@
           left: -18px;
           top: 6px;
           border-color: transparent;
-          border-right-color: $block-bg;
+          border-right-color: var(--block-bg);
         }
       }
     }
@@ -203,7 +203,7 @@
     margin-inline-end: 8px;
 
     img {
-      border-radius: $avatar-border-radius;
+      border-radius: var(--avatar-border-radius);
       width: 65px;
       height: 65px;
     }
@@ -214,13 +214,13 @@
     }
   }
   &_links {
-    padding: $dropdown-list-padding;
+    padding: var(--dropdown-list-padding);
   }
 }
 
 .unread_notify {
   @include organized-content(nowrap);
-  font-size: $font-size - 1;
+  font-size: calc(var(--font-size) - 1px);
 
   &_image {
     @include organized-content;
@@ -232,12 +232,12 @@
     .avatar {
       width: 40px;
       height: 40px;
-      border-radius: $avatar-border-radius;
+      border-radius: var(--avatar-border-radius);
       vertical-align: middle;
     }
     .alert_icon {
       @include amt-skeleton(18px);
-      background: $primary-color;
+      background: var(--color-primary);
       color: #fff;
       margin: 0;
     }
@@ -257,13 +257,13 @@
   &:hover {
     .alert_icon {
       background: #fff;
-      color: $primary-color;
+      color: var(--color-primary);
     }
   }
 }
 
 #alerts_menu, #pm_menu, .notify_dropdown {
-  width: $dropdown-max-width;
+  width: var(--dropdown-max-width);
 }
 
 .quickbuttons {
@@ -286,7 +286,7 @@
     > ul {
       @extend .dropdown;
       @extend .dropdown-right;
-      padding: $dropdown-list-padding;
+      padding: var(--dropdown-list-padding);
 
       &::before {
         right: 6px;
@@ -294,7 +294,7 @@
     }
     &:hover {
       > a {
-        background: $link-color;
+        background: var(--link-color);
         color: #fff;
       }
     }
@@ -316,7 +316,7 @@
     position: relative;
 
     > .top_menu {
-      padding: $dropdown-list-padding;
+      padding: var(--dropdown-list-padding);
     }
   }
 }
@@ -325,5 +325,5 @@
 
 .item-desc {
   display: block;
-  font-size: $font-size - 1;
+  font-size: calc(var(--font-size) - 1px);
 }

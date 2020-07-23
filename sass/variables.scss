@@ -1,17 +1,25 @@
+@use "sass:color";
+@import "functions";
+
+/* FontAwesome Required Variable */
+$fa-font-path: "../webfonts";
+
+// ---------------------------
+
 /* Generic Colors */
 $primary-color: #b83b5e;
 $secondary-color: #6a2c70;
 
 /* Element Colors */
-$bg-color: #eeecda;
-$fg-color: #1f1f1f;
+$color-bg: #eeecda;
+$color-fg: #1f1f1f;
 
 /* Contrast Colors */
-$contrast-bg: darken(#fff, 20);
-$contrast-fg: $fg-color;
+$color-contrast: darken(#fff, 20);
+$color-contrast-dark: colorLightness(--color-contrast, 0.9);
 
-/* Link Colors */
-$link-color: $primary-color;
+/* Link Color */
+$link-color: var(--color-primary);
 
 // ---------------------------
 
@@ -22,46 +30,47 @@ $line-height: 18px;
 
 $border-radius: 4px;
 
-/* FontAwesome Required Variable */
-$fa-font-path: "../webfonts";
-
 /* Max Page Width */
 $max-page-width: 1200px;
 
 // --------------------------- Specific Elements
 
-$top-section-background: linear-gradient(to right, darken($primary-color, 8), lighten($primary-color, 4));
+$top-section-background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
 $top-section-color: #fff;
 
-$lower-wrapper-bg: darken(grayscale($bg-color), 2);
+$lower-wrapper-bg: colorLightness(--color-bg, 0.95, true);
 
 $footer-bg: $top-section-background;
 
 // --------------------------- Generic Elements
 
 $block-bg: #fffce6;
-$block-color: $fg-color;
+$block-bg-dark: colorLightness(--block-bg, 0.99, true); // darken(grayscale($block-bg), 1);
+$block-bg-darker: colorLightness(--block-bg, 0.95, true);
+$block-bg-darkerer: colorLightness(--block-bg, 0.9, true);
+$block-color: var(--color-fg);
 $block-padding: 10px 12px;
 $block-box-shadow: 0 2px 2px rgb(0, 0, 0, 0.13);
 
-$neutral-bg: $block-bg;
-$neutral-color: $block-color;
-
+$neutral-bg: var(--block-bg);
+$neutral-color: var(--block-color);
 $info-bg: #bbccec;
-$info-color: $fg-color;
+$info-color: var(--color-fg);
 $notice-bg: #fffb6e;
-$notice-color: $fg-color;
+$notice-color: var(--color-fg);
 $success-bg: #8fe37a;
-$success-color: $fg-color;
+$success-color: var(--color-fg);
 $error-bg: #ff5f5f;
-$error-color: $fg-color;
+$error-color: var(--color-fg);
 
-$amt-bg: $secondary-color;
+$amt-bg: var(--color-secondary);
 $amt-color: #fff;
 
 $space-between-elements: 6px;
 
-$dropdown-bg: $block-bg;
+$dropdown-bg: var(--block-bg);
+$dropdown-bg-dark: colorLightness(--dropdown-bg, 0.9);
+$dropdown-bg-darker: colorLightness(--dropdown-bg, 0.6);
 $dropdown-box-shadow: 0 2px 7px rgb(0 0 0 / 31%);
 $dropdown-min-width: 15rem;
 $dropdown-max-width: $dropdown-min-width + 3rem;
@@ -72,7 +81,72 @@ $avatar-border-radius: 100%;
 $poster-area-width: 13rem;
 $post-padding: 12px 16px;
 
-$topic-sticky-bg: darken($block-bg, 5);
-$topic-locked-bg: darken(grayscale($block-bg), 1);
-$topic-sticky-locked-bg: $topic-sticky-bg;
+$topic-sticky-bg: colorLightness(--block-bg, 0.85); // yellowish keep
+$topic-locked-bg: var(--block-bg-dark);
+$topic-sticky-locked-bg: var(--topic-sticky-bg);
 $unapproved-bg: #fadde2;
+
+:root {
+  @include defineColorHSL(--color-primary, $primary-color);
+  --color-primary-dark: #{colorLightness(--color-primary, 0.8)};
+  --color-primary-light: #{colorLightness(--color-primary, 1.1)};
+  @include defineColorHSL(--color-secondary, $secondary-color);
+  @include defineColorHSL(--color-contrast, $color-contrast);
+  --color-contrast-dark: #{$color-contrast-dark};
+  @include defineColorHSL(--color-white, #fff);
+  @include defineColorHSL(--color-bg, $color-bg);
+  --color-bg-dark: #{colorLightness(--color-bg, 0.95, true)};
+  --color-bg-darker: #{colorLightness(--color-bg, 0.8, true)};
+  @include defineColorHSL(--color-fg, $color-fg);
+  @include defineChildColorHSL(--link-color, $link-color);
+
+  --amt-bg: #{$amt-bg};
+  --amt-color: #{$amt-color};
+
+  --top-section-background: #{$top-section-background};
+  @include defineColorHSL(--top-section-color, $top-section-color);
+  --lower-wrapper-bg: #{$lower-wrapper-bg};
+  --footer-bg: #{$footer-bg};
+
+  @include defineColorHSL(--block-bg, $block-bg);
+  --block-bg-dark: #{$block-bg-dark};
+  --block-bg-darker: #{$block-bg-darker};
+  --block-bg-darkerer: #{$block-bg-darkerer};
+  @include defineChildColorHSL(--block-color, $block-color);
+
+  @include defineChildColorHSL(--dropdown-bg, $dropdown-bg);
+  --dropdown-bg-dark: #{$dropdown-bg-dark};
+  --dropdown-bg-darker: #{$dropdown-bg-darker};
+
+  @include defineChildColorHSL(--neutral-bg, $neutral-bg);
+  @include defineChildColorHSL(--neutral-color, $neutral-color);
+  @include defineColorHSL(--info-bg, $info-bg);
+  @include defineChildColorHSL(--info-color, $info-color);
+  @include defineColorHSL(--notice-bg, $notice-bg);
+  @include defineChildColorHSL(--notice-color, $notice-color);
+  @include defineColorHSL(--success-bg, $success-bg);
+  @include defineChildColorHSL(--success-color, $success-color);
+  @include defineColorHSL(--error-bg, $error-bg);
+  @include defineChildColorHSL(--error-color, $error-color);
+
+  --topic-sticky-bg: #{$topic-sticky-bg};
+  --topic-locked-bg: #{$topic-locked-bg};
+  --topic-sticky-locked-bg: #{$topic-sticky-locked-bg};
+  --unapproved-bg: #{$unapproved-bg};
+}
+
+:root {
+  --font-family: #{$font-family};
+  --font-size: #{$font-size};
+  --line-height: #{$line-height};
+  --border-radius: #{$border-radius};
+  --max-page-width: #{$max-page-width};
+  --block-padding: #{$block-padding};
+  --block-box-shadow: #{$block-box-shadow};
+  --space-between-elements: #{$space-between-elements};
+  --dropdown-box-shadow: #{$dropdown-box-shadow};
+  --dropdown-min-width: #{$dropdown-min-width};
+  --dropdown-max-width: #{$dropdown-max-width};
+  --dropdown-list-padding: #{$dropdown-list-padding};
+  --avatar-border-radius: #{$avatar-border-radius};
+}

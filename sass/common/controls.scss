@@ -22,12 +22,12 @@ input {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: $contrast-bg;
+    color: $color-contrast;
     vertical-align: middle;
     margin: 0 7px;
 
     &:hover {
-      color: darken($contrast-bg, 5);
+      color: var(--color-contrast-dark);
     }
     &::after {
       background: #fff;
@@ -35,7 +35,7 @@ input {
       margin-top: -2px;
     }
     &:checked::after {
-      color: $primary-color;
+      color: var(--color-primary);
     }
   }
   &[type="checkbox"] {
@@ -79,8 +79,8 @@ dl {
 
 fieldset {
   @include vertical-spacing;
-  padding: $block-padding;
-  border: 2px solid darken(grayscale($block-bg), 8);
+  padding: var(--block-padding);
+  border: 2px solid var(--block-bg-darkerer);
 
   > legend {
     padding: 0 8px;
@@ -110,9 +110,9 @@ fieldset {
     }
   }
   > ul > li > ul {
-    border-radius: $border-radius;
-    padding: $block-padding;
-    background: $bg-color;
+    border-radius: var(--border-radius);
+    padding: var(--block-padding);
+    background: var(--color-bg);
   }
 }
 

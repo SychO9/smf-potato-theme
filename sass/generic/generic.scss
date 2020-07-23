@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-@mixin horizontal-spacing($amount: $space-between-elements) {
+@mixin horizontal-spacing($amount: var(--space-between-elements)) {
   margin: 0 $amount;
 
   &:first-child {
@@ -21,7 +21,7 @@
   }
 }
 
-@mixin vertical-spacing($amount: $space-between-elements) {
+@mixin vertical-spacing($amount: var(--space-between-elements)) {
   margin: $amount 0;
 
   &:first-child {
@@ -32,14 +32,14 @@
   }
 }
 
-@mixin link($color) {
+@mixin link($color, $hoverColor: colorLightness($color, 0.7)) {
   a {
-    color: $color;
+    color: var($color);
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
-      color: darken($color, 18);
+      color: $hoverColor;
     }
   }
 }
@@ -54,13 +54,13 @@
 
 @mixin block-skeleton {
   @include clear;
-  border-radius: $border-radius;
-  box-shadow: $block-box-shadow;
+  border-radius: var(--border-radius);
+  box-shadow: var(--block-box-shadow);
 }
 
 @mixin block {
-  padding: $block-padding;
-  background: $block-bg;
+  padding: var(--block-padding);
+  background: var(--block-bg);
   color: $block-color;
 }
 
@@ -78,8 +78,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: $border-radius;
-  background: $secondary-color;
+  border-radius: var(--border-radius);
+  background: var(--color-secondary);
   color: #fff;
   height: 15px;
   line-height: 15px;
@@ -93,16 +93,16 @@
 }
 
 @mixin background-color-transition($bg, $fg) {
-  background: $bg;
-  color: $fg;
+  background: var(#{$bg});
+  color: var(#{$fg});
 
   &:hover {
-    background: darken($bg, 5);
-    color: darken($fg, 5);
+    background: colorLightness($bg, 0.85);
+    color: colorLightness($fg, 0.85);
   }
   &:focus {
-    background: lighten($bg, 5);
-    color: lighten($fg, 5);
+    background: colorLightness($bg, 0.85);
+    color: colorLightness($fg, 0.85);
   }
 }
 

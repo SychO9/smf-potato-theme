@@ -27,7 +27,7 @@
   &-pager {
     @include listless;
     @include organized-content;
-    padding: $block-padding;
+    padding: var(--block-padding);
     position: absolute;
     top: 0;
     right: 0;
@@ -42,11 +42,11 @@
     }
     a {
       @include amt-skeleton;
-      background: $primary-color;
+      background: var(--color-primary);
       color: transparent;
 
       &:hover {
-        background: darken($primary-color, 15);
+        background: var(--color-primary-dark);
       }
     }
   }
@@ -64,16 +64,16 @@
   flex-wrap: wrap;
 
   .subject {
-    font-size: $font-size + 2;
+    font-size: calc(var(--font-size) + 2px);
   }
   .moderators {
     margin: 0;
   }
   .children {
-    padding: $block-padding;
+    padding: var(--block-padding);
     margin-top: 6px;
-    background: darken(grayscale($block-bg), 1);
-    border-radius: $border-radius;
+    background: var(--block-bg-dark);
+    border-radius: var(--border-radius);
     width: 100%;
 
     > p {
@@ -103,7 +103,7 @@
     text-align: center;
   }
   &_description {
-    font-size: $font-size - 1;
+    font-size: calc(var(--font-size) - 1px);
   }
 }
 .info {
@@ -138,15 +138,15 @@
 
   &-item {
     @include organized-content(nowrap);
-    padding: $block-padding;
-    border-bottom: 1px solid darken(grayscale($block-bg), 10);
+    padding: var(--block-padding);
+    border-bottom: 1px solid var(--block-bg-darkerer);
 
     &:hover {
-      background: darken(grayscale($block-bg), 1);
+      background: var(--block-bg-dark);
     }
     &-container {
       @include block-skeleton;
-      background: $block-bg;
+      background: var(--block-bg);
     }
     &-poster-avatar {
       margin-inline-end: 6px;
@@ -154,7 +154,7 @@
       .avatar {
         width: 40px;
         height: 40px;
-        border-radius: $avatar-border-radius;
+        border-radius: var(--avatar-border-radius);
       }
     }
     &-content {
@@ -162,7 +162,7 @@
     }
     &-details {
       @include organized-content;
-      font-size: $font-size - 1;
+      font-size: calc(var(--font-size) - 1px);
 
       .icon {
         margin-inline-end: 0;
@@ -181,17 +181,17 @@
       opacity: 0;
     }
     &.locked {
-      background: $topic-locked-bg;
+      background: var(--topic-locked-bg);
       font-style: italic;
     }
     &.sticky {
-      background: $topic-sticky-bg;
+      background: var(--topic-sticky-bg);
     }
     &.sticky.locked {
-      background: $topic-sticky-locked-bg;
+      background: var(--topic-sticky-locked-bg);
     }
     &.approvetopic {
-      background: $unapproved-bg;
+      background: var(--unapproved-bg);
     }
     &:hover {
       .quickbuttons > li > a {
@@ -220,13 +220,9 @@
       margin: 0 1px;
       height: 20px;
       padding: 0 5px;
-      font-size: $font-size - 1;
+      font-size: calc(var(--font-size) - 1px);
     }
   }
-}
-
-.info-center {
-  margin-top: 4*$space-between-elements;
 }
 
 .upshrink-stats {

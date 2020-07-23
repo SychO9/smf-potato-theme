@@ -1,12 +1,12 @@
 .amt {
   @include amt-skeleton;
-  background: $amt-bg;
-  color: $amt-color;
+  background: var(--amt-bg);
+  color: var(--amt-color);
 }
 
 .badge {
-  @include amt-skeleton(24px, $font-size);
-  background: $secondary-color;
+  @include amt-skeleton(24px, var(--font-size));
+  background: var(--color-secondary);
   color: #fff;
   vertical-align: middle;
 }

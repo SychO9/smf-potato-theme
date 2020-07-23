@@ -2,7 +2,7 @@
   padding: 1rem 0;
   margin-bottom: 4rem;
 
-  @include link($top-section-color);
+  @include link(--top-section-color, colorLightness(--top-section-color, 0.8));
 
   a.active {
     text-shadow: 0 0 3px;

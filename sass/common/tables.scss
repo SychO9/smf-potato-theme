@@ -7,10 +7,10 @@ table {
 }
 
 thead, tr.title_bar {
-  background: $primary-color;
+  background: var(--color-primary);
   color: #fff;
 
-  @include link(#fff);
+  @include link(--color-white);
 
   th, td {
     padding: 8px;
@@ -22,7 +22,7 @@ tr {
     box-shadow: none;
 
     td {
-      border-bottom: 1px solid darken(grayscale($block-bg), 5);
+      border-bottom: 1px solid var(--block-bg-darker);
     }
     &:last-child {
       td {
@@ -30,7 +30,7 @@ tr {
       }
     }
     &:hover {
-      background: darken(grayscale($block-bg), 1);
+      background: var(--block-bg-dark);
     }
   }
 }
