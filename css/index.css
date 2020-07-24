@@ -9066,7 +9066,7 @@ input[name=attachBBC] {
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #fffce6 42%, transparent 78%);
+  background: linear-gradient(135deg, var(--block-bg) 42%, transparent 78%);
 }
 .profile-hero-avatar .avatar {
   width: 120px;
