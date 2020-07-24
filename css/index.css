@@ -7254,6 +7254,10 @@ input[type=radio],
   padding: var(--block-padding);
 }
 
+.windowbg .windowbg {
+  background: var(--color-bg);
+}
+
 .amt {
   width: 16px;
   height: 16px;
@@ -7481,7 +7485,7 @@ body {
   color: #fff;
 }
 .footer a:hover {
-  color: #cccccc;
+  color: var(--color-contrast);
 }
 
 .waves {
@@ -8025,7 +8029,7 @@ input[type=checkbox], input[type=radio] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #cccccc;
+  color: var(--color-contrast);
   vertical-align: middle;
   margin: 0 7px;
 }
@@ -8033,7 +8037,7 @@ input[type=checkbox]:hover, input[type=radio]:hover {
   color: var(--color-contrast-dark);
 }
 input[type=checkbox]::after, input[type=radio]::after {
-  background: #fff;
+  background: var(--block-bg);
   border-radius: 100%;
   margin-top: -2px;
 }
@@ -8939,7 +8943,7 @@ input[name=attachBBC] {
   margin: 0;
   padding: var(--block-padding);
   border-radius: var(--border-radius);
-  background: #cccccc;
+  background: var(--color-contrast);
 }
 .bbc_standard_quote cite {
   display: block;
@@ -8971,7 +8975,7 @@ input[name=attachBBC] {
 .bbc_code {
   padding: var(--block-padding);
   border-radius: var(--border-radius);
-  background: #cccccc;
+  background: var(--color-contrast);
   display: block;
   background: #eaeaea;
   filter: invert(1);
@@ -9028,6 +9032,20 @@ input[name=attachBBC] {
 }
 .admin_search > *:last-child {
   margin-inline-end: 0;
+}
+
+#admin_form_wrapper > form > .windowbg > * {
+  margin: var(--space-between-elements) 0;
+}
+#admin_form_wrapper > form > .windowbg > *:first-child {
+  margin-block-start: 0;
+}
+#admin_form_wrapper > form > .windowbg > *:last-child {
+  margin-block-end: 0;
+}
+
+h3.config_hd.titlebg {
+  padding: 0 0 0 45px;
 }
 
 .profile-container > * {

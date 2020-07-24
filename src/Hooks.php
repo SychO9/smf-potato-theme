@@ -17,6 +17,7 @@ class Potato
 		add_integration_function('integrate_recent_RecentPosts', self::class.'::loadRecentPostsAvatars', false);
 		add_integration_function('integrate_load_profile_fields', self::class.'::addProfileCustomFields', false);
 		add_integration_function('integrate_setup_profile_context', self::class.'::loadCustomFields', false);
+		add_integration_function('integrate_menu_buttons', self::class.'::addThemeSettingsLinkMenuItem', false);
 	}
 
 	/**
@@ -206,5 +207,19 @@ class Potato
 
 		addJavaScriptVar('potato_dark_mode_toggle_var', '"'.$context["{$token_name}_token_var"].'"');
 		addJavaScriptVar('potato_dark_mode_toggle', '"'.$context["{$token_name}_token"].'"');
+	}
+
+	/**
+	 * @param $buttons
+	 */
+	public static function addThemeSettingsLinkMenuItem(&$buttons)
+	{
+		global $txt, $scripturl, $settings;
+
+		$buttons['admin']['sub_buttons']['current_theme'] = array(
+			'title' => $txt['potato_theme_settings'],
+			'href' => $scripturl . '?action=admin;area=theme;sa=list;th=' . $settings['theme_id'],
+			'show' => allowedTo('admin_forum'),
+		);
 	}
 }

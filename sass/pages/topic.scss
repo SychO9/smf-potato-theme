@@ -175,7 +175,7 @@
   margin: 0;
   padding: var(--block-padding);
   border-radius: var(--border-radius);
-  background: $color-contrast;
+  background: var(--color-contrast);
 
   cite {
     display: block;
@@ -201,7 +201,7 @@
 .bbc_code {
   padding: var(--block-padding);
   border-radius: var(--border-radius);
-  background: $color-contrast;
+  background: var(--color-contrast);
   display: block;
   background: #eaeaea;
   filter: invert(1);

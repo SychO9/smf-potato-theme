@@ -137,3 +137,7 @@
   color: $block-color;
   padding: var(--block-padding);
 }
+
+.windowbg .windowbg {
+  background: var(--color-bg);
+}

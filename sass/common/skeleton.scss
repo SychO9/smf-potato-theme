@@ -97,7 +97,7 @@ body {
     color: #fff;
   }
   a:hover {
-    color: $color-contrast;
+    color: var(--color-contrast);
   }
 }
 

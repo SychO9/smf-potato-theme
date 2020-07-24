@@ -22,7 +22,7 @@ input {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: $color-contrast;
+    color: var(--color-contrast);
     vertical-align: middle;
     margin: 0 7px;
 
@@ -30,7 +30,7 @@ input {
       color: var(--color-contrast-dark);
     }
     &::after {
-      background: #fff;
+      background: var(--block-bg);
       border-radius: 100%;
       margin-top: -2px;
     }

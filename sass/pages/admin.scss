@@ -16,3 +16,11 @@
     @include horizontal-spacing(2px);
   }
 }
+
+#admin_form_wrapper > form > .windowbg > * {
+  @include vertical-spacing;
+}
+
+h3.config_hd.titlebg {
+  padding: 0 0 0 45px;
+}
