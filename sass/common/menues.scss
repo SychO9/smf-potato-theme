@@ -8,6 +8,7 @@
   min-width: var(--dropdown-min-width);
   max-width: var(--dropdown-max-width);
   top: calc(100% + 10px);
+  display: none;
 
   .separator {
     height: 1px;

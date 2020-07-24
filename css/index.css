@@ -7570,6 +7570,7 @@ a:hover {
   min-width: var(--dropdown-min-width);
   max-width: var(--dropdown-max-width);
   top: calc(100% + 10px);
+  display: none;
 }
 .dropdown .separator, .quickbuttons > li > ul .separator, .top_menu .separator, .dropmenu > li ul .separator {
   height: 1px;
