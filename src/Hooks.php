@@ -9,6 +9,7 @@ class Potato
 	 */
 	public static function setUp()
 	{
+		add_integration_function('integrate_load_theme', self::class.'::addCustomColorVars', false);
 		add_integration_function('integrate_pre_javascript_output', self::class.'::addJavascriptVars', false);
 		add_integration_function('integrate_buffer', self::class.'::bufferTransformations', false);
 		add_integration_function('integrate_messageindex_buttons', self::class.'::setActiveNotifyItem', false);
@@ -221,5 +222,38 @@ class Potato
 			'href' => $scripturl . '?action=admin;area=theme;sa=list;th=' . $settings['theme_id'],
 			'show' => allowedTo('admin_forum'),
 		);
+	}
+
+	public static function addCustomColorVars()
+	{
+		global $settings;
+
+		$color_key = 'potato_color_';
+		$colors = array();
+
+		foreach ($settings as $key => $setting)
+		{
+			if (substr($key, 0, strlen($color_key)) !== $color_key || empty($setting))
+				continue;
+
+			$color_name = str_replace(
+				array('potato_', '_'),
+				array('', '-'),
+				$key
+			);
+
+			$hsl = potato_hex_to_hsl($setting);
+			$colors["--$color_name-h"] = $hsl[0] . 'deg';
+			$colors["--$color_name-s"] = $hsl[1] * 100 . '%';
+			$colors["--$color_name-l"] = $hsl[2] * 100 . '%';
+			$colors["--$color_name"] = "hsl(var(--$color_name-h), var(--$color_name-s), var(--$color_name-l))";
+		}
+
+		$css = '';
+
+		foreach ($colors as $color => $value)
+			$css .= "$color: $value;\n";
+
+		addInlineCss(":root {{$css}}");
 	}
 }

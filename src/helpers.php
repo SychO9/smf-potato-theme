@@ -130,3 +130,58 @@ function organize_page_index()
 	if (strpos($context['page_index'], 'pagelinks') === false)
 		$context['page_index'] = "<div class='pagelinks'>{$context['page_index']}</div>";
 }
+
+/**
+ * Converts HEX color to HSL format
+ *
+ * @param $hex
+ * @return float[]
+ */
+function potato_hex_to_hsl($hex)
+{
+	$hex = str_split(ltrim($hex, '#'), 2);
+
+	$rgb = array_map(function($part) {
+		return hexdec($part) / 255;
+	}, $hex);
+
+	$min = min($rgb);
+	$max = max($rgb);
+
+	// Initialize all to 0
+	$h = $s = $l = 0;
+
+	// calculate the luminace value by adding the max and min values and divide by 2
+	$l = ($min + $max) / 2;
+
+	// If $max and $min are unequal, we need to calculate the saturation and hue
+	if ($max !== $min)
+	{
+		// Saturation
+		if ($l < 0.5)
+			$s = ($max - $min) / ($max + $min);
+		else
+			$s = ($max - $min) / (2 - $max - $min);
+
+		// Hue
+		switch ($max)
+		{
+			case $rgb[0]:
+				$h = ($rgb[1] - $rgb[2]) / ($max - $min);
+				break;
+			case $rgb[1]:
+				$h = 2 + ($rgb[2] - $rgb[0]) / ($max - $min);
+				break;
+			case $rgb[2]:
+				$h = 4 + ($rgb[0] - $rgb[1]) / ($max - $min);
+		}
+
+		// Convert the Hue to degrees
+		$h *= 60;
+
+		if ($h < 0)
+			$h += 360;
+	}
+
+	return array($h, $s, $l);
+}

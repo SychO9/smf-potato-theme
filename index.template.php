@@ -74,6 +74,12 @@ function template_init()
 
 	// Load our helper functions
 	require_once __DIR__ . '/src/helpers.php';
+
+	if (!defined('DEFAULT_POTATO_PRIMARY_COLOR'))
+		define('DEFAULT_POTATO_PRIMARY_COLOR', '#b83b5e');
+
+	if (!defined('DEFAULT_POTATO_SECONDARY_COLOR'))
+		define('DEFAULT_POTATO_SECONDARY_COLOR', '#6a2c70');
 }
 
 /**

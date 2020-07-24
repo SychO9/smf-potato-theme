@@ -225,6 +225,21 @@ function template_settings()
 			),
 			'type' => 'list',
 		),
+		'',
+		array(
+			'id' => 'potato_color_primary',
+			'label' => $txt['potato_color_primary'],
+			'description' => str_replace('%color%', DEFAULT_POTATO_PRIMARY_COLOR, $txt['potato_color_default']),
+			'default_value' => DEFAULT_POTATO_PRIMARY_COLOR,
+			'type' => 'color',
+		),
+		array(
+			'id' => 'potato_color_secondary',
+			'label' => $txt['potato_color_secondary'],
+			'description' => str_replace('%color%', DEFAULT_POTATO_SECONDARY_COLOR, $txt['potato_color_default']),
+			'default_value' => DEFAULT_POTATO_SECONDARY_COLOR,
+			'type' => 'color',
+		),
 	);
 }
 

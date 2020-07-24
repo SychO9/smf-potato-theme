@@ -54,6 +54,10 @@ input {
       content: fa-content($fa-var-dot-circle);
     }
   }
+  &[type="color"] {
+    width: 70px;
+    padding: 0 1px;
+  }
 }
 
 dl {

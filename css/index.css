@@ -8056,6 +8056,10 @@ input[type=radio]::after {
 input[type=radio]:checked::after {
   content: "";
 }
+input[type=color] {
+  width: 70px;
+  padding: 0 1px;
+}
 
 dl {
   display: flex;
@@ -9045,7 +9049,7 @@ input[name=attachBBC] {
 }
 
 h3.config_hd.titlebg {
-  padding: 0 0 0 45px;
+  padding: 3px 0 3px 45px;
 }
 
 .profile-container > * {

@@ -6,3 +6,7 @@ $txt['potato_profile_cover'] = 'Profile Cover URL';
 $txt['potato_dark_mode'] = 'Dark Mode';
 $txt['potato_light_mode'] = 'Light Mode';
 $txt['potato_theme_settings'] = 'Theme Settings';
+
+$txt['potato_color_primary'] = 'Primary Color';
+$txt['potato_color_secondary'] = 'Secondary Color';
+$txt['potato_color_default'] = 'Default is: %color%';
