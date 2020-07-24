@@ -1,0 +1,38 @@
+.dark-mode {
+  @include defineColorHSL(--color-bg, #171717);
+  @include defineColorHSL(--color-fg, #c9c9c9);
+  @include defineColorHSL(--color-contrast, #0e0e0e);
+  --color-contrast-dark: #{colorLightness(--color-contrast, 1.1)};
+  @include defineColorHSL(--block-bg, #222222);
+  --block-bg-dark: #{colorLightness(--block-bg, 1.2, true)};
+  --block-bg-darker: #{colorLightness(--block-bg, 1.25, true)};
+  --block-bg-darkerer: #{colorLightness(--block-bg, 1.3, true)};
+
+  @include defineChildColorHSL(--link-color, var(--color-primary), 1.1);
+
+  --lower-wrapper-bg: #{colorLightness(--color-bg, 0.8, true)};
+
+  --dropdown-bg-dark: #{colorLightness(--dropdown-bg, 1.3, true)};
+  --dropdown-bg-darker: #{colorLightness(--dropdown-bg, 1.6, true)};
+
+  @include defineColorHSL(--error-bg, #b81d1f);
+  @include defineChildColorHSL(--error-color, var(--color-white));
+  @include defineColorHSL(--notice-bg, #998315);
+  @include defineChildColorHSL(--notice-color, var(--color-white));
+  @include defineColorHSL(--success-bg, #217d09);
+  @include defineChildColorHSL(--success-color, var(--color-white));
+
+  --topic-sticky-bg: #37320d;
+  --unapproved-bg: #491b1b;
+
+  .noticebox, .infobox, .errorbox, .databox--content {
+    a {
+      color: #fff;
+      border-bottom: 1px dotted;
+
+      &:hover {
+        color: #eee;
+      }
+    }
+  }
+}

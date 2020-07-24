@@ -7,10 +7,16 @@
   #{$name}: hsl(var(#{$name}-h), var(#{$name}-s), var(#{$name}-l));
 }
 
-@mixin defineChildColorHSL($name, $color) {
+@mixin defineChildColorHSL($name, $color, $multiplier: 1) {
   #{$name}-h: str-replace($color, ')', '-h)');
   #{$name}-s: str-replace($color, ')', '-s)');
-  #{$name}-l: str-replace($color, ')', '-l)');
+
+  @if ($multiplier == 1) {
+    #{$name}-l: str-replace($color, ')', '-l)');
+  } @else {
+    #{$name}-l: calc(#{str-replace($color, ')', '-l)')} * #{$multiplier});
+  }
+
   #{$name}: hsl(var(#{$name}-h), var(#{$name}-s), var(#{$name}-l));
 }
 

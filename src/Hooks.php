@@ -206,8 +206,5 @@ class Potato
 
 		addJavaScriptVar('potato_dark_mode_toggle_var', '"'.$context["{$token_name}_token_var"].'"');
 		addJavaScriptVar('potato_dark_mode_toggle', '"'.$context["{$token_name}_token"].'"');
-
-		addJavaScriptVar('potato_dark_mode_txt', '"'.$txt['potato_dark_mode'].'"');
-		addJavaScriptVar('potato_light_mode_txt', '"'.$txt['potato_light_mode'].'"');
 	}
 }

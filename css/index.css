@@ -418,7 +418,7 @@ tr[id^=list_news_lists_] textarea {
   --error-color-s:var(--color-fg-s);
   --error-color-l:var(--color-fg-l);
   --error-color:hsl(var(--error-color-h), var(--error-color-s), var(--error-color-l));
-  --topic-sticky-bg: hsl(var(--block-bg-h), var(--block-bg-s), calc(var(--block-bg-l) * 0.85));
+  --topic-sticky-bg: #fff39d;
   --topic-locked-bg: var(--block-bg-dark);
   --topic-sticky-locked-bg: var(--topic-sticky-bg);
   --unapproved-bg: #fadde2;
@@ -438,6 +438,69 @@ tr[id^=list_news_lists_] textarea {
   --dropdown-max-width: 18rem;
   --dropdown-list-padding: 6px 0;
   --avatar-border-radius: 100%;
+}
+
+.dark-mode {
+  --color-bg-h:0deg;
+  --color-bg-s:0%;
+  --color-bg-l:9.0196078431%;
+  --color-bg:hsl(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l));
+  --color-fg-h:0deg;
+  --color-fg-s:0%;
+  --color-fg-l:78.8235294118%;
+  --color-fg:hsl(var(--color-fg-h), var(--color-fg-s), var(--color-fg-l));
+  --color-contrast-h:0deg;
+  --color-contrast-s:0%;
+  --color-contrast-l:5.4901960784%;
+  --color-contrast:hsl(var(--color-contrast-h), var(--color-contrast-s), var(--color-contrast-l));
+  --color-contrast-dark: hsl(var(--color-contrast-h), var(--color-contrast-s), calc(var(--color-contrast-l) * 1.1));
+  --block-bg-h:0deg;
+  --block-bg-s:0%;
+  --block-bg-l:13.3333333333%;
+  --block-bg:hsl(var(--block-bg-h), var(--block-bg-s), var(--block-bg-l));
+  --block-bg-dark: hsl(var(--block-bg-h), 0%, calc(var(--block-bg-l) * 1.2));
+  --block-bg-darker: hsl(var(--block-bg-h), 0%, calc(var(--block-bg-l) * 1.25));
+  --block-bg-darkerer: hsl(var(--block-bg-h), 0%, calc(var(--block-bg-l) * 1.3));
+  --link-color-h:var(--color-primary-h);
+  --link-color-s:var(--color-primary-s);
+  --link-color-l:calc(var(--color-primary-l) * 1.1);
+  --link-color:hsl(var(--link-color-h), var(--link-color-s), var(--link-color-l));
+  --lower-wrapper-bg: hsl(var(--color-bg-h), 0%, calc(var(--color-bg-l) * 0.8));
+  --dropdown-bg-dark: hsl(var(--dropdown-bg-h), 0%, calc(var(--dropdown-bg-l) * 1.3));
+  --dropdown-bg-darker: hsl(var(--dropdown-bg-h), 0%, calc(var(--dropdown-bg-l) * 1.6));
+  --error-bg-h:359.2258064516deg;
+  --error-bg-s:72.7699530516%;
+  --error-bg-l:41.7647058824%;
+  --error-bg:hsl(var(--error-bg-h), var(--error-bg-s), var(--error-bg-l));
+  --error-color-h:var(--color-white-h);
+  --error-color-s:var(--color-white-s);
+  --error-color-l:var(--color-white-l);
+  --error-color:hsl(var(--error-color-h), var(--error-color-s), var(--error-color-l));
+  --notice-bg-h:50deg;
+  --notice-bg-s:75.8620689655%;
+  --notice-bg-l:34.1176470588%;
+  --notice-bg:hsl(var(--notice-bg-h), var(--notice-bg-s), var(--notice-bg-l));
+  --notice-color-h:var(--color-white-h);
+  --notice-color-s:var(--color-white-s);
+  --notice-color-l:var(--color-white-l);
+  --notice-color:hsl(var(--notice-color-h), var(--notice-color-s), var(--notice-color-l));
+  --success-bg-h:107.5862068966deg;
+  --success-bg-s:86.5671641791%;
+  --success-bg-l:26.2745098039%;
+  --success-bg:hsl(var(--success-bg-h), var(--success-bg-s), var(--success-bg-l));
+  --success-color-h:var(--color-white-h);
+  --success-color-s:var(--color-white-s);
+  --success-color-l:var(--color-white-l);
+  --success-color:hsl(var(--success-color-h), var(--success-color-s), var(--success-color-l));
+  --topic-sticky-bg: #37320d;
+  --unapproved-bg: #491b1b;
+}
+.dark-mode .noticebox a, .dark-mode .infobox a, .dark-mode .errorbox a, .dark-mode .databox--content a {
+  color: #fff;
+  border-bottom: 1px dotted;
+}
+.dark-mode .noticebox a:hover, .dark-mode .infobox a:hover, .dark-mode .errorbox a:hover, .dark-mode .databox--content a:hover {
+  color: #eee;
 }
 
 /*!
@@ -7242,6 +7305,10 @@ hr {
   background: rgba(0, 0, 0, 0.2);
 }
 
+.hidden {
+  display: none;
+}
+
 table {
   border-radius: var(--border-radius);
   box-shadow: var(--block-box-shadow);
@@ -8289,6 +8356,7 @@ input[name=attachBBC] {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.78);
+  z-index: 999;
 }
 .popup_window {
   border-radius: var(--border-radius);
@@ -8347,6 +8415,7 @@ input[name=attachBBC] {
     background: unset;
     width: unset;
     height: unset;
+    z-index: unset;
   }
   .popup_mobile .popup_heading {
     display: none;

@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     background: rgb(0 0 0 / 78%);
+    z-index: 999;
   }
   &_window {
     @include block-skeleton;
@@ -50,6 +51,7 @@
     background: unset;
     width: unset;
     height: unset;
+    z-index: unset;
 
     .popup {
       &_heading {

@@ -87,7 +87,7 @@ function template_html_above()
 
 	// Show right to left, the language code, and the character set for ease of translating.
 	echo '<!DOCTYPE html>
-<html', $context['right_to_left'] ? ' dir="rtl"' : '', !empty($txt['lang_locale']) ? ' lang="' . str_replace("_", "-", substr($txt['lang_locale'], 0, strcspn($txt['lang_locale'], "."))) . '"' : '', '>
+<html', $context['right_to_left'] ? ' dir="rtl"' : '', !empty($txt['lang_locale']) ? ' lang="' . str_replace("_", "-", substr($txt['lang_locale'], 0, strcspn($txt['lang_locale'], "."))) . '"' : '', !empty($GLOBALS['options']['potato_dark_mode']) ? ' class="dark-mode"' : '', '>
 <head>
 	<meta charset="', $context['character_set'], '">';
 
@@ -187,7 +187,7 @@ function template_html_above()
 	echo '
 </head>
 <body id="', $context['browser_body_id'], '" class="action_', !empty($context['current_action']) ? $context['current_action'] : (!empty($context['current_board']) ?
-		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '', function_exists('template_body_wrapper_end') ? ' body--waves' : '', !empty($GLOBALS['options']['potato_dark_mode']) ? ' dark-mode' : '', '">
+		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '', function_exists('template_body_wrapper_end') ? ' body--waves' : '', '">
 <div id="footerfix" class="footerfix">';
 }
 
@@ -260,7 +260,7 @@ function template_body_above()
 	else
 	{
 		echo '
-			<ul class="user-menu" id="top_info">
+			<ul class="user-menu menu menu--flat" id="top_info">
 				<li>
 					<a href="', $scripturl, '?action=login" onclick="return ', empty($maintenance) ? 'reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ')' : 'true', ';">', icon('fas fa-sign-in-alt'), ' ', $txt['login'], '</a>
 				</li>';

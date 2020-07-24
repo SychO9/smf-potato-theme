@@ -1,5 +1,3 @@
-var darkMode;
-
 $(function() {
 	$('ul.dropmenu, ul.quickbuttons').superfish({delay : 250, speed: 100, sensitivity : 8, interval : 50, timeout : 1});
 
@@ -25,8 +23,6 @@ $(function() {
 			});
 		});
 	});
-
-	darkMode = $('body').hasClass('dark-mode');
 });
 
 // The purpose of this code is to fix the height of overflow: auto blocks, because some browsers can't figure it out for themselves.
@@ -81,11 +77,15 @@ function smf_addButton(stripId, image, options)
 }
 
 /**
- *
+ * @param element {Node}
  */
 function toggleDarkMode(element) {
 	if (typeof potato_dark_mode_toggle_var === 'undefined' || typeof smf_member_id === 'undefined' || smf_member_id === 0)
 		return;
+
+	$(element).append('<div style="margin-inline-start: auto"><i class="fas fa-spinner fa-spin"></i></div>');
+
+	var darkMode = $('html').hasClass('dark-mode');
 
 	var data = {
 		"default_options[potato_dark_mode]": darkMode ? 0 : 1,
@@ -102,16 +102,8 @@ function toggleDarkMode(element) {
 		contentType: "application/x-www-form-urlencoded",
 		data,
 		success() {
-			darkMode = !darkMode;
-
-			$('.top_menu.visible').removeClass('visible');
-			$('body').toggleClass('dark-mode');
-
-			var txt = darkMode ? potato_light_mode_txt : potato_dark_mode_txt;
-
-			$(element).find('.icon').toggleClass('fa-moon').toggleClass('fa-sun');
-			$(element).find('.item-label').text(txt);
-		}
+			location.reload();
+		},
 	});
 
 	return false;
