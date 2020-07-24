@@ -327,9 +327,6 @@ function template_body_above()
 	echo '
 			</nav><!-- .main_nav -->
 		</div><!-- .inner_wrap -->
-		<!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves">
-			<path d="M0,64L60,96C120,128,240,192,360,181.3C480,171,600,85,720,64C840,43,960,85,1080,96C1200,107,1320,85,1380,74.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-		</svg>-->
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--upper"><path d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,240C840,224,960,160,1080,165.3C1200,171,1320,245,1380,282.7L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
 	</header><!-- #top_section -->';
 
@@ -364,7 +361,7 @@ function template_body_below()
 	if (function_exists('template_body_wrapper_end'))
 		echo '
 		<div class="lower_wrapper">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--intermediate"><path d="M0,96L60,128C120,160,240,224,360,250.7C480,277,600,267,720,272C840,277,960,299,1080,304C1200,309,1320,299,1380,293.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--intermediate"><path d="M0,64L48,64C96,64,192,64,288,74.7C384,85,480,107,576,101.3C672,96,768,64,864,64C960,64,1056,96,1152,96C1248,96,1344,64,1392,48L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
 			<div class="inner_wrap">', template_body_wrapper_end(), '</div>
 		</div><!-- .lower_wrapper -->';
 

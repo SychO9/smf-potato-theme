@@ -66,7 +66,7 @@ body {
 .lower_wrapper {
   position: relative;
   padding: 0 0 2rem;
-  margin-top: 6rem;
+  margin-top: 4rem;
   background: var(--lower-wrapper-bg);
 }
 
@@ -108,12 +108,12 @@ body {
   &--upper {
     fill: var(--color-bg);
     background: var(--top-section-background);
-    top: -80px;
+    transform: translateY(-55%);
   }
   &--intermediate {
     fill: var(--color-bg);
     background: var(--lower-wrapper-bg);
-    top: -18rem;
+    transform: translateY(-33%);
   }
   &--lower {
     bottom: 0;

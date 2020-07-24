@@ -7448,7 +7448,7 @@ body {
 .lower_wrapper {
   position: relative;
   padding: 0 0 2rem;
-  margin-top: 6rem;
+  margin-top: 4rem;
   background: var(--lower-wrapper-bg);
 }
 
@@ -7495,12 +7495,12 @@ body {
 .waves--upper {
   fill: var(--color-bg);
   background: var(--top-section-background);
-  top: -80px;
+  transform: translateY(-55%);
 }
 .waves--intermediate {
   fill: var(--color-bg);
   background: var(--lower-wrapper-bg);
-  top: -18rem;
+  transform: translateY(-33%);
 }
 .waves--lower {
   bottom: 0;
