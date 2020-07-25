@@ -7,7 +7,7 @@ The SMF Potato Theme that has nothing to do with potatoes.
 
 ## Screenshots
 <p align="center">
-<img src="https://user-images.githubusercontent.com/20267363/88466373-96131900-cec3-11ea-925e-ce624a7d08db.png" alt="potato_theme_dark" width="350"><img src="https://user-images.githubusercontent.com/20267363/88466387-aa571600-cec3-11ea-956a-50fc83719546.png" alt="potato_theme_light" width="350">
+<img src="https://user-images.githubusercontent.com/20267363/88466387-aa571600-cec3-11ea-956a-50fc83719546.png" alt="potato_theme_light" width="350"><img src="https://user-images.githubusercontent.com/20267363/88466373-96131900-cec3-11ea-925e-ce624a7d08db.png" alt="potato_theme_dark" width="350">
 </p>
 
 ## Installation
@@ -16,7 +16,7 @@ Download [the latest release](https://github.com/SychO9/flarum-profile-cover/rel
 ## Updating
 To update the theme, you can either manually apply the changes to the theme's files, or overwrite the theme files with files from a new release package.
 
-### Overwriting iles with new release package files
+### Overwriting files with new release package files
 This means that any custom file edits you may have made to the theme or any mod's modifications to the theme files will be lost, the former is not a problem as long as you remember your custom edits. The latter can create big problems with your forum setup.
 
 So the only way for you to update the theme this way, is for you to avoid installing mods that edit the theme's files and make sure the theme's files are untouched.
