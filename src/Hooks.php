@@ -31,7 +31,7 @@ class Potato
 	{
 		global $txt;
 
-		$attribution = str_replace('%icon%', icon('fas fa-heart'), $txt['potato_attribution']);
+		$attribution = str_replace('%icon%', icon('fas fa-heart'), str_replace('%author%', $txt['potato_author'], $txt['potato_attribution']));
 
 		$buffer = preg_replace('/<li class="copyright">((?:(?!li).)+)<\/li>/ms', '<li class="copyright">$1<div>'.$attribution.'</div></li>', $buffer);
 

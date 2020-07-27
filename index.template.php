@@ -805,4 +805,68 @@ function template_search_form()
 			</form>';
 }
 
+/**
+ *
+ */
+function template_potato_theme_info()
+{
+	global $context, $settings, $txt;
+
+	if ((int)$context['theme_settings']['theme_id'] !== $settings['theme_id'])
+		return;
+
+	loadLanguage('Packages');
+
+	$biginfo = array(
+		'version' => array(
+			'label' => $txt['mod_version'],
+			'value' => $settings['version'],
+			'icon' => 'fas fa-code-branch',
+		),
+		'author' => array(
+			'label' => $txt['author'],
+			'value' => $txt['potato_author'] . ' (sychocouldy@gmail.com)',
+			'icon' => 'fas fa-user-edit',
+		),
+		'repository' => array(
+			'label' => $txt['potato_source_code'],
+			'value' => "<a href='https://github.com/SychO9/smf-potato-theme'>{$txt['potato_github_repo']}</a>",
+			'icon' => 'fab fa-github',
+		),
+		'donate' => array(
+			'label' => $txt['potato_donate_desc'],
+			'value' => "<a href='https://www.paypal.me/'>{$txt['potato_donate']}</a>",
+			'icon' => 'fas fa-hand-holding-heart',
+		),
+		'discuss' => array(
+			'label' => $txt['potato_simple_machines_forum'],
+			'value' => "<a href='https://simplemachines.org/community/'>{$txt['potato_discuss']}</a>",
+			'icon' => 'fas fa-comments',
+		),
+	);
+
+	echo '
+	<div class="potato-theme-info">
+		<div class="cat_bar">
+			<h3 class="catbg">', $txt['potato_theme_info'], '</h3>
+		</div>
+		<div class="windowbg potato-theme-info-container">';
+
+	foreach ($biginfo as $key => $info)
+	{
+		echo '
+		<div class="databox databox--neutral databox--statistic">
+			<div class="databox-icon">', icon($info['icon']), '</div>
+			<div class="databox-content">
+				<div class="databox-title">', $info['value'], '</div>
+				<div class="databox-details">', $info['label'], '</div>
+			</div>
+		</div>';
+	}
+
+	echo '
+		</div>
+	</div>';
+}
+
 ?>
