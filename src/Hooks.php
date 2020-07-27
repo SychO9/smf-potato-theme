@@ -117,13 +117,13 @@ class Potato
 	 */
 	public static function addProfileCustomFields(&$profile_fields)
 	{
-		global $txt, $options;
+		global $context, $txt, $options;
 
 		$profile_fields['default_options[potato_profile_cover]'] = array(
 			'type' => 'url',
 			'permission' => 'profile_extra',
 			'label' => $txt['potato_profile_cover'],
-			'value' => !empty($options['potato_profile_cover']) ? $options['potato_profile_cover'] : '',
+			'value' => !empty($context['member']['potato_profile_cover']) ? $context['member']['potato_profile_cover'] : '',
 			'input_validate' => function($value) {
 				$value = filter_var($value, FILTER_SANITIZE_URL);
 

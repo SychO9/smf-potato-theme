@@ -1,17 +1,21 @@
-@mixin button-skeleton {
+@mixin button-skeleton($define-font-family: true) {
   height: 34px;
   padding: 0 10px;
   border: 2px solid transparent;
   border-radius: var(--border-radius);
-  font-family: var(--font-family);
+
+  @if ($define-font-family) {
+    font-family: var(--font-family);
+  }
+
   font-size: var(--font-size);
   display: inline-flex;
   align-items: center;
   max-width: 100%;
 }
 
-@mixin button {
-  @include button-skeleton;
+@mixin button($define-font-family: true) {
+  @include button-skeleton($define-font-family);
   @include background-color-transition(--color-contrast, --color-fg);
 
   &:focus {

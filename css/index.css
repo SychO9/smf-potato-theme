@@ -9118,77 +9118,89 @@ h3.config_hd.titlebg {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
-.profile-hero-links ul > li > a, .profile-hero-links ol > li > a {
+.profile-hero-links ul > li, .profile-hero-links ol > li {
+  margin: 0 1px;
+}
+.profile-hero-links ul > li:first-child, .profile-hero-links ol > li:first-child {
+  margin-inline-start: 0;
+}
+.profile-hero-links ul > li:last-child, .profile-hero-links ol > li:last-child {
+  margin-inline-end: 0;
+}
+.profile-hero-links ul > li > a, .profile-hero-links ul > li > .main_icons, .profile-hero-links ol > li > a, .profile-hero-links ol > li > .main_icons {
   height: 34px;
   padding: 0 10px;
   border: 2px solid transparent;
   border-radius: var(--border-radius);
-  font-family: var(--font-family);
   font-size: var(--font-size);
   display: inline-flex;
   align-items: center;
   max-width: 100%;
   background: var(--color-contrast);
   color: var(--color-fg);
+  margin-inline-end: 0;
 }
-.profile-hero-links ul > li > a:hover, .profile-hero-links ol > li > a:hover {
+.profile-hero-links ul > li > a:hover, .profile-hero-links ul > li > .main_icons:hover, .profile-hero-links ol > li > a:hover, .profile-hero-links ol > li > .main_icons:hover {
   background: hsl(var(--color-contrast-h), var(--color-contrast-s), calc(var(--color-contrast-l) * 0.85));
   color: hsl(var(--color-fg-h), var(--color-fg-s), calc(var(--color-fg-l) * 0.85));
 }
-.profile-hero-links ul > li > a:focus, .profile-hero-links ol > li > a:focus {
+.profile-hero-links ul > li > a:focus, .profile-hero-links ul > li > .main_icons:focus, .profile-hero-links ol > li > a:focus, .profile-hero-links ol > li > .main_icons:focus {
   background: hsl(var(--color-contrast-h), var(--color-contrast-s), calc(var(--color-contrast-l) * 0.85));
   color: hsl(var(--color-fg-h), var(--color-fg-s), calc(var(--color-fg-l) * 0.85));
 }
-.profile-hero-links ul > li > a:focus, .profile-hero-links ol > li > a:focus {
+.profile-hero-links ul > li > a:focus, .profile-hero-links ul > li > .main_icons:focus, .profile-hero-links ol > li > a:focus, .profile-hero-links ol > li > .main_icons:focus {
   border-color: var(--color-primary);
   outline: none;
 }
-.profile-hero-links ul > li > a.active, .profile-hero-links ol > li > a.active {
+.profile-hero-links ul > li > a.active, .profile-hero-links ul > li > .main_icons.active, .profile-hero-links ul > li > input.main_icons[type=submit], .profile-hero-links ol > li > a.active, .profile-hero-links ol > li > .main_icons.active, .profile-hero-links ol > li > input.main_icons[type=submit] {
   background: var(--color-primary);
   color: var(--color-white);
 }
-.profile-hero-links ul > li > a.active:hover, .profile-hero-links ol > li > a.active:hover {
+.profile-hero-links ul > li > a.active:hover, .profile-hero-links ul > li > .main_icons.active:hover, .profile-hero-links ul > li > input.main_icons[type=submit]:hover, .profile-hero-links ol > li > a.active:hover, .profile-hero-links ol > li > .main_icons.active:hover, .profile-hero-links ol > li > input.main_icons[type=submit]:hover {
   background: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 0.85));
   color: hsl(var(--color-white-h), var(--color-white-s), calc(var(--color-white-l) * 0.85));
 }
-.profile-hero-links ul > li > a.active:focus, .profile-hero-links ol > li > a.active:focus {
+.profile-hero-links ul > li > a.active:focus, .profile-hero-links ul > li > .main_icons.active:focus, .profile-hero-links ul > li > input.main_icons[type=submit]:focus, .profile-hero-links ol > li > a.active:focus, .profile-hero-links ol > li > .main_icons.active:focus, .profile-hero-links ol > li > input.main_icons[type=submit]:focus {
   background: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 0.85));
   color: hsl(var(--color-white-h), var(--color-white-s), calc(var(--color-white-l) * 0.85));
 }
-.profile-hero-links ul > li > a.active:focus, .profile-hero-links ol > li > a.active:focus {
+.profile-hero-links ul > li > a.active:focus, .profile-hero-links ul > li > .main_icons.active:focus, .profile-hero-links ul > li > input.main_icons[type=submit]:focus, .profile-hero-links ol > li > a.active:focus, .profile-hero-links ol > li > .main_icons.active:focus, .profile-hero-links ol > li > input.main_icons[type=submit]:focus {
   border-color: #000;
 }
-.profile-hero-links ul > li > a[disabled], .profile-hero-links ol > li > a[disabled] {
+.profile-hero-links ul > li > a[disabled], .profile-hero-links ul > li > .main_icons[disabled], .profile-hero-links ol > li > a[disabled], .profile-hero-links ol > li > .main_icons[disabled] {
   opacity: 0.4;
   cursor: unset;
 }
-.profile-hero-links ul > li > a--composite, .profile-hero-links ol > li > a--composite {
+.profile-hero-links ul > li > a--composite, .profile-hero-links ul > li > .main_icons--composite, .profile-hero-links ol > li > a--composite, .profile-hero-links ol > li > .main_icons--composite {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
-.profile-hero-links ul > li > a--composite + .button, .profile-hero-links ul > li > a--composite + input[type=submit], .profile-hero-links ol > li > a--composite + .button, .profile-hero-links ol > li > a--composite + input[type=submit] {
+.profile-hero-links ul > li > a--composite + .button, .profile-hero-links ul > li > a--composite + input[type=submit], .profile-hero-links ul > li > .main_icons--composite + .button, .profile-hero-links ul > li > .main_icons--composite + input[type=submit], .profile-hero-links ol > li > a--composite + .button, .profile-hero-links ol > li > a--composite + input[type=submit], .profile-hero-links ol > li > .main_icons--composite + .button, .profile-hero-links ol > li > .main_icons--composite + input[type=submit] {
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
   filter: brightness(0.96);
 }
-.profile-hero-links ul > li > a--composite + .button .fa-chevron-down, .profile-hero-links ul > li > a--composite + input[type=submit] .fa-chevron-down, .profile-hero-links ol > li > a--composite + .button .fa-chevron-down, .profile-hero-links ol > li > a--composite + input[type=submit] .fa-chevron-down {
+.profile-hero-links ul > li > a--composite + .button .fa-chevron-down, .profile-hero-links ul > li > a--composite + input[type=submit] .fa-chevron-down, .profile-hero-links ul > li > .main_icons--composite + .button .fa-chevron-down, .profile-hero-links ul > li > .main_icons--composite + input[type=submit] .fa-chevron-down, .profile-hero-links ol > li > a--composite + .button .fa-chevron-down, .profile-hero-links ol > li > a--composite + input[type=submit] .fa-chevron-down, .profile-hero-links ol > li > .main_icons--composite + .button .fa-chevron-down, .profile-hero-links ol > li > .main_icons--composite + input[type=submit] .fa-chevron-down {
   margin: 0;
 }
-.profile-hero-links ul > li > a--composite.active + .button, .profile-hero-links ul > li > a--composite.active + input[type=submit], .profile-hero-links ol > li > a--composite.active + .button, .profile-hero-links ol > li > a--composite.active + input[type=submit] {
+.profile-hero-links ul > li > a--composite.active + .button, .profile-hero-links ul > li > a--composite.active + input[type=submit], .profile-hero-links ul > li > .main_icons--composite.active + .button, .profile-hero-links ul > li > input.main_icons--composite[type=submit] + .button, .profile-hero-links ul > li > .main_icons--composite.active + input[type=submit], .profile-hero-links ul > li > input.main_icons--composite[type=submit] + input[type=submit], .profile-hero-links ol > li > a--composite.active + .button, .profile-hero-links ol > li > a--composite.active + input[type=submit], .profile-hero-links ol > li > .main_icons--composite.active + .button, .profile-hero-links ol > li > input.main_icons--composite[type=submit] + .button, .profile-hero-links ol > li > .main_icons--composite.active + input[type=submit], .profile-hero-links ol > li > input.main_icons--composite[type=submit] + input[type=submit] {
   background: var(--color-primary);
   color: var(--color-white);
 }
-.profile-hero-links ul > li > a--composite.active + .button:hover, .profile-hero-links ul > li > a--composite.active + input[type=submit]:hover, .profile-hero-links ol > li > a--composite.active + .button:hover, .profile-hero-links ol > li > a--composite.active + input[type=submit]:hover {
+.profile-hero-links ul > li > a--composite.active + .button:hover, .profile-hero-links ul > li > a--composite.active + input[type=submit]:hover, .profile-hero-links ul > li > .main_icons--composite.active + .button:hover, .profile-hero-links ul > li > input.main_icons--composite[type=submit] + .button:hover, .profile-hero-links ul > li > .main_icons--composite.active + input[type=submit]:hover, .profile-hero-links ul > li > input.main_icons--composite[type=submit] + input[type=submit]:hover, .profile-hero-links ol > li > a--composite.active + .button:hover, .profile-hero-links ol > li > a--composite.active + input[type=submit]:hover, .profile-hero-links ol > li > .main_icons--composite.active + .button:hover, .profile-hero-links ol > li > input.main_icons--composite[type=submit] + .button:hover, .profile-hero-links ol > li > .main_icons--composite.active + input[type=submit]:hover, .profile-hero-links ol > li > input.main_icons--composite[type=submit] + input[type=submit]:hover {
   background: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 0.85));
   color: hsl(var(--color-white-h), var(--color-white-s), calc(var(--color-white-l) * 0.85));
 }
-.profile-hero-links ul > li > a--composite.active + .button:focus, .profile-hero-links ul > li > a--composite.active + input[type=submit]:focus, .profile-hero-links ol > li > a--composite.active + .button:focus, .profile-hero-links ol > li > a--composite.active + input[type=submit]:focus {
+.profile-hero-links ul > li > a--composite.active + .button:focus, .profile-hero-links ul > li > a--composite.active + input[type=submit]:focus, .profile-hero-links ul > li > .main_icons--composite.active + .button:focus, .profile-hero-links ul > li > input.main_icons--composite[type=submit] + .button:focus, .profile-hero-links ul > li > .main_icons--composite.active + input[type=submit]:focus, .profile-hero-links ul > li > input.main_icons--composite[type=submit] + input[type=submit]:focus, .profile-hero-links ol > li > a--composite.active + .button:focus, .profile-hero-links ol > li > a--composite.active + input[type=submit]:focus, .profile-hero-links ol > li > .main_icons--composite.active + .button:focus, .profile-hero-links ol > li > input.main_icons--composite[type=submit] + .button:focus, .profile-hero-links ol > li > .main_icons--composite.active + input[type=submit]:focus, .profile-hero-links ol > li > input.main_icons--composite[type=submit] + input[type=submit]:focus {
   background: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 0.85));
   color: hsl(var(--color-white-h), var(--color-white-s), calc(var(--color-white-l) * 0.85));
 }
-.profile-hero-links ul > li > a .icon, .profile-hero-links ul > li > a .main_icons, .profile-hero-links ol > li > a .icon, .profile-hero-links ol > li > a .main_icons {
+.profile-hero-links ul > li > a .icon, .profile-hero-links ul > li > a .main_icons, .profile-hero-links ul > li > .main_icons .icon, .profile-hero-links ul > li > .main_icons .main_icons, .profile-hero-links ol > li > a .icon, .profile-hero-links ol > li > a .main_icons, .profile-hero-links ol > li > .main_icons .icon, .profile-hero-links ol > li > .main_icons .main_icons {
   margin-inline-end: 0;
 }
-.profile-hero-links ul > li > a .icon + .item-label, .profile-hero-links ul > li > a .main_icons + .item-label, .profile-hero-links ol > li > a .icon + .item-label, .profile-hero-links ol > li > a .main_icons + .item-label {
+.profile-hero-links ul > li > a .icon + .item-label, .profile-hero-links ul > li > a .main_icons + .item-label, .profile-hero-links ul > li > .main_icons .icon + .item-label, .profile-hero-links ul > li > .main_icons .main_icons + .item-label, .profile-hero-links ol > li > a .icon + .item-label, .profile-hero-links ol > li > a .main_icons + .item-label, .profile-hero-links ol > li > .main_icons .icon + .item-label, .profile-hero-links ol > li > .main_icons .main_icons + .item-label {
   margin-inline-start: 5px;
 }
 .profile-hero-navigation {

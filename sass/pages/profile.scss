@@ -56,9 +56,15 @@
     &-links {
       ul, ol {
         @include listless;
+        @include organized-content;
 
-        > li > a {
-          @include button;
+        > li {
+          @include horizontal-spacing(1px);
+
+          > a, > .main_icons {
+            @include button(false);
+            margin-inline-end: 0;
+          }
         }
       }
     }
