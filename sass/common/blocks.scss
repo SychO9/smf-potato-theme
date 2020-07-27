@@ -129,6 +129,13 @@
   background: var(--block-bg);
   color: $block-color;
   padding: var(--block-padding);
+
+  .title_bar {
+    @include clear;
+    border-radius: var(--border-radius);
+    background: var(--color-bg);
+    padding: var(--block-padding);
+  }
 }
 
 .descbox {

@@ -218,3 +218,10 @@ ul.post_options {
 input[name="attachBBC"] {
   width: 100%;
 }
+
+#post_draft_options {
+  @include clear;
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  padding: var(--block-padding);
+}

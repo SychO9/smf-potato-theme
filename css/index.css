@@ -7246,6 +7246,16 @@ input[type=radio],
   display: block;
   clear: both;
 }
+.windowbg .title_bar, .roundframe .title_bar, .information .title_bar {
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  padding: var(--block-padding);
+}
+.windowbg .title_bar::after, .roundframe .title_bar::after, .information .title_bar::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
 .descbox {
   border-radius: var(--border-radius);
@@ -8296,6 +8306,17 @@ ul.post_options {
 
 input[name=attachBBC] {
   width: 100%;
+}
+
+#post_draft_options {
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  padding: var(--block-padding);
+}
+#post_draft_options::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .generic_bar, .progress_bar {
