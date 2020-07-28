@@ -39,3 +39,11 @@ hr {
 .hidden {
   display: none;
 }
+
+.padding {
+  padding: var(--block-padding);
+}
+
+.nolist {
+  @include listless;
+}

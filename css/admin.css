@@ -342,26 +342,6 @@ pre.file_content {
 	padding: 0;
 	background: none;
 }
-#manage_boards li.windowbg {
-	padding: 8px 0;
-	margin: 0;
-	border-radius: 0;
-	border: 1px solid #ddd;
-	border-bottom: none;
-}
-#manage_boards li.windowbg:first-child {
-	border-top: none;
-}
-#manage_boards li.windowbg:last-child {
-	border-bottom: 1px solid #ddd;
-}
-#manage_boards li.windowbg:hover {
-	background: #d0e7f8;
-}
-#manage_boards li .floatleft {
-	font-weight: bold;
-	padding: 0 6px;
-}
 #manage_boards li#recycle_board {
 	background-color: #dee;
 }

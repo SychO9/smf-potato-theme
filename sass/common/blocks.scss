@@ -138,6 +138,16 @@
   }
 }
 
+.information.noup {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background: colorLightness(--color-bg, 0.99, true);
+}
+.noup + .noup {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
 .descbox {
   border-radius: var(--border-radius);
   background: var(--color-bg);
@@ -147,4 +157,5 @@
 
 .windowbg .windowbg {
   background: var(--color-bg);
+  box-shadow: none;
 }

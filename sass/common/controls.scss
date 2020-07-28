@@ -10,6 +10,12 @@ input, select, textarea {
   @include input;
 }
 
+textarea {
+  min-height: 34px;
+  height: auto;
+  padding: 10px;
+}
+
 input {
   &[type="submit"] {
     @extend .button, .active;
@@ -66,11 +72,14 @@ dl {
   margin: unset;
 
   dt {
-    padding-top: 8px;
+    .smalltext {
+      font-size: calc(var(--font-size) - 1px);
+    }
   }
   dd, dt {
     @include vertical-spacing(1px);
     width: 50%;
+    padding-top: 5px;
 
     > * {
       @include vertical-spacing(1px);

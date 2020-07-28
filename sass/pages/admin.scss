@@ -32,3 +32,17 @@ h3.config_hd.titlebg {
     flex-grow: 1;
   }
 }
+
+#versions > table {
+  border-radius: 0;
+}
+
+#manage_boards li {
+  @include vertical-spacing(2px);
+  @include organized-content;
+  justify-content: space-between;
+
+  br {
+    display: none;
+  }
+}
