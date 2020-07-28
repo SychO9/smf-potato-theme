@@ -87,7 +87,7 @@ function template_init()
  */
 function template_html_above()
 {
-	global $context, $scripturl, $txt, $modSettings;
+	global $context, $settings, $scripturl, $txt, $modSettings;
 
 	organize_page_index();
 
@@ -149,7 +149,7 @@ function template_html_above()
 	/*	What is your Lollipop's color?
 		Theme Authors, you can change the color here to make sure your theme's main color gets visible on tab */
 	echo '
-	<meta name="theme-color" content="#557EA0">';
+	<meta name="theme-color" content="', !empty($settings['potato_color_primary']) ? $settings['potato_color_primary'] : DEFAULT_POTATO_PRIMARY_COLOR, '">';
 
 	// Please don't index these Mr Robot.
 	if (!empty($context['robot_no_index']))
