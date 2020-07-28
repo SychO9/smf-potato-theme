@@ -34,6 +34,7 @@
 .databox {
   @include block-skeleton;
   display: flex;
+  flex-wrap: wrap;
 
   &-icon {
     display: flex;

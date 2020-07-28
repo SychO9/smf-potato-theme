@@ -7147,6 +7147,7 @@ input[type=radio],
   border-radius: var(--border-radius);
   box-shadow: var(--block-box-shadow);
   display: flex;
+  flex-wrap: wrap;
 }
 .databox::after {
   content: "";
