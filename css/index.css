@@ -7313,12 +7313,14 @@ input[type=radio],
   align-items: center;
   justify-content: space-between;
 }
-
-@media (min-width: 425px) {
-  .mobile_buttons, .moderationbuttons_mobile_check {
-    display: none !important;
-  }
+.pagesection > * {
+  margin: 2px 0;
 }
+
+.mobile_buttons, .moderationbuttons_mobile_check {
+  display: none !important;
+}
+
 #topic_icons {
   display: none;
 }
@@ -9077,6 +9079,35 @@ input[name=attachBBC] {
   margin-inline-end: 0;
 }
 
+@media (max-width: 425px) {
+  .post_wrapper {
+    flex-direction: column;
+  }
+
+  .poster, .postarea {
+    width: auto;
+  }
+
+  .poster {
+    display: flex;
+    align-items: center;
+  }
+  .poster .avatar {
+    width: 60px;
+    height: 60px;
+    margin-inline-end: 6px;
+  }
+  .poster .user_info {
+    text-align: start;
+  }
+  .poster .user_info > li:not(.poster-name):not(.icons):not(.membergroup) {
+    display: none;
+  }
+
+  .postarea .like_count {
+    display: block;
+  }
+}
 .keyinfo {
   display: flex;
   flex-wrap: wrap;

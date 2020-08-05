@@ -14,12 +14,14 @@
 .pagesection {
   @include organized-content;
   justify-content: space-between;
+
+  > * {
+    margin: 2px 0;
+  }
 }
 
-@media (min-width: 425px) {
-  .mobile_buttons, .moderationbuttons_mobile_check {
-      display: none !important;
-  }
+.mobile_buttons, .moderationbuttons_mobile_check {
+    display: none !important;
 }
 
 #topic_icons {

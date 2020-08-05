@@ -85,6 +85,37 @@
   }
 }
 
+@media (max-width: $mobile-max-width) {
+  .post_wrapper {
+    flex-direction: column;
+  }
+  .poster, .postarea {
+    width: auto;
+  }
+  .poster {
+    display: flex;
+    align-items: center;
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      margin-inline-end: 6px;
+    }
+    .user_info {
+      text-align: start;
+
+      > li:not(.poster-name):not(.icons):not(.membergroup) {
+        display: none;
+      }
+    }
+  }
+  .postarea {
+    .like_count {
+      display: block;
+    }
+  }
+}
+
 .keyinfo {
   @include organized-content;
   justify-content: space-between;

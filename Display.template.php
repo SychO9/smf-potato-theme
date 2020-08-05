@@ -258,14 +258,6 @@ function template_main()
 			', template_button_strip($context['normal_buttons'], 'right', array('merge' => true)), '
 		</div>';
 
-	// Mobile action - moderation buttons (top)
-	if (!empty($context['normal_buttons']))
-		echo '
-		<div class="mobile_buttons floatright">
-			<a class="button mobile_act">', $txt['mobile_action'], '</a>
-			', !empty($context['mod_buttons']) ? '<a class="button mobile_mod">' . $txt['mobile_moderation'] . '</a>' : '', '
-		</div>';
-
 	// Show the topic information - icon, subject, etc.
 	echo '
 		<div id="forumposts" class="post-container">
@@ -282,14 +274,6 @@ function template_main()
 			</form>
 		</div><!-- #forumposts -->';
 
-	// Mobile action - moderation buttons (bottom)
-	if (!empty($context['normal_buttons']))
-		echo '
-		<div class="mobile_buttons floatright">
-			<a class="button mobile_act">', $txt['mobile_action'], '</a>
-			', !empty($context['mod_buttons']) ? '<a class="button mobile_mod">' . $txt['mobile_moderation'] . '</a>' : '', '
-		</div>';
-
 	// Show the page index... "Pages: [1]".
 	echo '
 		<div class="pagesection">
@@ -304,33 +288,6 @@ function template_main()
 	// Show quickreply
 	if ($context['can_reply'])
 		template_quickreply();
-
-	// User action pop on mobile screen (or actually small screen), this uses responsive css does not check mobile device.
-	echo '
-		<div id="mobile_action" class="popup_container">
-			<div class="popup_window description">
-				<div class="popup_heading">
-					', $txt['mobile_action'], '
-					<a href="javascript:void(0);" class="main_icons hide_popup"></a>
-				</div>
-				', template_button_strip($context['normal_buttons']), '
-			</div>
-		</div>';
-
-	// Show the moderation button & pop (if there is anything to show)
-	if (!empty($context['mod_buttons']))
-		echo '
-		<div id="mobile_moderation" class="popup_container">
-			<div class="popup_window description">
-				<div class="popup_heading">
-					', $txt['mobile_moderation'], '
-					<a href="javascript:void(0);" class="main_icons hide_popup"></a>
-				</div>
-				<div id="moderationbuttons_mobile">
-					', template_button_strip($context['mod_buttons'], 'bottom', array('id' => 'moderationbuttons_strip_mobile')), '
-				</div>
-			</div>
-		</div>';
 
 	echo '
 		<script>';
@@ -516,16 +473,16 @@ function template_single_post($message)
 							</div>';
 	}
 
-	// Begin display of user info
-	echo '
-							<ul class="user_info">';
-
 	// Show the user's avatar.
 	if (!empty($modSettings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
 		echo '
-								<li class="avatar">
-									<a href="', $message['member']['href'], '">', $message['member']['avatar']['image'], '</a>
-								</li>';
+							<div class="avatar">
+								<a href="', $message['member']['href'], '">', $message['member']['avatar']['image'], '</a>
+							</div>';
+
+	// Begin display of user info
+	echo '
+							<ul class="user_info">';
 
 	// User's Name
 	{
