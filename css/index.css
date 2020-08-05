@@ -7426,6 +7426,11 @@ thead a:hover, tr.title_bar a:hover {
 thead th, thead td, tr.title_bar th, tr.title_bar td {
   padding: 8px;
 }
+@media (max-width: 751px) and (max-width: 750px) {
+  thead th .item-label, tr.title_bar th .item-label {
+    display: none;
+  }
+}
 
 tr.windowbg {
   box-shadow: none;
@@ -7439,9 +7444,21 @@ tr.windowbg:last-child td {
 tr.windowbg:hover {
   background: var(--block-bg-dark);
 }
+tr::after {
+  display: none !important;
+}
 
 td, th {
   padding: 5px 8px;
+}
+
+@media (max-width: 750px) {
+  #notify_options table {
+    table-layout: fixed;
+  }
+  #notify_options table .table-cell-4x {
+    width: 75%;
+  }
 }
 
 /* Skeleton */
@@ -7556,6 +7573,12 @@ body {
   justify-content: space-between;
   flex-direction: row-reverse;
 }
+@media (max-width: 750px) {
+  .footer .inner_wrap > ul {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 .footer .footer-links {
   text-align: end;
 }
@@ -7600,12 +7623,18 @@ body {
   transform: translateY(-33%);
 }
 .waves--lower {
-  bottom: 0;
+  transform: translateY(-84%);
   fill: var(--color-bg);
   background: var(--footer-bg);
 }
 .body--waves .waves--lower {
   fill: var(--lower-wrapper-bg);
+}
+@media (max-width: 600px) {
+  .waves--lower {
+    transform: none;
+    top: 0;
+  }
 }
 
 * {
@@ -9021,15 +9050,17 @@ input[name=attachBBC] {
   flex-wrap: wrap;
   align-items: center;
 }
-.forum-stats-container > div {
-  margin: 0 var(--space-between-elements);
-  flex-grow: 1;
-}
-.forum-stats-container > div:first-child {
-  margin-inline-start: 0;
-}
-.forum-stats-container > div:last-child {
-  margin-inline-end: 0;
+@media (min-width: 751px) {
+  .forum-stats-container > div {
+    margin: 0 var(--space-between-elements);
+    flex-grow: 1;
+  }
+  .forum-stats-container > div:first-child {
+    margin-inline-start: 0;
+  }
+  .forum-stats-container > div:last-child {
+    margin-inline-end: 0;
+  }
 }
 
 .new_posts {

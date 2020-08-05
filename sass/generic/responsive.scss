@@ -10,3 +10,15 @@
     flex-grow: 1;
   }
 }
+
+@mixin adaptiveTable($breakpoint: $mobile-max-width) {
+  @media (max-width: $breakpoint) {
+    table-layout: fixed;
+
+    .table {
+      &-cell-4x {
+        width: 75%;
+      }
+    }
+  }
+}

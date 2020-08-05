@@ -1926,9 +1926,9 @@ function template_alert_configuration()
 	{
 		echo '
 				<tr class="title_bar">
-					<th>', $txt['alert_group_' . $alert_group], '</th>
-					<th>', icon('fas fa-bell'), ' ', $txt['receive_alert'], '</th>
-					<th>', icon('fas fa-envelope'), ' ', $txt['receive_mail'], '</th>
+					<th class="table-cell-4x">', $txt['alert_group_' . $alert_group], '</th>
+					<th>', icon('fas fa-bell'), ' <span class="item-label">', $txt['receive_alert'], '</span></th>
+					<th>', icon('fas fa-envelope'), ' <span class="item-label">', $txt['receive_mail'], '</span></th>
 				</tr>
 				<tr class="windowbg">';
 
@@ -1980,7 +1980,7 @@ function template_alert_configuration()
 		{
 			echo '
 				<tr class="windowbg">
-					<td>
+					<td class="table-cell-4x">
 						', $txt['alert_' . $alert_id], isset($alert_details['help']) ? '<a href="' . $scripturl . '?action=helpadmin;help=' . $alert_details['help'] . '" onclick="return reqOverlayDiv(this.href);" class="help floatright"><span class="main_icons help" title="' . $txt['help'] . '"></span></a>' : '', '
 					</td>';
 

@@ -82,6 +82,11 @@ body {
       @include organized-content;
       justify-content: space-between;
       flex-direction: row-reverse;
+
+      @media (max-width: $mobile-max-width) {
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
   .footer-links {
@@ -124,12 +129,17 @@ body {
     transform: translateY(-33%);
   }
   &--lower {
-    bottom: 0;
+    transform: translateY(-84%);
     fill: var(--color-bg);
     background: var(--footer-bg);
 
     .body--waves & {
       fill: var(--lower-wrapper-bg);
+    }
+
+    @media (max-width: 600px) {
+      transform: none;
+      top: 0;
     }
   }
 }

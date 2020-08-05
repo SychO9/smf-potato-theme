@@ -274,9 +274,11 @@
   &-container {
     @include organized-content;
 
-    > div {
-      @include horizontal-spacing;
-      flex-grow: 1;
+    @media (min-width: $mobile-min-width) {
+      > div {
+        @include horizontal-spacing;
+        flex-grow: 1;
+      }
     }
   }
 }
