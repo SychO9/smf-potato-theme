@@ -84,6 +84,8 @@ dl {
     > * {
       @include vertical-spacing(1px);
     }
+
+    @include adaptiveSizing;
   }
   ol, ul {
     @include listless;

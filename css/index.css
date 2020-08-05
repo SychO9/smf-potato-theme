@@ -8294,6 +8294,12 @@ dl dd > *:first-child, dl dt > *:first-child {
 dl dd > *:last-child, dl dt > *:last-child {
   margin-block-end: 0;
 }
+@media (max-width: 425px) {
+  dl dd, dl dt {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
 dl ol, dl ul {
   list-style: none;
   padding: 0;
@@ -9335,6 +9341,7 @@ input[name=attachBBC] {
 #admin_content > .cat_bar .catbg {
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 #admin_content > .cat_bar .catbg > .floatright {
   margin-inline-start: auto;
