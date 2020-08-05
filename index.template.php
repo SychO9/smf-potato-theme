@@ -221,10 +221,14 @@ function template_body_above()
 		echo '
 			<ul class="user-menu menu menu--flat" id="top_info">
 				<li class="unread-link">
-					<a', $context['current_action'] === 'unread' ? ' class="active"' : '', ' href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">', $txt['view_unread_category'], '</a>
+					<a', $context['current_action'] === 'unread' ? ' class="active"' : '', ' href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">
+						', icon('fas fa-book-open'),'<span class="item-label">', $txt['view_unread_category'], '</span>
+					</a>
 				</li>
 				<li class="unread-link">
-					<a', $context['current_action'] === 'unreadreplies' ? ' class="active"' : '', ' href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">', $txt['unread_replies'], '</a>
+					<a', $context['current_action'] === 'unreadreplies' ? ' class="active"' : '', ' href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">
+						', icon('fas fa-reply-all'),'<span class="item-label">', $txt['unread_replies'], '</span>
+					</a>
 				</li>
 				<li>
 					<a href="', $scripturl, '?action=profile"', !empty($context['self_profile']) ? ' class="active"' : '', ' id="profile_menu_top" onclick="return false;">';
@@ -232,7 +236,9 @@ function template_body_above()
 		if (!empty($context['user']['avatar']))
 			echo $context['user']['avatar']['image'];
 
-		echo $context['user']['name'], ' ', icon('fas fa-chevron-down'), '</a>
+		echo '
+						<span class="item-label">', $context['user']['name'], ' ', icon('fas fa-chevron-down'), '</span>
+					</a>
 					<div id="profile_menu" class="top_menu"></div>
 				</li>';
 
@@ -250,6 +256,13 @@ function template_body_above()
 					<a href="', $scripturl, '?action=profile;area=showalerts;u=', $context['user']['id'], '"', !empty($context['self_alerts']) ? ' class="active"' : '', ' id="alerts_menu_top">', icon('far fa-bell'), ' ', !empty($context['user']['alerts']) ? ' <span class="amt">' . $context['user']['alerts'] . '</span>' : '', '</a>
 					<div id="alerts_menu" class="top_menu"></div>
 				</li>';
+
+		// menu opener
+		echo '
+				<li class="item-icon item-mobile-menu-opener">
+					<a class="menu_icon mobile_user_menu"></a>				
+				</li>';
+
 
 		// A logout button for people without JavaScript.
 		echo '
@@ -312,7 +325,6 @@ function template_body_above()
 	// Show the menu here, according to the menu sub template, followed by the navigation tree.
 	// Load mobile menu here
 	echo '
-				<a class="menu_icon mobile_user_menu"></a>
 				<div id="main_menu">
 					<div id="mobile_user_menu" class="popup_container popup_mobile">
 						<div class="popup_window description">

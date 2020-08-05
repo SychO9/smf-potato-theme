@@ -1,0 +1,12 @@
+@mixin adaptiveHiding($breakpoint: $mobile-max-width) {
+  @media (max-width: $breakpoint) {
+    display: none;
+  }
+}
+
+@mixin adaptiveSizing($breakpoint: $mobile-max-width) {
+  @media (max-width: $breakpoint) {
+    width: 100%;
+    flex-grow: 1;
+  }
+}

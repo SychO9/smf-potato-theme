@@ -6,6 +6,11 @@ $fa-font-path: "../webfonts";
 
 // ---------------------------
 
+$mobile-max-width: 425px;
+$mobile-min-width: $mobile-max-width + 1;
+
+// ---------------------------
+
 /* Generic Colors */
 $primary-color: #b83b5e;
 $secondary-color: #6a2c70;

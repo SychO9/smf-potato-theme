@@ -7,10 +7,15 @@
   a.active {
     text-shadow: 0 0 3px;
   }
+
+  @media (max-width: $mobile-max-width) {
+    padding: 0;
+  }
 }
 
 .top-section-user-bar {
   @include organized-content;
+  @include adaptiveSizing;
 }
 
 .upper-header {
@@ -21,4 +26,5 @@
 
 .forumtitle {
   margin: 0;
+  @include adaptiveHiding;
 }

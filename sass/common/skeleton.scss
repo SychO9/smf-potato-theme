@@ -109,6 +109,11 @@ body {
     fill: var(--color-bg);
     background: var(--top-section-background);
     transform: translateY(-55%);
+
+    @media (max-width: $mobile-max-width) {
+      top: 52px;
+      width: 425px;
+    }
   }
   &--intermediate {
     fill: var(--color-bg);

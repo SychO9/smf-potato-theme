@@ -6,6 +6,7 @@
     height: 100%;
     background: rgb(0 0 0 / 78%);
     z-index: 999;
+    top: 0;
   }
   &_window {
     @include block-skeleton;
@@ -15,6 +16,11 @@
     left: 50%;
     top: 4rem;
     transform: translateX(-50%);
+
+    @media (max-width: $mobile-max-width) {
+       width: 95%;
+       @include link(--link-color);
+    }
   }
   &_heading {
     position: relative;
@@ -30,7 +36,7 @@
       right: 0;
     }
   }
-  &_content {
+  &_heading + * {
     max-height: calc(100vh - 9rem);
     overflow: auto;
   }
@@ -45,8 +51,9 @@
   }
 }
 
-@media (min-width: 481px) {
+@media (min-width: $mobile-min-width) {
   .popup_mobile {
+    display: block;
     position: relative;
     background: unset;
     width: unset;
