@@ -27,6 +27,10 @@
   }
 }
 
+.cat, .title, .sub {
+  @include title-block;
+}
+
 .databox {
   @include block-skeleton;
   display: flex;

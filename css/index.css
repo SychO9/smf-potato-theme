@@ -554,6 +554,12 @@ input[type=radio],
 .errorbox::before,
 .infobox::before,
 .noticebox::before,
+.catbg .toggle_down,
+.catbg .toggle_up,
+.titlebg .toggle_down,
+.titlebg .toggle_up,
+.subbg .toggle_down,
+.subbg .toggle_up,
 .main_icons,
 .far,
 .fal,
@@ -568,7 +574,7 @@ input[type=radio],
   line-height: 1;
 }
 
-#moderationbuttons_strip #oInTopicModeration_remove_button_text::before, #moderationbuttons_strip #oInTopicModeration_split_button_text::before, input[type=checkbox], input[type=radio], .menu_icon::before, .errorbox::before, .infobox::before, .noticebox::before, .main_icons {
+#moderationbuttons_strip #oInTopicModeration_remove_button_text::before, #moderationbuttons_strip #oInTopicModeration_split_button_text::before, input[type=checkbox], input[type=radio], .menu_icon::before, .errorbox::before, .infobox::before, .noticebox::before, .catbg .toggle_down, .catbg .toggle_up, .titlebg .toggle_down, .titlebg .toggle_up, .subbg .toggle_down, .subbg .toggle_up, .main_icons {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
@@ -678,6 +684,12 @@ input.fa-pull-left[type=radio],
 .fa-pull-left.errorbox::before,
 .fa-pull-left.infobox::before,
 .fa-pull-left.noticebox::before,
+.catbg .fa-pull-left.toggle_down,
+.catbg .fa-pull-left.toggle_up,
+.titlebg .fa-pull-left.toggle_down,
+.titlebg .fa-pull-left.toggle_up,
+.subbg .fa-pull-left.toggle_down,
+.subbg .fa-pull-left.toggle_up,
 .fa-pull-left.main_icons,
 .far.fa-pull-left,
 .fal.fa-pull-left,
@@ -694,6 +706,12 @@ input.fa-pull-right[type=radio],
 .fa-pull-right.errorbox::before,
 .fa-pull-right.infobox::before,
 .fa-pull-right.noticebox::before,
+.catbg .fa-pull-right.toggle_down,
+.catbg .fa-pull-right.toggle_up,
+.titlebg .fa-pull-right.toggle_down,
+.titlebg .fa-pull-right.toggle_up,
+.subbg .fa-pull-right.toggle_down,
+.subbg .fa-pull-right.toggle_up,
 .fa-pull-right.main_icons,
 .far.fa-pull-right,
 .fal.fa-pull-right,
@@ -6621,6 +6639,12 @@ input[type=radio],
 .errorbox::before,
 .infobox::before,
 .noticebox::before,
+.catbg .toggle_down,
+.catbg .toggle_up,
+.titlebg .toggle_down,
+.titlebg .toggle_up,
+.subbg .toggle_down,
+.subbg .toggle_up,
 .main_icons {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -7098,6 +7122,29 @@ input[type=radio],
 
 .main_icons.notify_button::before {
   content: "";
+}
+
+.cat_bar, .title_bar, .sub_bar {
+  padding: 10px 0;
+  margin-top: var(--space-between-elements);
+}
+.cat_bar::after, .title_bar::after, .sub_bar::after {
+  content: "";
+  display: block;
+  clear: both;
+  width: 100%;
+}
+.cat_bar:first-child, .title_bar:first-child, .sub_bar:first-child {
+  margin-top: 0;
+}
+.catbg, .titlebg, .subbg {
+  margin: 0;
+}
+.catbg .toggle_down::before, .titlebg .toggle_down::before, .subbg .toggle_down::before {
+  content: "";
+}
+.catbg .toggle_up::before, .titlebg .toggle_up::before, .subbg .toggle_up::before {
+  content: "";
 }
 
 .databox {
