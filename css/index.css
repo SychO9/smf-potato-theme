@@ -8662,6 +8662,10 @@ input[name=attachBBC] {
   .popup_mobile .popup_heading {
     display: none;
   }
+  .popup_mobile .popup_heading + * {
+    max-height: unset;
+    overflow: visible;
+  }
   .popup_mobile .popup_window {
     position: relative;
     padding: unset;

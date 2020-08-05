@@ -64,6 +64,10 @@
       &_heading {
         display: none;
       }
+      &_heading + * {
+        max-height: unset;
+        overflow: visible;
+      }
       &_window {
         position: relative;
         padding: unset;
