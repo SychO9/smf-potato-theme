@@ -97,10 +97,15 @@
     width: 6%;
     text-align: center;
     font-size: 26px;
+
+    @media (max-width: $mobile-max-width) {
+      width: 13%;
+    }
   }
   &_stats {
     width: 10%;
     text-align: center;
+    @include adaptiveHiding;
   }
   &_description {
     font-size: calc(var(--font-size) - 1px);
@@ -108,6 +113,10 @@
 }
 .info {
   width: 52%;
+
+  @media (max-width: $mobile-max-width) {
+    width: 87%;
+  }
 }
 .lastpost {
   width: 32%;
@@ -118,6 +127,26 @@
     &:hover {
       background: transparent;
     }
+  }
+
+  @media (max-width: $mobile-max-width) {
+    width: 100%;
+
+    .topic {
+      &-item-poster-avatar .avatar {
+        width: 20px;
+        height: 20px;
+      }
+      &-item-details {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: $mobile-min-width) {
+  .inline-lastpost {
+    display: none;
   }
 }
 
@@ -204,11 +233,21 @@
   }
 
   &-list-area {
+    .info {
+      @media (max-width: $mobile-max-width) {
+        width: 80%;
+      }
+    }
     .lastpost {
       width: 30%;
+      @include adaptiveHiding;
     }
     .moderation {
       width: 2%;
+
+      @media (max-width: $mobile-max-width) {
+        width: 5%;
+      }
     }
   }
 

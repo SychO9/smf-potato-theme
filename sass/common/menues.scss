@@ -78,10 +78,9 @@
     top: unset;
     bottom: 0;
     position: fixed;
-    height: 82%;
+    max-height: 82%;
     width: 100% !important;
     z-index: 99999;
-    max-height: unset;
     max-width: unset;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     overflow: auto;
@@ -414,7 +413,7 @@
           background: var(--color-primary);
           color: var(--top-section-color);
         }
-        
+
         .fa-chevron-down {
           margin-inline-start: auto;
         }
@@ -427,13 +426,13 @@
         border-radius: var(--border-radius);
         left: 0;
         top: 0;
-        
+
         > li {
           > a {
             padding: 8px 10px;
             border-radius: var(--border-radius);
           }
-          
+
           > ul {
             background: var(--dropdown-bg);
           }

@@ -99,12 +99,6 @@ function template_main()
 
 	if (!$context['no_topic_listing'])
 	{
-		// Mobile action buttons (top)
-		if (!empty($context['normal_buttons']))
-			echo '
-	<div class="mobile_buttons floatright">
-		<a class="button mobile_act">', $txt['mobile_action'], '</a>
-	</div>';
 
 		echo '
 	<div class="pagesection">
@@ -240,10 +234,13 @@ function template_main()
 									<span id="msg_', $topic['first_post']['id'], '">', $topic['first_post']['link'], (!$topic['approved'] ? '&nbsp;<em>(' . $txt['awaiting_approval'] . ')</em>' : ''), '</span>
 								</span>
 							</div>
-							<p>
-								', $txt['started_by'], ' ', $topic['first_post']['member']['link'], '
-							</p>
-							', !empty($topic['pages']) ? '<span id="pages' . $topic['first_post']['id'] . '" class="topic_pages">' . $topic['pages'] . '</span>' : '', '
+							<div class="item-details">
+								<span>', $txt['started_by'], ' ', $topic['first_post']['member']['link'], '</span>
+								<span class="inline-lastpost">
+									<a href="', $topic['last_post']['href'], '">', icon('fas fa-sign-out-alt'), '</a>
+								</span>
+								', !empty($topic['pages']) ? '<span id="pages' . $topic['first_post']['id'] . '" class="topic_pages">' . $topic['pages'] . '</span>' : '', '
+							</div>
 						</div><!-- #topic_[first_post][id] -->
 					</div><!-- .info -->
 					<div class="board_stats centertext">
@@ -326,13 +323,6 @@ function template_main()
 		<input type="hidden" name="' . $context['session_var'] . '" value="' . $context['session_id'] . '">
 	</form>';
 
-		// Mobile action buttons (bottom)
-		if (!empty($context['normal_buttons']))
-			echo '
-	<div class="mobile_buttons floatright">
-		<a class="button mobile_act">', $txt['mobile_action'], '</a>
-	</div>';
-
 		echo '
 	<div class="pagesection">
 		<div class="pagelinks floatleft">
@@ -375,17 +365,6 @@ function template_main()
 	</script>';
 
 	template_topic_legend();
-
-	// Lets pop the...
-	echo '
-	<div id="mobile_action" class="popup_container">
-		<div class="popup_window description">
-			<div class="popup_heading">', $txt['mobile_action'], '
-				<a href="javascript:void(0);" class="main_icons hide_popup"></a>
-			</div>
-			', template_button_strip($context['normal_buttons']), '
-		</div>
-	</div>';
 }
 
 /**
