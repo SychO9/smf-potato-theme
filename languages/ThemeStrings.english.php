@@ -12,7 +12,7 @@ $txt['potato_color_primary'] = 'Primary Color';
 $txt['potato_color_secondary'] = 'Secondary Color';
 $txt['potato_color_default'] = 'Default is: %color%';
 
-$txt['potato_theme_info'] = 'Theme Info';
+$txt['potato_theme_info'] = 'Potato Theme Info';
 $txt['potato_source_code'] = 'Source Code/Bug Tracker';
 $txt['potato_github_repo'] = 'GitHub Repository';
 $txt['potato_discuss'] = 'Discussion Topic';

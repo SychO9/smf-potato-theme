@@ -129,9 +129,8 @@ body {
     transform: translateY(-33%);
   }
   &--lower {
-    transform: translateY(-84%);
+    transform: translateY(-86%);
     fill: var(--color-bg);
-    background: var(--footer-bg);
 
     .body--waves & {
       fill: var(--lower-wrapper-bg);

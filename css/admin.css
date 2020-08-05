@@ -91,45 +91,9 @@ body#chrome #quick_search form input {
 	width: 30%;
 	padding-left: 6px;
 }
-#admin_main_section {
-	overflow: auto;
-}
 #admin_main_section .windowbg {
-	padding: 6px 0;
-	border-radius: 0;
 	height: 12em;
 	overflow: auto;
-}
-#smfAnnouncements dt {
-	padding: 4px 6px 2px 6px;
-	border-top: 1px solid #bf6900;
-}
-#smfAnnouncements dt a {
-	color: #bf6900;
-	font-weight: bold;
-	display: block;
-}
-#smfAnnouncements dd {
-	margin: 0;
-	padding: 6px 12px;
-	border-top: double #ddd;
-}
-
-fieldset.admin_group legend {
-	background: #eaf1f4;
-	border: 1px solid #cacdd3;
-	padding: 1px 5px;
-	border-radius: 3px;
-}
-fieldset.admin_group a {
-	display: inline-block;
-	width: 100px;
-	font-size: 85%;
-	text-align: center;
-	vertical-align: top;
-}
-fieldset.admin_group .inactive {
-	opacity: 0.4;
 }
 
 /* The update warning. */

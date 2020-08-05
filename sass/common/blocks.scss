@@ -3,8 +3,13 @@
     @include clear;
     padding: 10px 0;
     margin-top: var(--space-between-elements);
+    margin-bottom: 0;
 
     &:first-child {
+      margin-top: 0;
+    }
+
+    & + .windowbg, & + .information, & + .roundframe {
       margin-top: 0;
     }
   }

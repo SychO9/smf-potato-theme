@@ -260,7 +260,7 @@ function template_body_above()
 		// menu opener
 		echo '
 				<li class="item-icon item-mobile-menu-opener">
-					<a class="menu_icon mobile_user_menu"></a>				
+					<a class="menu_icon mobile_user_menu"></a>
 				</li>';
 
 
@@ -823,9 +823,6 @@ function template_search_form()
 function template_potato_theme_info()
 {
 	global $context, $settings, $txt;
-
-	if ((int)$context['theme_settings']['theme_id'] !== $settings['theme_id'])
-		return;
 
 	loadLanguage('Packages');
 

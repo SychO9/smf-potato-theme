@@ -7127,6 +7127,7 @@ input[type=radio],
 .cat_bar, .title_bar, .sub_bar {
   padding: 10px 0;
   margin-top: var(--space-between-elements);
+  margin-bottom: 0;
 }
 .cat_bar::after, .title_bar::after, .sub_bar::after {
   content: "";
@@ -7135,6 +7136,9 @@ input[type=radio],
   width: 100%;
 }
 .cat_bar:first-child, .title_bar:first-child, .sub_bar:first-child {
+  margin-top: 0;
+}
+.cat_bar + .windowbg, .cat_bar + .information, .cat_bar + .roundframe, .title_bar + .windowbg, .title_bar + .information, .title_bar + .roundframe, .sub_bar + .windowbg, .sub_bar + .information, .sub_bar + .roundframe {
   margin-top: 0;
 }
 .catbg, .titlebg, .subbg {
@@ -7623,9 +7627,8 @@ body {
   transform: translateY(-33%);
 }
 .waves--lower {
-  transform: translateY(-84%);
+  transform: translateY(-86%);
   fill: var(--color-bg);
-  background: var(--footer-bg);
 }
 .body--waves .waves--lower {
   fill: var(--lower-wrapper-bg);
@@ -9440,6 +9443,58 @@ h3.config_hd.titlebg {
 }
 #manage_boards li br {
   display: none;
+}
+
+.admin_group {
+  display: flex;
+  flex-wrap: wrap;
+}
+.admin_group > a {
+  margin: 0 2px;
+  background: var(--color-contrast);
+  color: var(--color-fg);
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.admin_group > a:first-child {
+  margin-inline-start: 0;
+}
+.admin_group > a:last-child {
+  margin-inline-end: 0;
+}
+.admin_group > a:hover {
+  background: hsl(var(--color-contrast-h), var(--color-contrast-s), calc(var(--color-contrast-l) * 0.85));
+  color: hsl(var(--color-fg-h), var(--color-fg-s), calc(var(--color-fg-l) * 0.85));
+}
+.admin_group > a:focus {
+  background: hsl(var(--color-contrast-h), var(--color-contrast-s), calc(var(--color-contrast-l) * 0.85));
+  color: hsl(var(--color-fg-h), var(--color-fg-s), calc(var(--color-fg-l) * 0.85));
+}
+.admin_group > a.inactive {
+  opacity: 0.4;
+}
+.admin_group > a > .admin_menu_icon {
+  font-size: 24px;
+  margin: 4px 0 6px;
+}
+
+#smfAnnouncements dd, #smfAnnouncements dt {
+  width: unset;
+}
+#smfAnnouncements dt {
+  font-size: calc(var(--font-size) + 1px);
+  font-weight: 600;
+}
+#smfAnnouncements dd + dt {
+  margin-top: 2px;
+}
+
+#admin_main_section {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .profile-container > * {

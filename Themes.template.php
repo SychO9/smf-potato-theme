@@ -673,7 +673,8 @@ function template_set_settings()
 		</form>
 	</div><!-- #admin_form_wrapper -->';
 
-	template_potato_theme_info();
+	if ((int)$context['theme_settings']['theme_id'] === $settings['theme_id'])
+		template_potato_theme_info();
 
 	if (!empty($context['theme_variants']))
 	{
