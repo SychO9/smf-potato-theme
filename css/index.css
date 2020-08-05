@@ -7586,7 +7586,12 @@ body {
 @media (max-width: 750px) {
   .waves--upper {
     top: 52px;
-    width: 425px;
+  }
+}
+@media (max-width: 425px) {
+  .waves--upper {
+    top: 0;
+    transform: none;
   }
 }
 .waves--intermediate {

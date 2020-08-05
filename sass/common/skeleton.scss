@@ -112,7 +112,10 @@ body {
 
     @media (max-width: $mobile-max-width) {
       top: 52px;
-      width: 425px;
+    }
+    @media (max-width: 425px) {
+      top: 0;
+      transform: none;
     }
   }
   &--intermediate {
