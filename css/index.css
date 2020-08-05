@@ -7583,7 +7583,7 @@ body {
   background: var(--top-section-background);
   transform: translateY(-55%);
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .waves--upper {
     top: 52px;
     width: 425px;
@@ -7631,7 +7631,7 @@ a:hover {
 .top-section a.active {
   text-shadow: 0 0 3px;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .top-section {
     padding: 0;
   }
@@ -7642,7 +7642,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .top-section-user-bar {
     width: 100%;
     flex-grow: 1;
@@ -7660,7 +7660,7 @@ a:hover {
 .forumtitle {
   margin: 0;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .forumtitle {
     display: none;
   }
@@ -7717,7 +7717,7 @@ a:hover {
 .dropdown a:hover, .quickbuttons > li > ul a:hover, .top_menu a:hover, .dropmenu > li ul a:hover {
   color: hsl(var(--color-fg-h), var(--color-fg-s), calc(var(--color-fg-l) * 0.7));
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .dropdown li > a, .quickbuttons > li > ul li > a, .top_menu li > a, .dropmenu > li ul li > a {
     padding: 12px 9px;
   }
@@ -7740,7 +7740,7 @@ a:hover {
   width: 100%;
   left: 0;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .dropdown, .quickbuttons > li > ul, .top_menu, .dropmenu > li ul {
     top: unset;
     bottom: 0;
@@ -7839,7 +7839,7 @@ a:hover {
 .menu--flat > li:last-child > a {
   padding-inline-end: 0;
 }
-@media (min-width: 426px) {
+@media (min-width: 751px) {
   .menu_icon, .menu .item-mobile-menu-opener, .quickbuttons .item-mobile-menu-opener, .dropmenu .item-mobile-menu-opener {
     display: none;
   }
@@ -7882,7 +7882,7 @@ a:hover {
   right: 0;
   top: 0;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .user-menu {
     width: 100%;
   }
@@ -8038,7 +8038,7 @@ a:hover {
 }
 
 /* Menues on mobile */
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .popup_window .dropmenu {
     display: block;
   }
@@ -8294,7 +8294,7 @@ dl dd > *:first-child, dl dt > *:first-child {
 dl dd > *:last-child, dl dt > *:last-child {
   margin-block-end: 0;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   dl dd, dl dt {
     width: 100%;
     flex-grow: 1;
@@ -8609,7 +8609,7 @@ input[name=attachBBC] {
   clear: both;
   width: 100%;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .popup_window {
     width: 95%;
   }
@@ -8656,7 +8656,7 @@ input[name=attachBBC] {
   margin-inline-end: 0;
 }
 
-@media (min-width: 426px) {
+@media (min-width: 751px) {
   .popup_mobile {
     display: block;
     position: relative;
@@ -8817,7 +8817,7 @@ input[name=attachBBC] {
   text-align: center;
   font-size: 26px;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .board_icon {
     width: 13%;
   }
@@ -8826,7 +8826,7 @@ input[name=attachBBC] {
   width: 10%;
   text-align: center;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .board_stats {
     display: none;
   }
@@ -8838,7 +8838,7 @@ input[name=attachBBC] {
 .info {
   width: 52%;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .info {
     width: 87%;
   }
@@ -8853,7 +8853,7 @@ input[name=attachBBC] {
 .lastpost .topic-item:hover {
   background: transparent;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .lastpost {
     width: 100%;
   }
@@ -8866,7 +8866,7 @@ input[name=attachBBC] {
   }
 }
 
-@media (min-width: 426px) {
+@media (min-width: 751px) {
   .inline-lastpost {
     display: none;
   }
@@ -8961,7 +8961,7 @@ input[name=attachBBC] {
 .topic-item:last-child {
   border-bottom: none;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .topic-list-area .info {
     width: 80%;
   }
@@ -8969,7 +8969,7 @@ input[name=attachBBC] {
 .topic-list-area .lastpost {
   width: 30%;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .topic-list-area .lastpost {
     display: none;
   }
@@ -8977,7 +8977,7 @@ input[name=attachBBC] {
 .topic-list-area .moderation {
   width: 2%;
 }
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .topic-list-area .moderation {
     width: 5%;
   }
@@ -9136,7 +9136,7 @@ input[name=attachBBC] {
   margin-inline-end: 0;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 750px) {
   .post_wrapper {
     flex-direction: column;
   }
