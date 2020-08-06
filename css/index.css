@@ -475,6 +475,12 @@ tr[id^=list_news_lists_] textarea {
   --dropdown-max-width: 18rem;
   --dropdown-list-padding: 6px 0;
   --avatar-border-radius: 100%;
+  --screen:none;
+}
+@media (max-width: 750px) {
+  :root {
+    --screen:adaptive;
+  }
 }
 
 .dark-mode {
@@ -8067,6 +8073,11 @@ a:hover {
 .buttonlist > li > .top_menu {
   padding: var(--dropdown-list-padding);
 }
+@media (max-width: 750px) {
+  .buttonlist > li > a > .item-label {
+    display: none;
+  }
+}
 
 /* Unspecific Styles */
 .item-desc {
@@ -9120,8 +9131,10 @@ input[name=attachBBC] {
   box-shadow: none;
   border-radius: 0;
 }
-.post_wrapper .quickbuttons > li > a {
-  opacity: 0;
+@media (min-width: 751px) {
+  .post_wrapper .quickbuttons > li > a {
+    opacity: 0;
+  }
 }
 .post_wrapper:hover .quickbuttons > li > a {
   opacity: 1;
@@ -9202,6 +9215,9 @@ input[name=attachBBC] {
 
   .postarea .like_count {
     display: block;
+  }
+  .postarea .signature {
+    display: none;
   }
 }
 .keyinfo {

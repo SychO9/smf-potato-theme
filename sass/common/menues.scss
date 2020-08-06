@@ -386,6 +386,12 @@
       padding: var(--dropdown-list-padding);
     }
   }
+
+  @media (max-width: $mobile-max-width) {
+    > li > a > .item-label {
+      display: none;
+    }
+  }
 }
 
 /* Unspecific Styles */

@@ -51,9 +51,10 @@ function template_newsfader()
 	<script>
 		jQuery("#smf_slider").slippry({
 			pause: ', $settings['newsfader_time'], ',
-			adaptiveHeight: 0,
+			adaptiveHeight: false,
 			captions: 0,
 			controls: 0,
+			auto: getComputedStyle(document.body).getPropertyValue("--screen") === "none",
 		});
 	</script>';
 }

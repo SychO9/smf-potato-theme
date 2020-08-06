@@ -154,4 +154,10 @@ $unapproved-bg: #fadde2;
   --dropdown-max-width: #{$dropdown-max-width};
   --dropdown-list-padding: #{$dropdown-list-padding};
   --avatar-border-radius: #{$avatar-border-radius};
+
+  --screen:none;
+
+  @media (max-width: $mobile-max-width) {
+    --screen:adaptive;
+  }
 }

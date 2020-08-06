@@ -32,8 +32,10 @@
     box-shadow: none;
     border-radius: 0;
   }
-  .quickbuttons > li > a {
-    opacity: 0;
+  @media (min-width: $mobile-min-width) {
+    .quickbuttons > li > a {
+      opacity: 0;
+    }
   }
   &:hover {
     .quickbuttons > li > a {
@@ -112,6 +114,9 @@
   .postarea {
     .like_count {
       display: block;
+    }
+    .signature {
+      display: none;
     }
   }
 }
