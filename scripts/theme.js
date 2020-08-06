@@ -7,20 +7,18 @@ $(function() {
 	// find all nested linked images and turn off the border
 	$('a.bbc_link img.bbc_img').parent().css('border', '0');
 
-	$(function() {
-		$('.buttonlist > li > .top_menu').each(function(index, item) {
-			$(item).prev().click(function(e) {
-				e.stopPropagation();
-				e.preventDefault();
+	$('.buttonlist > li > .top_menu').each(function(index, item) {
+		$(item).prev().click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
 
-				$('.top_menu.visible').removeClass('visible');
+			$('.top_menu.visible').removeClass('visible');
 
-				$(item).toggleClass('visible');
-			});
+			$(item).toggleClass('visible');
+		});
 
-			$(window).click(function() {
-				$(item).removeClass('visible');
-			});
+		$(window).click(function() {
+			$(item).removeClass('visible');
 		});
 	});
 
@@ -100,6 +98,44 @@ function smf_addButton(stripId, image, options)
 			+ options.sText +
 		'</a>'
 	);
+}
+
+/**
+ * Shows the page numbers by clicking the dots (in compact view).
+ *
+ * @param spanNode {Node}
+ * @param baseLink {string}
+ * @param firstPage {number}
+ * @param lastPage {number}
+ * @param perPage {number}
+ */
+function potatoExpandPages(spanNode, baseLink, firstPage, lastPage, perPage)
+{
+	if (spanNode.nextSibling) {
+		spanNode.nextSibling.classList.toggle('visible');
+
+		return;
+	}
+
+	var replacement = document.createElement('div');
+	replacement.className = "top_menu visible";
+
+	var i, oldLastPage = 0;
+	var perPageLimit = 50;
+
+	// Calculate the new pages.
+	for (i = firstPage; i < lastPage; i += perPage)
+		replacement.innerHTML += baseLink.replace(/%1\$d/, i).replace(/%2\$s/, 1 + i / perPage).replace(/%%/g, '%');
+
+	replacement.innerHTML = '<div class="dropdown-content">'+replacement.innerHTML+'</div>';
+
+	document.onclick = function(e) {
+		if (e.target !== spanNode)
+			replacement.classList.remove('visible');
+	};
+
+	// Add the new page links.
+	$(spanNode).after(replacement);
 }
 
 /**

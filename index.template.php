@@ -62,7 +62,7 @@ function template_init()
 		'previous_page' => '<span class="main_icons previous_page"></span>',
 		'current_page' => '<span class="button active current_page">%1$d</span> ',
 		'page' => '<a class="button nav_page" href="{URL}">%2$s</a> ',
-		'expand_pages' => '<a class="button expand_pages" onclick="expandPages(this, {LINK}, {FIRST_PAGE}, {LAST_PAGE}, {PER_PAGE});"> ... </a>',
+		'expand_pages' => '<div class="pagelinks-more"><a class="button expand_pages" onclick="potatoExpandPages(this, {LINK}, {FIRST_PAGE}, {LAST_PAGE}, {PER_PAGE});"> ... </a></div>',
 		'next_page' => '<span class="main_icons next_page"></span>',
 		'extra_after' => '',
 	);

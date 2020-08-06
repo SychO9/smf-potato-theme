@@ -254,7 +254,7 @@
   &_pages {
     @include organized-content;
 
-    > .button {
+    .button {
       @include horizontal-spacing(1px);
       margin: 0 1px;
       height: 20px;

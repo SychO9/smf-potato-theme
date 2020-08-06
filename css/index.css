@@ -7546,6 +7546,12 @@ body {
 .pagelinks > *:last-child {
   margin-inline-end: 0;
 }
+.pagelinks-more {
+  position: relative;
+}
+.pagelinks-more .top_menu::before {
+  left: 8px;
+}
 
 #admin_content > *, #messageindex > *, #post_area > .roundframe > *, .main_section > * {
   margin: var(--space-between-elements) 0;
@@ -7810,6 +7816,9 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+}
+.dropdown-content {
+  padding: var(--block-padding);
 }
 .dropdown-resources {
   padding: var(--dropdown-list-padding);
@@ -9035,17 +9044,17 @@ input[name=attachBBC] {
   flex-wrap: wrap;
   align-items: center;
 }
-.topic_pages > .button, .topic_pages > input[type=submit] {
+.topic_pages .button, .topic_pages input[type=submit] {
   margin: 0 1px;
   margin: 0 1px;
   height: 20px;
   padding: 0 5px;
   font-size: calc(var(--font-size) - 1px);
 }
-.topic_pages > .button:first-child, .topic_pages > input[type=submit]:first-child {
+.topic_pages .button:first-child, .topic_pages input[type=submit]:first-child {
   margin-inline-start: 0;
 }
-.topic_pages > .button:last-child, .topic_pages > input[type=submit]:last-child {
+.topic_pages .button:last-child, .topic_pages input[type=submit]:last-child {
   margin-inline-end: 0;
 }
 

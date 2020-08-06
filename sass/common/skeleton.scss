@@ -54,6 +54,14 @@ body {
     > * {
       @include horizontal-spacing(2px);
     }
+
+    &-more {
+      position: relative;
+
+      .top_menu::before {
+        left: 8px;
+      }
+    }
   }
 }
 

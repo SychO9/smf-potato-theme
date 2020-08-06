@@ -102,6 +102,9 @@
       justify-content: space-between;
     }
   }
+  &content {
+    padding: var(--block-padding);
+  }
   &resources {
     padding: var(--dropdown-list-padding);
     max-height: 250px;
