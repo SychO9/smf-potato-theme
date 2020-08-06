@@ -9171,6 +9171,8 @@ input[name=attachBBC] {
 .postarea {
   width: calc(100% - 13rem);
   padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
 }
 .postarea .inline_details {
   margin: 0;
@@ -9231,10 +9233,33 @@ input[name=attachBBC] {
 }
 
 .post {
-  margin-top: 6px;
+  flex-grow: 1;
+  margin: 6px 0 6px;
 }
 .post > .inner {
   overflow: auto;
+}
+
+.signature, .attachments {
+  font-size: calc(var(--font-size) - 2px);
+  border-top: 1px dashed var(--color-contrast);
+  padding: 12px 0 0;
+  margin: 12px 0 0;
+}
+
+.attachments {
+  display: flex;
+  align-items: flex-end;
+}
+.attachments .attached {
+  margin: 0 4px;
+  max-width: calc(100% / 3);
+}
+.attachments .attached:first-child {
+  margin-inline-start: 0;
+}
+.attachments .attached:last-child {
+  margin-inline-end: 0;
 }
 
 .post_separator {

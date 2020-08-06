@@ -74,6 +74,8 @@
 .postarea {
   width: calc(100% - #{$poster-area-width});
   padding: $post-padding;
+  display: flex;
+  flex-direction: column;
 
   .inline_details {
     margin: 0;
@@ -131,10 +133,28 @@
 }
 
 .post {
-  margin-top: 6px;
+  flex-grow: 1;
+  margin: 6px 0 6px;
 
   > .inner {
     overflow: auto;
+  }
+}
+
+.signature, .attachments {
+  font-size: calc(var(--font-size) - 2px);
+  border-top: 1px dashed var(--color-contrast);
+  padding: 12px 0 0;
+  margin: 12px 0 0;
+}
+
+.attachments {
+  display: flex;
+  align-items: flex-end;
+
+  .attached {
+    @include horizontal-spacing(4px);
+    max-width: calc(100% / 3);
   }
 }
 
