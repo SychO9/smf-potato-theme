@@ -52,7 +52,7 @@
   max-width: var(--dropdown-max-width);
   top: calc(100% + 10px);
   display: none;
-  --font-size: $font-size;
+  --font-size: #{$font-size};
   text-align: start;
 
   &::before, &::after {

@@ -286,3 +286,7 @@
 .new_posts {
   @include tag;
 }
+
+.messageindex-board-desc {
+  line-height: 20px;
+}

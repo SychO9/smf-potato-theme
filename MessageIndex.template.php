@@ -21,7 +21,7 @@ function template_page_details()
 		return;
 
 	echo '
-	<div>';
+	<div class="messageindex-board-desc">';
 
 	if (!empty($context['description']))
 		echo '

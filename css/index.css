@@ -7728,7 +7728,7 @@ a:hover {
   max-width: var(--dropdown-max-width);
   top: calc(100% + 10px);
   display: none;
-  --font-size: $font-size;
+  --font-size: 14px;
   text-align: start;
 }
 .dropdown .separator, .quickbuttons > li > ul .separator, .top_menu .separator, .dropmenu > li ul .separator {
@@ -9101,6 +9101,10 @@ input[name=attachBBC] {
 }
 .new_posts:hover {
   color: #fff;
+}
+
+.messageindex-board-desc {
+  line-height: 20px;
 }
 
 .post-container {
