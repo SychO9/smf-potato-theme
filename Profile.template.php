@@ -615,7 +615,7 @@ function template_showAlerts()
 			echo '
 				<tr class="windowbg">
 					<td class="alert_image">
-						<div>
+						<div class="unread_notify_image">
 							', empty($alert['sender']['avatar']['image']) ? '' : $alert['sender']['avatar']['image'] . '
 							', $alert['icon'], '
 						</div>

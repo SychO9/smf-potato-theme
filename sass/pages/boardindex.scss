@@ -145,7 +145,7 @@
 }
 
 @media (min-width: $mobile-min-width) {
-  .inline-lastpost {
+  .inline-lastpost, .alert_inline_time {
     display: none;
   }
 }

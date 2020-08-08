@@ -7010,7 +7010,7 @@ input[type=radio],
 }
 
 .main_icons.delete::before, .main_icons.hide_popup::before, .main_icons.prune::before, .main_icons.remove_button::before {
-  content: "";
+  content: "";
 }
 
 .main_icons.modifications::before {
@@ -7461,6 +7461,9 @@ tr::after {
 td, th {
   padding: 5px 8px;
 }
+td .quickbuttons, th .quickbuttons {
+  justify-content: flex-end;
+}
 
 @media (max-width: 750px) {
   #notify_options table {
@@ -7553,13 +7556,13 @@ body {
   left: 8px;
 }
 
-#admin_content > *, #messageindex > *, #post_area > .roundframe > *, .main_section > *, #quickModForm > * {
+#admin_content > *, #messageindex > *, #post_area > .roundframe > *, .main_section > *, #recent > #quickModForm > * {
   margin: var(--space-between-elements) 0;
 }
-#admin_content > *:first-child, #messageindex > *:first-child, #post_area > .roundframe > *:first-child, .main_section > *:first-child, #quickModForm > *:first-child {
+#admin_content > *:first-child, #messageindex > *:first-child, #post_area > .roundframe > *:first-child, .main_section > *:first-child, #recent > #quickModForm > *:first-child {
   margin-block-start: 0;
 }
-#admin_content > *:last-child, #messageindex > *:last-child, #post_area > .roundframe > *:last-child, .main_section > *:last-child, #quickModForm > *:last-child {
+#admin_content > *:last-child, #messageindex > *:last-child, #post_area > .roundframe > *:last-child, .main_section > *:last-child, #recent > #quickModForm > *:last-child {
   margin-block-end: 0;
 }
 
@@ -8024,6 +8027,16 @@ a:hover {
 .unread_notify:hover .alert_icon {
   background: #fff;
   color: var(--color-primary);
+}
+
+.alert_image {
+  width: 5%;
+}
+
+@media (max-width: 750px) {
+  td.alert_time {
+    display: none;
+  }
 }
 
 #alerts_menu, #pm_menu, .notify_dropdown {
@@ -8924,7 +8937,7 @@ input[name=attachBBC] {
 }
 
 @media (min-width: 751px) {
-  .inline-lastpost {
+  .inline-lastpost, .alert_inline_time {
     display: none;
   }
 }

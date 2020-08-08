@@ -46,6 +46,10 @@ tr {
 
 td, th {
   padding: 5px 8px;
+
+  .quickbuttons {
+    justify-content: flex-end;
+  }
 }
 
 #notify_options table {

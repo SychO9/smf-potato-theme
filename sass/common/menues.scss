@@ -332,6 +332,14 @@
   }
 }
 
+.alert_image {
+  width: 5%;
+}
+
+td.alert_time {
+  @include adaptiveHiding;
+}
+
 #alerts_menu, #pm_menu, .notify_dropdown {
   width: var(--dropdown-max-width);
 }

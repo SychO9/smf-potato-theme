@@ -532,8 +532,9 @@ function template_ic_block_stats()
 		),
 		array(
 			'label' => $txt['latest_post'],
-			'value' => "{$context['latest_post']['link']} ({$context['latest_post']['time']})",
+			'value' => !empty($context['latest_post']) ? "{$context['latest_post']['link']} ({$context['latest_post']['time']})" : '',
 			'icon' => 'fas fa-reply',
+			'show' => !empty($context['latest_post']),
 		),
 	);
 
@@ -549,6 +550,9 @@ function template_ic_block_stats()
 
 	foreach ($stats as $stat)
 	{
+		if (array_key_exists('show', $stat) && empty($stat['show']))
+			continue;
+
 		echo '
 					<div class="databox databox--neutral databox--statistic">
 						<div class="databox-icon">', icon($stat['icon']), '</div>
