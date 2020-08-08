@@ -7553,13 +7553,13 @@ body {
   left: 8px;
 }
 
-#admin_content > *, #messageindex > *, #post_area > .roundframe > *, .main_section > * {
+#admin_content > *, #messageindex > *, #post_area > .roundframe > *, .main_section > *, #quickModForm > * {
   margin: var(--space-between-elements) 0;
 }
-#admin_content > *:first-child, #messageindex > *:first-child, #post_area > .roundframe > *:first-child, .main_section > *:first-child {
+#admin_content > *:first-child, #messageindex > *:first-child, #post_area > .roundframe > *:first-child, .main_section > *:first-child, #quickModForm > *:first-child {
   margin-block-start: 0;
 }
-#admin_content > *:last-child, #messageindex > *:last-child, #post_area > .roundframe > *:last-child, .main_section > *:last-child {
+#admin_content > *:last-child, #messageindex > *:last-child, #post_area > .roundframe > *:last-child, .main_section > *:last-child, #quickModForm > *:last-child {
   margin-block-end: 0;
 }
 

@@ -92,8 +92,8 @@ function template_unread()
 			</div>';
 
 		echo '
-			<div id="unread">
-				<div id="topic_header" class="title_bar">
+			<div id="unread" class="topic-list-area">
+				<div id="topic_header" class="title_bar topic-header">
 					<div class="board_icon"></div>
 					<div class="info">
 						<a href="', $scripturl, '?action=unread', $context['showing_all_topics'] ? ';all' : '', $context['querystring_board_limits'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt['subject'], $context['sort_by'] == 'subject' ? ' <span class="main_icons sort_' . $context['sort_direction'] . '"></span>' : '', '</a>
@@ -114,12 +114,12 @@ function template_unread()
 
 		echo '
 				</div><!-- #topic_header -->
-				<div id="topic_container">';
+				<div id="topic_container" class="topic-item-container">';
 
 		foreach ($context['topics'] as $topic)
 		{
 			echo '
-					<div class="', $topic['css_class'], '">
+					<div class="', trim(str_replace('windowbg', '', $topic['css_class'])), ' topic-item">
 						<div class="board_icon">
 							<img src="', $topic['first_post']['icon_url'], '" alt="">
 							', $topic['is_posted_in'] ? '<img class="posted" src="' . $settings['images_url'] . '/icons/profile_sm.png" alt="">' : '', '
@@ -132,15 +132,15 @@ function template_unread()
 
 			if ($topic['is_locked'])
 				echo '
-								<span class="main_icons lock"></span>';
+								<span class="main_icons lock badge"></span>';
 
 			if ($topic['is_sticky'])
 				echo '
-								<span class="main_icons sticky"></span>';
+								<span class="main_icons sticky badge"></span>';
 
 			if ($topic['is_poll'])
 				echo '
-								<span class="main_icons poll"></span>';
+								<span class="main_icons poll badge"></span>';
 
 			echo '
 							</div>';
@@ -150,10 +150,13 @@ function template_unread()
 								<a href="', $topic['new_href'], '" id="newicon', $topic['first_post']['id'], '" class="new_posts">' . $txt['new'] . '</a>
 								', $topic['is_sticky'] ? '<strong>' : '', '<span class="preview" title="', $topic[(empty($modSettings['message_index_preview_first']) ? 'last_post' : 'first_post')]['preview'], '"><span id="msg_' . $topic['first_post']['id'] . '">', $topic['first_post']['link'], '</span></span>', $topic['is_sticky'] ? '</strong>' : '', '
 							</div>
-							<p class="floatleft">
-								', $topic['first_post']['started_by'], '
-							</p>
-							', !empty($topic['pages']) ? '<span id="pages' . $topic['first_post']['id'] . '" class="topic_pages">' . $topic['pages'] . '</span>' : '', '
+							<div class="item-details">
+								<span>', $topic['first_post']['started_by'], '</span>
+								<span class="inline-lastpost">
+									<a href="', $topic['last_post']['href'], '">', icon('fas fa-sign-out-alt'), '</a>
+								</span>
+								', !empty($topic['pages']) ? '<span id="pages' . $topic['first_post']['id'] . '" class="topic_pages">' . $topic['pages'] . '</span>' : '', '
+							</div>
 						</div><!-- .info -->
 						<div class="board_stats centertext">
 							<p>
@@ -162,8 +165,23 @@ function template_unread()
 								', $topic['views'], ' ', $txt['views'], '
 							</p>
 						</div>
-						<div class="lastpost">
-							', sprintf($txt['last_post_topic'], '<a href="' . $topic['last_post']['href'] . '">' . $topic['last_post']['time'] . '</a>', $topic['last_post']['member']['link']), '
+						<div class="lastpost">';
+
+			if (!empty($topic['last_post']['id']))
+				echo '
+							<div class="topic-item">
+								<div class="topic-item-poster-avatar">', $topic['last_post']['member']['avatar']['image'], '</div>
+								<div class="topic-item-content">
+									<div class="topic-item-title">', $topic['last_post']['link'], '</div>
+									<div class="topic-item-details">
+										<div class="topic-item-poster">', $topic['last_post']['member']['link'], '</div>
+										<div class="topic-item-time">', icon('far fa-clock'), ' ', timeformat($topic['last_post']['timestamp']), '</div>
+									</div>
+								</div>
+							</div>';
+
+			echo '
+							
 						</div>';
 
 			if ($context['showCheckboxes'])

@@ -65,7 +65,7 @@ body {
   }
 }
 
-#admin_content, #messageindex, #post_area > .roundframe, .main_section {
+#admin_content, #messageindex, #post_area > .roundframe, .main_section, #quickModForm {
   > * {
     @include vertical-spacing;
   }
