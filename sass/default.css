@@ -231,7 +231,7 @@ tr[id^='list_news_lists_'] textarea {
 .blue {
 	color: blue;
 }
-.green {
+.green, .warn_watch, .success {
 	color: green;
 }
 

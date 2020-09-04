@@ -873,7 +873,8 @@ function template_single_post($message)
 	echo '
 						</div><!-- .postarea -->
 					</div><!-- .post_wrapper -->
-				</div><!-- $message[css_class] -->';
+				</div><!-- $message[css_class] -->
+				<hr class="post_separator">';
 }
 
 /**
