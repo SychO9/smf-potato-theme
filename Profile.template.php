@@ -2722,7 +2722,7 @@ function template_error_message()
 		foreach ($context['post_errors'] as $error)
 		{
 			$text_key_error = $error == 'password_short' ?
-				printf($txt['profile_error_' . $error], (empty($modSettings['password_strength']) ? 4 : 8)) :
+				sprintf($txt['profile_error_' . $error], (empty($modSettings['password_strength']) ? 4 : 8)) :
 				$txt['profile_error_' . $error];
 
 			echo '

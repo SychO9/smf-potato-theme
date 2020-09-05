@@ -181,7 +181,7 @@ function template_unread()
 							</div>';
 
 			echo '
-							
+
 						</div>';
 
 			if ($context['showCheckboxes'])
@@ -351,7 +351,7 @@ function template_replies()
 							</div>';
 
 			echo '
-							
+
 						</div>';
 
 			if ($context['showCheckboxes'])
@@ -381,7 +381,7 @@ function template_replies()
 			<div class="databox databox--neutral databox--full">
 				<div class="databox-icon">', icon('fas fa-exclamation-circle'), '</div>
 				<div class="databox-content">
-					<div class="databox-text">', $context['showing_all_topics'] ? $txt['topic_alert_none'] : sprintf($txt['updated_topics_visit_none'], $scripturl), '</div>
+					<div class="databox-text">', $context['showing_all_topics'] ? $txt['topic_alert_none'] : $txt['updated_topics_visit_none'], '</div>
 				</div>
 			</div>';
 
