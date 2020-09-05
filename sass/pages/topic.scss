@@ -76,17 +76,6 @@
   padding: $post-padding;
   display: flex;
   flex-direction: column;
-
-  .inline_details {
-    margin: 0;
-
-    .icon {
-      margin-inline-end: 0;
-    }
-    > * {
-      @include horizontal-spacing(2px);
-    }
-  }
 }
 
 @media (max-width: $mobile-max-width) {

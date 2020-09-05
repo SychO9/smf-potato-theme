@@ -20,6 +20,17 @@
   }
 }
 
+.inline_details {
+  margin: 0;
+
+  .icon {
+    margin-inline-end: 0;
+  }
+  > * {
+    @include horizontal-spacing(2px);
+  }
+}
+
 .mobile_buttons, .moderationbuttons_mobile_check {
     display: none !important;
 }

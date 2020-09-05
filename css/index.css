@@ -7374,6 +7374,22 @@ input[type=radio],
   margin: 2px 0;
 }
 
+.inline_details {
+  margin: 0;
+}
+.inline_details .icon {
+  margin-inline-end: 0;
+}
+.inline_details > * {
+  margin: 0 2px;
+}
+.inline_details > *:first-child {
+  margin-inline-start: 0;
+}
+.inline_details > *:last-child {
+  margin-inline-end: 0;
+}
+
 .mobile_buttons, .moderationbuttons_mobile_check {
   display: none !important;
 }
@@ -9214,21 +9230,6 @@ input[name=attachBBC] {
   display: flex;
   flex-direction: column;
 }
-.postarea .inline_details {
-  margin: 0;
-}
-.postarea .inline_details .icon {
-  margin-inline-end: 0;
-}
-.postarea .inline_details > * {
-  margin: 0 2px;
-}
-.postarea .inline_details > *:first-child {
-  margin-inline-start: 0;
-}
-.postarea .inline_details > *:last-child {
-  margin-inline-end: 0;
-}
 
 @media (max-width: 750px) {
   .post_wrapper {
@@ -9812,6 +9813,38 @@ h3.config_hd.titlebg {
 }
 .profile-hero-navigation > a .icon + .item-label, .profile-hero-navigation > a .main_icons + .item-label {
   margin-inline-start: 5px;
+}
+
+.post-list-item {
+  margin: var(--space-between-elements) 0;
+}
+.post-list-item:first-child {
+  margin-block-start: 0;
+}
+.post-list-item:last-child {
+  margin-block-end: 0;
+}
+.post-list-item-header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.post-list-item-counter {
+  padding: 0 12px 0 8px;
+  font-size: 18px;
+}
+.post-list-item-title {
+  margin: 0;
+  font-size: calc(var(--font-size) + 1px);
+}
+.post-list-item-content {
+  border-top: 2px dotted var(--color-contrast);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.post-list-item-content .quickbuttons {
+  margin-inline-start: auto;
 }
 
 /*# sourceMappingURL=index.css.map */
