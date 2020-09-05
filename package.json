@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"lastCommit": "ed05806bfde57418f2d0ac6a7e95d86068f921d1",
+	"lastCommit": "9c0c361cdb596c268580265df82f387752496128",
 	"scripts": {
 		"watch": "node_modules\\.bin\\sass --load-path=node_modules --watch sass/index.scss css/index.css"
 	},
