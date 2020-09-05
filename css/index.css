@@ -7420,6 +7420,9 @@ table::after {
   clear: both;
   width: 100%;
 }
+table.table_grid {
+  background: var(--block-bg);
+}
 
 thead, tr.title_bar {
   background: var(--color-primary);

@@ -4,6 +4,10 @@ table {
   width: 100%;
   overflow: hidden;
   margin: 5px 0;
+
+  &.table_grid {
+    background: var(--block-bg);
+  }
 }
 
 thead, tr.title_bar {
