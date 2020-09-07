@@ -13,10 +13,9 @@
 
 .pagesection {
   @include organized-content;
-  justify-content: space-between;
 
   > * {
-    margin: 2px 0;
+    @include horizontal-spacing(2px);
   }
 }
 

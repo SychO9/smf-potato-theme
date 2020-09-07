@@ -50,6 +50,7 @@ body {
   }
   &links {
     @include organized-content;
+    margin-inline-end: auto;
 
     > * {
       @include horizontal-spacing(2px);
