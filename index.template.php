@@ -686,7 +686,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 		<ul class="quickbuttons' . (!empty($list_class) ? ' quickbuttons_' . $list_class : '') . '">';
 
 	// This is used for a list item or a sublist item
-	$list_item_format = function($li)
+	$list_item_format = function($li, $is_sub = false)
 	{
 		$html = '
 			<li' . (!empty($li['class']) ? ' class="' . $li['class'] . '"' : '') . (!empty($li['id']) ? ' id="' . $li['id'] . '"' : '') . (!empty($li['custom']) ? $li['custom'] : '') . '>';
@@ -695,7 +695,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 			$html .= $li['content'];
 		else
 			$html .= '
-				<a' . (!empty($li['href']) ? " href='{$li['href']}'" : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . ' class="preview" title="'.$li['label'].'">
+				<a' . (!empty($li['href']) ? " href='{$li['href']}'" : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . ' ' . (!$is_sub ? " class='preview' title='{$li['label']}'" : '' ) . '>
 					' . (!empty($li['icon']) ? "<span class='main_icons {$li['icon']}'></span>" : '') . (!empty($li['label']) ? "<span class='item-label'>{$li['label']}</span>" : '') . '
 				</a>';
 
@@ -719,7 +719,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 				<ul>';
 
 			foreach ($li as $subli)
-				$output .= $list_item_format($subli);
+				$output .= $list_item_format($subli, true);
 
 			$output .= '
 				</ul>
