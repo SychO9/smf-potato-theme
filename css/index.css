@@ -7368,6 +7368,7 @@ input[type=radio],
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin: 4px 0;
 }
 .pagesection > * {
   margin: 0 2px;
@@ -8513,7 +8514,7 @@ ul.post_options {
 }
 
 .additional_row {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   vertical-align: middle;
 }

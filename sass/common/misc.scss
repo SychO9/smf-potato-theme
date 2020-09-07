@@ -13,6 +13,7 @@
 
 .pagesection {
   @include organized-content;
+  margin: 4px 0;
 
   > * {
     @include horizontal-spacing(2px);
