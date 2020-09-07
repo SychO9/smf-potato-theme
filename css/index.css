@@ -9021,6 +9021,7 @@ input[name=attachBBC] {
 }
 .topic-item-content {
   flex-grow: 1;
+  overflow: hidden;
 }
 .topic-item-details {
   display: flex;
