@@ -564,7 +564,7 @@ function template_set_settings()
 
 	foreach ($context['settings'] as $i => $setting)
 	{
-		if (empty($setting['value']) && isset($setting['default_value']))
+		if (!isset($setting['value']) && isset($setting['default_value']))
 			$setting['value'] = $setting['default_value'];
 
 		// Is this a separator?

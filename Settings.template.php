@@ -240,6 +240,22 @@ function template_settings()
 			'default_value' => DEFAULT_POTATO_SECONDARY_COLOR,
 			'type' => 'color',
 		),
+		'',
+		array(
+			'id' => 'potato_default_mode',
+			'label' => $txt['potato_default_mode'],
+			'options' => array(
+				0 => $txt['potato_light_mode'],
+				1 => $txt['potato_dark_mode'],
+			),
+			'type' => 'list',
+		),
+		array(
+			'id' => 'potato_allow_user_modes',
+			'label' => $txt['potato_allow_user_modes'],
+			'default_value' => 1,
+			'type' => 'checkbox',
+		),
 	);
 }
 

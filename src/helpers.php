@@ -190,6 +190,24 @@ function sycho_hex_to_hsl($hex)
 }
 
 /**
+ * @return array either "dark" or "light"
+ */
+function sycho_current_mode()
+{
+	global $settings, $options;
+
+	$modes = array('light', 'dark');
+	$active_mode = 0;
+
+	if (!empty($settings['potato_allow_user_modes']) && isset($options['potato_dark_mode']))
+		$active_mode = $options['potato_dark_mode'];
+	elseif (isset($settings['potato_default_mode']))
+		$active_mode = $settings['potato_default_mode'];
+
+	return $modes[$active_mode];
+}
+
+/**
  * Hooks into the profile popup, because popups don't run the theme's template_init() function :(
  */
 function sycho_hook_into_profile_popup()
