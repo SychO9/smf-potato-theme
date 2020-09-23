@@ -1,9 +1,5 @@
 <?php
 
-require_once 'Hooks.php';
-
-\SychO\Potato::setUp();
-
 /**
  * @param string $name
  * @return string

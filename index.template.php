@@ -73,7 +73,7 @@ function template_init()
 		$settings['disable_files'] = array('smf_jquery_slider');
 
 	// Load our helper functions
-	require_once __DIR__ . '/src/helpers.php';
+	require_once __DIR__ . '/src/vendor.php';
 
 	if (!defined('DEFAULT_POTATO_PRIMARY_COLOR'))
 		define('DEFAULT_POTATO_PRIMARY_COLOR', '#b83b5e');
@@ -806,12 +806,12 @@ function template_sycho_theme_info()
 	$biginfo = array(
 		'version' => array(
 			'label' => $txt['mod_version'],
-			'value' => $settings['version'],
+			'value' => \SychO\Potato::VERSION,
 			'icon' => 'fas fa-code-branch',
 		),
 		'author' => array(
 			'label' => $txt['author'],
-			'value' => $txt['potato_author'] . ' (sychocouldy@gmail.com)',
+			'value' => $txt['sycho_author'] . ' (sychocouldy@gmail.com)',
 			'icon' => 'fas fa-user-edit',
 		),
 		'repository' => array(
@@ -826,7 +826,7 @@ function template_sycho_theme_info()
 		),
 		'discuss' => array(
 			'label' => $txt['potato_simple_machines_forum'],
-			'value' => "<a href='https://simplemachines.org/community/'>{$txt['potato_discuss']}</a>",
+			'value' => "<a href='https://www.simplemachines.org/community/index.php?topic=574200.0'>{$txt['potato_discuss']}</a>",
 			'icon' => 'fas fa-comments',
 		),
 	);

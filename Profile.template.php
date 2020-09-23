@@ -50,7 +50,7 @@ function template_profile_popup()
 {
 	global $context, $scripturl;
 
-	require_once __DIR__.'/src/helpers.php';
+	require_once __DIR__.'/src/vendor.php';
 	sycho_hook_into_profile_popup();
 
 	// Unlike almost every other template, this is designed to be included into the HTML directly via $().load()
