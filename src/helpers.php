@@ -100,21 +100,24 @@ function inject_buttonlist_icons(&$button_strip)
 	}
 }
 
-/**
- * Debugging function
- * @param $var
- */
-function dd($var)
+if (!function_exists('dd'))
 {
-	echo '<pre>';
-	print_r($var);
-	die('</pre>');
+	/**
+	 * Debugging function
+	 * @param $var
+	 */
+	function dd($var)
+	{
+		echo '<pre>';
+		print_r($var);
+		die('</pre>');
+	}
 }
 
 /**
  *
  */
-function organize_page_index()
+function sycho_organize_page_index()
 {
 	global $context;
 
@@ -137,7 +140,7 @@ function organize_page_index()
  * @param $hex
  * @return float[]
  */
-function potato_hex_to_hsl($hex)
+function sycho_hex_to_hsl($hex)
 {
 	$hex = str_split(ltrim($hex, '#'), 2);
 
@@ -184,4 +187,38 @@ function potato_hex_to_hsl($hex)
 	}
 
 	return array($h, $s, $l);
+}
+
+/**
+ * Hooks into the profile popup, because popups don't run the theme's template_init() function :(
+ */
+function sycho_hook_into_profile_popup()
+{
+	\SychO\Potato::addDarkModeToggler($GLOBALS['context']['profile_items']);
+}
+
+/**
+ * Language change selectbox
+ */
+function template_language_change()
+{
+	global $modSettings, $context, $txt;
+
+	if (empty($modSettings['userLanguage']) || empty($context['languages']) || count($context['languages']) <= 1)
+		return;
+
+	echo '
+		<form id="languages_form" method="get" class="language-form">
+			<select id="language_select" name="language" onchange="this.form.submit()">';
+
+	foreach ($context['languages'] as $language)
+		echo '
+				<option value="', $language['filename'], '"', isset($context['user']['language']) && $context['user']['language'] == $language['filename'] ? ' selected="selected"' : '', '>', str_replace('-utf8', '', $language['name']), '</option>';
+
+	echo '
+			</select>
+			<noscript>
+				<input type="submit" value="', $txt['quick_mod_go'], '">
+			</noscript>
+		</form>';
 }

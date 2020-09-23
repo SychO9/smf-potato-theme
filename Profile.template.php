@@ -51,7 +51,7 @@ function template_profile_popup()
 	global $context, $scripturl;
 
 	require_once __DIR__.'/src/helpers.php';
-	\SychO\Potato::addDarkModeToggler($context['profile_items']);
+	sycho_hook_into_profile_popup();
 
 	// Unlike almost every other template, this is designed to be included into the HTML directly via $().load()
 
@@ -63,6 +63,7 @@ function template_profile_popup()
 			<div class="profile_user_content">
 				<span class="profile_username"><a href="', $scripturl, '?action=profile;u=', $context['user']['id'], '">', $context['user']['name'], '</a></span>
 				<span class="profile_group">', $context['member']['group'], '</span>
+				<span>', template_language_change(), '</span>
 			</div>
 		</div>
 		<div class="profile_user_links">

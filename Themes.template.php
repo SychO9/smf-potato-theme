@@ -674,7 +674,7 @@ function template_set_settings()
 	</div><!-- #admin_form_wrapper -->';
 
 	if ((int)$context['theme_settings']['theme_id'] === $settings['theme_id'])
-		template_potato_theme_info();
+		template_sycho_theme_info();
 
 	if (!empty($context['theme_variants']))
 	{

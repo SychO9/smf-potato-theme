@@ -8484,6 +8484,12 @@ fieldset > *:last-child {
   background: var(--color-bg);
 }
 
+#language_select {
+  padding: 0;
+  margin: 0;
+  height: auto;
+}
+
 #quickreply_options > .roundframe > *, #postmodify > * {
   margin: var(--space-between-elements) 0;
 }

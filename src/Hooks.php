@@ -242,7 +242,7 @@ class Potato
 				$key
 			);
 
-			$hsl = potato_hex_to_hsl($setting);
+			$hsl = sycho_hex_to_hsl($setting);
 			$colors["--$color_name-h"] = $hsl[0] . 'deg';
 			$colors["--$color_name-s"] = $hsl[1] * 100 . '%';
 			$colors["--$color_name-l"] = $hsl[2] * 100 . '%';

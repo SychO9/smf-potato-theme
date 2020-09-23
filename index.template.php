@@ -89,7 +89,7 @@ function template_html_above()
 {
 	global $context, $settings, $scripturl, $txt, $modSettings;
 
-	organize_page_index();
+	sycho_organize_page_index();
 
 	// Show right to left, the language code, and the character set for ease of translating.
 	echo '<!DOCTYPE html>
@@ -293,29 +293,6 @@ function template_body_above()
 		echo '
 			</ul>';
 	}
-
-	/*if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
-	{
-		echo '
-			<form id="languages_form" method="get" class="language-form">
-				<select id="language_select" name="language" onchange="this.form.submit()">';
-
-		foreach ($context['languages'] as $language)
-			echo '
-					<option value="', $language['filename'], '"', isset($context['user']['language']) && $context['user']['language'] == $language['filename'] ? ' selected="selected"' : '', '>', str_replace('-utf8', '', $language['name']), '</option>';
-
-		echo '
-				</select>
-				<noscript>
-					<input type="submit" value="', $txt['quick_mod_go'], '">
-				</noscript>
-			</form>';
-	}
-
-	if ($context['allow_search'])
-	{
-		template_search_form();
-	}*/
 
 	echo '
 				</div>
@@ -820,7 +797,7 @@ function template_search_form()
 /**
  *
  */
-function template_potato_theme_info()
+function template_sycho_theme_info()
 {
 	global $context, $settings, $txt;
 

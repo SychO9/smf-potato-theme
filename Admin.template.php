@@ -71,7 +71,7 @@ function template_admin()
 							</div><!-- #support_info -->
 						</div><!-- #admin_main_section -->';
 
-	template_potato_theme_info();
+	template_sycho_theme_info();
 
 	echo '
 						<div>';
