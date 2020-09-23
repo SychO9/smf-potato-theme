@@ -1,5 +1,8 @@
 {
-	"private": true,
+	"name": "@sycho9/smf-potato-theme",
+	"version": "0.1.0",
+	"author": "Sami 'SychO' Mazouz",
+	"license": "MIT",
 	"lastCommit": "9c0c361cdb596c268580265df82f387752496128",
 	"scripts": {
 		"watch": "node_modules\\.bin\\sass --load-path=node_modules --watch sass/index.scss css/index.css"

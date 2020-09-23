@@ -844,7 +844,7 @@ function template_potato_theme_info()
 		),
 		'donate' => array(
 			'label' => $txt['potato_donate_desc'],
-			'value' => "<a href='https://www.paypal.me/'>{$txt['potato_donate']}</a>",
+			'value' => "<a href='https://www.buymeacoffee.com/sycho'>{$txt['potato_donate']}</a>",
 			'icon' => 'fas fa-hand-holding-heart',
 		),
 		'discuss' => array(
