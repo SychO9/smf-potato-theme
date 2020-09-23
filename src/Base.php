@@ -5,6 +5,11 @@ namespace SychO;
 class Base
 {
 	/**
+	 * @var string
+	 */
+	const VERSION = '0.1.0';
+
+	/**
 	 *
 	 */
 	public static function setUp()
