@@ -47,7 +47,7 @@
   background: var(--dropdown-bg);
   box-shadow: var(--dropdown-box-shadow);
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   min-width: var(--dropdown-min-width);
   max-width: var(--dropdown-max-width);
   top: calc(100% + 10px);

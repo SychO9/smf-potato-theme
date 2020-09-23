@@ -51,6 +51,17 @@ $(function() {
 		$('#realTimeColorChange').remove();
 		$('head').append(styleElement);
 	});
+
+	// Backdrop used in smaller screens
+	$('.top_menu, .quickbuttons > li > ul').each(function (index, item) {
+		$(item).prev().click(function (e) {
+			$('body').addClass('backdrop');
+		});
+
+		$(window).click(function() {
+			$('body').removeClass('backdrop');
+		});
+	});
 });
 
 // The purpose of this code is to fix the height of overflow: auto blocks, because some browsers can't figure it out for themselves.
