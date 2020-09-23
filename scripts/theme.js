@@ -55,6 +55,8 @@ $(function() {
 	// Backdrop used in smaller screens
 	$('.top_menu, .quickbuttons > li > ul').each(function (index, item) {
 		$(item).prev().click(function (e) {
+			e.stopPropagation();
+
 			$('body').addClass('backdrop');
 		});
 
