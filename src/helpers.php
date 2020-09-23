@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @package SychO Base 2.1 Theme Code
+ * @author Sami "SychO" Mazouz
+ * @license MIT
+ */
+
+/**
  * @param string $name
  * @return string
  */

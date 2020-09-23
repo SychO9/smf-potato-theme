@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @package Potato Theme
+ * @author Sami "SychO" Mazouz
+ * @license MIT
+ */
+
 namespace SychO;
 
 class Potato

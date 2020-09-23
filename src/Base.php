@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @package SychO Base Theme Code
+ * @author Sami "SychO" Mazouz
+ * @license MIT
+ */
+
 namespace SychO;
 
 class Base
