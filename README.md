@@ -6,7 +6,7 @@
 
 The SMF Potato Theme that has nothing to do with potatoes.
 
-<a href="https://www.buymeacoffee.com/sycho" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/sycho" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60" width="217"></a>
 
 ## Screenshots
 <p align="center">
