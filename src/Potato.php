@@ -44,12 +44,6 @@ class Potato
 		if (empty($_REQUEST['area']))
 			return;
 
-		if ($_REQUEST['area'] === 'forumprofile')
-		{
-			$fields[] = 'hr';
-			$fields[] = 'default_options[potato_profile_cover]';
-		}
-
 		if ($_REQUEST['area'] === 'theme')
 		{
 			$fields[] = 'hr';
