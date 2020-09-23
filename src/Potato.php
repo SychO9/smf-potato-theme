@@ -29,21 +29,6 @@ class Potato
 	{
 		global $context, $txt, $options;
 
-		$profile_fields['default_options[potato_profile_cover]'] = array(
-			'type' => 'url',
-			'permission' => 'profile_extra',
-			'label' => $txt['potato_profile_cover'],
-			'value' => !empty($context['member']['potato_profile_cover']) ? $context['member']['potato_profile_cover'] : '',
-			'input_validate' => function($value) {
-				$value = filter_var($value, FILTER_SANITIZE_URL);
-
-				if (filter_var($value, FILTER_VALIDATE_URL) === false)
-					return false;
-
-				return true;
-			},
-		);
-
 		$profile_fields['default_options[potato_dark_mode]'] = array(
 			'type' => 'check',
 			'label' => $txt['potato_dark_mode'],

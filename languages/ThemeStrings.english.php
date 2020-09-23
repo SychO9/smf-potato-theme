@@ -3,7 +3,6 @@
 $txt['potato_attribution'] = 'Theme Designed with %icon% by %author%';
 $txt['sycho_author'] = '<a href="https://sycho9.github.io/">SychO</a>';
 
-$txt['potato_profile_cover'] = 'Profile Cover URL';
 $txt['potato_dark_mode'] = 'Dark Mode';
 $txt['potato_light_mode'] = 'Light Mode';
 $txt['potato_theme_settings'] = 'Theme Settings';

@@ -172,7 +172,7 @@ function template_summary()
 	// Display the basic information about the user
 	echo '
 	<div id="profileview" class="flow_auto profile-container">
-		<div id="basicinfo" class="profile-hero-container"', !empty($context['member']['options']['potato_profile_cover']) ? " style='background-image: url({$context['member']['options']['potato_profile_cover']})'" : '', '>
+		<div id="basicinfo" class="profile-hero-container">
 			<div class="profile-hero">
 				<div class="profile-hero-avatar">', $context['member']['avatar']['image'], '</div>
 				<div class="profile-hero-content">
