@@ -35,4 +35,4 @@ To list these edits, simply use the following URL by replacing the `VERSION` by 
 The MIT License.
 
 ## Donate
-Support the project by [Donating](#).
+Support the project by [Donating](https://www.buymeacoffee.com/sycho).
