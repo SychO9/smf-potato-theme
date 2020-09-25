@@ -7918,11 +7918,11 @@ a:hover {
   vertical-align: middle;
 }
 .menu > li > a > img, .quickbuttons > li > a > img, .dropmenu > li > a > img {
-  width: 30px;
-  height: 30px;
   margin-right: 4px;
 }
 .menu > li > a > img.avatar, .quickbuttons > li > a > img.avatar, .dropmenu > li > a > img.avatar {
+  width: 30px;
+  height: 30px;
   border-radius: var(--avatar-border-radius);
 }
 .menu > li > a > .fa-chevron-down, .quickbuttons > li > a > .fa-chevron-down, .dropmenu > li > a > .fa-chevron-down {
