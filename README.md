@@ -14,7 +14,7 @@ The SMF Potato Theme that has nothing to do with potatoes.
 </p>
 
 ## Installation
-Download [the latest release](https://github.com/SychO9/flarum-profile-cover/releases) package and upload it to your forum's theme section.
+Download [the latest release](https://github.com/SychO9/smf-potato-theme/releases) package and upload it to your forum's theme section.
 
 ## Updating
 To update the theme, you can either manually apply the changes to the theme's files, or overwrite the theme files with files from a new release package.
