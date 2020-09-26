@@ -3,6 +3,7 @@
 ![Latest Version](https://img.shields.io/github/release/SychO9/smf-potato-theme.svg?style=flat-square)
 ![SMF2.1](https://img.shields.io/badge/SMF-^2.1-blue.svg?style=flat-square&color=ed6033)
 ![mit license](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square&color=green)
+![Downloads](https://img.shields.io/github/downloads/SychO9/smf-potato-theme/total?color=%23b83c5d&style=flat-square)
 
 The SMF Potato Theme that has nothing to do with potatoes.
 
