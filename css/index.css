@@ -9301,6 +9301,10 @@ input[name=attachBBC] {
   font-size: calc(var(--font-size) - 2px);
 }
 
+.subject_hidden a {
+  display: none;
+}
+
 .post {
   flex-grow: 1;
   margin: 6px 0 6px;

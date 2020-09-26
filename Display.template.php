@@ -659,6 +659,12 @@ function template_single_post($message)
 							<div class="keyinfo">
 								<h5 class="inline_details">';
 
+	// Some people don't want subject... The div is still required or quick edit breaks.
+	echo '
+								<div id="subject_', $message['id'], '" class="subject_title', (empty($modSettings['subject_toggle']) ? ' subject_hidden' : ''), '">
+									', $message['link'], '
+								</div>';
+
 	if (!empty($message['counter']))
 		echo '
 									<span class="page_number">
