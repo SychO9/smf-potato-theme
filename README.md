@@ -1,5 +1,5 @@
 # Potato Theme
-[![GitHub](https://img.shields.io/badge/github-smf--potato--theme-blue.svg?style=flat-square&color=24292e)](https://github.com/SychO9/smf-potato-theme)
+[![GitHub](https://img.shields.io/badge/smf--potato--theme-blue.svg?style=flat-square&color=24292e&logo=github)](https://github.com/SychO9/smf-potato-theme)
 ![Latest Version](https://img.shields.io/github/v/release/SychO9/smf-potato-theme?include_prereleases&sort=semver&style=flat-square)
 ![SMF2.1](https://img.shields.io/badge/SMF-^2.1-blue.svg?style=flat-square&color=ed6033)
 ![mit license](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square&color=green)
