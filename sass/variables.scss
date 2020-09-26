@@ -57,6 +57,8 @@ $block-color: var(--color-fg);
 $block-padding: 10px 12px;
 $block-box-shadow: 0 2px 2px rgb(0, 0, 0, 0.13);
 
+$double-block-bg: var(--color-bg);
+
 $neutral-bg: var(--block-bg);
 $neutral-color: var(--block-color);
 $info-bg: #bbccec;
@@ -118,6 +120,7 @@ $unapproved-bg: #fadde2;
   --block-bg-darker: #{$block-bg-darker};
   --block-bg-darkerer: #{$block-bg-darkerer};
   @include defineChildColorHSL(--block-color, $block-color);
+  --double-block-bg: #{$double-block-bg};
 
   @include defineChildColorHSL(--dropdown-bg, $dropdown-bg);
   --dropdown-bg-dark: #{$dropdown-bg-dark};
