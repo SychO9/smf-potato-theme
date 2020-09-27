@@ -27,7 +27,9 @@ function template_page_details()
 		echo '
 			', $context['description'];
 
-	if (!empty($context['moderators']))
+	// Do not show moderators again..
+	// We don't want to completely remove this block of code..
+	if (false && !empty($context['moderators']))
 		echo '
 			', count($context['moderators']) === 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $context['link_moderators']), '.';
 
