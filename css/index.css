@@ -8877,8 +8877,14 @@ input[name=attachBBC] {
   box-shadow: unset !important;
   border: unset !important;
 }
-
-.ui-widget-header, .ui-widget-header > a, .ui-datepicker-title {
+.ui-widget-content {
+  background-color: var(--dropdown-bg) !important;
+  border: unset !important;
+}
+.ui-widget-content, .ui-widget-content a {
+  color: var(--color-fg) !important;
+}
+.ui-widget-header, .ui-widget-header > a, .ui-widget .ui-datepicker-title {
   color: var(--color-fg) !important;
 }
 
@@ -9984,6 +9990,25 @@ h3.config_hd.titlebg {
 }
 .post-list-item-content .quickbuttons {
   margin-inline-start: auto;
+}
+
+.calendar_table {
+  background: var(--block-bg) !important;
+}
+.calendar_table * {
+  border: unset !important;
+  background: inherit !important;
+}
+.calendar_table td.days a {
+  border-radius: var(--border-radius);
+}
+.calendar_table td.days a:hover {
+  color: var(--color-white) !important;
+  background: var(--color-primary) !important;
+}
+.calendar_table td.days.calendar_today a {
+  color: var(--color-white) !important;
+  background: var(--color-secondary) !important;
 }
 
 /*# sourceMappingURL=index.css.map */
