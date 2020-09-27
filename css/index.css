@@ -8854,6 +8854,22 @@ input[name=attachBBC] {
     left: unset;
   }
 }
+.sceditor-more, #sceditor-popup > .button, #sceditor-popup > input[type=submit] {
+  line-height: 25px;
+  height: auto;
+  font-size: 13px;
+}
+
+#sceditor-popup > .button, #sceditor-popup > input[type=submit] {
+  margin-top: 1rem;
+}
+
+.sceditor-smileyPopup {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .main-content-section > * {
   margin: var(--space-between-elements) 0;
 }
