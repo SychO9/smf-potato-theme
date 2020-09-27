@@ -8870,6 +8870,40 @@ input[name=attachBBC] {
   transform: translateX(-50%);
 }
 
+.ui-widget-header, .ui-widget-header > a {
+  background: unset !important;
+  text-shadow: unset !important;
+  font-family: var(--font-family) !important;
+  box-shadow: unset !important;
+  border: unset !important;
+}
+
+.ui-widget-header, .ui-widget-header > a, .ui-datepicker-title {
+  color: var(--color-fg) !important;
+}
+
+.ui-datepicker {
+  border: unset;
+  box-shadow: var(--dropdown-box-shadow);
+}
+.ui-datepicker-prev, .ui-datepicker-next {
+  margin: 0 !important;
+}
+.ui-datepicker-calendar {
+  box-shadow: unset !important;
+}
+.ui-datepicker-calendar thead {
+  font-size: calc(var(--font-size) - 2px);
+}
+.ui-datepicker-calendar .ui-state-default {
+  box-shadow: unset !important;
+  border: unset !important;
+  text-shadow: unset !important;
+}
+.ui-datepicker-calendar .ui-state-active, .ui-datepicker-calendar .ui-state-hover {
+  background-color: var(--color-primary) !important;
+}
+
 .main-content-section > * {
   margin: var(--space-between-elements) 0;
 }
