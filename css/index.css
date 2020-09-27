@@ -6711,6 +6711,10 @@ input[type=radio],
   font-size: 18px;
 }
 
+.gender_0 {
+  display: none;
+}
+
 /* Top row */
 .main_icons.help::before {
   content: "";
