@@ -8683,11 +8683,11 @@ input[name=attachBBC] {
 }
 .generic_bar.vertical, .progress_bar.vertical {
   width: 15px;
+  height: 100px;
 }
 .generic_bar.vertical .bar, .progress_bar.vertical .bar {
   right: 0;
   top: auto;
-  box-shadow: 4px -4px 4px rgba(0, 0, 0, 0.1) inset, 4px 4px 4px rgba(255, 255, 255, 0.3) inset;
 }
 
 .progress_bar {
@@ -8713,6 +8713,42 @@ input[name=attachBBC] {
 }
 .progress_blue .bar {
   background-color: #34c2e3;
+}
+
+.activity_stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  text-align: center;
+}
+.activity_stats > li {
+  width: calc(100% / 24);
+}
+.activity_stats > li > .generic_bar {
+  margin: 0 auto;
+}
+.activity_stats > li > .generic_bar span {
+  opacity: 0;
+}
+.activity_stats > li .stats_hour {
+  display: block;
+  margin-top: 3px;
+  padding: 3px 0;
+  border-top: 2px solid var(--color-bg-dark);
+  background-color: var(--color-bg);
+}
+
+.profile_pie {
+  background: url(../images/stats_pie.png);
+  background-size: auto 20px;
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin: 0 12px 0 0;
+  text-indent: -1000em;
 }
 
 .popup_container {
