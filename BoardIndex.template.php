@@ -328,7 +328,7 @@ function template_info_center()
 	// Here's where the "Info Center" starts...
 	echo '
 	<div class="info-center" id="info_center">
-		<div id="upshrink_stats" class="upshrink-stats"', empty($options['collapse_header_ic']) ? '' : ' style="display: none;"', '>';
+		<div id="upshrink_stats" class="upshrink-stats">';
 
 	foreach ($context['info_center'] as $block)
 	{
@@ -339,42 +339,6 @@ function template_info_center()
 	echo '
 		</div><!-- #upshrink_stats -->
 	</div><!-- #info_center -->';
-
-	// Info center collapse object.
-	echo '
-	<script>
-		var oInfoCenterToggle = new smc_Toggle({
-			bToggleEnabled: true,
-			bCurrentlyCollapsed: ', empty($options['collapse_header_ic']) ? 'false' : 'true', ',
-			aSwappableContainers: [
-				\'upshrink_stats\'
-			],
-			aSwapImages: [
-				{
-					sId: \'upshrink_ic\',
-					altExpanded: ', JavaScriptEscape($txt['hide_infocenter']), ',
-					altCollapsed: ', JavaScriptEscape($txt['show_infocenter']), '
-				}
-			],
-			aSwapLinks: [
-				{
-					sId: \'upshrink_link\',
-					msgExpanded: ', JavaScriptEscape(sprintf($txt['info_center_title'], $context['forum_name_html_safe'])), ',
-					msgCollapsed: ', JavaScriptEscape(sprintf($txt['info_center_title'], $context['forum_name_html_safe'])), '
-				}
-			],
-			oThemeOptions: {
-				bUseThemeSettings: ', $context['user']['is_guest'] ? 'false' : 'true', ',
-				sOptionName: \'collapse_header_ic\',
-				sSessionId: smf_session_id,
-				sSessionVar: smf_session_var,
-			},
-			oCookieOptions: {
-				bUseCookie: ', $context['user']['is_guest'] ? 'true' : 'false', ',
-				sCookieName: \'upshrinkIC\'
-			}
-		});
-	</script>';
 }
 
 /**
