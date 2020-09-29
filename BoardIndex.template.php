@@ -587,9 +587,7 @@ function template_ic_block_online()
 					<div class="databox-icon">', icon('fas fa-users'), '</div>
 					<div class="databox-content">
 						<div class="databox-title">
-							', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'], '
-						</div>
-						<div class="databox-text">';
+							', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'];
 
 	// Handle hidden users and buddies.
 	$bracketList = array();
@@ -607,6 +605,9 @@ function template_ic_block_online()
 		echo ' (' . implode(', ', $bracketList) . ')';
 
 	echo $context['show_who'] ? '</a>' : '', '
+
+						</div>
+						<div class="databox-text">
 
 				', $txt['most_online_today'], ': <strong>', comma_format($modSettings['mostOnlineToday']), '</strong>&nbsp;-&nbsp;
 				', $txt['most_online_ever'], ': ', comma_format($modSettings['mostOnline']), ' (', timeformat($modSettings['mostDate']), ')<br>';
