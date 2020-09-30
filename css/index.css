@@ -8759,6 +8759,13 @@ input[name=attachBBC] {
   text-indent: -1000em;
 }
 
+dl.stats {
+  padding: var(--block-padding);
+}
+dl.stats.half_content {
+  display: inline-flex;
+}
+
 .popup_container {
   display: none;
   position: fixed;
