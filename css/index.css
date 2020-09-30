@@ -8660,12 +8660,13 @@ input[name=attachBBC] {
 
 .generic_bar, .progress_bar {
   background: var(--color-bg-dark);
-  min-height: 16px;
-  line-height: 1.4em;
+  min-height: 24px;
+  line-height: 18px;
   border-radius: var(--border-radius);
   position: relative;
   overflow: hidden;
   color: rgba(0, 0, 0, 0.6);
+  padding: 0;
 }
 .generic_bar span, .progress_bar span {
   position: relative;
@@ -8673,6 +8674,9 @@ input[name=attachBBC] {
   display: inline-block;
   padding: 0 5px;
   color: #fff;
+  background: rgba(0, 0, 0, 0.32);
+  border-radius: var(--border-radius);
+  margin: 3px;
 }
 .generic_bar .bar, .progress_bar .bar {
   position: absolute;
