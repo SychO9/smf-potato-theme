@@ -284,36 +284,34 @@ function template_by_board()
 			</div>
 			<div class="information">
 				', $txt['permissions_boards_desc'], '
-			</div>
-
-			<div class="cat_bar">
-				<h3 id="board_permissions" class="catbg flow_hidden">
-					<span class="perm_name floatleft">', $txt['board_name'], '</span>
-					<span class="perm_profile floatleft">', $txt['permission_profile'], '</span>';
-	echo '
-				</h3>
-			</div>
-			<div class="windowbg">';
+			</div>';
 
 	foreach ($context['categories'] as $category)
 	{
 		echo '
-				<div class="sub_bar">
-					<h3 class="subbg">', $category['name'], '</h3>
+				<div class="cat_bar">
+					<h3 class="catbg">', $category['name'], '</h3>
 				</div>';
 
-		if (!empty($category['boards']))
-			echo '
-				<ul class="perm_boards flow_hidden">';
+		if (empty($category['boards']))
+			continue;
+
+		echo '
+				<table class="table_grid">
+					<thead class="title_bar">
+						<th>', $txt['board_name'], '</th>
+						<th>', $txt['permission_profile'], '</th>
+					</thead>
+					<tbody>';
 
 		foreach ($category['boards'] as $board)
 		{
 			echo '
-					<li class="flow_hidden">
-						<span class="perm_board floatleft">
+					<tr class="windowbg">
+						<td class="half_table">
 							<a href="', $scripturl, '?action=admin;area=manageboards;sa=board;boardid=', $board['id'], ';rid=permissions;', $context['session_var'], '=', $context['session_id'], '">', str_repeat('-', $board['child_level']), ' ', $board['name'], '</a>
-						</span>
-						<span class="perm_boardprofile floatleft">';
+						</td>
+						<td>';
 
 			if ($context['edit_all'])
 			{
@@ -332,26 +330,25 @@ function template_by_board()
 							<a href="', $scripturl, '?action=admin;area=permissions;sa=index;pid=', $board['profile'], ';', $context['session_var'], '=', $context['session_id'], '">', $board['profile_name'], '</a>';
 
 			echo '
-						</span>
-					</li>';
+						</td>
+					</tr>';
 		}
 
-		if (!empty($category['boards']))
-			echo '
-				</ul>';
+		echo '
+					</tbody>
+				</table>';
 	}
 
 	if ($context['edit_all'])
 		echo '
-				<input type="submit" name="save_changes" value="', $txt['save'], '" class="button">';
+			<input type="submit" name="save_changes" value="', $txt['save'], '" class="button">';
 	else
 		echo '
-				<a class="button" href="', $scripturl, '?action=admin;area=permissions;sa=board;edit;', $context['session_var'], '=', $context['session_id'], '">', $txt['permissions_board_all'], '</a>';
+			<a class="button" href="', $scripturl, '?action=admin;area=permissions;sa=board;edit;', $context['session_var'], '=', $context['session_id'], '">', $txt['permissions_board_all'], '</a>';
 
 	echo '
-				<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
-				<input type="hidden" name="', $context['admin-mpb_token_var'], '" value="', $context['admin-mpb_token'], '">
-			</div><!-- .windowbg -->
+			<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
+			<input type="hidden" name="', $context['admin-mpb_token_var'], '" value="', $context['admin-mpb_token'], '">
 		</form>';
 }
 
