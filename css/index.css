@@ -8397,6 +8397,10 @@ input[type=color] {
   padding: 0 1px;
 }
 
+select[size] {
+  height: auto;
+}
+
 dl {
   display: flex;
   flex-wrap: wrap;
@@ -9973,6 +9977,23 @@ h3.config_hd.titlebg {
 }
 .profile-hero-navigation > a .icon + .item-label, .profile-hero-navigation > a .main_icons + .item-label {
   margin-inline-start: 5px;
+}
+
+#avatar_server_stored {
+  display: flex;
+}
+#avatar_server_stored > * {
+  margin: 0 var(--space-between-elements);
+}
+#avatar_server_stored > *:first-child {
+  margin-inline-start: 0;
+}
+#avatar_server_stored > *:last-child {
+  margin-inline-end: 0;
+}
+
+#personal_picture {
+  display: block;
 }
 
 .post-list-item {
