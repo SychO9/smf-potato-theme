@@ -21,6 +21,7 @@ class Base
 	public static function setUp()
 	{
 		add_integration_function('integrate_buffer', self::class.'::addSychoAttribution', false);
+		add_integration_function('integrate_credits', self::class.'::addCreditsPageAttribution');
 		add_integration_function('integrate_messageindex_buttons', self::class.'::setActiveNotifyItem', false);
 		add_integration_function('integrate_display_buttons', self::class.'::setActiveNotifyItem', false);
 		add_integration_function('integrate_prepare_display_context', self::class.'::addLikePostToQuickbuttons', false);
@@ -43,6 +44,18 @@ class Base
 		$buffer = preg_replace('/<li class="copyright">((?:(?!li).)+)<\/li>/ms', '<li class="copyright">$1<div>'.$attribution.'</div></li>', $buffer);
 
 		return $buffer;
+	}
+
+	/**
+	 * ...
+	 */
+	public static function addCreditsPageAttribution()
+	{
+		global $context, $txt;
+
+		$attribution = str_replace('%icon% ', icon('fas fa-heart'), str_replace('%author%', $txt['sycho_author'], $txt['potato_attribution']));
+
+		$context['copyrights']['smf'] .= "<div>$attribution</div>";
 	}
 
 	/**
