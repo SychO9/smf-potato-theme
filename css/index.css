@@ -558,15 +558,11 @@ tr[id^=list_news_lists_] textarea {
 input[type=checkbox],
 input[type=radio],
 .menu_icon::before,
+.toggle_down::before,
+.toggle_up::before,
 .errorbox::before,
 .infobox::before,
 .noticebox::before,
-.catbg .toggle_down,
-.catbg .toggle_up,
-.titlebg .toggle_down,
-.titlebg .toggle_up,
-.subbg .toggle_down,
-.subbg .toggle_up,
 .main_icons,
 .far,
 .fal,
@@ -581,7 +577,7 @@ input[type=radio],
   line-height: 1;
 }
 
-#moderationbuttons_strip #oInTopicModeration_remove_button_text::before, #moderationbuttons_strip #oInTopicModeration_split_button_text::before, input[type=checkbox], input[type=radio], .menu_icon::before, .errorbox::before, .infobox::before, .noticebox::before, .catbg .toggle_down, .catbg .toggle_up, .titlebg .toggle_down, .titlebg .toggle_up, .subbg .toggle_down, .subbg .toggle_up, .main_icons {
+#moderationbuttons_strip #oInTopicModeration_remove_button_text::before, #moderationbuttons_strip #oInTopicModeration_split_button_text::before, input[type=checkbox], input[type=radio], .menu_icon::before, .toggle_down::before, .toggle_up::before, .errorbox::before, .infobox::before, .noticebox::before, .main_icons {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
@@ -688,15 +684,11 @@ input[type=radio],
 input.fa-pull-left[type=checkbox],
 input.fa-pull-left[type=radio],
 .fa-pull-left.menu_icon::before,
+.fa-pull-left.toggle_down::before,
+.fa-pull-left.toggle_up::before,
 .fa-pull-left.errorbox::before,
 .fa-pull-left.infobox::before,
 .fa-pull-left.noticebox::before,
-.catbg .fa-pull-left.toggle_down,
-.catbg .fa-pull-left.toggle_up,
-.titlebg .fa-pull-left.toggle_down,
-.titlebg .fa-pull-left.toggle_up,
-.subbg .fa-pull-left.toggle_down,
-.subbg .fa-pull-left.toggle_up,
 .fa-pull-left.main_icons,
 .far.fa-pull-left,
 .fal.fa-pull-left,
@@ -710,15 +702,11 @@ input.fa-pull-left[type=radio],
 input.fa-pull-right[type=checkbox],
 input.fa-pull-right[type=radio],
 .fa-pull-right.menu_icon::before,
+.fa-pull-right.toggle_down::before,
+.fa-pull-right.toggle_up::before,
 .fa-pull-right.errorbox::before,
 .fa-pull-right.infobox::before,
 .fa-pull-right.noticebox::before,
-.catbg .fa-pull-right.toggle_down,
-.catbg .fa-pull-right.toggle_up,
-.titlebg .fa-pull-right.toggle_down,
-.titlebg .fa-pull-right.toggle_up,
-.subbg .fa-pull-right.toggle_down,
-.subbg .fa-pull-right.toggle_up,
 .fa-pull-right.main_icons,
 .far.fa-pull-right,
 .fal.fa-pull-right,
@@ -6643,15 +6631,11 @@ readers do not read off random characters that represent icons */
 input[type=checkbox],
 input[type=radio],
 .menu_icon::before,
+.toggle_down::before,
+.toggle_up::before,
 .errorbox::before,
 .infobox::before,
 .noticebox::before,
-.catbg .toggle_down,
-.catbg .toggle_up,
-.titlebg .toggle_down,
-.titlebg .toggle_up,
-.subbg .toggle_down,
-.subbg .toggle_up,
 .main_icons {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -7156,12 +7140,6 @@ input[type=radio],
 .catbg, .titlebg, .subbg {
   margin: 0;
 }
-.catbg .toggle_down::before, .titlebg .toggle_down::before, .subbg .toggle_down::before {
-  content: "";
-}
-.catbg .toggle_up::before, .titlebg .toggle_up::before, .subbg .toggle_up::before {
-  content: "";
-}
 
 .databox {
   border-radius: var(--border-radius);
@@ -7436,6 +7414,13 @@ hr {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.toggle_down::before {
+  content: "";
+}
+.toggle_up::before {
+  content: "";
 }
 
 table {
