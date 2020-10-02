@@ -8,15 +8,27 @@
     transform: translateY(-63%);
     box-shadow: inset 0 -1px 1px 0px var(--color-bg), inset 0 -1px 1px 0px var(--color-bg);
 
+    @media (max-width: 800px) AND (min-width: $mobile-max-width) {
+      transform: translateY(-63%) scaleY(1.5);
+    }
     @media (max-width: $mobile-max-width) {
       top: 52px;
     }
     @media (max-width: 425px) {
       top: 0;
-      transform: none;
+      transform: scaleY(1.4);
+    }
+    @media (min-width: 980px) {
+      .top-section--longmenu & {
+        transform: translateY(-54%) scaleY(0.7);
+      }
     }
     @media (min-width: 1600px) {
       transform: translateY(-56%) scaleY(0.6);
+
+      .top-section--longmenu & {
+        transform: translateY(-52%) scaleY(0.6);
+      }
     }
   }
   &--intermediate {

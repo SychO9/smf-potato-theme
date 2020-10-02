@@ -206,7 +206,7 @@ function template_body_above()
 
 	// Wrapper div now echoes permanently for better layout options. h1 a is now target for "Go up" links.
 	echo '
-	<header id="top_section" class="top-section">
+	<header id="top_section" class="top-section', count($context['menu_buttons']) >= 9 ? ' top-section--longmenu' : '', '">
 		<div class="inner_wrap">
 			<div class="upper-header">
 				<h1 class="forumtitle">
@@ -316,7 +316,9 @@ function template_body_above()
 	echo '
 			</nav><!-- .main_nav -->
 		</div><!-- .inner_wrap -->
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--upper"><path d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,240C840,224,960,160,1080,165.3C1200,171,1320,245,1380,282.7L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="waves waves--upper">
+			<path d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,240C840,224,960,160,1080,165.3C1200,171,1320,245,1380,282.7L1440,320L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+		</svg>
 	</header><!-- #top_section -->';
 
 	echo '
