@@ -826,7 +826,7 @@ function template_sycho_theme_info()
 		),
 		'discuss' => array(
 			'label' => $txt['potato_simple_machines_forum'],
-			'value' => "<a href='https://www.simplemachines.org/community/index.php?topic=574200.0'>{$txt['potato_discuss']}</a>",
+			'value' => "<a href='https://www.simplemachines.org/community/index.php?topic=575039.0'>{$txt['potato_discuss']}</a>",
 			'icon' => 'fas fa-comments',
 		),
 	);
