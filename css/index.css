@@ -8785,10 +8785,38 @@ input[name=attachBBC] {
 }
 
 dl.stats {
+  margin: 0;
   padding: var(--block-padding);
+  display: flex;
+  flex-wrap: wrap;
+}
+dl.stats dd, dl.stats dt {
+  margin: 0;
+  margin-block-start: 1px;
+  margin-block-end: 1px;
+  width: 50%;
+}
+dl.stats dd:first-child, dl.stats dt:first-child {
+  margin-block-start: 0;
+}
+dl.stats dd:last-child, dl.stats dt:last-child {
+  margin-block-end: 0;
 }
 dl.stats.half_content {
   display: inline-flex;
+}
+
+#stats th.stats_month {
+  padding-inline-start: 2em;
+}
+#stats td {
+  text-align: center;
+}
+#stats td.stats_day {
+  padding-inline-start: 3.5em;
+}
+#stats th.stats_month, #stats td.stats_day {
+  text-align: start;
 }
 
 .popup_container {
