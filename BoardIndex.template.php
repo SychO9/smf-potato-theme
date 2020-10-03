@@ -585,7 +585,7 @@ function template_ic_block_online()
 		// Showing membergroups?
 		if (!empty($settings['show_group_key']) && !empty($context['membergroups']))
 			echo '
-				<span class="membergroups">' . implode(', ', $context['membergroups']) . '</span>';
+				<div class="membergroups">' . implode(', ', $context['membergroups']) . '</div>';
 	}
 
 	echo '
