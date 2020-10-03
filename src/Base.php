@@ -21,7 +21,7 @@ class Base
 	public static function setUp()
 	{
 		add_integration_function('integrate_buffer', self::class.'::addSychoAttribution', false);
-		add_integration_function('integrate_credits', self::class.'::addCreditsPageAttribution');
+		add_integration_function('integrate_credits', self::class.'::addCreditsPageAttribution', false);
 		add_integration_function('integrate_messageindex_buttons', self::class.'::setActiveNotifyItem', false);
 		add_integration_function('integrate_display_buttons', self::class.'::setActiveNotifyItem', false);
 		add_integration_function('integrate_prepare_display_context', self::class.'::addLikePostToQuickbuttons', false);
