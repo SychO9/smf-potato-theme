@@ -13,7 +13,7 @@ class Potato
 	/**
 	 * @var string
 	 */
-	const VERSION = '0.1.0.beta.2';
+	const VERSION = '0.1.0.beta.3';
 
 	/**
 	 *
