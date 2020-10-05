@@ -8408,45 +8408,48 @@ select[size]:not([size="0"]):not([size="1"]) {
 dl {
   margin: 0;
 }
+dl dd {
+  margin-inline-start: 0;
+}
 dl ol, dl ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-dl.settings, .login dl {
+dl.settings, .login dl, #post_header {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
 }
-dl.settings dt .smalltext, .login dl dt .smalltext {
+dl.settings dt .smalltext, .login dl dt .smalltext, #post_header dt .smalltext {
   font-size: calc(var(--font-size) - 1px);
 }
-dl.settings dd, dl.settings dt, .login dl dd, .login dl dt {
+dl.settings dd, dl.settings dt, .login dl dd, .login dl dt, #post_header dd, #post_header dt {
   margin-block-start: 1px;
   margin-block-end: 1px;
   margin-inline-start: 0;
   width: 50%;
   padding-top: 5px;
 }
-dl.settings dd:first-child, dl.settings dt:first-child, .login dl dd:first-child, .login dl dt:first-child {
+dl.settings dd:first-child, dl.settings dt:first-child, .login dl dd:first-child, .login dl dt:first-child, #post_header dd:first-child, #post_header dt:first-child {
   margin-block-start: 0;
 }
-dl.settings dd:last-child, dl.settings dt:last-child, .login dl dd:last-child, .login dl dt:last-child {
+dl.settings dd:last-child, dl.settings dt:last-child, .login dl dd:last-child, .login dl dt:last-child, #post_header dd:last-child, #post_header dt:last-child {
   margin-block-end: 0;
 }
-dl.settings dd > *, dl.settings dt > *, .login dl dd > *, .login dl dt > * {
+dl.settings dd > *, dl.settings dt > *, .login dl dd > *, .login dl dt > *, #post_header dd > *, #post_header dt > * {
   margin-block-start: 1px;
   margin-block-end: 1px;
 }
-dl.settings dd > *:first-child, dl.settings dt > *:first-child, .login dl dd > *:first-child, .login dl dt > *:first-child {
+dl.settings dd > *:first-child, dl.settings dt > *:first-child, .login dl dd > *:first-child, .login dl dt > *:first-child, #post_header dd > *:first-child, #post_header dt > *:first-child {
   margin-block-start: 0;
 }
-dl.settings dd > *:last-child, dl.settings dt > *:last-child, .login dl dd > *:last-child, .login dl dt > *:last-child {
+dl.settings dd > *:last-child, dl.settings dt > *:last-child, .login dl dd > *:last-child, .login dl dt > *:last-child, #post_header dd > *:last-child, #post_header dt > *:last-child {
   margin-block-end: 0;
 }
 @media (max-width: 750px) {
-  dl.settings dd, dl.settings dt, .login dl dd, .login dl dt {
+  dl.settings dd, dl.settings dt, .login dl dd, .login dl dt, #post_header dd, #post_header dt {
     width: 100%;
     flex-grow: 1;
   }
