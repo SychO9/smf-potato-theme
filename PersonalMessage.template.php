@@ -225,8 +225,14 @@ function template_folder()
 			</div>';
 		}
 
+		echo '
+			<div class="post-container">';
+
 		while ($message = $context['get_pmessage']('message'))
 			template_single_pm($message);
+
+		echo '
+			</div>';
 
 		if (empty($context['display_mode']))
 			echo '
@@ -275,7 +281,7 @@ function template_single_pm($message)
 	global $context, $scripturl, $txt, $settings, $options, $modSettings;
 
 	echo '
-	<div class="windowbg">
+	<div class="postblock">
 		<div class="post_wrapper">
 			<div class="poster">';
 
@@ -464,9 +470,8 @@ function template_single_pm($message)
 			<div class="postarea">
 				<div class="flow_hidden">
 					<div class="keyinfo">
-						<h5 id="subject_', $message['id'], '">
-							', $message['subject'], '
-						</h5>';
+						<h5 id="subject_', $message['id'], '" class="inline_details">
+							<span>', $message['subject'], '</span>';
 
 	// Show who the message was sent to.
 	echo '
@@ -494,6 +499,12 @@ function template_single_pm($message)
 						<span class="smalltext">&#171; ', $context['folder'] == 'sent' ? $txt['pm_sent_is_replied_to'] : $txt['pm_is_replied_to'], ' &#187;</span>';
 
 	echo '
+						</h5>';
+
+	// Message options
+	template_quickbuttons($message['quickbuttons'], 'pm');
+
+	echo '
 					</div><!-- .keyinfo -->
 				</div><!-- .flow_hidden -->
 				<div class="post">
@@ -501,103 +512,96 @@ function template_single_pm($message)
 						', $message['body'], '
 					</div>
 				</div><!-- .post -->
-				<div class="under_message">';
-
-	// Message options
-	template_quickbuttons($message['quickbuttons'], 'pm');
-
-	echo '
-				</div><!-- .under_message -->
-			</div><!-- .postarea -->
-			<div class="moderatorbar">';
+				<div class="moderatorbar">';
 
 	// Are there any custom profile fields for above the signature?
 	if (!empty($message['custom_fields']['above_signature']))
 	{
 		echo '
-				<div class="custom_fields_above_signature">
-					<ul class="nolist">';
+					<div class="custom_fields_above_signature">
+						<ul class="nolist">';
 
 		foreach ($message['custom_fields']['above_signature'] as $custom)
 			echo '
-						<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
+							<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
 
 		echo '
-					</ul>
-				</div>';
+						</ul>
+					</div>';
 	}
 
 	// Show the member's signature?
 	if (!empty($message['member']['signature']) && empty($options['show_no_signatures']) && $context['signature_enabled'])
 		echo '
-				<div class="signature">
-					', $message['member']['signature'], '
-				</div>';
+					<div class="signature">
+						', $message['member']['signature'], '
+					</div>';
 
 	// Are there any custom profile fields for below the signature?
 	if (!empty($message['custom_fields']['below_signature']))
 	{
 		echo '
-				<div class="custom_fields_below_signature">
-					<ul class="nolist">';
+					<div class="custom_fields_below_signature">
+						<ul class="nolist">';
 
 		foreach ($message['custom_fields']['below_signature'] as $custom)
 			echo '
-						<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
+							<li class="custom ', $custom['col_name'], '">', $custom['value'], '</li>';
 
 		echo '
-					</ul>
-				</div>';
+						</ul>
+					</div>';
 	}
 
 	// Add an extra line at the bottom if we have labels enabled.
 	if ($context['folder'] != 'sent' && !empty($context['currently_using_labels']) && $context['display_mode'] != 2)
 	{
 		echo '
-				<div class="labels righttext flow_auto">';
+					<div class="labels righttext flow_auto">';
 
 		// Add the label drop down box.
 		if (!empty($context['currently_using_labels']))
 		{
 			echo '
-					<select name="pm_actions[', $message['id'], ']" onchange="if (this.options[this.selectedIndex].value) form.submit();">
-						<option value="">', $txt['pm_msg_label_title'], ':</option>
-						<option value="" disabled>---------------</option>';
+						<select name="pm_actions[', $message['id'], ']" onchange="if (this.options[this.selectedIndex].value) form.submit();">
+							<option value="">', $txt['pm_msg_label_title'], ':</option>
+							<option value="" disabled>---------------</option>';
 
 			// Are there any labels which can be added to this?
 			if (!$message['fully_labeled'])
 			{
 				echo '
-						<option value="" disabled>', $txt['pm_msg_label_apply'], ':</option>';
+							<option value="" disabled>', $txt['pm_msg_label_apply'], ':</option>';
 
 				foreach ($context['labels'] as $label)
 					if (!isset($message['labels'][$label['id']]))
 						echo '
-						<option value="', $label['id'], '">', $label['name'], '</option>';
+							<option value="', $label['id'], '">', $label['name'], '</option>';
 			}
 
 			// ... and are there any that can be removed?
 			if (!empty($message['labels']) && (count($message['labels']) > 1 || !isset($message['labels'][-1])))
 			{
 				echo '
-						<option value="" disabled>', $txt['pm_msg_label_remove'], ':</option>';
+							<option value="" disabled>', $txt['pm_msg_label_remove'], ':</option>';
 
 				foreach ($message['labels'] as $label)
 					echo '
-						<option value="', $label['id'], '">&nbsp;', $label['name'], '</option>';
+							<option value="', $label['id'], '">&nbsp;', $label['name'], '</option>';
 			}
 			echo '
-					</select>
-					<noscript>
-						<input type="submit" value="', $txt['pm_apply'], '" class="button">
-					</noscript>';
+						</select>
+						<noscript>
+							<input type="submit" value="', $txt['pm_apply'], '" class="button">
+						</noscript>';
 		}
 		echo '
-				</div><!-- .labels -->';
+					</div><!-- .labels -->';
 	}
 
 	echo '
-			</div><!-- .moderatorbar -->
+				</div><!-- .moderatorbar -->
+			</div><!-- .postarea -->
 		</div><!-- .post_wrapper -->
 	</div><!-- .windowbg -->';
 }

@@ -10070,6 +10070,20 @@ h3.config_hd.titlebg {
   display: block;
 }
 
+.pm_inline_time {
+  display: none;
+}
+@media (max-width: 750px) {
+  .pm_inline_time {
+    display: block;
+  }
+}
+
+@media (max-width: 750px) {
+  .pm_time, .pm_from_to {
+    display: none;
+  }
+}
 .post-list-item {
   margin-block-start: var(--space-between-elements);
   margin-block-end: var(--space-between-elements);
