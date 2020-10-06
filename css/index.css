@@ -7861,6 +7861,7 @@ a:hover {
     bottom: 0;
     position: fixed;
     max-height: 82%;
+    min-height: 200px;
     width: 100% !important;
     z-index: 99999;
     max-width: unset;
