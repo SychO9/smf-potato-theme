@@ -7857,6 +7857,7 @@ a:hover {
 @media (max-width: 750px) {
   .dropdown, .quickbuttons > li > ul, .top_menu, .dropmenu > li ul {
     top: unset;
+    left: 0;
     bottom: 0;
     position: fixed;
     max-height: 82%;
