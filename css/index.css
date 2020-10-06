@@ -7999,12 +7999,25 @@ a:hover {
 .top_menu.visible {
   display: block;
 }
+@media (max-width: 750px) {
+  .top_menu.visible {
+    animation: slide 0.4s;
+  }
+}
 .top_menu ol {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+@keyframes slide {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .user-menu > li > a > .amt {
   position: absolute;
   right: 0;
