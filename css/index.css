@@ -7647,6 +7647,9 @@ body {
 }
 
 @media (max-width: 750px) {
+  .backdrop {
+    overflow: hidden;
+  }
   .backdrop #footerfix::before {
     content: "";
     display: block;
