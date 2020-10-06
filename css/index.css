@@ -7640,6 +7640,11 @@ body {
 .footer a:hover {
   color: var(--color-contrast);
 }
+@media (max-width: 750px) {
+  .footer .inner_wrap {
+    text-align: center;
+  }
+}
 
 @media (max-width: 750px) {
   .backdrop #footerfix::before {
