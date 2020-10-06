@@ -9007,6 +9007,23 @@ dl.stats.half_content {
   background-color: var(--color-primary) !important;
 }
 
+:root {
+  --best-answer-post-bg: hsl(var(--success-bg-h), var(--success-bg-s), calc(var(--success-bg-l) * 1.3));
+  --best-answer-poster-bg: hsl(var(--success-bg-h), var(--success-bg-s), calc(var(--success-bg-l) * 1.2));
+}
+
+.dark-mode {
+  --best-answer-post-bg: hsl(var(--success-bg-h), var(--success-bg-s), calc(var(--success-bg-l) * 0.4));
+  --best-answer-poster-bg: hsl(var(--success-bg-h), var(--success-bg-s), calc(var(--success-bg-l) * 0.5));
+}
+
+.best_answer.postblock {
+  background-color: var(--best-answer-post-bg);
+}
+.best_answer.postblock .poster {
+  background-color: var(--best-answer-poster-bg);
+}
+
 .main-content-section > * {
   margin-block-start: var(--space-between-elements);
   margin-block-end: var(--space-between-elements);
