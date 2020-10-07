@@ -7859,6 +7859,9 @@ a:hover {
   .dropdown::before, .quickbuttons > li > ul::before, .top_menu::before, .dropmenu > li ul::before {
     display: none;
   }
+  .dropdown .item-label, .quickbuttons > li > ul .item-label, .top_menu .item-label, .dropmenu > li ul .item-label {
+    width: 100%;
+  }
 }
 
 .dropdown-bar {
