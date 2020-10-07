@@ -9530,7 +9530,7 @@ dl.stats.half_content {
   margin: 6px 0 6px;
 }
 .post > .inner {
-  overflow: auto;
+  overflow-x: auto;
 }
 
 .signature, .attachments {
