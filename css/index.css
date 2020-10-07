@@ -8203,6 +8203,7 @@ a:hover {
     border-radius: var(--border-radius);
     left: 0;
     top: 0;
+    min-height: unset;
   }
   .popup_window .dropmenu > li ul > li > a {
     padding: 8px 10px;
