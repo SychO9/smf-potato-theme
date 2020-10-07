@@ -32,30 +32,6 @@
   text-align: left;
 }
 
-/* AJAX notification bar
-------------------------------------------------------- */
-#ajax_in_progress {
-  background: #fff;
-  border-bottom: 4px solid #f96f00;
-  color: #f96f00;
-  text-align: center;
-  font-size: 1.6em;
-  padding: 8px;
-  width: 100%;
-  line-height: 25px;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-#ajax_in_progress a {
-  color: orange;
-  text-decoration: underline;
-  font-size: 0.9em;
-  float: right;
-  margin-right: 20px;
-}
-
 /* Styles used by the auto suggest control.
 ------------------------------------------------------- */
 .auto_suggest_div {
@@ -555,6 +531,7 @@ tr[id^=list_news_lists_] textarea {
 .fas,
 #moderationbuttons_strip #oInTopicModeration_remove_button_text::before,
 #moderationbuttons_strip #oInTopicModeration_split_button_text::before,
+#ajax_in_progress::before,
 input[type=checkbox],
 input[type=radio],
 .menu_icon::before,
@@ -577,7 +554,7 @@ input[type=radio],
   line-height: 1;
 }
 
-#moderationbuttons_strip #oInTopicModeration_remove_button_text::before, #moderationbuttons_strip #oInTopicModeration_split_button_text::before, input[type=checkbox], input[type=radio], .menu_icon::before, .toggle_down::before, .toggle_up::before, .errorbox::before, .infobox::before, .noticebox::before, .main_icons {
+#moderationbuttons_strip #oInTopicModeration_remove_button_text::before, #moderationbuttons_strip #oInTopicModeration_split_button_text::before, #ajax_in_progress::before, input[type=checkbox], input[type=radio], .menu_icon::before, .toggle_down::before, .toggle_up::before, .errorbox::before, .infobox::before, .noticebox::before, .main_icons {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
@@ -681,6 +658,7 @@ input[type=radio],
 .fas.fa-pull-left,
 #moderationbuttons_strip .fa-pull-left#oInTopicModeration_remove_button_text::before,
 #moderationbuttons_strip .fa-pull-left#oInTopicModeration_split_button_text::before,
+.fa-pull-left#ajax_in_progress::before,
 input.fa-pull-left[type=checkbox],
 input.fa-pull-left[type=radio],
 .fa-pull-left.menu_icon::before,
@@ -699,6 +677,7 @@ input.fa-pull-left[type=radio],
 .fas.fa-pull-right,
 #moderationbuttons_strip .fa-pull-right#oInTopicModeration_remove_button_text::before,
 #moderationbuttons_strip .fa-pull-right#oInTopicModeration_split_button_text::before,
+.fa-pull-right#ajax_in_progress::before,
 input.fa-pull-right[type=checkbox],
 input.fa-pull-right[type=radio],
 .fa-pull-right.menu_icon::before,
@@ -718,7 +697,7 @@ input.fa-pull-right[type=radio],
   animation: fa-spin 2s infinite linear;
 }
 
-.fa-pulse {
+.fa-pulse, #ajax_in_progress::before {
   animation: fa-spin 1s infinite steps(8);
 }
 
@@ -6628,6 +6607,7 @@ readers do not read off random characters that represent icons */
 .fas,
 #moderationbuttons_strip #oInTopicModeration_remove_button_text::before,
 #moderationbuttons_strip #oInTopicModeration_split_button_text::before,
+#ajax_in_progress::before,
 input[type=checkbox],
 input[type=radio],
 .menu_icon::before,
@@ -8845,6 +8825,22 @@ dl.stats.half_content {
 }
 #stats th.stats_month, #stats td.stats_day {
   text-align: start;
+}
+
+#ajax_in_progress {
+  position: fixed;
+  bottom: 6px;
+  left: 6px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 6px 10px;
+  z-index: 9999999;
+  border-radius: 25px;
+  animation: slide 0.2s;
+}
+#ajax_in_progress::before {
+  content: "";
+  margin-right: 4px;
 }
 
 .popup_container {
