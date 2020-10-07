@@ -674,7 +674,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 			$html .= $li['content'];
 		else
 			$html .= '
-				<a' . (!empty($li['href']) ? " href='{$li['href']}'" : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . ' ' . (!$is_sub ? " class='preview' title='{$li['label']}'" : '' ) . '>
+				<a' . (!empty($li['href']) ? " href='{$li['href']}'" : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . ' class="' . (!$is_sub ? " preview" : '' ) . '' . (!empty($li['anchor_class']) ? " {$li['anchor_class']}" : '') . '"' . (!$is_sub ? " title='{$li['label']}'" : '' ) . '>
 					' . (!empty($li['icon']) ? "<span class='main_icons {$li['icon']}'></span>" : '') . (!empty($li['label']) ? "<span class='item-label'>{$li['label']}</span>" : '') . '
 				</a>';
 

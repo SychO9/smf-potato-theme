@@ -9529,6 +9529,7 @@ dl.stats.half_content {
 }
 .post > .inner {
   overflow-x: auto;
+  overflow-y: visible;
 }
 
 .signature, .attachments {

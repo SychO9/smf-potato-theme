@@ -97,7 +97,7 @@ class Base
 		$output['quickbuttons']['like'] = [
 			'label' => $txt['like'],
 			'href' => $scripturl.'?action=likes;ltype=msg;sa=like;like='.$output['id'].';'.$context['session_var'].'='.$context['session_id'],
-			'anchor_class' => 'msg_like',
+			// 'anchor_class' => 'msg_like',
 			'icon' => !empty($output['likes']['you']) ? 'unlike' : 'like',
 			'id' => 'msg_'.$output['id'].'_likes',
 			'class' => 'smflikebutton',
