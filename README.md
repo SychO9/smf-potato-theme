@@ -28,7 +28,7 @@ So the only way for you to update the theme this way, is for you to avoid instal
 ### Manually updating
 If for whatever reason you cannot leave the theme files untouched, the only other way is for you to make the theme edits made from your version to the latest.
 
-To list these edits, simply use the following URL by replacing the `VERSION` by your theme's version number and `NEW_VERSION` by the latest version number which you can see in [the releases page](https://github.com/SychO9/flarum-profile-cover/releases).
+To list these edits, simply use the following URL by replacing the `VERSION` by your theme's version number and `NEW_VERSION` by the latest version number which you can see in [the releases page](https://github.com/SychO9/smf-potato-theme/releases).
 
 `https://github.com/SychO9/smf-potato-theme/compare/VERSION...NEW_VERSION`
 
