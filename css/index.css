@@ -8219,7 +8219,7 @@ a:hover {
     background: var(--dropdown-bg);
   }
 }
-select, input[type=submit], input[type=checkbox], .button, label[for] {
+select, input[type=submit], input[type=checkbox], input[type=radio], .button, label[for] {
   cursor: pointer;
 }
 
@@ -8468,6 +8468,12 @@ dl.settings dd > *:last-child, dl.settings dt > *:last-child, .login dl dd > *:l
   }
 }
 
+ul.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 fieldset {
   margin-block-start: var(--space-between-elements);
   margin-block-end: var(--space-between-elements);
@@ -8701,6 +8707,31 @@ input[name=attachBBC] {
   width: 100%;
 }
 
+#poll_options > form > * {
+  margin-block-start: var(--space-between-elements);
+  margin-block-end: var(--space-between-elements);
+}
+#poll_options > form > *:first-child {
+  margin-block-start: 0;
+}
+#poll_options > form > *:last-child {
+  margin-block-end: 0;
+}
+#poll_options .voted_icon {
+  display: inline-block;
+  width: 19px;
+  text-align: center;
+}
+#poll_options .voted {
+  font-weight: 600;
+}
+#poll_options dt.voted {
+  color: var(--color-primary);
+}
+#poll_options dd.voted .bar {
+  background-color: var(--color-primary);
+}
+
 .generic_bar, .progress_bar {
   background: var(--color-bg-dark);
   min-height: 24px;
@@ -8802,25 +8833,25 @@ input[name=attachBBC] {
   text-indent: -1000em;
 }
 
-dl.stats {
+dl.stats, dl.options {
   margin: 0;
   padding: var(--block-padding);
   display: flex;
   flex-wrap: wrap;
 }
-dl.stats dd, dl.stats dt {
+dl.stats dd, dl.stats dt, dl.options dd, dl.options dt {
   margin: 0;
   margin-block-start: 1px;
   margin-block-end: 1px;
   width: 50%;
 }
-dl.stats dd:first-child, dl.stats dt:first-child {
+dl.stats dd:first-child, dl.stats dt:first-child, dl.options dd:first-child, dl.options dt:first-child {
   margin-block-start: 0;
 }
-dl.stats dd:last-child, dl.stats dt:last-child {
+dl.stats dd:last-child, dl.stats dt:last-child, dl.options dd:last-child, dl.options dt:last-child {
   margin-block-end: 0;
 }
-dl.stats.half_content {
+dl.stats.half_content, dl.options.half_content {
   display: inline-flex;
 }
 

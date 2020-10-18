@@ -112,8 +112,11 @@ function template_main()
 			foreach ($context['poll']['options'] as $option)
 			{
 				echo '
-						<dt class="', $option['voted_this'] ? ' voted' : '', '">', $option['option'], '</dt>
-						<dd class="statsbar generic_bar', $option['voted_this'] ? ' voted' : '', '">';
+						<dt class="', $option['voted_this'] ? ' voted' : '', '">
+							<span class="voted_icon">', $option['voted_this'] ? icon('fas fa-check') : '', '</span>
+							', $option['option'], '
+						</dt>
+						<dd class="statsbar generic_bar', $option['voted_this'] ? ' voted' : '', ' righttext">';
 
 				if ($context['allow_results_view'])
 					echo '
