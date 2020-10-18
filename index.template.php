@@ -458,7 +458,7 @@ function theme_linktree($force_show = false)
 	}
 
 	echo '
-					<div class="page-details">', function_exists('template_page_details') ? template_page_details() : '', '</div>
+					<div class="page-details inline_details">', function_exists('template_page_details') ? template_page_details() : '', '</div>
 				</div><!-- .navigate_section -->';
 
 	$shown_linktree = true;

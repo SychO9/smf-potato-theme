@@ -25,20 +25,16 @@ function template_page_title()
  */
 function template_page_details()
 {
-	global $context, $txt;
+	global $context, $txt, $settings;
 
 	// Show new topic info here?
 	echo '
-		<p>', $txt['started_by'], ' ', $context['topic_poster_name'], ', ', $context['topic_started_time'], '</p>';
-
-	// Next - Prev
-	echo '
-		<span class="nextlinks floatright">', $context['previous_next'], '</span>';
+		<p>', icon('fas fa-user-edit'), ' ', $txt['started_by'], ' ', $context['topic_poster_name'], ', ', $context['topic_started_time'], '</p>';
 
 	if (!empty($settings['display_who_viewing']))
 	{
 		echo '
-		<p>';
+		<p>', icon('fas fa-eye'), ' ';
 
 		// Show just numbers...?
 		if ($settings['display_who_viewing'] == 1)
@@ -51,6 +47,10 @@ function template_page_details()
 		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
 		</p>';
 	}
+
+	// Next - Prev
+	echo '
+		<span class="nextlinks">', $context['previous_next'], '</span>';
 }
 
 /**
