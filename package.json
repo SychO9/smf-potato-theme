@@ -3,7 +3,7 @@
 	"version": "0.1.1",
 	"author": "Sami 'SychO' Mazouz",
 	"license": "MIT",
-	"lastCommit": "9c0c361cdb596c268580265df82f387752496128",
+	"lastCommit": "be238c1c45022e7a0e5977904f3caf6caba9d388",
 	"scripts": {
 		"watch": "node_modules\\.bin\\sass --load-path=node_modules --watch sass/index.scss css/index.css"
 	},

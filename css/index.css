@@ -8732,6 +8732,12 @@ input[name=attachBBC] {
   background-color: var(--color-primary);
 }
 
+#backtrace_popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .generic_bar, .progress_bar {
   background: var(--color-bg-dark);
   min-height: 24px;
