@@ -18,6 +18,7 @@ $txt['potato_discuss'] = 'Discussion Topic';
 $txt['potato_simple_machines_forum'] = 'Simple Machines Forum';
 $txt['potato_donate'] = 'Donate';
 $txt['potato_donate_desc'] = 'Support The Project';
+$txt['potato_hire_me'] = '(Hire Me!)';
 
 $txt['potato_default_mode'] = 'Default Mode';
 $txt['potato_allow_user_modes'] = 'Allow users to change modes';

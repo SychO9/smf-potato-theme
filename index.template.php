@@ -812,7 +812,7 @@ function template_sycho_theme_info()
 			'icon' => 'fas fa-code-branch',
 		),
 		'author' => array(
-			'label' => $txt['author'],
+			'label' => $txt['author'] . ' ' . $txt['potato_hire_me'],
 			'value' => $txt['sycho_author'] . ' (sychocouldy@gmail.com)',
 			'icon' => 'fas fa-user-edit',
 		),
