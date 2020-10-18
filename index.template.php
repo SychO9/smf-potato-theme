@@ -70,7 +70,7 @@ function template_init()
 	// Allow css/js files to be disabled for this specific theme.
 	// Add the identifier as an array key. IE array('smf_script'); Some external files might not add identifiers, on those cases SMF uses its filename as reference.
 	if (!isset($settings['disable_files']))
-		$settings['disable_files'] = array('smf_jquery_slider');
+		$settings['disable_files'] = array('smf_jquery_slider_css');
 
 	// Load our helper functions
 	require_once __DIR__ . '/src/vendor.php';
