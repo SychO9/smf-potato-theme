@@ -7405,6 +7405,12 @@ hr {
   content: "";
 }
 
+.highlight {
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
 table {
   border-radius: var(--border-radius);
   box-shadow: var(--block-box-shadow);
@@ -10145,6 +10151,9 @@ h3.config_hd.titlebg {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+}
+.post-list-item-header-content {
+  margin-inline-end: auto;
 }
 .post-list-item-counter {
   padding: 0 12px 0 8px;

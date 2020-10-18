@@ -331,69 +331,86 @@ function template_results()
 			echo '
 		<div class="roundframe noup">', $txt['find_no_results'], '</div>';
 
+		echo '
+		<div class="post-list-container">';
+
 		// While we have results to show ...
 		while ($topic = $context['get_topics']())
 		{
 			echo '
-		<div class="', $topic['css_class'], '">';
+			<div class="', $topic['css_class'], ' clear post-list-item">';
 
 			foreach ($topic['matches'] as $message)
 			{
 				echo '
-			<div class="block">
-				<span class="floatleft half_content">
-					<div class="counter">', $message['counter'], '</div>
-					<h5>', $topic['board']['link'], ' / <a href="', $scripturl, '?topic=', $topic['id'], '.msg', $message['id'], '#msg', $message['id'], '">', $message['subject_highlighted'], '</a></h5>
-					<span class="smalltext">&#171;&nbsp;', $txt['by'], '&nbsp;<strong>', $message['member']['link'], '</strong>&nbsp;', $txt['on'], '&nbsp;<em>', $message['time'], '</em>&nbsp;&#187;</span>
-				</span>';
+				<div class="post-list-item-header">
+					<div class="counter post-list-item-counter">', $message['counter'], '</div>
+					<div class="topic_details post-list-item-header-content">
+						<h5 class="post-list-item-title">
+							<a href="', $scripturl, '?topic=', $topic['id'], '.msg', $message['id'], '#msg', $message['id'], '">', $message['subject_highlighted'], '</a>
+						</h5>
+						<span class="inline_details">
+							<span>', icon('fas fa-user'), ' ', $message['member']['link'], '</span>
+							<span>', icon('far fa-clock'), ' ', $message['time'], '</span>
+							<span>', icon('fas fa-folder'), ' ', $topic['board']['link'], '</span>
+						</span>
+					</div>';
 
 				if (!empty($options['display_quick_mod']))
 				{
 					echo '
-				<span class="floatright">';
+					<span class="floatright">';
 
 					if ($options['display_quick_mod'] == 1)
 						echo '
-					<input type="checkbox" name="topics[]" value="', $topic['id'], '">';
+						<input type="checkbox" name="topics[]" value="', $topic['id'], '">';
 
 					else
 					{
 						if ($topic['quick_mod']['remove'])
 							echo '
-					<a href="', $scripturl, '?action=quickmod;board=' . $topic['board']['id'] . '.0;actions%5B', $topic['id'], '%5D=remove;', $context['session_var'], '=', $context['session_id'], '" class="you_sure"><span class="main_icons delete" title="', $txt['remove_topic'], '"></span></a>';
+						<a href="', $scripturl, '?action=quickmod;board=' . $topic['board']['id'] . '.0;actions%5B', $topic['id'], '%5D=remove;', $context['session_var'], '=', $context['session_id'], '" class="you_sure"><span class="main_icons delete" title="', $txt['remove_topic'], '"></span></a>';
 
 						if ($topic['quick_mod']['lock'])
 							echo '
-					<a href="', $scripturl, '?action=quickmod;board=' . $topic['board']['id'] . '.0;actions%5B', $topic['id'], '%5D=lock;', $context['session_var'], '=', $context['session_id'], '" class="you_sure"><span class="main_icons lock" title="', $topic['is_locked'] ? $txt['set_unlock'] : $txt['set_lock'], '"></span></a>';
+						<a href="', $scripturl, '?action=quickmod;board=' . $topic['board']['id'] . '.0;actions%5B', $topic['id'], '%5D=lock;', $context['session_var'], '=', $context['session_id'], '" class="you_sure"><span class="main_icons lock" title="', $topic['is_locked'] ? $txt['set_unlock'] : $txt['set_lock'], '"></span></a>';
 
 						if ($topic['quick_mod']['lock'] || $topic['quick_mod']['remove'])
 							echo '
-					<br>';
+						<br>';
 
 						if ($topic['quick_mod']['sticky'])
 							echo '
-					<a href="', $scripturl, '?action=quickmod;board=' . $topic['board']['id'] . '.0;actions%5B', $topic['id'], '%5D=sticky;', $context['session_var'], '=', $context['session_id'], '" class="you_sure"><span class="main_icons sticky" title="', $topic['is_sticky'] ? $txt['set_nonsticky'] : $txt['set_sticky'], '"></span></a>';
+						<a href="', $scripturl, '?action=quickmod;board=' . $topic['board']['id'] . '.0;actions%5B', $topic['id'], '%5D=sticky;', $context['session_var'], '=', $context['session_id'], '" class="you_sure"><span class="main_icons sticky" title="', $topic['is_sticky'] ? $txt['set_nonsticky'] : $txt['set_sticky'], '"></span></a>';
 
 						if ($topic['quick_mod']['move'])
 							echo '
-					<a href="', $scripturl, '?action=movetopic;topic=', $topic['id'], '.0"><span class="main_icons move" title="', $txt['move_topic'], '"></span></a>';
+						<a href="', $scripturl, '?action=movetopic;topic=', $topic['id'], '.0"><span class="main_icons move" title="', $txt['move_topic'], '"></span></a>';
 					}
 
 					echo '
-				</span><!-- .floatright -->';
+					</span><!-- .floatright -->';
 				}
 
 				echo '
-			</div><!-- .block -->';
+				</div>
+				<div class="post-list-item-content">';
 
 				if ($message['body_highlighted'] != '')
 					echo '
-				<div class="list_posts double_height word_break">', $message['body_highlighted'], '</div>';
+					<div class="list_posts double_height word_break">
+						<div class="post">', $message['body_highlighted'], '</div>
+					</div>';
+
+				echo '
+				</div>';
 			}
 
 			echo '
 		</div><!-- $topic[css_class] -->';
 		}
+
+		echo '</div>';
 
 		if (!empty($context['topics']))
 			echo '
