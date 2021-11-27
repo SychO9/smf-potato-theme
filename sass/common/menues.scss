@@ -1,0 +1,29 @@
+@import "@sycho/smf-theme-base/sass/common/menues";
+
+.user-menu {
+  @media (max-width: $mobile-max-width) {
+    width: 100%;
+
+    > li {
+      --font-size: #{$font-size + 4};
+      flex-grow: 1;
+      text-align: center;
+
+      > a {
+        display: block;
+        padding: 10px !important;
+        height: auto;
+
+        > .icon {
+          margin-inline-end: 0;
+        }
+        > .item-label {
+          display: none;
+        }
+        > .amt {
+          right: 20%;
+        }
+      }
+    }
+  }
+}
