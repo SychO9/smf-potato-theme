@@ -480,7 +480,7 @@ function template_single_post($message)
 	if (!empty($modSettings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
 		echo '
 							<div class="avatar">
-								<a href="', $message['member']['href'], '">', $message['member']['avatar']['image'], '</a>
+								<a href="', $message['member']['href'], '" aria-hidden="true">', $message['member']['avatar']['image'], '</a>
 							</div>';
 
 	// Begin display of user info
