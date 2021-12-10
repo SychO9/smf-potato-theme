@@ -1,4 +1,4 @@
-.dark-mode {
+[data-theme="dark"] {
   @include defineColorHSL(--color-bg, #171717);
   @include defineColorHSL(--color-fg, #c9c9c9);
   @include defineColorHSL(--color-contrast, #0e0e0e);
