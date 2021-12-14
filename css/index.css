@@ -338,10 +338,10 @@ tr[id^=list_news_lists_] textarea {
   --color-primary:hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
   --color-primary-dark: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 0.8));
   --color-primary-light: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 1.1));
-  --color-secondary-h:294.7058823529deg;
-  --color-secondary-s:43.5897435897%;
-  --color-secondary-l:30.5882352941%;
-  --color-secondary:hsl(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l));
+  --color-accent-h:294.7058823529deg;
+  --color-accent-s:43.5897435897%;
+  --color-accent-l:30.5882352941%;
+  --color-accent:hsl(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l));
   --color-contrast-h:0deg;
   --color-contrast-s:0%;
   --color-contrast-l:80%;
@@ -365,7 +365,7 @@ tr[id^=list_news_lists_] textarea {
   --link-color-s:var(--color-primary-s);
   --link-color-l:var(--color-primary-l);
   --link-color:hsl(var(--link-color-h), var(--link-color-s), var(--link-color-l));
-  --amt-bg: var(--color-secondary);
+  --amt-bg: var(--color-accent);
   --amt-color: #fff;
   --top-section-background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
   --top-section-color-h:0deg;
@@ -7327,7 +7327,7 @@ input[type=radio],
   font-size: var(--font-size);
   border-radius: 100%;
   display: inline-block;
-  background: var(--color-secondary);
+  background: var(--color-accent);
   color: #fff;
   vertical-align: middle;
 }
@@ -7407,7 +7407,7 @@ hr {
 
 .highlight {
   font-weight: 600;
-  color: var(--color-secondary);
+  color: var(--color-accent);
   text-decoration: underline;
 }
 
@@ -8764,7 +8764,7 @@ input[name=attachBBC] {
   top: 0;
   left: 0;
   bottom: 0;
-  background: var(--color-secondary);
+  background: var(--color-accent);
   transition: width 0.3s;
   border-radius: var(--border-radius);
   display: block;
@@ -8786,7 +8786,7 @@ input[name=attachBBC] {
 }
 .progress_bar .bar {
   box-shadow: -1px 1px 0 rgba(255, 255, 255, 0.25) inset, 1px -1px 0 rgba(0, 0, 0, 0.1) inset;
-  background-color: var(--color-secondary);
+  background-color: var(--color-accent);
   background-size: 30px 30px;
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
@@ -9425,7 +9425,7 @@ dl.stats.half_content, dl.options.half_content {
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius);
-  background: var(--color-secondary);
+  background: var(--color-accent);
   color: #fff;
   height: 15px;
   line-height: 15px;
@@ -10228,7 +10228,7 @@ h3.config_hd.titlebg {
 }
 .calendar_table td.days.calendar_today a, .calendar_week td.days.calendar_today a {
   color: var(--color-white) !important;
-  background: var(--color-secondary) !important;
+  background: var(--color-accent) !important;
 }
 
 .week_add_event a {

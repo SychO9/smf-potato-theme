@@ -13,7 +13,7 @@ $mobile-min-width: $mobile-max-width + 1;
 
 /* Generic Colors */
 $primary-color: #b83b5e;
-$secondary-color: #6a2c70;
+$accent-color: #6a2c70;
 
 /* Element Colors */
 $color-bg: #eeecda;
@@ -70,7 +70,7 @@ $success-color: var(--color-fg);
 $error-bg: #ff5f5f;
 $error-color: var(--color-fg);
 
-$amt-bg: var(--color-secondary);
+$amt-bg: var(--color-accent);
 $amt-color: #fff;
 
 $space-between-elements: 6px;
@@ -97,7 +97,7 @@ $unapproved-bg: #fadde2;
   @include defineColorHSL(--color-primary, $primary-color);
   --color-primary-dark: #{colorLightness(--color-primary, 0.8)};
   --color-primary-light: #{colorLightness(--color-primary, 1.1)};
-  @include defineColorHSL(--color-secondary, $secondary-color);
+  @include defineColorHSL(--color-accent, $accent-color);
   @include defineColorHSL(--color-contrast, $color-contrast);
   --color-contrast-dark: #{$color-contrast-dark};
   @include defineColorHSL(--color-white, #fff);
